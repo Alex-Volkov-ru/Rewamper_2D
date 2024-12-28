@@ -10,3 +10,10 @@ res://scene/ui/end_screen.gd
 res://scene/manager/arena_time_manager.tscn
 res://scene/manager/experience_manager.tscn
 res://scene/manager/upgrade_manager.tscn
+res://scene/abilities/bullet_ability/bullet.gd
+res://scene/game_objects/player/player.gd
+res://scene/abilities/bullet_ability/bullet.tscn
+res://scene/abilities/attack_ability/attack_ability.tscn
+res://scene/abilities/attack_ability/attack_controller.tscn
+res://scene/abilities/axe_ability/axe_ability.tscn
+res://scene/abilities/axe_ability/axe_ability_controller.tscn

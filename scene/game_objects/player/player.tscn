@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0ump57ta6uh8"]
+[gd_scene load_steps=20 format=3 uid="uid://b0ump57ta6uh8"]
 
 [ext_resource type="Script" path="res://scene/game_objects/player/player.gd" id="1_8oolj"]
 [ext_resource type="Texture2D" uid="uid://c1tcfei7yvse7" path="res://scene/game_objects/player/knight_f_hit_anim_f0.png" id="1_i2o30"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bdm4mspvpgybf" path="res://scene/game_objects/player/knight_f_run_anim_f1.png" id="7_vgjvu"]
 [ext_resource type="Texture2D" uid="uid://bsmedwf2v1q1b" path="res://scene/game_objects/player/knight_f_run_anim_f2.png" id="8_s6gq3"]
 [ext_resource type="Texture2D" uid="uid://bvpb2eqisbpu1" path="res://scene/game_objects/player/knight_f_run_anim_f3.png" id="9_8p638"]
+[ext_resource type="Texture2D" uid="uid://cah4uteorebtj" path="res://scene/abilities/bullet_ability/32x32 Guns icon Sheet 1111.png" id="13_xcgfw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2hhs"]
 bg_color = Color(0.133333, 0.133333, 0.133333, 1)
@@ -82,6 +83,18 @@ height = 16.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
 script = ExtResource("1_8oolj")
+
+[node name="GunCast2D" type="RayCast2D" parent="."]
+position = Vector2(7, -3)
+target_position = Vector2(50, 0)
+
+[node name="Weapon" type="Sprite2D" parent="GunCast2D"]
+position = Vector2(2, -5.96046e-08)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("13_xcgfw")
+
+[node name="Marker2D" type="Marker2D" parent="GunCast2D/Weapon"]
+position = Vector2(12.5, -4.16667)
 
 [node name="AbilityManager" type="Node" parent="."]
 

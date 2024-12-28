@@ -9,7 +9,25 @@ extends CharacterBody2D
 var max_speed = 125
 var acceleration = .15
 var enemies_colliding = 0
+var bullet = preload('res://scene/abilities/bullet_ability/bullet.tscn')
 
+func _physics_process(delta):
+	if Input.is_action_just_pressed("shoot"):
+			shoot()
+	$GunCast2D.look_at(get_global_mouse_position())
+
+func shoot():
+	# Создаем пулю
+	var b = bullet.instantiate()
+	owner.add_child(b)
+
+	# Устанавливаем позицию и направление пули
+	b.global_position = $GunCast2D/Weapon/Marker2D.global_position
+	b.direction = (get_global_mouse_position() - b.global_position).normalized()
+
+
+	
+	
 func _ready():
 	health_component.died.connect(on_died)
 	health_component.health_changed.connect(on_health_changed)

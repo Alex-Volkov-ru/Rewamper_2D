@@ -1,8 +1,10 @@
+Marker2D
+Sprite2D
+RayCast2D
 AnimationPlayer
 CollisionShape2D
 Timer
 Node
-Sprite2D
 MarginContainer
 Button
 Label
@@ -11,5 +13,3 @@ PanelContainer
 CanvasLayer
 ProgressBar
 Area2D
-Node2D
-HBoxContainer
