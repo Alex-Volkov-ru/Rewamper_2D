@@ -1,7 +1,7 @@
 extends Node
 
 @export var bullet_ability_scene: PackedScene
-var damage = 10
+var damage = 2
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -19,9 +19,11 @@ func spawn_bullet():
 	# Устанавливаем начальную позицию пули
 	bullet_ability_instance.global_position = player.global_position
 
-	# Рассчитываем направление от игрока к мыши
-	var mouse_position = get_viewport().get_mouse_position()
-	var direction = (mouse_position - player.global_position).normalized()
+	# Получаем мировую позицию мыши с учётом камеры
+	var mouse_position_world = player.get_global_mouse_position()
+
+	# Рассчитываем направление от пули (её стартовой позиции) к позиции мыши
+	var direction = (mouse_position_world - bullet_ability_instance.global_position).normalized()
 
 	# Устанавливаем направление и урон
 	bullet_ability_instance.direction = direction
