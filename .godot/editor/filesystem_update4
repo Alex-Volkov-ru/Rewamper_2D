@@ -9,3 +9,4 @@ res://scene/game_objects/player/player.gd
 res://scene/abilities/axe_ability/axe_ability.tscn
 res://scene/abilities/attack_ability/attack_controller.tscn
 res://scene/abilities/axe_ability/axe_ability_controller.tscn
+res://scene/components/exp_bottle_drop_component.gd
