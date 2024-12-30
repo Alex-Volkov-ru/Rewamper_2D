@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0ump57ta6uh8"]
+[gd_scene load_steps=22 format=3 uid="uid://b0ump57ta6uh8"]
 
 [ext_resource type="Script" path="res://scene/game_objects/player/player.gd" id="1_8oolj"]
 [ext_resource type="Texture2D" uid="uid://c1tcfei7yvse7" path="res://scene/game_objects/player/knight_f_hit_anim_f0.png" id="1_i2o30"]
@@ -13,7 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bdm4mspvpgybf" path="res://scene/game_objects/player/knight_f_run_anim_f1.png" id="7_vgjvu"]
 [ext_resource type="Texture2D" uid="uid://bsmedwf2v1q1b" path="res://scene/game_objects/player/knight_f_run_anim_f2.png" id="8_s6gq3"]
 [ext_resource type="Texture2D" uid="uid://bvpb2eqisbpu1" path="res://scene/game_objects/player/knight_f_run_anim_f3.png" id="9_8p638"]
-[ext_resource type="PackedScene" uid="uid://c4vvtug3mq13w" path="res://scene/abilities/Gun/gun.tscn" id="15_sg3fv"]
+[ext_resource type="Texture2D" uid="uid://cah4uteorebtj" path="res://scene/abilities/bullet_ability/32x32 Guns icon Sheet 1111.png" id="13_xcgfw"]
+[ext_resource type="Script" path="res://scene/game_objects/player/pistolet_2d.gd" id="15_bea8f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2hhs"]
 bg_color = Color(0.133333, 0.133333, 0.133333, 1)
@@ -136,8 +137,18 @@ collision_mask = 16
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_337ul")
 
-[node name="Gun" parent="." instance=ExtResource("15_sg3fv")]
-position = Vector2(3, -3)
+[node name="GunCast2D" type="RayCast2D" parent="."]
+position = Vector2(6, -5)
+target_position = Vector2(45, 0)
+
+[node name="Pistolet2D" type="Sprite2D" parent="GunCast2D"]
+position = Vector2(7, 2)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_xcgfw")
+script = ExtResource("15_bea8f")
+
+[node name="Marker2D" type="Marker2D" parent="GunCast2D"]
+position = Vector2(12, 0)
 
 [connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

@@ -6,8 +6,7 @@ extends CharacterBody2D
 @onready var ability_manager = $AbilityManager
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var bullet_ability_controller = $AbilityManager/BulletAbilityController
-@onready var gun_marker = $GunCast2D/Marker2D  # Убедитесь, что вы правильно настроили этот путь
-@onready var gun_sprite = $GunCast2D/Pistolet2D  # Пистолет (сам спрайт)
+@onready var gun = $Gun # Указываем путь к ноде GUN
 
 var max_speed = 125
 var acceleration = .15
@@ -37,11 +36,11 @@ func _process(delta):
 		animated_sprite_2d.scale.x = face_sign
 	
 	# Поворот пистолета в сторону мыши
-	rotate_gun_to_mouse()
+	gun.look_at(get_global_mouse_position())
 
 	# Стрельба
 	if Input.is_action_just_pressed("shoot"):
-		bullet_ability_controller.spawn_bullet()
+		shoot_bullet()
 
 # Вычисление вектора движения
 func movement_vector():
@@ -88,13 +87,12 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 	var new_ability = upgrade as NewAbility
 	ability_manager.add_child(new_ability.new_ability_scene.instantiate())
 
-# Поворот пистолета в сторону мыши
-func rotate_gun_to_mouse():
-	var mouse_position = get_global_mouse_position()  # Позиция мыши в мировых координатах
-	var gun_position = gun_marker.global_position  # Позиция пистолета
+# Стрельба пули
+func shoot_bullet():
+	# Проверяем BulletAbilityController
+	if bullet_ability_controller == null:
+		print("Ошибка: BulletAbilityController не найден!")
+		return
 
-	# Вычисляем угол между пистолетом и мышью
-	var angle_to_mouse = gun_position.angle_to_point(mouse_position)
-
-	# Поворачиваем пистолет
-	gun_sprite.rotation = angle_to_mouse
+	# Пытаемся выстрелить
+	bullet_ability_controller.spawn_bullet(gun)

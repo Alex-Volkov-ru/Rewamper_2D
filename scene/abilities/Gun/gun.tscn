@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4vvtug3mq13w"]
+
+[ext_resource type="Script" path="res://scene/abilities/Gun/gun.gd" id="1_ldhko"]
+[ext_resource type="Texture2D" uid="uid://d3ns6qlql0ida" path="res://scene/abilities/Gun/Gun.png" id="1_t0gxm"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_ldhko")
+
+[node name="Gun2D" type="Sprite2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(0.4352, 0.4352)
+texture = ExtResource("1_t0gxm")
+offset = Vector2(14, -4)

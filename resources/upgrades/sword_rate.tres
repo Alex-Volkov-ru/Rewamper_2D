@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_5y7ge")
 id = "sword_rate"
-max_quantity = 10
+max_quantity = 20
 name = "Увеличение скорости меча"
 description = "Увеличение скорости меча на 10%"

@@ -10,3 +10,7 @@ res://scene/abilities/axe_ability/axe_ability.tscn
 res://scene/abilities/attack_ability/attack_controller.tscn
 res://scene/abilities/axe_ability/axe_ability_controller.tscn
 res://scene/components/exp_bottle_drop_component.gd
+res://resources/upgrades/sword_rate.tres
+res://scene/game_objects/player/pistolet_2d.gd
+res://scene/abilities/Gun/gun.tscn
+res://scene/abilities/Gun/gun.gd

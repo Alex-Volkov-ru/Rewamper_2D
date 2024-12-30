@@ -1,9 +1,10 @@
-Marker2D
 Sprite2D
+Node
+CanvasLayer
+Marker2D
 RayCast2D
 CollisionShape2D
 Timer
-Node
 Node2D
 AnimationPlayer
 MarginContainer
@@ -11,4 +12,3 @@ Button
 Label
 VBoxContainer
 PanelContainer
-CanvasLayer
