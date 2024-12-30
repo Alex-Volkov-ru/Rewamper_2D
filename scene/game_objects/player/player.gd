@@ -48,7 +48,7 @@ func movement_vector():
 	var movement_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	return Vector2(movement_x, movement_y)
 
-# Обработка повреждений
+# Обработка поврежденийdddddddd
 func check_if_damaged():
 	if enemies_colliding == 0 or not grace_period.is_stopped():
 		return

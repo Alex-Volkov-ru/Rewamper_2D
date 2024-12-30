@@ -1,18 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4r8ajshunqtn"]
+[gd_scene load_steps=6 format=3 uid="uid://c4r8ajshunqtn"]
 
 [ext_resource type="Texture2D" uid="uid://dh2j54k4ddkfe" path="res://scene/abilities/bullet_ability/bullet.png" id="1_6f0ff"]
 [ext_resource type="Script" path="res://scene/abilities/bullet_ability/bullet_ability.gd" id="1_bswau"]
 [ext_resource type="PackedScene" uid="uid://b2xe2q0ii2gk4" path="res://scene/components/hit_box_component.tscn" id="3_r7ryn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
-radius = 0.568182
+radius = 1.13636
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
+radius = 2.0
 
 [node name="BulletAbility" type="Node2D"]
 script = ExtResource("1_bswau")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 2.38419e-07)
-scale = Vector2(0.075, 0.075)
+scale = Vector2(0.108, 0.106)
 texture = ExtResource("1_6f0ff")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_r7ryn")]
@@ -20,3 +23,10 @@ texture = ExtResource("1_6f0ff")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 scale = Vector2(1.76, 1.76)
 shape = SubResource("CircleShape2D_o2b4j")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kqse0")
