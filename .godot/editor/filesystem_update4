@@ -1,7 +1,5 @@
-res://scene/level/level.tscn
+res://scene/components/death_component.tscn
 res://resources/world.tres
+res://scene/level/level.tscn
 res://scene/game_objects/player/player.tscn
-res://scene/abilities/bullet_ability/bullet_ability_controller.tscn
-res://scene/abilities/Gun/gun.tscn
-res://scene/abilities/attack_ability/attack_controller.tscn
-res://scene/abilities/bullet_ability/bullet_ability.tscn
+res://scene/game_objects/coin/coin.tscn

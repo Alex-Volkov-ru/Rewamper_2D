@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://lcmae3bd3mmk"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_kw7xd"]
+
+[resource]
+script = ExtResource("1_kw7xd")
+id = "gun_attack"
+max_quantity = 2
+name = "Увеличение урона от пуль"
+description = "Увеличенеие урона от пуль на 5 "

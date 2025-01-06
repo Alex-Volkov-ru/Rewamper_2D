@@ -1,10 +1,11 @@
+res://scene/components
+res://scene/game_objects/coin
 res://scene/abilities/Gun
 res://scene/abilities/bullet_ability
 res://scene/abilities/axe_ability
 res://scene/ui
 res://scene/manager
 res://resources/upgrades
-res://scene/components
 res://scene/global
 res://scene/game_objects/exp_bottle
 res://scene/abilities/attack_ability

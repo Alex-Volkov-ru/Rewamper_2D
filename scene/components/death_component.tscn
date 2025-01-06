@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddlw6fq16u4mb"]
+
+[ext_resource type="Texture2D" uid="uid://dvy4yr6lfwleo" path="res://scene/game_objects/mushroom/SmallMushroom_Idle_1.png" id="1_xmkab"]
+
+[sub_resource type="Animation" id="Animation_e0608"]
+resource_name = "death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1yo8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gg1xp"]
+_data = {
+"RESET": SubResource("Animation_1yo8p"),
+"death": SubResource("Animation_e0608")
+}
+
+[sub_resource type="Curve" id="Curve_gg1hu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.680782, 0.991525), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_swr1r"]
+curve = SubResource("Curve_gg1hu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jlovp"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 92.6
+initial_velocity_max = 150.51
+angular_velocity_min = -241.61
+angular_velocity_max = 134.4
+gravity = Vector3(0, 500, 0)
+alpha_curve = SubResource("CurveTexture_swr1r")
+
+[node name="DeathComponent" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gg1xp")
+}
+autoplay = "death"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D"]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_jlovp")
+texture = ExtResource("1_xmkab")
+lifetime = 0.8
+one_shot = true
+fixed_fps = 0
+interpolate = false
