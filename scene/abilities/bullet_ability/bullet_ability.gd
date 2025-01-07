@@ -8,7 +8,7 @@ class_name BulletAbility
 var direction: Vector2
 var is_destroyed = false  # Флаг, чтобы отслеживать, уничтожена ли пуля
 var distance_travelled: float = 0  # Расстояние, которое прошла пуля
-var max_distance: float = 325  # Фиксированное расстояние полета пули (200 пикселей)
+var max_distance: float = 200  # Фиксированное расстояние полета пули (200 пикселей)
 
 func _ready():
 	direction = Vector2.ZERO

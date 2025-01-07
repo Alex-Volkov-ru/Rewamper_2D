@@ -5,3 +5,6 @@ res://scene/game_objects/coin/coin.tscn
 res://scene/components/death_component.tscn
 res://scene/game_objects/mushroom/mushroom.tscn
 res://scene/abilities/bullet_ability/bullet_ability.gd
+res://scene/game_objects/player/player.gd
+res://scene/abilities/bullet_ability/bullet_ability.tscn
+res://scene/components/health_component.tscn

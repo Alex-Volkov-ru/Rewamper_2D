@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var bullet_ability_controller = $AbilityManager/BulletAbilityController
 @onready var gun = $Gun # Указываем путь к ноде GUN
 
-var max_speed = 125
+@export var max_speed = 125
 var acceleration = .15
 var enemies_colliding = 0
 
