@@ -4,3 +4,4 @@ res://scene/game_objects/player/player.tscn
 res://scene/game_objects/coin/coin.tscn
 res://scene/components/death_component.tscn
 res://scene/game_objects/mushroom/mushroom.tscn
+res://scene/abilities/bullet_ability/bullet_ability.gd
