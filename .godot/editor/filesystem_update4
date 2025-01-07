@@ -3,3 +3,6 @@ res://resources/world.tres
 res://scene/level/level.tscn
 res://scene/game_objects/player/player.tscn
 res://scene/game_objects/coin/coin.tscn
+res://scene/game_objects/mushroom/mushroom.tscn
+res://scene/game_objects/mushroom/mushroom.gd
+res://scene/components/death_component.gd

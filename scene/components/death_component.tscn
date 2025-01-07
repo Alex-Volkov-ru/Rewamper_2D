@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddlw6fq16u4mb"]
+[gd_scene load_steps=9 format=3 uid="uid://ddlw6fq16u4mb"]
 
+[ext_resource type="Script" path="res://scene/components/death_component.gd" id="1_1755a"]
 [ext_resource type="Texture2D" uid="uid://dvy4yr6lfwleo" path="res://scene/game_objects/mushroom/SmallMushroom_Idle_1.png" id="1_xmkab"]
 
 [sub_resource type="Animation" id="Animation_e0608"]
@@ -72,6 +73,7 @@ gravity = Vector3(0, 500, 0)
 alpha_curve = SubResource("CurveTexture_swr1r")
 
 [node name="DeathComponent" type="Node2D"]
+script = ExtResource("1_1755a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -83,6 +85,7 @@ autoplay = "death"
 position = Vector2(0, -16)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D"]
+unique_name_in_owner = true
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_jlovp")
