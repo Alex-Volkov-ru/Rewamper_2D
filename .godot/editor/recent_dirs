@@ -1,4 +1,5 @@
 res://scene/components
+res://scene/game_objects/goblin
 res://scene/game_objects/coin
 res://scene/abilities/Gun
 res://scene/abilities/bullet_ability

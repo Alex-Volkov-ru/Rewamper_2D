@@ -4,6 +4,7 @@ extends Node
 
 @export var arena_time_manager: ArenaTimeManager
 @export var mushroom_scene: PackedScene
+@export var goblin_scene: PackedScene
 
 var base_spawn_time
 var min_spawn_time = 0.2
