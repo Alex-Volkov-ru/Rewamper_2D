@@ -32,6 +32,5 @@ func on_died():
 	back_layer.add_child(death_instance)
 	death_instance.gpu_particles_2d.texture = sprite
 	death_instance.sprite_offset.position.x = animated_sprite_2d.offset.y
-	print(death_instance.sprite_offset.position)
 	death_instance.global_position = global_position
 	queue_free()

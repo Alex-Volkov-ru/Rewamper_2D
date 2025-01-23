@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=3 uid="uid://eyq6ay3d7agl"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_tchye"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_e0lqd"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_p287x"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_a4mnl"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_btb1i"]
+[ext_resource type="Texture2D" uid="uid://dstqshe55honl" path="res://scene/game_objects/demon/big_demon_idle_anim_f0.png" id="7_crcmu"]
+[ext_resource type="Texture2D" uid="uid://bjcrc6x3ku0fb" path="res://scene/game_objects/demon/big_demon_idle_anim_f1.png" id="8_nm07c"]
+[ext_resource type="Texture2D" uid="uid://dgs6yqakgicrh" path="res://scene/game_objects/demon/big_demon_idle_anim_f2.png" id="9_mv7ch"]
+[ext_resource type="Texture2D" uid="uid://0i04a2fpvh4i" path="res://scene/game_objects/demon/big_demon_idle_anim_f3.png" id="10_x57e6"]
+[ext_resource type="Texture2D" uid="uid://co8craog4ti5x" path="res://scene/game_objects/demon/big_demon_run_anim_f0.png" id="11_7krge"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_822ej"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yr27b"]
+radius = 12.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qibo7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_crcmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nm07c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mv7ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x57e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7krge")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_crcmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nm07c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mv7ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x57e6")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkcfv"]
+radius = 11.0454
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjjgg"]
+
+[node name="Demon" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_tchye")
+death_scecene = ExtResource("2_e0lqd")
+sprite = ExtResource("7_crcmu")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_p287x")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_a4mnl")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_btb1i")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_yr27b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.96046e-08, -11)
+scale = Vector2(0.625, 0.625)
+sprite_frames = SubResource("SpriteFrames_qibo7")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.95203
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_wkcfv")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_bjjgg")
+
+[node name="MovementComponent" parent="." instance=ExtResource("14_822ej")]
