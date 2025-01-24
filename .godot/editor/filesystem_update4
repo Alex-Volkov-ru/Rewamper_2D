@@ -1,9 +1,0 @@
-res://scene/level/level.tscn
-res://resources/world.tres
-res://scene/manager/spawner/enemy_spawner.tscn
-res://scene/components/death_component.tscn
-res://scene/components/movement_component.tscn
-res://scene/abilities/axe_ability/axe_ability.tscn
-res://scene/game_objects/exp_bottle/exp_bottle.tscn
-res://scene/game_objects/player/player.tscn
-res://scene/game_objects/player/player.gd

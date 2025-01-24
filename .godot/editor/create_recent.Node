@@ -1,3 +1,6 @@
+CanvasLayer
+Sprite2D
+TouchScreenButton
 Timer
 Node
 AnimationPlayer
@@ -6,9 +9,6 @@ GPUParticles2D
 AnimatedSprite2D
 CollisionShape2D
 Area2D
-Sprite2D
-CanvasLayer
 Marker2D
 RayCast2D
 MarginContainer
-Button

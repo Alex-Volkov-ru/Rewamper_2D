@@ -10,7 +10,9 @@ extends CharacterBody2D
 @onready var dashDurationTimer = $DashDurationTimer
 @onready var dashEffectTimer = $DashEffectTimer
 
-@export var max_speed = 125  # Максимальная скорость персонажа
+@export var max_speed = 60  # Максимальная скорость персонажа
+@export var max_speed_joystick = 90
+
 @export var dash_speed_multiplier = 2  # Множитель скорости для рывка
 var acceleration = 0.15  # Ускорение
 var enemies_colliding = 0  # Количество столкновений с врагами
@@ -18,15 +20,31 @@ var enemies_colliding = 0  # Количество столкновений с в
 var doDash = false  # Флаг для рывка
 var dashDirection = Vector2.ZERO  # Направление рывка
 
+# Вычисление вектора движения
+func movement_vector():
+	var movement_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	var movement_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	return Vector2(movement_x, movement_y)
+
 func _physics_process(delta):
-	var direction = movement_vector().normalized()  # Получаем нормализованный вектор движения
+	var keyboard_direction = movement_vector().normalized()  # Нормализуем направление с клавиатуры
+	var joystick_direction = $CanvasLayer/joystick.get_joystick_dir().normalized()  # Нормализуем направление джойстика
+
+	# Приоритет движения для джойстика
+	var direction = joystick_direction if joystick_direction.length() > 0.1 else keyboard_direction
+	
+# Линейная интерполяция для плавного движения
+	if direction != Vector2.ZERO:
+		velocity = velocity.lerp(direction * max_speed_joystick, acceleration)
+	else:
+		velocity = velocity.lerp(Vector2.ZERO, acceleration)
 	
 	# Логика рывка
 	if doDash:
-		velocity = dashDirection * max_speed * dash_speed_multiplier  # Ускорение при рывке
+		velocity = dashDirection * max_speed_joystick * dash_speed_multiplier  # Ускорение при рывке
 	else:
 		if direction != Vector2.ZERO:
-			velocity = velocity.lerp(direction * max_speed, acceleration)  # Плавное движение
+			velocity = velocity.lerp(direction * max_speed_joystick, acceleration)  # Плавное движение
 		else:
 			velocity = velocity.lerp(Vector2.ZERO, acceleration)  # Если персонаж стоит, скорость уменьшается плавно
 
@@ -107,12 +125,6 @@ func _process(delta):
 	# Стрельба
 	if Input.is_action_just_pressed("shoot"):
 		shoot_bullet()
-
-# Вычисление вектора движения
-func movement_vector():
-	var movement_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	var movement_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	return Vector2(movement_x, movement_y)
 
 # Обработка повреждений
 func check_if_damaged():
