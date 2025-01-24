@@ -1,12 +1,9 @@
-res://scene/components/exp_bottle_drop_component.tscn
-res://resources/world.tres
-res://scene/game_objects/exp_bottle/exp_bottle.gd
 res://scene/level/level.tscn
+res://resources/world.tres
 res://scene/manager/spawner/enemy_spawner.tscn
-res://scene/game_objects/demon/demon.tscn
 res://scene/components/death_component.tscn
 res://scene/components/movement_component.tscn
 res://scene/abilities/axe_ability/axe_ability.tscn
-res://scene/abilities/axe_ability/axe_ability_controller.tscn
 res://scene/game_objects/exp_bottle/exp_bottle.tscn
 res://scene/game_objects/player/player.tscn
+res://scene/game_objects/player/player.gd
