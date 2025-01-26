@@ -1,0 +1,103 @@
+[gd_scene load_steps=19 format=3 uid="uid://dvock8q7xdt2p"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_akcxy"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_dqkps"]
+[ext_resource type="Texture2D" uid="uid://d4jjgx6x4k31f" path="res://scene/game_objects/ork_shaman/orc_shaman_idle_anim_f0.png" id="3_xo58y"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_rfyq2"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_l57ud"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_0aqmf"]
+[ext_resource type="Texture2D" uid="uid://tp878tiigqma" path="res://scene/game_objects/ork_shaman/orc_shaman_idle_anim_f1.png" id="7_jsonx"]
+[ext_resource type="Texture2D" uid="uid://dk8x1y1slm6op" path="res://scene/game_objects/ork_shaman/orc_shaman_idle_anim_f2.png" id="8_5a2h5"]
+[ext_resource type="Texture2D" uid="uid://wvcqwk0p0lvm" path="res://scene/game_objects/ork_shaman/orc_shaman_idle_anim_f3.png" id="9_tv3vp"]
+[ext_resource type="Texture2D" uid="uid://bjwq8ykocswec" path="res://scene/game_objects/ork_shaman/orc_shaman_run_anim_f0.png" id="11_gejbi"]
+[ext_resource type="Texture2D" uid="uid://du55e3cvkfc7d" path="res://scene/game_objects/ork_shaman/orc_shaman_run_anim_f1.png" id="12_p4ax3"]
+[ext_resource type="Texture2D" uid="uid://buljvwtq2b2ww" path="res://scene/game_objects/ork_shaman/orc_shaman_run_anim_f2.png" id="13_um121"]
+[ext_resource type="Texture2D" uid="uid://c7vt0lmtli5m4" path="res://scene/game_objects/ork_shaman/orc_shaman_run_anim_f3.png" id="14_gphyk"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="15_a5k16"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_huoj2"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ekd3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xo58y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jsonx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5a2h5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tv3vp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_gejbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p4ax3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_um121")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gphyk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eorus"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rh53q"]
+radius = 5.0
+
+[node name="Ork_shaman" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_akcxy")
+death_scecene = ExtResource("2_dqkps")
+sprite = ExtResource("3_xo58y")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_rfyq2")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_l57ud")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_0aqmf")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_huoj2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7.15256e-07, -7.51339)
+scale = Vector2(0.625, 0.65101)
+sprite_frames = SubResource("SpriteFrames_4ekd3")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.769345
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -6)
+shape = SubResource("CircleShape2D_eorus")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_rh53q")
+
+[node name="MovementComponent" parent="." instance=ExtResource("15_a5k16")]

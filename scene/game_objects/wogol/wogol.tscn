@@ -1,0 +1,103 @@
+[gd_scene load_steps=19 format=3 uid="uid://b6ogrw1vbpqhf"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_mlkmu"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_ji3ke"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="3_l15kw"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="4_uohj7"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="5_s20p8"]
+[ext_resource type="Texture2D" uid="uid://bi3p133krbt26" path="res://scene/game_objects/wogol/wogol_idle_anim_f0.png" id="6_a5wwp"]
+[ext_resource type="Texture2D" uid="uid://b7tqthvu4oku" path="res://scene/game_objects/wogol/wogol_idle_anim_f1.png" id="7_g6h7n"]
+[ext_resource type="Texture2D" uid="uid://dyf0qugu04eqg" path="res://scene/game_objects/wogol/wogol_idle_anim_f2.png" id="8_10bg1"]
+[ext_resource type="Texture2D" uid="uid://biwoyjghikqrr" path="res://scene/game_objects/wogol/wogol_idle_anim_f3.png" id="9_qjfsg"]
+[ext_resource type="Texture2D" uid="uid://cwgvve3y5heps" path="res://scene/game_objects/wogol/wogol_run_anim_f0.png" id="10_sg2ed"]
+[ext_resource type="Texture2D" uid="uid://ct1q1cwuq8i1x" path="res://scene/game_objects/wogol/wogol_run_anim_f1.png" id="11_oai67"]
+[ext_resource type="Texture2D" uid="uid://c557v186aee4f" path="res://scene/game_objects/wogol/wogol_run_anim_f2.png" id="12_rj6by"]
+[ext_resource type="Texture2D" uid="uid://rllxcik1ncbl" path="res://scene/game_objects/wogol/wogol_run_anim_f3.png" id="13_8qdx8"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_ewrd0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctnrl"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ig71q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a5wwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g6h7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_10bg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qjfsg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_sg2ed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_oai67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rj6by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8qdx8")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qov5h"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0v6ko"]
+radius = 5.0
+
+[node name="Wogol" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_mlkmu")
+death_scecene = ExtResource("2_ji3ke")
+sprite = ExtResource("6_a5wwp")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_l15kw")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_uohj7")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_s20p8")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_ctnrl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8.53669)
+scale = Vector2(0.625, 0.73594)
+sprite_frames = SubResource("SpriteFrames_ig71q")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.920177
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_qov5h")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_0v6ko")
+
+[node name="MovementComponent" parent="." instance=ExtResource("14_ewrd0")]

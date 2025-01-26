@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://xgsdmqw1rk5c"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_psvty"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_0yfg7"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_tgs3i"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_hyi6y"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_a0gkj"]
+[ext_resource type="Texture2D" uid="uid://bmyt2yjllqo5q" path="res://scene/game_objects/necromancer/necromancer_anim_f0.png" id="10_rsidv"]
+[ext_resource type="Texture2D" uid="uid://q0qg0tgllcfy" path="res://scene/game_objects/necromancer/necromancer_anim_f1.png" id="11_raxbp"]
+[ext_resource type="Texture2D" uid="uid://qqdxokepfcoh" path="res://scene/game_objects/necromancer/necromancer_anim_f2.png" id="12_u4npf"]
+[ext_resource type="Texture2D" uid="uid://djgcbefh1ixwx" path="res://scene/game_objects/necromancer/necromancer_anim_f3.png" id="13_tx5sm"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_fw42o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_66yux"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gcln2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rsidv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_raxbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_u4npf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tx5sm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rsidv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_raxbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_u4npf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tx5sm")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4t8ac"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1w1u8"]
+radius = 5.0
+
+[node name="Necromancer" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_psvty")
+death_scecene = ExtResource("2_0yfg7")
+sprite = ExtResource("10_rsidv")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_tgs3i")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_hyi6y")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_a0gkj")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_66yux")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7.56)
+scale = Vector2(0.625, 0.65101)
+sprite_frames = SubResource("SpriteFrames_gcln2")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.56186
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_4t8ac")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_1w1u8")
+
+[node name="MovementComponent" parent="." instance=ExtResource("14_fw42o")]

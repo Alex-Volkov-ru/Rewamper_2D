@@ -13,7 +13,7 @@ extends CharacterBody2D
 @export var max_speed = 60  # Максимальная скорость персонажа
 @export var max_speed_joystick = 90
 
-@export var dash_speed_multiplier = 2  # Множитель скорости для рывка
+@export var dash_speed_multiplier = 1.5  # Множитель скорости для рывка
 var acceleration = 0.15  # Ускорение
 var enemies_colliding = 0  # Количество столкновений с врагами
 
@@ -94,6 +94,17 @@ func _on_dash_duration_timer_timeout():
 
 func _on_dash_effect_timer_timeout():
 	create_dash_effect()  # Создаем эффект рывка
+
+func perform_dash():
+	if movement_vector().length() > 0:
+		dashDirection = movement_vector().normalized()
+	else:
+		dashDirection = Vector2(-1 if animated_sprite_2d.flip_h else 1, 0)
+	
+	# Активируем рывок в любом случае
+	doDash = true
+	dashDurationTimer.start()
+	dashEffectTimer.start()
 
 
 func _ready():

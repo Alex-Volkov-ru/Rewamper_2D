@@ -1,13 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://0v0noh4wlipi"]
+[gd_scene load_steps=19 format=3 uid="uid://0v0noh4wlipi"]
 
 [ext_resource type="Script" path="res://scene/manager/spawner/enemy_spawner.gd" id="1_2qk8y"]
 [ext_resource type="PackedScene" uid="uid://gkjsjqkbm64f" path="res://scene/game_objects/mushroom/mushroom.tscn" id="2_8jh24"]
 [ext_resource type="PackedScene" uid="uid://egealcsf1fs1" path="res://scene/game_objects/goblin/goblin.tscn" id="3_1qoxc"]
+[ext_resource type="PackedScene" uid="uid://eyq6ay3d7agl" path="res://scene/game_objects/demon/demon.tscn" id="4_nyj5h"]
+[ext_resource type="PackedScene" uid="uid://darv0h0rx2ij5" path="res://scene/game_objects/ork_warrior/ork_warrior.tscn" id="4_tbj84"]
+[ext_resource type="PackedScene" uid="uid://cb5t8abntu8xq" path="res://scene/game_objects/ogr/ogr.tscn" id="5_ir6cr"]
+[ext_resource type="PackedScene" uid="uid://b0sc0e3ci3l1o" path="res://scene/game_objects/zombie/zombie.tscn" id="6_uw7q4"]
+[ext_resource type="PackedScene" uid="uid://dbgrpaudxni57" path="res://scene/game_objects/chort/chort.tscn" id="7_6chn0"]
+[ext_resource type="PackedScene" uid="uid://xa44xy7lfqb1" path="res://scene/game_objects/skelet/skelet.tscn" id="7_ymeyp"]
+[ext_resource type="PackedScene" uid="uid://bxgkm3dl44efe" path="res://scene/game_objects/lizard/lizard.tscn" id="8_bdncq"]
+[ext_resource type="PackedScene" uid="uid://b6ogrw1vbpqhf" path="res://scene/game_objects/wogol/wogol.tscn" id="8_ftw0b"]
+[ext_resource type="PackedScene" uid="uid://cr2e77paxkq1g" path="res://scene/game_objects/swampy/swampy.tscn" id="9_0p1pl"]
+[ext_resource type="PackedScene" uid="uid://ca8j46ovfqv5f" path="res://scene/game_objects/ork_masked/ork_masked.tscn" id="9_h6dn8"]
+[ext_resource type="PackedScene" uid="uid://dvock8q7xdt2p" path="res://scene/game_objects/ork_shaman/ork_shaman.tscn" id="10_b6l3l"]
+[ext_resource type="PackedScene" uid="uid://b0lg7ayonppa6" path="res://scene/game_objects/tiny_zombie/tiny_zombie.tscn" id="10_r8vay"]
+[ext_resource type="PackedScene" uid="uid://cgc6ckc7a2e3f" path="res://scene/game_objects/ice_zombie/ice_zombie.tscn" id="11_1jeg8"]
+[ext_resource type="PackedScene" uid="uid://bcjnhm4ngjkd0" path="res://scene/game_objects/pumpkin/pumpkin.tscn" id="12_veo23"]
+[ext_resource type="PackedScene" uid="uid://xgsdmqw1rk5c" path="res://scene/game_objects/necromancer/necromancer.tscn" id="13_1gr8j"]
 
 [node name="EnemySpawner" type="Node"]
 script = ExtResource("1_2qk8y")
 mushroom_scene = ExtResource("2_8jh24")
+ork_masked_scene = ExtResource("9_h6dn8")
+ork_warrior_scene = ExtResource("4_tbj84")
 goblin_scene = ExtResource("3_1qoxc")
+chort_scene = ExtResource("7_6chn0")
+skelet_scene = ExtResource("7_ymeyp")
+wogol_scene = ExtResource("8_ftw0b")
+swampy_scene = ExtResource("9_0p1pl")
+tiny_zombie_scene = ExtResource("10_r8vay")
+ice_zombie_scene = ExtResource("11_1jeg8")
+pumpkin_scene = ExtResource("12_veo23")
+lizard_scene = ExtResource("8_bdncq")
+ogr_scene = ExtResource("5_ir6cr")
+demon_scene = ExtResource("4_nyj5h")
+zombie_scene = ExtResource("6_uw7q4")
+ork_shaman_scene = ExtResource("10_b6l3l")
+necromancer_scene = ExtResource("13_1gr8j")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

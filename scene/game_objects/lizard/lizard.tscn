@@ -1,0 +1,104 @@
+[gd_scene load_steps=20 format=3 uid="uid://bxgkm3dl44efe"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_omgma"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_sixmq"]
+[ext_resource type="Texture2D" uid="uid://bmnydmqse3540" path="res://scene/game_objects/lizard/lizard_m_hit_anim_f0.png" id="3_gc3ow"]
+[ext_resource type="Texture2D" uid="uid://cqw18vg6m1rpo" path="res://scene/game_objects/lizard/lizard_m_idle_anim_f0.png" id="3_yenxq"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_3hnp2"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_2377r"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_2mu2r"]
+[ext_resource type="Texture2D" uid="uid://dnlxg2qy0rkq1" path="res://scene/game_objects/lizard/lizard_m_idle_anim_f1.png" id="7_nc0uk"]
+[ext_resource type="Texture2D" uid="uid://cc311ogxo04bk" path="res://scene/game_objects/lizard/lizard_m_idle_anim_f2.png" id="8_lgxfa"]
+[ext_resource type="Texture2D" uid="uid://bvs8mamhunpvg" path="res://scene/game_objects/lizard/lizard_m_idle_anim_f3.png" id="9_pb6c2"]
+[ext_resource type="Texture2D" uid="uid://cyqkqoj00oop8" path="res://scene/game_objects/lizard/lizard_m_run_anim_f0.png" id="11_c514v"]
+[ext_resource type="Texture2D" uid="uid://16ni65c8oeju" path="res://scene/game_objects/lizard/lizard_m_run_anim_f1.png" id="12_705si"]
+[ext_resource type="Texture2D" uid="uid://cbabwe2rmfvg1" path="res://scene/game_objects/lizard/lizard_m_run_anim_f2.png" id="13_wx2gl"]
+[ext_resource type="Texture2D" uid="uid://2kdgc6iom0tp" path="res://scene/game_objects/lizard/lizard_m_run_anim_f3.png" id="14_p8vxp"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="15_ixawf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8pon7"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ma31b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yenxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nc0uk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lgxfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pb6c2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_c514v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_705si")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wx2gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_p8vxp")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plnq2"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4cr0"]
+radius = 8.0
+
+[node name="Lizard" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_omgma")
+death_scecene = ExtResource("2_sixmq")
+sprite = ExtResource("3_gc3ow")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_3hnp2")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_2377r")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_2mu2r")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_8pon7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11.5)
+scale = Vector2(0.5, 0.821429)
+sprite_frames = SubResource("SpriteFrames_ma31b")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.0617994
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_plnq2")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_m4cr0")
+
+[node name="MovementComponent" parent="." instance=ExtResource("15_ixawf")]

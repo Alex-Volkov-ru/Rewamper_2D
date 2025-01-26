@@ -43,4 +43,4 @@ func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "gun_attack":  # Проверяем, что улучшение связано с пулями
 		var upgrade_amount = current_upgrades["gun_attack"]["quantity"]
 		damage += 5  # Увеличиваем урон на 5 с каждым апгрейдом
-		print("Урон пули увеличен до:", damage)
+		#print("Урон пули увеличен до:", damage)

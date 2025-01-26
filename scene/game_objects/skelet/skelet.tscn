@@ -1,0 +1,103 @@
+[gd_scene load_steps=19 format=3 uid="uid://xa44xy7lfqb1"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_bh4yh"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_8dmqo"]
+[ext_resource type="Texture2D" uid="uid://clwo70jrhn8n1" path="res://scene/game_objects/skelet/skelet_idle_anim_f0.png" id="3_4y5bo"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_jjsmk"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_6g14l"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_516nh"]
+[ext_resource type="Texture2D" uid="uid://cgqnc1s354asd" path="res://scene/game_objects/skelet/skelet_idle_anim_f1.png" id="7_n7x13"]
+[ext_resource type="Texture2D" uid="uid://dtactv02sak8f" path="res://scene/game_objects/skelet/skelet_idle_anim_f2.png" id="8_xlr4w"]
+[ext_resource type="Texture2D" uid="uid://bq2tggsgcy6is" path="res://scene/game_objects/skelet/skelet_idle_anim_f3.png" id="9_7fhhv"]
+[ext_resource type="Texture2D" uid="uid://my34u5a5xb04" path="res://scene/game_objects/skelet/skelet_run_anim_f0.png" id="10_j28qe"]
+[ext_resource type="Texture2D" uid="uid://no50eog60dtl" path="res://scene/game_objects/skelet/skelet_run_anim_f1.png" id="11_h4dxf"]
+[ext_resource type="Texture2D" uid="uid://dbe0tgumixqwp" path="res://scene/game_objects/skelet/skelet_run_anim_f2.png" id="12_0iy0i"]
+[ext_resource type="Texture2D" uid="uid://1cwtao482rvt" path="res://scene/game_objects/skelet/skelet_run_anim_f3.png" id="13_ef28u"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_bjw6m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6wno"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iuc1c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4y5bo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n7x13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xlr4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7fhhv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_j28qe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_h4dxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0iy0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ef28u")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvl4c"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2p4m5"]
+radius = 5.0
+
+[node name="Skelet" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_bh4yh")
+death_scecene = ExtResource("2_8dmqo")
+sprite = ExtResource("3_4y5bo")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_jjsmk")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_6g14l")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_516nh")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_r6wno")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.68434e-14, -5)
+scale = Vector2(0.625, 0.65101)
+sprite_frames = SubResource("SpriteFrames_iuc1c")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.648637
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_bvl4c")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_2p4m5")
+
+[node name="MovementComponent" parent="." instance=ExtResource("14_bjw6m")]

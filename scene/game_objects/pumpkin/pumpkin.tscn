@@ -1,0 +1,103 @@
+[gd_scene load_steps=19 format=3 uid="uid://bcjnhm4ngjkd0"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_loqmj"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_5ktn1"]
+[ext_resource type="Texture2D" uid="uid://cnwda7q34id7r" path="res://scene/game_objects/pumpkin/pumpkin_dude_idle_anim_f0.png" id="3_thgbg"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_f22r3"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_x5cvy"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_0015q"]
+[ext_resource type="Texture2D" uid="uid://bjorj3q4jyc0e" path="res://scene/game_objects/pumpkin/pumpkin_dude_idle_anim_f1.png" id="7_2whvu"]
+[ext_resource type="Texture2D" uid="uid://sbhs66hww34f" path="res://scene/game_objects/pumpkin/pumpkin_dude_idle_anim_f2.png" id="8_no7sf"]
+[ext_resource type="Texture2D" uid="uid://hs3mfblvpcjr" path="res://scene/game_objects/pumpkin/pumpkin_dude_idle_anim_f3.png" id="9_n1s11"]
+[ext_resource type="Texture2D" uid="uid://c5rp16bstfo22" path="res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f0.png" id="11_ndtc8"]
+[ext_resource type="Texture2D" uid="uid://bgqcx077md2ft" path="res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f1.png" id="12_lmai5"]
+[ext_resource type="Texture2D" uid="uid://cbo3apx653b8k" path="res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f2.png" id="13_usnct"]
+[ext_resource type="Texture2D" uid="uid://t3l4swt4dfxt" path="res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f3.png" id="14_b7bsq"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="15_qoonh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lwch"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjfqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_thgbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2whvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_no7sf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_n1s11")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ndtc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lmai5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_usnct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b7bsq")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7j0ts"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c37a3"]
+radius = 5.0
+
+[node name="Pumpkin" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_loqmj")
+death_scecene = ExtResource("2_5ktn1")
+sprite = ExtResource("3_thgbg")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_f22r3")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_x5cvy")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_0015q")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_8lwch")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8.53669)
+scale = Vector2(0.625, 0.73594)
+sprite_frames = SubResource("SpriteFrames_pjfqg")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.944479
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_7j0ts")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_c37a3")
+
+[node name="MovementComponent" parent="." instance=ExtResource("15_qoonh")]

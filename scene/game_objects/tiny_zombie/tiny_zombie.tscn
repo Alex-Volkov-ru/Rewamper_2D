@@ -1,0 +1,99 @@
+[gd_scene load_steps=18 format=3 uid="uid://b0lg7ayonppa6"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_4vr5t"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_vjaeq"]
+[ext_resource type="Texture2D" uid="uid://cf3acjg2yorew" path="res://scene/game_objects/tiny_zombie/tiny_zombie_idle_anim_f1.png" id="3_uyvrd"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_4tkud"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_xs4lu"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_gpwxt"]
+[ext_resource type="Texture2D" uid="uid://dq67f1ydpnei2" path="res://scene/game_objects/tiny_zombie/tiny_zombie_idle_anim_f2.png" id="7_de0td"]
+[ext_resource type="Texture2D" uid="uid://b8pyarog7dygn" path="res://scene/game_objects/tiny_zombie/tiny_zombie_idle_anim_f3.png" id="8_12xy6"]
+[ext_resource type="Texture2D" uid="uid://w4m2hs8kr221" path="res://scene/game_objects/tiny_zombie/tiny_zombie_run_anim_f0.png" id="9_aarlr"]
+[ext_resource type="Texture2D" uid="uid://glgnbn75u12s" path="res://scene/game_objects/tiny_zombie/tiny_zombie_run_anim_f1.png" id="10_buo6i"]
+[ext_resource type="Texture2D" uid="uid://gvwlpjvkesvm" path="res://scene/game_objects/tiny_zombie/tiny_zombie_run_anim_f2.png" id="11_3o4p1"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="11_qvcc7"]
+[ext_resource type="Texture2D" uid="uid://bgnmxgt8n0ayy" path="res://scene/game_objects/tiny_zombie/tiny_zombie_run_anim_f3.png" id="12_3egq0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7sxd"]
+radius = 4.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bo2qb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uyvrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_de0td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_12xy6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_aarlr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_buo6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3o4p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3egq0")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fq23"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcy1a"]
+radius = 3.0
+
+[node name="Tiny_zombie" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_4vr5t")
+death_scecene = ExtResource("2_vjaeq")
+sprite = ExtResource("3_uyvrd")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_4tkud")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_xs4lu")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_gpwxt")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_l7sxd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5.53669)
+scale = Vector2(0.625, 0.73594)
+sprite_frames = SubResource("SpriteFrames_bo2qb")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.57988
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_5fq23")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_lcy1a")
+
+[node name="MovementComponent" parent="." instance=ExtResource("11_qvcc7")]

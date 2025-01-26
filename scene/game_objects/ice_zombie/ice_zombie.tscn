@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://cgc6ckc7a2e3f"]
+
+[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_4mvv7"]
+[ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_wxqqw"]
+[ext_resource type="Texture2D" uid="uid://cnr80u6ha6rxo" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f0.png" id="3_yvfhk"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_dt7iv"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_antmd"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_71vqo"]
+[ext_resource type="Texture2D" uid="uid://dhgtai1rhwgdm" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f1.png" id="7_7ptvn"]
+[ext_resource type="Texture2D" uid="uid://c0kud4mrbgyv" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f2.png" id="8_kis4t"]
+[ext_resource type="Texture2D" uid="uid://bi2wf2btr1to8" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f3.png" id="9_6gycx"]
+[ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="10_loqj3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_20d4t"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2slu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yvfhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7ptvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kis4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6gycx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yvfhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7ptvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kis4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6gycx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0fma"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ax51r"]
+radius = 5.0
+
+[node name="Ice_zombie" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_4mvv7")
+death_scecene = ExtResource("2_wxqqw")
+sprite = ExtResource("3_yvfhk")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_dt7iv")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_antmd")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_71vqo")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_20d4t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5.53669)
+scale = Vector2(0.625, 0.73594)
+sprite_frames = SubResource("SpriteFrames_c2slu")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.833333
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_e0fma")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_ax51r")
+
+[node name="MovementComponent" parent="." instance=ExtResource("10_loqj3")]
