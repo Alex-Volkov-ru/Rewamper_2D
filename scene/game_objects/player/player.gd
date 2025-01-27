@@ -28,11 +28,11 @@ func movement_vector():
 
 func _physics_process(delta):
 	var keyboard_direction = movement_vector().normalized()  # Нормализуем направление с клавиатуры
-	var joystick_direction = $CanvasLayer/joystick.get_joystick_dir().normalized()  # Нормализуем направление джойстика
+	#var joystick_direction = $CanvasLayer/joystick.get_joystick_dir().normalized()  # Нормализуем направление джойстика
 
 	# Приоритет движения для джойстика
-	var direction = joystick_direction if joystick_direction.length() > 0.1 else keyboard_direction
-	
+	#var direction = joystick_direction if joystick_direction.length() > 0.1 else keyboard_direction
+	var direction = keyboard_direction
 # Линейная интерполяция для плавного движения
 	if direction != Vector2.ZERO:
 		velocity = velocity.lerp(direction * max_speed_joystick, acceleration)

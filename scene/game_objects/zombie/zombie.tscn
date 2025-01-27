@@ -16,8 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://dsuo6powys73h" path="res://scene/game_objects/zombie/big_zombie_run_anim_f3.png" id="13_h1m0p"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_h0j1w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yr27b"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_e5tjj"]
 animations = [{
 "frames": [{
@@ -55,6 +53,8 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yr27b"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n20n5"]
 radius = 9.0
 
@@ -75,13 +75,6 @@ sprite = ExtResource("3_al1lk")
 [node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_l66c2")]
 health_component = NodePath("../HealthComponent")
 
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("6_32w2i")]
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_yr27b")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5.96046e-08, -11)
 scale = Vector2(0.625, 0.625)
@@ -89,6 +82,13 @@ sprite_frames = SubResource("SpriteFrames_e5tjj")
 animation = &"run"
 autoplay = "idle"
 frame_progress = 0.119554
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("6_32w2i")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_yr27b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)

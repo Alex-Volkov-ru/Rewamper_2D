@@ -17,3 +17,5 @@ res://scene/game_objects/zombie/bullet_controller.gd
 res://scene/abilities/bullet_ability/bullet_ability.gd
 res://scene/abilities/bullet_ability/bullet_ability_controller.tscn
 res://scene/abilities/bullet_ability/bullet_ability.tscn
+res://scene/game_objects/player/player.gd
+res://scene/manager/arena_time_manager.tscn
