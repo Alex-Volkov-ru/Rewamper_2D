@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctoou5l8q6ia4"]
+
+[ext_resource type="Script" path="res://scene/game_objects/zombie/bullet_controller.gd" id="1_ctgc0"]
+[ext_resource type="PackedScene" uid="uid://chlosmobd6mfl" path="res://scene/game_objects/zombie/bullet.tscn" id="2_chbdq"]
+
+[node name="BulletController" type="Node"]
+script = ExtResource("1_ctgc0")
+bullet_ability_scene = ExtResource("2_chbdq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

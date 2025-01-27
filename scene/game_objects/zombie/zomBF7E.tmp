@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0sc0e3ci3l1o"]
+[gd_scene load_steps=21 format=3 uid="uid://b0sc0e3ci3l1o"]
 
 [ext_resource type="Script" path="res://scene/game_objects/zombie/zombie.gd" id="1_nkkp1"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_l80dc"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b2yc8cyg75im0" path="res://scene/game_objects/zombie/big_zombie_run_anim_f2.png" id="12_i4r3w"]
 [ext_resource type="Texture2D" uid="uid://dsuo6powys73h" path="res://scene/game_objects/zombie/big_zombie_run_anim_f3.png" id="13_h1m0p"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_h0j1w"]
+[ext_resource type="PackedScene" uid="uid://c4vvtug3mq13w" path="res://scene/abilities/Gun/gun.tscn" id="16_4m6ma"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr27b"]
 
@@ -75,7 +76,7 @@ sprite = ExtResource("3_al1lk")
 [node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_l66c2")]
 health_component = NodePath("../HealthComponent")
 
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("6_32w2i")]
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_32w2i")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
@@ -103,3 +104,11 @@ position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_7joen")
 
 [node name="MovementComponent" parent="." instance=ExtResource("14_h0j1w")]
+
+[node name="Gun" parent="." instance=ExtResource("16_4m6ma")]
+position = Vector2(3, -3)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]

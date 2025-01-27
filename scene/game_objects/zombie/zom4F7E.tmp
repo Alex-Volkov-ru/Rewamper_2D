@@ -75,7 +75,7 @@ sprite = ExtResource("3_al1lk")
 [node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_l66c2")]
 health_component = NodePath("../HealthComponent")
 
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("6_32w2i")]
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_32w2i")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
@@ -103,3 +103,8 @@ position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_7joen")
 
 [node name="MovementComponent" parent="." instance=ExtResource("14_h0j1w")]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]

@@ -1,3 +1,4 @@
+res://scene/game_objects/zombie
 res://scene/game_objects/pumpkin
 res://scene/game_objects/ice_zombie
 res://scene/game_objects/tiny_zombie
@@ -10,7 +11,6 @@ res://scene/game_objects/ork_shaman
 res://scene/game_objects/ork_masked
 res://scene/game_objects/lizard
 res://scene/game_objects/Chort
-res://scene/game_objects/zombie
 res://scene/game_objects/ogr
 res://scene/ui/dash
 D:/Dev/html_export

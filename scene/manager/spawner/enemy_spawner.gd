@@ -32,7 +32,7 @@ extends Node
 
 var base_spawn_time
 var min_spawn_time = 0.2
-var difficulty_multiplier = 0.05
+var difficulty_multiplier = 0.03
 var enemy_pool = EnemyPool.new() 
 
 func _ready():
