@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqc2k3jx7mm2t"]
+
+[ext_resource type="Script" path="res://scene/game_objects/wogol/bullet_wogol_controller.gd" id="1_1yxdi"]
+[ext_resource type="PackedScene" uid="uid://ttb63dpjto1s" path="res://scene/game_objects/wogol/bullet_wogol.tscn" id="2_pkdbh"]
+
+[node name="BulletWogolController" type="Node"]
+script = ExtResource("1_1yxdi")
+bullet_ability_scene = ExtResource("2_pkdbh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

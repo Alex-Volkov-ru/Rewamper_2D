@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://chlosmobd6mfl"]
 
 [ext_resource type="Script" path="res://scene/game_objects/zombie/bullet.gd" id="1_y8t70"]
-[ext_resource type="Texture2D" uid="uid://c418wpjwb5mrn" path="res://scene/game_objects/zombie/bullet_zomibe.png" id="2_12ahd"]
+[ext_resource type="Texture2D" uid="uid://bbadl138iwfpj" path="res://scene/game_objects/zombie/stone.png" id="2_lxylw"]
 [ext_resource type="PackedScene" uid="uid://b2xe2q0ii2gk4" path="res://scene/components/hit_box_component.tscn" id="3_b334k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
-radius = 1.13636
+radius = 2.89717
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
-radius = 2.0
+radius = 5.0
 
 [node name="Bullet" type="Node2D"]
 light_mask = 2
@@ -17,8 +17,8 @@ script = ExtResource("1_y8t70")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 2.84217e-14)
-scale = Vector2(0.125, 0.122685)
-texture = ExtResource("2_12ahd")
+scale = Vector2(0.065, 0.0637962)
+texture = ExtResource("2_lxylw")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_b334k")]
 collision_layer = 2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c418wpjwb5mrn"
-path="res://.godot/imported/bullet_zomibe.png-f6ff32470ac668c5d92e0a50374dde92.ctex"
+uid="uid://diprq8csagbm2"
+path="res://.godot/imported/hp_bottle.png-5d35305883e550e09d486a444ae31a8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/game_objects/zombie/bullet_zomibe.png"
-dest_files=["res://.godot/imported/bullet_zomibe.png-f6ff32470ac668c5d92e0a50374dde92.ctex"]
+source_file="res://scene/game_objects/hp_bottle/hp_bottle.png"
+dest_files=["res://.godot/imported/hp_bottle.png-5d35305883e550e09d486a444ae31a8a.ctex"]
 
 [params]
 

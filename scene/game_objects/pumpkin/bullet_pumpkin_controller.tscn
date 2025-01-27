@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkauu7ggyt4q4"]
+
+[ext_resource type="Script" path="res://scene/game_objects/pumpkin/bullet_pumpkin_controller.gd" id="1_628um"]
+[ext_resource type="PackedScene" uid="uid://0ywjn74fg4fm" path="res://scene/game_objects/pumpkin/bullet_pumpkin.tscn" id="2_5hb8p"]
+
+[node name="BulletPumpkinController" type="Node"]
+script = ExtResource("1_628um")
+bullet_ability_scene = ExtResource("2_5hb8p")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

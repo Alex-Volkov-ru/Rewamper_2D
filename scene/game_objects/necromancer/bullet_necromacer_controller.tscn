@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfnll7co446pw"]
+
+[ext_resource type="Script" path="res://scene/game_objects/necromancer/bullet_necromacer_controller.gd" id="1_uamny"]
+[ext_resource type="PackedScene" uid="uid://cqqitiw3jy2ed" path="res://scene/game_objects/necromancer/bullet_necromancer.tscn" id="2_ry8ss"]
+
+[node name="BulletNecromacerController" type="Node"]
+script = ExtResource("1_uamny")
+bullet_ability_scene = ExtResource("2_ry8ss")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

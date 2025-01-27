@@ -32,7 +32,7 @@ extends Node
 
 var base_spawn_time
 var min_spawn_time = 0.2
-var difficulty_multiplier = 0.03
+var difficulty_multiplier = 0.04
 var enemy_pool = EnemyPool.new() 
 
 func _ready():
@@ -117,6 +117,6 @@ func on_difficulty_increased(difficulty_level: int):
 		enemy_pool.add_mod(pumpkin_scene, 100)
 		enemy_pool.add_mod(swampy_scene, 80)
 		enemy_pool.add_mod(ogr_scene, 80)
-		enemy_pool.add_mod(ork_masked_scene, 70)
+		enemy_pool.add_mod(ork_shaman_scene, 70)
 		enemy_pool.add_mod(necromancer_scene, 100)
 	

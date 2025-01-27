@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://b2xe2q0ii2gk4" path="res://scene/components/hit_box_component.tscn" id="3_cqw40"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
-radius = 1.13636
+radius = 1.70455
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
-radius = 2.0
+radius = 3.0
 
 [node name="BulletChort" type="Node2D"]
 light_mask = 2
@@ -17,7 +17,7 @@ script = ExtResource("1_qlx63")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.2, -0.15)
-scale = Vector2(0.025, 0.0225)
+scale = Vector2(0.039, 0.0351)
 texture = ExtResource("1_hpqdr")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_cqw40")]

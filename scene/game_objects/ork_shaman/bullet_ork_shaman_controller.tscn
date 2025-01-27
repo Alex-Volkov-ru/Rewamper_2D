@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://036wrwectgjt"]
+
+[ext_resource type="Script" path="res://scene/game_objects/ork_shaman/bullet_ork_shaman_controller.gd" id="1_7daj1"]
+[ext_resource type="PackedScene" uid="uid://cj26ocmgbrh1y" path="res://scene/game_objects/ork_shaman/bullet_ork_shaman.tscn" id="2_i2tdn"]
+
+[node name="BulletOrkShamanController" type="Node"]
+script = ExtResource("1_7daj1")
+bullet_ability_scene = ExtResource("2_i2tdn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

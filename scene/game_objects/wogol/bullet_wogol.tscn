@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ttb63dpjto1s"]
+
+[ext_resource type="Script" path="res://scene/game_objects/wogol/bullet_wogol.gd" id="1_0mv43"]
+[ext_resource type="Texture2D" uid="uid://c6bn6jlgth78m" path="res://scene/game_objects/wogol/firebolwogol.png" id="2_xe6j5"]
+[ext_resource type="PackedScene" uid="uid://b2xe2q0ii2gk4" path="res://scene/components/hit_box_component.tscn" id="3_hkfdf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
+radius = 1.70455
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
+radius = 3.0
+
+[node name="BulletWogol" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("1_0mv43")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.2, -0.15)
+scale = Vector2(0.039, 0.0351)
+texture = ExtResource("2_xe6j5")
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("3_hkfdf")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+scale = Vector2(1.76, 1.76)
+shape = SubResource("CircleShape2D_o2b4j")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kqse0")
