@@ -1,3 +1,5 @@
+res://fonts
+res://scene/ui
 res://scene/game_objects/zombie
 res://scene/game_objects/pumpkin
 res://scene/game_objects/ice_zombie
@@ -18,5 +20,3 @@ D:/Dev/XCODE
 D:/Dev
 res://
 res://scene/game_objects/demon
-res://scene/game_objects/player
-res://scene/ui/joystick

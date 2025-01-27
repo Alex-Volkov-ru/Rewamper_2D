@@ -1,12 +1,15 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1737978609
-bullets.gd::GDScript::-1::1737940261::0::1::::<>Area2D<>::
-coin.png::CompressedTexture2D::2322422899025721554::1734539187::1737760792::1::::<><>::
+::res://::1737993132
 export_presets.cfg::TextFile::-1::1737830875::0::1::::<><>::
 icon.svg::CompressedTexture2D::3259165506607749043::1735809286::1735809600::1::::<><>::
 white.png::CompressedTexture2D::4484564725345526726::1737761223::1737761225::1::::<><>::
 ::res://assets/::1735809600
 dungeontileset-extended.png::CompressedTexture2D::2561842812612182711::1735809280::1735809600::1::::<><>::
+::res://fonts/::1737989457
+Bou_Collegiate.ttf::FontFile::6731468531050323660::1737989387::1737989391::1::::<><>::
+COPYRIGHT.txt::TextFile::-1::1737989454::0::1::::<><>::
+GreenHillSans-Italic v1.01.ttf::FontFile::640389075302822250::1737989451::1737989457::1::::<><>::
+GreenHillSans-Regular v1.01.ttf::FontFile::8920611444345581430::1737989451::1737989457::1::::<><>::
 ::res://resources/::1737936183
 world.tres::TileSet::343058193088573482::1737936183::0::1::::<><>::uid://bcq8gaojm3r24::::res://assets/dungeontileset-extended.png
 ::res://resources/upgrades/::1735812618
@@ -15,7 +18,7 @@ gun_attack.tres::Resource/AbilityUpgrade::776934892838156802::1735812618::0::1::
 new_ability.gd::GDScript::-1::1735809280::0::1::::NewAbility<>AbilityUpgrade<>::
 sword_rate.tres::Resource/AbilityUpgrade::9015900277996778330::1735809280::0::1::::<><>::res://resources/upgrades/ability_upgrade.gd
 throw_axe.tres::Resource/NewAbility::7120404365593733319::1735809280::0::1::::<><>::uid://bgrk4qfh4w8s::::res://scene/abilities/axe_ability/axe_ability_controller.tscn<>res://resources/upgrades/new_ability.gd
-::res://scene/::1735809285
+::res://scene/::1737987128
 ::res://scene/abilities/::1735809281
 ::res://scene/abilities/attack_ability/::1735854109
 attack_ability.gd::GDScript::-1::1735809280::0::1::::AttackAbility<>Node2D<>::
@@ -54,8 +57,14 @@ hurt_box_component.tscn::PackedScene::2475447495605390301::1735809282::0::1::::<
 movement_component.gd::GDScript::-1::1736972660::0::1::::<>Node<>::
 movement_component.tscn::PackedScene::3488636286589318252::1737911153::0::1::::<><>::res://scene/components/movement_component.gd
 ::res://scene/game_objects/::1737916185
-::res://scene/game_objects/chort/::1737908297
-chort.tscn::PackedScene::7242896168090949108::1737908297::0::1::::<><>::res://scene/game_objects/mushroom/mushroom.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://dlhjd0bccminy::::res://scene/game_objects/chort/chort_idle_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://bypdidtb3501j::::res://scene/game_objects/chort/chort_idle_anim_f1.png<>uid://cafgsfa71omso::::res://scene/game_objects/chort/chort_idle_anim_f2.png<>uid://bpvsnmwekatnp::::res://scene/game_objects/chort/chort_idle_anim_f3.png<>uid://c3ifm4uvmekka::::res://scene/game_objects/chort/chort_run_anim_f0.png<>uid://biijap8mty1vg::::res://scene/game_objects/chort/chort_run_anim_f1.png<>uid://b52p7jeeenniu::::res://scene/game_objects/chort/chort_run_anim_f2.png<>uid://lj8o0w1p14fb::::res://scene/game_objects/chort/chort_run_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn
+::res://scene/game_objects/chort/::1737993141
+bullet_chort.gd::GDScript::-1::1737992563::0::1::::BulletChort<>Node2D<>::
+bullet_chort.tscn::PackedScene::285522346450020789::1737992740::0::1::::<><>::uid://ck0bg67yvt7f6::::res://scene/game_objects/chort/firebolchort.png<>res://scene/game_objects/chort/bullet_chort.gd<>uid://b2xe2q0ii2gk4::::res://scene/components/hit_box_component.tscn
+bullet_chort_controller.gd::GDScript::-1::1737992592::0::1::::<>Node<>::
+bullet_chort_controller.tscn::PackedScene::1017048608206721468::1737992740::0::1::::<><>::res://scene/game_objects/chort/bullet_chort_controller.gd<>uid://eckrndlu6uw8::::res://scene/game_objects/chort/bullet_chort.tscn
+bullet_ice_zombie_controller.tscn::PackedScene::6301953144393404195::1737993141::0::1::::<><>::res://scene/game_objects/chort/bullet_chort_controller.gd<>uid://eckrndlu6uw8::::res://scene/game_objects/chort/bullet_chort.tscn
+chort.gd::GDScript::-1::1737992656::0::1::::<>CharacterBody2D<>::
+chort.tscn::PackedScene::7242896168090949108::1737992781::0::1::::<><>::res://scene/game_objects/chort/chort.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://dlhjd0bccminy::::res://scene/game_objects/chort/chort_idle_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://bypdidtb3501j::::res://scene/game_objects/chort/chort_idle_anim_f1.png<>uid://cafgsfa71omso::::res://scene/game_objects/chort/chort_idle_anim_f2.png<>uid://bpvsnmwekatnp::::res://scene/game_objects/chort/chort_idle_anim_f3.png<>uid://c3ifm4uvmekka::::res://scene/game_objects/chort/chort_run_anim_f0.png<>uid://biijap8mty1vg::::res://scene/game_objects/chort/chort_run_anim_f1.png<>uid://b52p7jeeenniu::::res://scene/game_objects/chort/chort_run_anim_f2.png<>uid://lj8o0w1p14fb::::res://scene/game_objects/chort/chort_run_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn<>uid://oqwv3etad4nw::::res://scene/game_objects/chort/bullet_chort_controller.tscn
 chort_idle_anim_f0.png::CompressedTexture2D::7946343100415273586::1737907061::1737907062::1::::<><>::
 chort_idle_anim_f1.png::CompressedTexture2D::4102115221651709553::1737907061::1737907062::1::::<><>::
 chort_idle_anim_f2.png::CompressedTexture2D::4783559966509381682::1737907061::1737907062::1::::<><>::
@@ -64,6 +73,7 @@ chort_run_anim_f0.png::CompressedTexture2D::6754970580817869692::1737907061::173
 chort_run_anim_f1.png::CompressedTexture2D::2964993747165123944::1737907061::1737907062::1::::<><>::
 chort_run_anim_f2.png::CompressedTexture2D::4548792571567122432::1737907061::1737907062::1::::<><>::
 chort_run_anim_f3.png::CompressedTexture2D::792686689952728479::1737907061::1737907062::1::::<><>::
+firebolchort.png::CompressedTexture2D::5526412358151109169::1737992321::1737992328::1::::<><>::
 ::res://scene/game_objects/coin/::1736972966
 coin.gd::GDScript::-1::1735854403::0::1::::<>Node2D<>::
 coin.tscn::PackedScene::3553095101921369603::1736972966::0::1::::<><>::res://scene/game_objects/coin/coin.gd<>uid://58ucid1opn2h::::res://scene/game_objects/coin/MonedaD.png
@@ -92,7 +102,9 @@ goblin_run_anim_f0.png::CompressedTexture2D::2248684631327921779::1736971220::17
 goblin_run_anim_f1.png::CompressedTexture2D::4504839260759074417::1736971220::1736971220::1::::<><>::
 goblin_run_anim_f2.png::CompressedTexture2D::6179029509465077723::1736971220::1736971220::1::::<><>::
 goblin_run_anim_f3.png::CompressedTexture2D::8949037740597146196::1736971220::1736971220::1::::<><>::
-::res://scene/game_objects/ice_zombie/::1737915966
+::res://scene/game_objects/ice_zombie/::1737993132
+bullet_ice_zombie.tscn::PackedScene::7193404502432299230::1737993128::0::1::::<><>::res://scene/game_objects/chort/bullet_chort.gd<>uid://ck0bg67yvt7f6::::res://scene/game_objects/chort/firebolchort.png<>uid://b2xe2q0ii2gk4::::res://scene/components/hit_box_component.tscn
+ice_blust_zombie.png::CompressedTexture2D::6895437077384690342::1737993096::1737993114::1::::<><>::
 ice_zombie.tscn::PackedScene::5199989512864196773::1737915966::0::1::::<><>::res://scene/game_objects/mushroom/mushroom.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://cnr80u6ha6rxo::::res://scene/game_objects/ice_zombie/ice_zombie_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://dhgtai1rhwgdm::::res://scene/game_objects/ice_zombie/ice_zombie_anim_f1.png<>uid://c0kud4mrbgyv::::res://scene/game_objects/ice_zombie/ice_zombie_anim_f2.png<>uid://bi2wf2btr1to8::::res://scene/game_objects/ice_zombie/ice_zombie_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn
 ice_zombie_anim_f0.png::CompressedTexture2D::5722440160783781624::1737915908::1737915908::1::::<><>::
 ice_zombie_anim_f1.png::CompressedTexture2D::7664124307066795594::1737915908::1737915908::1::::<><>::
@@ -166,7 +178,7 @@ orc_warrior_run_anim_f1.png::CompressedTexture2D::3839989230671343538::173791138
 orc_warrior_run_anim_f2.png::CompressedTexture2D::3871884157749261824::1737911383::1737911383::1::::<><>::
 orc_warrior_run_anim_f3.png::CompressedTexture2D::2815610997258435912::1737911383::1737911383::1::::<><>::
 ork_warrior.tscn::PackedScene::7195676581681807640::1737936073::0::1::::<><>::res://scene/game_objects/mushroom/mushroom.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://75y6jpmlgyh5::::res://scene/game_objects/ork_warrior/orc_warrior_idle_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://yqrasp02dbsn::::res://scene/game_objects/ork_warrior/orc_warrior_idle_anim_f1.png<>uid://dn6dwi7m1xvvk::::res://scene/game_objects/ork_warrior/orc_warrior_idle_anim_f2.png<>uid://d2wv0knqgue8x::::res://scene/game_objects/ork_warrior/orc_warrior_idle_anim_f3.png<>uid://cdcb17ffb3rka::::res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f0.png<>uid://buyecdhd55x8e::::res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f1.png<>uid://bvftmpssrmbns::::res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f2.png<>uid://bgd5x4h6yulr1::::res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn
-::res://scene/game_objects/player/::1737975381
+::res://scene/game_objects/player/::1737992740
 gun_point.gd::GDScript::-1::1735809283::0::1::::<>Node<>::
 knight_f_hit_anim_f0.png::CompressedTexture2D::6637105066195925144::1735809283::1735809600::1::::<><>::
 knight_f_idle_anim_f0.png::CompressedTexture2D::4267911310946473891::1735809283::1735809600::1::::<><>::
@@ -179,7 +191,7 @@ knight_f_run_anim_f2.png::CompressedTexture2D::3674841792072767861::1735809284::
 knight_f_run_anim_f3.png::CompressedTexture2D::3891461235028742438::1735809284::1735809600::1::::<><>::
 pistolet_2d.gd::GDScript::-1::1735809284::0::1::::<>RefCounted<>::
 player.gd::GDScript::-1::1737975381::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::4183186346545637687::1737973419::0::1::::<><>::res://scene/game_objects/player/player.gd<>uid://c1tcfei7yvse7::::res://scene/game_objects/player/knight_f_hit_anim_f0.png<>uid://b12n41mfc3dlb::::res://scene/game_objects/player/knight_f_idle_anim_f0.png<>uid://d02yl8nx3spsb::::res://scene/abilities/attack_ability/attack_controller.tscn<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://d0i6e1pmrvsdy::::res://scene/game_objects/player/knight_f_idle_anim_f1.png<>uid://boxn1ya3i2gcs::::res://scene/abilities/bullet_ability/bullet_ability_controller.tscn<>uid://di8bh7fwjpwla::::res://scene/game_objects/player/knight_f_idle_anim_f2.png<>uid://c7ehbgi4m6nx1::::res://scene/game_objects/player/knight_f_idle_anim_f3.png<>uid://clu4onj7mwifa::::res://scene/game_objects/player/knight_f_run_anim_f0.png<>uid://bdm4mspvpgybf::::res://scene/game_objects/player/knight_f_run_anim_f1.png<>uid://bsmedwf2v1q1b::::res://scene/game_objects/player/knight_f_run_anim_f2.png<>uid://bvpb2eqisbpu1::::res://scene/game_objects/player/knight_f_run_anim_f3.png<>uid://bqsryhs7emsel::::res://scene/ui/joystick/joystick.tscn<>uid://c4vvtug3mq13w::::res://scene/abilities/Gun/gun.tscn<>uid://bx7j1lxbaqnyf::::res://scene/ui/dash/dash.tscn
+player.tscn::PackedScene::4183186346545637687::1737992740::0::1::::<><>::res://scene/game_objects/player/player.gd<>uid://c1tcfei7yvse7::::res://scene/game_objects/player/knight_f_hit_anim_f0.png<>uid://b12n41mfc3dlb::::res://scene/game_objects/player/knight_f_idle_anim_f0.png<>uid://d02yl8nx3spsb::::res://scene/abilities/attack_ability/attack_controller.tscn<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://d0i6e1pmrvsdy::::res://scene/game_objects/player/knight_f_idle_anim_f1.png<>uid://boxn1ya3i2gcs::::res://scene/abilities/bullet_ability/bullet_ability_controller.tscn<>uid://di8bh7fwjpwla::::res://scene/game_objects/player/knight_f_idle_anim_f2.png<>uid://c7ehbgi4m6nx1::::res://scene/game_objects/player/knight_f_idle_anim_f3.png<>uid://clu4onj7mwifa::::res://scene/game_objects/player/knight_f_run_anim_f0.png<>uid://bdm4mspvpgybf::::res://scene/game_objects/player/knight_f_run_anim_f1.png<>uid://bsmedwf2v1q1b::::res://scene/game_objects/player/knight_f_run_anim_f2.png<>uid://bvpb2eqisbpu1::::res://scene/game_objects/player/knight_f_run_anim_f3.png<>uid://bqsryhs7emsel::::res://scene/ui/joystick/joystick.tscn<>uid://c4vvtug3mq13w::::res://scene/abilities/Gun/gun.tscn<>uid://bx7j1lxbaqnyf::::res://scene/ui/dash/dash.tscn
 ::res://scene/game_objects/pumpkin/::1737942242
 pumpkin.tscn::PackedScene::2546180267897575855::1737942242::0::1::::<><>::res://scene/game_objects/mushroom/mushroom.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://cnwda7q34id7r::::res://scene/game_objects/pumpkin/pumpkin_dude_idle_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://bjorj3q4jyc0e::::res://scene/game_objects/pumpkin/pumpkin_dude_idle_anim_f1.png<>uid://sbhs66hww34f::::res://scene/game_objects/pumpkin/pumpkin_dude_idle_anim_f2.png<>uid://hs3mfblvpcjr::::res://scene/game_objects/pumpkin/pumpkin_dude_idle_anim_f3.png<>uid://c5rp16bstfo22::::res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f0.png<>uid://bgqcx077md2ft::::res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f1.png<>uid://cbo3apx653b8k::::res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f2.png<>uid://t3l4swt4dfxt::::res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn
 pumpkin_dude_idle_anim_f0.png::CompressedTexture2D::5730896503023577453::1737916193::1737916194::1::::<><>::
@@ -225,7 +237,7 @@ wogol_run_anim_f0.png::CompressedTexture2D::6330695006946116536::1737914629::173
 wogol_run_anim_f1.png::CompressedTexture2D::6161121260603956787::1737914629::1737914629::1::::<><>::
 wogol_run_anim_f2.png::CompressedTexture2D::6942419872583807023::1737914629::1737914629::1::::<><>::
 wogol_run_anim_f3.png::CompressedTexture2D::1216627575216199677::1737914629::1737914629::1::::<><>::
-::res://scene/game_objects/zombie/::1737980333
+::res://scene/game_objects/zombie/::1737990677
 big_zombie_idle_anim_f0.png::CompressedTexture2D::8194029053095373943::1737906141::1737906141::1::::<><>::
 big_zombie_idle_anim_f1.png::CompressedTexture2D::6560673989859498258::1737906141::1737906141::1::::<><>::
 big_zombie_idle_anim_f2.png::CompressedTexture2D::7950125082678040998::1737906141::1737906141::1::::<><>::
@@ -235,19 +247,19 @@ big_zombie_run_anim_f1.png::CompressedTexture2D::4229483651334640650::1737906141
 big_zombie_run_anim_f2.png::CompressedTexture2D::4331245035640374913::1737906141::1737906141::1::::<><>::
 big_zombie_run_anim_f3.png::CompressedTexture2D::8464854999664774671::1737906141::1737906141::1::::<><>::
 bullet.gd::GDScript::-1::1737973399::0::1::::Bullet<>Node2D<>::
-bullet.tscn::PackedScene::5287754262294245421::1737980322::0::1::::<><>::res://scene/game_objects/zombie/bullet.gd<>uid://b2xe2q0ii2gk4::::res://scene/components/hit_box_component.tscn
-bullet_controller.tscn::PackedScene::6136218033057813653::1737980106::0::1::::<><>::res://scene/game_objects/zombie/bullet_controller.gd<>uid://chlosmobd6mfl::::res://scene/game_objects/zombie/bullet.tscn
+bullet.tscn::PackedScene::5287754262294245421::1737990233::0::1::::<><>::res://scene/game_objects/zombie/bullet.gd<>uid://c418wpjwb5mrn::::res://scene/game_objects/zombie/bullet_zomibe.png<>uid://b2xe2q0ii2gk4::::res://scene/components/hit_box_component.tscn
 bullet_controller.gd::GDScript::-1::1737973770::0::1::::<>Node<>::
+bullet_controller.tscn::PackedScene::6136218033057813653::1737990233::0::1::::<><>::res://scene/game_objects/zombie/bullet_controller.gd<>uid://chlosmobd6mfl::::res://scene/game_objects/zombie/bullet.tscn
 bullet_zomibe.png::CompressedTexture2D::6864035405477497599::1737980333::1737980333::1::::<><>::
 zombie.gd::GDScript::-1::1737973415::0::1::::<>CharacterBody2D<>::
-zombie.tscn::PackedScene::4178466906500741838::1737980105::0::1::::<><>::res://scene/game_objects/zombie/zombie.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://do0ipxktyy2v8::::res://scene/game_objects/zombie/big_zombie_idle_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://ctoou5l8q6ia4::::res://scene/game_objects/zombie/bullet_controller.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://c0qblvpmsc3m1::::res://scene/game_objects/zombie/big_zombie_idle_anim_f1.png<>uid://dljdns07albpm::::res://scene/game_objects/zombie/big_zombie_idle_anim_f2.png<>uid://c88wupkmpkavu::::res://scene/game_objects/zombie/big_zombie_idle_anim_f3.png<>uid://cfmvxn0tq8fq3::::res://scene/game_objects/zombie/big_zombie_run_anim_f0.png<>uid://b1i18ilsi632m::::res://scene/game_objects/zombie/big_zombie_run_anim_f1.png<>uid://b2yc8cyg75im0::::res://scene/game_objects/zombie/big_zombie_run_anim_f2.png<>uid://dsuo6powys73h::::res://scene/game_objects/zombie/big_zombie_run_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn
+zombie.tscn::PackedScene::4178466906500741838::1737990232::0::1::::<><>::res://scene/game_objects/zombie/zombie.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://do0ipxktyy2v8::::res://scene/game_objects/zombie/big_zombie_idle_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://ctoou5l8q6ia4::::res://scene/game_objects/zombie/bullet_controller.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://c0qblvpmsc3m1::::res://scene/game_objects/zombie/big_zombie_idle_anim_f1.png<>uid://dljdns07albpm::::res://scene/game_objects/zombie/big_zombie_idle_anim_f2.png<>uid://c88wupkmpkavu::::res://scene/game_objects/zombie/big_zombie_idle_anim_f3.png<>uid://cfmvxn0tq8fq3::::res://scene/game_objects/zombie/big_zombie_run_anim_f0.png<>uid://b1i18ilsi632m::::res://scene/game_objects/zombie/big_zombie_run_anim_f1.png<>uid://b2yc8cyg75im0::::res://scene/game_objects/zombie/big_zombie_run_anim_f2.png<>uid://dsuo6powys73h::::res://scene/game_objects/zombie/big_zombie_run_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn
 ::res://scene/global/::1735854403
 global.gd::GDScript::-1::1735854403::0::1::::<>Node<>::
 global.tscn::PackedScene::6772178873733849150::1735809285::0::1::::<><>::res://scene/global/global.gd
-::res://scene/level/::1737980105
+::res://scene/level/::1737992797
 camera_2d.gd::GDScript::-1::1735809285::0::1::::<>Camera2D<>::
 level.gd::GDScript::-1::1735809285::0::1::::<>Node<>::
-level.tscn::PackedScene::7669917054599792506::1737980105::0::1::::<><>::uid://0v0noh4wlipi::::res://scene/manager/spawner/enemy_spawner.tscn<>uid://e5gea1nudkw5::::res://resources/world.tres<>uid://bm1c3y5elhmwa::::res://scene/ui/arena_time_ui.tscn<>res://scene/level/level.gd<>uid://c87jgklepc1ni::::res://scene/ui/experience_bar.tscn<>uid://4euuhnshhm2a::::res://scene/manager/arena_time_manager.tscn<>uid://bjvqssei4afw6::::res://scene/ui/end_screen.tscn<>uid://b0ump57ta6uh8::::res://scene/game_objects/player/player.tscn<>uid://c5rm0xnqayqhd::::res://scene/manager/experience_manager.tscn<>uid://c8re7lujgbs2q::::res://scene/manager/upgrade_manager.tscn<>res://scene/level/camera_2d.gd
+level.tscn::PackedScene::7669917054599792506::1737992797::0::1::::<><>::uid://0v0noh4wlipi::::res://scene/manager/spawner/enemy_spawner.tscn<>uid://e5gea1nudkw5::::res://resources/world.tres<>uid://bm1c3y5elhmwa::::res://scene/ui/arena_time_ui.tscn<>res://scene/level/level.gd<>uid://c87jgklepc1ni::::res://scene/ui/experience_bar.tscn<>uid://4euuhnshhm2a::::res://scene/manager/arena_time_manager.tscn<>uid://bjvqssei4afw6::::res://scene/ui/end_screen.tscn<>uid://b0ump57ta6uh8::::res://scene/game_objects/player/player.tscn<>uid://c5rm0xnqayqhd::::res://scene/manager/experience_manager.tscn<>uid://c8re7lujgbs2q::::res://scene/manager/upgrade_manager.tscn<>res://scene/level/camera_2d.gd
 ::res://scene/manager/::1737979470
 arena_time_manager.gd::GDScript::-1::1735809285::0::1::::ArenaTimeManager<>Node<>::
 arena_time_manager.tscn::PackedScene::2044984420825995758::1737979470::0::1::::<><>::res://scene/manager/arena_time_manager.gd<>uid://bjvqssei4afw6::::res://scene/ui/end_screen.tscn
@@ -255,18 +267,22 @@ experience_manager.gd::GDScript::-1::1735809285::0::1::::ExperienceManager<>Node
 experience_manager.tscn::PackedScene::6914375575954449329::1736089889::0::1::::<><>::res://scene/manager/experience_manager.gd
 upgrade_manager.gd::GDScript::-1::1735809846::0::1::::<>Node<>::
 upgrade_manager.tscn::PackedScene::7124468251706247286::1735853212::0::1::::<><>::res://scene/manager/upgrade_manager.gd<>uid://42hqsuxj3ms0::::res://scene/ui/upgrade_screen.tscn<>res://resources/upgrades/ability_upgrade.gd<>uid://d1pmtb0tkglne::::res://resources/upgrades/sword_rate.tres<>uid://c8pgawwiqr4j0::::res://resources/upgrades/throw_axe.tres<>uid://lcmae3bd3mmk::::res://resources/upgrades/gun_attack.tres
-::res://scene/manager/spawner/::1737979643
-enemy_spawner.gd::GDScript::-1::1737979643::0::1::::<>Node<>::
+::res://scene/manager/spawner/::1737992797
+enemy_spawner.gd::GDScript::-1::1737992797::0::1::::<>Node<>::
 enemy_spawner.tscn::PackedScene::1799614911413991870::1737942242::0::1::::<><>::res://scene/manager/spawner/enemy_spawner.gd<>uid://gkjsjqkbm64f::::res://scene/game_objects/mushroom/mushroom.tscn<>uid://egealcsf1fs1::::res://scene/game_objects/goblin/goblin.tscn<>uid://eyq6ay3d7agl::::res://scene/game_objects/demon/demon.tscn<>uid://darv0h0rx2ij5::::res://scene/game_objects/ork_warrior/ork_warrior.tscn<>uid://cb5t8abntu8xq::::res://scene/game_objects/ogr/ogr.tscn<>uid://b0sc0e3ci3l1o::::res://scene/game_objects/zombie/zombie.tscn<>uid://dbgrpaudxni57::::res://scene/game_objects/chort/chort.tscn<>uid://xa44xy7lfqb1::::res://scene/game_objects/skelet/skelet.tscn<>uid://bxgkm3dl44efe::::res://scene/game_objects/lizard/lizard.tscn<>uid://b6ogrw1vbpqhf::::res://scene/game_objects/wogol/wogol.tscn<>uid://cr2e77paxkq1g::::res://scene/game_objects/swampy/swampy.tscn<>uid://ca8j46ovfqv5f::::res://scene/game_objects/ork_masked/ork_masked.tscn<>uid://dvock8q7xdt2p::::res://scene/game_objects/ork_shaman/ork_shaman.tscn<>uid://b0lg7ayonppa6::::res://scene/game_objects/tiny_zombie/tiny_zombie.tscn<>uid://cgc6ckc7a2e3f::::res://scene/game_objects/ice_zombie/ice_zombie.tscn<>uid://bcjnhm4ngjkd0::::res://scene/game_objects/pumpkin/pumpkin.tscn<>uid://xgsdmqw1rk5c::::res://scene/game_objects/necromancer/necromancer.tscn
-::res://scene/ui/::1737828291
+::res://scene/ui/::1737992465
 ability_upgrade_card.gd::GDScript::-1::1735809285::0::1::::AbilityUpgradeCard<>PanelContainer<>::
 ability_upgrade_card.tscn::PackedScene::6168093312055409969::1735809285::0::1::::<><>::res://scene/ui/ability_upgrade_card.gd
 arena_time_ui.gd::GDScript::-1::1735809285::0::1::::<>CanvasLayer<>::
 arena_time_ui.tscn::PackedScene::3282533372271180932::1735809285::0::1::::<><>::res://scene/ui/arena_time_ui.gd
-end_screen.gd::GDScript::-1::1735809285::0::1::::EndScreen<>CanvasLayer<>::
-end_screen.tscn::PackedScene::3062476777446963311::1735809285::0::1::::<><>::res://scene/ui/end_screen.gd
+e36c410bdcae11ef8b4d6ecd5a48429b.webp::CompressedTexture2D::6138201524045794317::1737982925::1737982925::1::::<><>::
+end_screen.gd::GDScript::-1::1737980835::0::1::::EndScreen<>CanvasLayer<>::
+end_screen.tscn::PackedScene::3062476777446963311::1737990233::0::1::::<><>::res://scene/ui/end_screen.gd
 experience_bar.gd::GDScript::-1::1735809286::0::1::::<>CanvasLayer<>::
 experience_bar.tscn::PackedScene::7155691005697757034::1735809286::0::1::::<><>::res://scene/ui/experience_bar.gd
+menu.gd::GDScript::-1::1737990166::0::1::::<>Node2D<>::
+menu.tscn::PackedScene::2391373454749630617::1737992465::0::1::::<><>::res://scene/ui/menu.gd<>uid://ctpnjulp0eusj::::res://scene/ui/e36c410bdcae11ef8b4d6ecd5a48429b.webp<>uid://hotlbrq8cppn::::res://scene/ui/test (7).png<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf
+test (7).png::CompressedTexture2D::521396540174767783::1737987358::1737987359::1::::<><>::
 upgrade_screen.gd::GDScript::-1::1735809286::0::1::::UpgradeScreen<>CanvasLayer<>::
 upgrade_screen.tscn::PackedScene::2091669233888944381::1735809286::0::1::::<><>::res://scene/ui/upgrade_screen.gd<>uid://ct44uiuuof1nh::::res://scene/ui/ability_upgrade_card.tscn
 ::res://scene/ui/dash/::1737830790

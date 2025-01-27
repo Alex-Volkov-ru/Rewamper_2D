@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://dbgrpaudxni57"]
+[gd_scene load_steps=20 format=3 uid="uid://dbgrpaudxni57"]
 
-[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_bwlw3"]
+[ext_resource type="Script" path="res://scene/game_objects/chort/chort.gd" id="1_m1rn4"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_p0t6t"]
 [ext_resource type="Texture2D" uid="uid://dlhjd0bccminy" path="res://scene/game_objects/chort/chort_idle_anim_f0.png" id="3_ap2iy"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_ctrjx"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b52p7jeeenniu" path="res://scene/game_objects/chort/chort_run_anim_f2.png" id="12_8gcjt"]
 [ext_resource type="Texture2D" uid="uid://lj8o0w1p14fb" path="res://scene/game_objects/chort/chort_run_anim_f3.png" id="13_v3em0"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_bp3bt"]
+[ext_resource type="PackedScene" uid="uid://oqwv3etad4nw" path="res://scene/game_objects/chort/bullet_chort_controller.tscn" id="14_bsfie"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sylmn"]
 radius = 7.0
@@ -64,9 +65,11 @@ radius = 6.0
 [node name="Chort" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_bwlw3")
+script = ExtResource("1_m1rn4")
 death_scecene = ExtResource("2_p0t6t")
 sprite = ExtResource("3_ap2iy")
+
+[node name="BulletChortController" parent="." instance=ExtResource("14_bsfie")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_ctrjx")]
 

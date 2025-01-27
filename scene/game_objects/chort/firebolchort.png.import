@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8c873rim7xo1"
-path="res://.godot/imported/coin.png-7e710de472b75b3653c3283ef5153eb4.ctex"
+uid="uid://ck0bg67yvt7f6"
+path="res://.godot/imported/firebolchort.png-cfefd7f232d21d154a88d1ab20a7bb09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://coin.png"
-dest_files=["res://.godot/imported/coin.png-7e710de472b75b3653c3283ef5153eb4.ctex"]
+source_file="res://scene/game_objects/chort/firebolchort.png"
+dest_files=["res://.godot/imported/firebolchort.png-cfefd7f232d21d154a88d1ab20a7bb09.ctex"]
 
 [params]
 

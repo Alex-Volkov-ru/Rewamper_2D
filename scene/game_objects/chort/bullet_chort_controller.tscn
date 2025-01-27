@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://oqwv3etad4nw"]
+
+[ext_resource type="Script" path="res://scene/game_objects/chort/bullet_chort_controller.gd" id="1_xhb41"]
+[ext_resource type="PackedScene" uid="uid://eckrndlu6uw8" path="res://scene/game_objects/chort/bullet_chort.tscn" id="2_es3fc"]
+
+[node name="BulletChortController" type="Node"]
+script = ExtResource("1_xhb41")
+bullet_ability_scene = ExtResource("2_es3fc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

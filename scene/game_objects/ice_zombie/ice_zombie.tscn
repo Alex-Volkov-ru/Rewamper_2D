@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgc6ckc7a2e3f"]
+[gd_scene load_steps=16 format=3 uid="uid://cgc6ckc7a2e3f"]
 
-[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_4mvv7"]
+[ext_resource type="Script" path="res://scene/game_objects/ice_zombie/ice_zombie.gd" id="1_r3k6m"]
+[ext_resource type="PackedScene" uid="uid://cv1yiogfb21jb" path="res://scene/game_objects/ice_zombie/bullet_ice_zombie_controller.tscn" id="2_expcw"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_wxqqw"]
 [ext_resource type="Texture2D" uid="uid://cnr80u6ha6rxo" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f0.png" id="3_yvfhk"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_dt7iv"]
@@ -60,9 +61,10 @@ radius = 5.0
 [node name="Ice_zombie" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_4mvv7")
+script = ExtResource("1_r3k6m")
 death_scecene = ExtResource("2_wxqqw")
-sprite = ExtResource("3_yvfhk")
+
+[node name="BulletChortController" parent="." instance=ExtResource("2_expcw")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_dt7iv")]
 

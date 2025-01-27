@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2DTopDown"
-run/main_scene="res://scene/level/level.tscn"
+run/main_scene="res://scene/ui/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,10 +26,10 @@ gdscript/warnings/unused_signal=0
 
 [display]
 
-window/size/viewport_width=950
-window/size/viewport_height=500
-window/size/window_width_override=950
-window/size/window_height_override=500
+window/size/viewport_width=1150
+window/size/viewport_height=600
+window/size/window_width_override=1150
+window/size/window_height_override=600
 window/stretch/mode="viewport"
 
 [global_group]

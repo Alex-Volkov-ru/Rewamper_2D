@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://bacntos6mit02"]
+
+[ext_resource type="Script" path="res://scene/ui/menu.gd" id="1_1m2yu"]
+[ext_resource type="Texture2D" uid="uid://ctpnjulp0eusj" path="res://scene/ui/e36c410bdcae11ef8b4d6ecd5a48429b.webp" id="2_urq13"]
+[ext_resource type="Texture2D" uid="uid://hotlbrq8cppn" path="res://scene/ui/test (7).png" id="3_kex4x"]
+[ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="4_og1ju"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_1m2yu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(623, 339)
+scale = Vector2(0.928586, 0.882812)
+texture = ExtResource("2_urq13")
+
+[node name="TextureTalents" type="TextureButton" parent="."]
+offset_left = 437.0
+offset_top = 269.0
+offset_right = 1237.0
+offset_bottom = 569.0
+scale = Vector2(0.49, 0.49)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_kex4x")
+
+[node name="Talantes" type="Label" parent="TextureTalents"]
+layout_mode = 0
+offset_left = 195.918
+offset_top = 81.6327
+offset_right = 778.918
+offset_bottom = 262.633
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("4_og1ju")
+theme_override_font_sizes/font_size = 78
+text = "Таланты"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureQuit" type="TextureButton" parent="."]
+offset_left = 437.0
+offset_top = 434.0
+offset_right = 1237.0
+offset_bottom = 734.0
+scale = Vector2(0.49, 0.49)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_kex4x")
+
+[node name="Quit" type="Label" parent="TextureQuit"]
+layout_mode = 0
+offset_left = 195.918
+offset_top = 81.6327
+offset_right = 778.918
+offset_bottom = 262.633
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("4_og1ju")
+theme_override_font_sizes/font_size = 78
+text = "Выход
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TexturePlay" type="TextureButton" parent="."]
+offset_left = 430.0
+offset_top = 117.0
+offset_right = 1230.0
+offset_bottom = 417.0
+scale = Vector2(0.49, 0.49)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_kex4x")
+
+[node name="Play" type="Label" parent="TexturePlay"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 82.0
+offset_right = 946.0
+offset_bottom = 263.0
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("4_og1ju")
+theme_override_font_sizes/font_size = 78
+text = "Запуск игры"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="TextureTalents" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureQuit" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureQuit" to="." method="_on_texture_quit_pressed"]
+[connection signal="pressed" from="TexturePlay" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TexturePlay" to="." method="_on_texture_play_pressed"]

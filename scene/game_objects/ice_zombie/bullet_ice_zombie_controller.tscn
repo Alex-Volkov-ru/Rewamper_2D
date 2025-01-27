@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv1yiogfb21jb"]
+
+[ext_resource type="Script" path="res://scene/game_objects/ice_zombie/bullet_ice_zombie_controller.gd" id="1_05vki"]
+[ext_resource type="PackedScene" uid="uid://daqsk6j402c11" path="res://scene/game_objects/ice_zombie/bullet_ice_zombie.tscn" id="2_wxt52"]
+
+[node name="BulletIceZombieController" type="Node"]
+script = ExtResource("1_05vki")
+bullet_ability_scene = ExtResource("2_wxt52")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
