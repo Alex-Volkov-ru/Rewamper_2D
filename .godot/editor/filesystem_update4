@@ -41,3 +41,13 @@ res://scene/components/drop_manager.tscn
 res://scene/components/death_component.tscn
 res://scene/components/drop_manager.gd
 res://scene/game_objects/player/player.tscn
+res://scene/ui/pause_menu.tscn
+res://scene/ui/menu.tscn
+res://scene/level/manager.gd
+res://scene/level/level.gd
+res://scene/manager/upgrade_manager.gd
+res://scene/ui/upgrade_screen.tscn
+res://scene/ui/upgrade_screen.gd
+res://scene/manager/upgrade_manager.tscn
+res://scene/ui/joystick/joystick.tscn
+res://scene/game_objects/player/player.gd

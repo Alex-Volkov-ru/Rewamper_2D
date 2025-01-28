@@ -1,0 +1,141 @@
+[gd_scene load_steps=3 format=3 uid="uid://drsntb1xm1dnw"]
+
+[ext_resource type="Texture2D" uid="uid://c2am5s3own4wg" path="res://scene/ui/test (8).png" id="1_6xv47"]
+[ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="2_mj1wp"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -234.0
+offset_right = 201.0
+offset_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.5
+offset_top = -165.5
+offset_right = 150.5
+offset_bottom = 227.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_6xv47")
+
+[node name="Resume" type="Label" parent="Panel/VBoxContainer/Resume"]
+offset_left = 65.0
+offset_top = 14.0
+offset_right = 299.0
+offset_bottom = 107.0
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_mj1wp")
+theme_override_font_sizes/font_size = 20
+text = "Продолжить игру"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_6xv47")
+
+[node name="Save" type="Label" parent="Panel/VBoxContainer/Save"]
+offset_left = 65.0
+offset_top = 14.0
+offset_right = 299.0
+offset_bottom = 107.0
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_mj1wp")
+theme_override_font_sizes/font_size = 20
+text = "Сохраниться"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_6xv47")
+
+[node name="Load" type="Label" parent="Panel/VBoxContainer/Load"]
+offset_left = 65.0
+offset_top = 14.0
+offset_right = 299.0
+offset_bottom = 107.0
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_mj1wp")
+theme_override_font_sizes/font_size = 20
+text = "Загрузить"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_6xv47")
+
+[node name="Quit" type="Label" parent="Panel/VBoxContainer/Quit"]
+offset_left = 65.0
+offset_top = 14.0
+offset_right = 299.0
+offset_bottom = 107.0
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_mj1wp")
+theme_override_font_sizes/font_size = 20
+text = "ВЫход"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 22.0
+offset_right = 66.5
+offset_bottom = 90.0
+grow_horizontal = 2
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_mj1wp")
+theme_override_font_sizes/font_size = 30
+text = "Меню"
+horizontal_alignment = 1
+vertical_alignment = 1

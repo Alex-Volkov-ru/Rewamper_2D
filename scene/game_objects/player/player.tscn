@@ -151,8 +151,7 @@ wait_time = 0.1
 visible = false
 
 [node name="joystick" parent="CanvasLayer" instance=ExtResource("15_0jt07")]
-visible = false
-position = Vector2(46, 233)
+position = Vector2(68, 473)
 scale = Vector2(0.235955, 0.235955)
 
 [connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]

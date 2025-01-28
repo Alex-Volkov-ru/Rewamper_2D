@@ -8,7 +8,7 @@ signal hp_dropped
 
 
 @export var exp_drop_percent = 0.5
-@export var hp_drop_percent = 0.2
+@export var hp_drop_percent = 0.1
 
 @export var health_component: Node
 

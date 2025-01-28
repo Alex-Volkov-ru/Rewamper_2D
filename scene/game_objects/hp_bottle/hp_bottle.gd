@@ -20,7 +20,6 @@ func tween_hp_bottle(percent: float, start_position: Vector2):
 
  
 func hp_collected():
-	print('hp_collected active')
 	Global.hp_bottle_collected.emit(bottle_hp)
 	queue_free()
 
