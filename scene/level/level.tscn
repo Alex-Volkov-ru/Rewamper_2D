@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dhjmob1me1bda"]
+[gd_scene load_steps=17 format=4 uid="uid://dhjmob1me1bda"]
 
 [ext_resource type="PackedScene" uid="uid://0v0noh4wlipi" path="res://scene/manager/spawner/enemy_spawner.tscn" id="1_2js51"]
 [ext_resource type="TileSet" uid="uid://e5gea1nudkw5" path="res://resources/world.tres" id="1_a55n7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scene/level/camera_2d.gd" id="11_eqtrg"]
 [ext_resource type="PackedScene" uid="uid://drsntb1xm1dnw" path="res://scene/ui/pause_menu.tscn" id="13_lhvbx"]
 [ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="15_5sdio"]
+[ext_resource type="PackedScene" uid="uid://bbvhw374wnphl" path="res://scene/ui/joustik/joystick.tscn" id="16_vdfmf"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_qiyqh")
@@ -63,6 +64,11 @@ position = Vector2(82, 83)
 zoom = Vector2(1.565, 1.565)
 position_smoothing_enabled = true
 script = ExtResource("11_eqtrg")
+
+[node name="joystick" parent="Camera2D" instance=ExtResource("16_vdfmf")]
+visible = false
+position = Vector2(-260, 97)
+scale = Vector2(0.4, 0.4)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

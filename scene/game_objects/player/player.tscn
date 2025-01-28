@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0ump57ta6uh8"]
+[gd_scene load_steps=21 format=3 uid="uid://b0ump57ta6uh8"]
 
 [ext_resource type="Script" path="res://scene/game_objects/player/player.gd" id="1_8oolj"]
 [ext_resource type="Texture2D" uid="uid://c1tcfei7yvse7" path="res://scene/game_objects/player/knight_f_hit_anim_f0.png" id="1_i2o30"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://bdm4mspvpgybf" path="res://scene/game_objects/player/knight_f_run_anim_f1.png" id="7_vgjvu"]
 [ext_resource type="Texture2D" uid="uid://bsmedwf2v1q1b" path="res://scene/game_objects/player/knight_f_run_anim_f2.png" id="8_s6gq3"]
 [ext_resource type="Texture2D" uid="uid://bvpb2eqisbpu1" path="res://scene/game_objects/player/knight_f_run_anim_f3.png" id="9_8p638"]
-[ext_resource type="PackedScene" uid="uid://bqsryhs7emsel" path="res://scene/ui/joystick/joystick.tscn" id="15_0jt07"]
 [ext_resource type="PackedScene" uid="uid://c4vvtug3mq13w" path="res://scene/abilities/Gun/gun.tscn" id="15_sg3fv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2hhs"]
@@ -146,13 +145,6 @@ one_shot = true
 
 [node name="DashEffectTimer" type="Timer" parent="."]
 wait_time = 0.1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="joystick" parent="CanvasLayer" instance=ExtResource("15_0jt07")]
-position = Vector2(68, 473)
-scale = Vector2(0.235955, 0.235955)
 
 [connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

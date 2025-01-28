@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y235q657eqcs"
-path="res://.godot/imported/SmallHandleFilledGrey.png-be4b95332ad3bdeea2371c963868c5cc.ctex"
+uid="uid://qg5t68wxiiy1"
+path="res://.godot/imported/big_coll.png-c68ae1db52fef8ee08c0a3393995a330.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/ui/joystick/SmallHandleFilledGrey.png"
-dest_files=["res://.godot/imported/SmallHandleFilledGrey.png-be4b95332ad3bdeea2371c963868c5cc.ctex"]
+source_file="res://scene/ui/joustik/big_coll.png"
+dest_files=["res://.godot/imported/big_coll.png-c68ae1db52fef8ee08c0a3393995a330.ctex"]
 
 [params]
 

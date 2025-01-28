@@ -11,8 +11,7 @@ extends CharacterBody2D
 @onready var dashEffectTimer = $DashEffectTimer
 
 @export var max_speed = 60  # Максимальная скорость персонажа
-@export var max_speed_joystick = 90
-
+@onready var joystick = $"../../Camera2D/joystick"
 @export var dash_speed_multiplier = 1.5  # Множитель скорости для рывка
 var acceleration = 0.15  # Ускорение
 var enemies_colliding = 0  # Количество столкновений с врагами
@@ -24,30 +23,28 @@ var dashDirection = Vector2.ZERO  # Направление рывка
 func movement_vector():
 	var movement_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var movement_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	return Vector2(movement_x, movement_y)
+	var keyboard_direction = Vector2(movement_x, movement_y)
+	
+	# Если джойстик активен, используем его ввод
+	var joystick_direction = joystick.posVector if joystick else Vector2.ZERO
+	if joystick_direction != Vector2.ZERO:
+		return joystick_direction.normalized()
+	return keyboard_direction.normalized()
+
 
 func _physics_process(delta):
-	var keyboard_direction = movement_vector().normalized()  # Нормализуем направление с клавиатуры
-	#var joystick_direction = $CanvasLayer/joystick.get_joystick_dir().normalized()  # Нормализуем направление джойстика
+	var direction = movement_vector().normalized()
 
-	# Приоритет движения для джойстика
-	#var direction = joystick_direction if joystick_direction.length() > 0.1 else keyboard_direction
-	var direction = keyboard_direction
-# Линейная интерполяция для плавного движения
-	if direction != Vector2.ZERO:
-		velocity = velocity.lerp(direction * max_speed_joystick, acceleration)
-	else:
-		velocity = velocity.lerp(Vector2.ZERO, acceleration)
-	
-	# Логика рывка
+	# Если рывок активирован, обновляем скорость с учетом множителя
 	if doDash:
-		velocity = dashDirection * max_speed_joystick * dash_speed_multiplier  # Ускорение при рывке
+		velocity = dashDirection * max_speed * dash_speed_multiplier  # Ускорение при рывке
 	else:
+		# Линейная интерполяция для плавного движения
 		if direction != Vector2.ZERO:
-			velocity = velocity.lerp(direction * max_speed_joystick, acceleration)  # Плавное движение
+			velocity = velocity.lerp(direction * max_speed, acceleration)
 		else:
 			velocity = velocity.lerp(Vector2.ZERO, acceleration)  # Если персонаж стоит, скорость уменьшается плавно
-
+	
 	move_and_slide()  # Движение и обработка коллизий
 
 	# Воспроизведение анимации
@@ -65,13 +62,27 @@ func _physics_process(delta):
 
 	# Если нажата клавиша для рывка (dash)
 	if Input.is_action_just_pressed('dash'):
+		# Обновляем направление рывка
 		if direction != Vector2.ZERO:
 			dashDirection = direction  # Если персонаж двигается, рывок в сторону движения
 		else:
-			dashDirection = Vector2(-1 if animated_sprite_2d.flip_h else 1, 0)  # Если стоит, рывок в сторону взгляда
-		doDash = true
-		dashDurationTimer.start()  # Запуск таймера для рывка
-		dashEffectTimer.start()    # Запуск эффекта рывка
+			# Если персонаж стоит, рывок должен идти в сторону, куда он смотрит
+			dashDirection = Vector2(-1 if animated_sprite_2d.flip_h else 1, 0)
+			
+		# Убедимся, что direction не равен (0, 0) перед активацией рывка
+		if direction != Vector2.ZERO:
+			doDash = true  # Только если персонаж двигается
+			dashDurationTimer.start()  # Запуск таймера для рывка
+			dashEffectTimer.start()    # Запуск эффекта рывка
+
+# Завершение рывка
+func _on_dash_duration_timer_timeout():
+	doDash = false  # Завершаем рывок
+	dashEffectTimer.stop()  # Останавливаем эффект
+
+	# Восстанавливаем движение через джойстик или клавиши после рывка
+	var direction = movement_vector().normalized()
+	velocity = velocity.lerp(direction * max_speed, acceleration)
 
 # Создание эффекта рывка
 func create_dash_effect():
@@ -86,11 +97,6 @@ func create_dash_effect():
 	playerCopyNode.modulate.a = 0.2
 	await get_tree().create_timer(animationTime).timeout
 	playerCopyNode.queue_free()  # Удаляем эффект после завершения
-
-# Завершение рывка
-func _on_dash_duration_timer_timeout():
-	doDash = false  # Завершаем рывок
-	dashEffectTimer.stop()  # Останавливаем эффект
 
 func _on_dash_effect_timer_timeout():
 	create_dash_effect()  # Создаем эффект рывка
