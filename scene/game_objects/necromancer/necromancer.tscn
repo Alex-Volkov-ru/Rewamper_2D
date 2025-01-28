@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xgsdmqw1rk5c"]
+[gd_scene load_steps=18 format=3 uid="uid://xgsdmqw1rk5c"]
 
 [ext_resource type="Script" path="res://scene/game_objects/necromancer/necromancer.gd" id="1_fas4q"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_0yfg7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bmyt2yjllqo5q" path="res://scene/game_objects/necromancer/necromancer_anim_f0.png" id="10_rsidv"]
 [ext_resource type="Texture2D" uid="uid://q0qg0tgllcfy" path="res://scene/game_objects/necromancer/necromancer_anim_f1.png" id="11_raxbp"]
 [ext_resource type="Texture2D" uid="uid://qqdxokepfcoh" path="res://scene/game_objects/necromancer/necromancer_anim_f2.png" id="12_u4npf"]
+[ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="13_36ok7"]
 [ext_resource type="Texture2D" uid="uid://djgcbefh1ixwx" path="res://scene/game_objects/necromancer/necromancer_anim_f3.png" id="13_tx5sm"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_fw42o"]
 
@@ -66,15 +67,18 @@ script = ExtResource("1_fas4q")
 death_scecene = ExtResource("2_0yfg7")
 sprite = ExtResource("10_rsidv")
 
-[node name="HpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ts3yj")]
+[node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_36ok7")]
 health_component = NodePath("../HealthComponent")
+
+[node name="HpBottleDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_ts3yj")]
+drop_component = NodePath("../DropManager")
 
 [node name="BulletNecromacerController" parent="." instance=ExtResource("4_qipje")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_tgs3i")]
 
-[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_hyi6y")]
-health_component = NodePath("../HealthComponent")
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("5_hyi6y")]
+drop_component = NodePath("../DropManager")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_a0gkj")]
 health_component = NodePath("../HealthComponent")

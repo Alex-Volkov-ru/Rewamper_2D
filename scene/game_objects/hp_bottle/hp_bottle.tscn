@@ -1,9 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0cq75ig0h02"]
 
 [ext_resource type="Script" path="res://scene/game_objects/hp_bottle/hp_bottle.gd" id="1_ympqn"]
-[ext_resource type="Texture2D" uid="uid://diprq8csagbm2" path="res://scene/game_objects/hp_bottle/hp_bottle.png" id="2_qjc5r"]
+[ext_resource type="Texture2D" uid="uid://hlbwrgsus4qo" path="res://scene/game_objects/hp_bottle/health_bottle.png" id="2_4k3ub"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4p0ve"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1l8oh"]
+radius = 3.0
+height = 16.0
 
 [node name="HpBottle" type="Node2D"]
 script = ExtResource("1_ympqn")
@@ -13,9 +15,11 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_4p0ve")
+shape = SubResource("CapsuleShape2D_1l8oh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qjc5r")
+position = Vector2(2.205, 0)
+scale = Vector2(0.0616439, 0.0616438)
+texture = ExtResource("2_4k3ub")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

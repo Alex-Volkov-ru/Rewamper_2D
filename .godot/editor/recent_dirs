@@ -1,4 +1,5 @@
 D:/Dev/TestGit
+res://scene/components
 D:/Dev/html_export
 res://fonts
 res://scene/ui
@@ -19,5 +20,3 @@ res://scene/game_objects/ogr
 res://scene/ui/dash
 D:/Dev/XCODE
 D:/Dev
-res://
-res://scene/game_objects/demon

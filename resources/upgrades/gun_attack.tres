@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_kw7xd")
 id = "gun_attack"
-max_quantity = 2
+max_quantity = 3
 name = "Увеличение урона от пуль"
 description = "Увеличенеие урона от пуль на 5 "

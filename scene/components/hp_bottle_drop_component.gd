@@ -1,18 +1,15 @@
 extends Node
 
 
-@export var drop_percent = 0.2
 @export var hp_bottle_scene: PackedScene
-@export var health_component: Node
+@export var drop_component: Node
 
 
 func _ready():
-	(health_component as HealthComponent).died.connect(on_died)
+	(drop_component as DropManager).hp_dropped.connect(on_drop)
 	
 	
-func on_died ():
-	if randf() < drop_percent:
-		return
+func on_drop ():
 	
 	if hp_bottle_scene == null:
 		return

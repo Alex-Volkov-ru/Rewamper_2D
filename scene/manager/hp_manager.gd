@@ -15,4 +15,3 @@ func _ready():
 func on_hp_bottle_collected(hp):
 	if player_health_component:
 		player_health_component.heal(hp)  # Восстанавливаем здоровье игрока
-		print("Player's health increased to: ", player_health_component.current_health)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hl51yntjjrpa"
-path="res://.godot/imported/exp_bottle.png-fef22a1a2a50acb37156bd396f1e3d5c.ctex"
+uid="uid://hlbwrgsus4qo"
+path="res://.godot/imported/health_bottle.png-173d925bcfdc66cc11f4a85886dacbfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/game_objects/exp_bottle/exp_bottle.png"
-dest_files=["res://.godot/imported/exp_bottle.png-fef22a1a2a50acb37156bd396f1e3d5c.ctex"]
+source_file="res://scene/game_objects/hp_bottle/health_bottle.png"
+dest_files=["res://.godot/imported/health_bottle.png-173d925bcfdc66cc11f4a85886dacbfc.ctex"]
 
 [params]
 

@@ -17,9 +17,8 @@ func tween_exp_bottle(percent: float, start_position: Vector2):
 	
 	rotation = lerp_angle(rotation, direction_degrees, 0.05)
 	
-
- 
 func exp_collected():
+	print('exp_collected active')
 	Global.experience_bottle_collected.emit(bottle_experience)
 	queue_free()
 
