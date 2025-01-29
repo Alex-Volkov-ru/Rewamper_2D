@@ -1,7 +1,10 @@
 Button
+CanvasLayer
+ColorRect
+PanelContainer
+AnimationPlayer
 TextureButton
 Node
-CanvasLayer
 Label
 VBoxContainer
 Panel
@@ -9,6 +12,3 @@ Control
 Sprite2D
 CollisionShape2D
 Timer
-RayCast2D
-VisibleOnScreenNotifier2D
-Area2D

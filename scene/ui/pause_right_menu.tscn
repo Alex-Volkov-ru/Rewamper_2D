@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://4mp7rlp4hsgr"]
+
+[ext_resource type="Script" path="res://pause_right_menu.gd" id="1_xm8qi"]
+[ext_resource type="Texture2D" uid="uid://c2am5s3own4wg" path="res://scene/ui/test (8).png" id="2_6m42t"]
+[ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="3_28600"]
+
+[node name="PauseRightMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xm8qi")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 426.0
+offset_top = -299.0
+offset_right = 726.0
+offset_bottom = -199.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MENU" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_6m42t")
+
+[node name="MENU" type="Label" parent="PanelContainer/VBoxContainer/MENU"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 14.0
+offset_right = 299.0
+offset_bottom = 107.0
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("3_28600")
+theme_override_font_sizes/font_size = 20
+text = "МЕНЮ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MENU" to="." method="_on_menu_pressed"]

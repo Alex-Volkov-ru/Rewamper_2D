@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dhjmob1me1bda"]
+[gd_scene load_steps=16 format=4 uid="uid://dhjmob1me1bda"]
 
 [ext_resource type="PackedScene" uid="uid://0v0noh4wlipi" path="res://scene/manager/spawner/enemy_spawner.tscn" id="1_2js51"]
 [ext_resource type="TileSet" uid="uid://e5gea1nudkw5" path="res://resources/world.tres" id="1_a55n7"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c8re7lujgbs2q" path="res://scene/manager/upgrade_manager.tscn" id="6_p8nyf"]
 [ext_resource type="Script" path="res://scene/level/camera_2d.gd" id="11_eqtrg"]
 [ext_resource type="PackedScene" uid="uid://drsntb1xm1dnw" path="res://scene/ui/pause_menu.tscn" id="13_lhvbx"]
+[ext_resource type="PackedScene" uid="uid://bj28std62sc1y" path="res://scene/ui/pause_right_menu.tscn" id="15_6fj3l"]
 [ext_resource type="PackedScene" uid="uid://bbvhw374wnphl" path="res://scene/ui/joustik/joystick.tscn" id="16_vdfmf"]
 
 [node name="Level" type="Node"]
@@ -66,3 +67,5 @@ scale = Vector2(0.4, 0.4)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_lhvbx")]
+
+[node name="PauseRightMenu" parent="CanvasLayer" instance=ExtResource("15_6fj3l")]
