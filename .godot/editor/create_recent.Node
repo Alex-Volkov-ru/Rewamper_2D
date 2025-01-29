@@ -1,9 +1,9 @@
+TextureButton
 Button
 CanvasLayer
 ColorRect
 PanelContainer
 AnimationPlayer
-TextureButton
 Node
 Label
 VBoxContainer

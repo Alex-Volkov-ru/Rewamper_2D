@@ -12,7 +12,7 @@ extends CharacterBody2D
 
 @export var max_speed = 60  # Максимальная скорость персонажа
 @onready var joystick = $"../../Camera2D/joystick"
-@export var dash_speed_multiplier = 1.5  # Множитель скорости для рывка
+@export var dash_speed_multiplier = 2  # Множитель скорости для рывка
 var acceleration = 0.15  # Ускорение
 var enemies_colliding = 0  # Количество столкновений с врагами
 
