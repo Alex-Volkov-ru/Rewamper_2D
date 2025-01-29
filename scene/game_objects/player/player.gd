@@ -9,15 +9,26 @@ extends CharacterBody2D
 @onready var gun = $Gun
 @onready var dashDurationTimer = $DashDurationTimer
 @onready var dashEffectTimer = $DashEffectTimer
-
+@onready var attack_timer = $AttackTimer
 @export var max_speed = 60  # Максимальная скорость персонажа
-@onready var joystick = $"../../Camera2D/joystick"
+@onready var joystick = $CanvasLayer/joystick
+@onready var joystick_attack = $CanvasLayer/JoystickAttack
 @export var dash_speed_multiplier = 2  # Множитель скорости для рывка
 var acceleration = 0.15  # Ускорение
 var enemies_colliding = 0  # Количество столкновений с врагами
 
+@onready var dash_button = $CanvasLayer/DashButton
+var can_shoot = true  # Флаг, разрешающий стрельбу
 var doDash = false  # Флаг для рывка
 var dashDirection = Vector2.ZERO  # Направление рывка
+
+
+
+func _on_attack_button_pressed() -> void:
+	shoot_bullet()
+
+func _on_dash_button_pressed() -> void:
+	perform_dash()
 
 # Вычисление вектора движения
 func movement_vector():
@@ -131,17 +142,19 @@ func _process(delta):
 		animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("idle")
-		
+
+	# Направление персонажа
 	var face_sign = sign(direction.x)
 	if face_sign != 0:
 		animated_sprite_2d.scale.x = face_sign
-	
-	# Поворот пистолета в сторону мыши
-	gun.look_at(get_global_mouse_position())
-
-	# Стрельба
 	if Input.is_action_just_pressed("shoot"):
 		shoot_bullet()
+	# Проверка второго джойстика для атаки
+	if joystick_attack.posVector.length() > 0.1 and can_shoot:
+		gun.look_at(global_position + joystick_attack.posVector * 100)
+		shoot_bullet()
+		can_shoot = false  # Запрещаем стрельбу
+		attack_timer.start()  # Запускаем таймер
 
 # Обработка повреждений
 func check_if_damaged():
@@ -191,3 +204,7 @@ func shoot_bullet():
 
 	# Пытаемся выстрелить
 	bullet_ability_controller.spawn_bullet(gun)
+
+
+func _on_attack_timer_timeout() -> void:
+	can_shoot = true

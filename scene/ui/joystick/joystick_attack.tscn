@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu3o01yxe7dh3"]
+
+[ext_resource type="Texture2D" uid="uid://qg5t68wxiiy1" path="res://scene/ui/joustik/big_coll.png" id="1_04uu1"]
+[ext_resource type="Script" path="res://scene/ui/joystick/joystick_attack.gd" id="1_t0x4i"]
+[ext_resource type="Texture2D" uid="uid://y235q657eqcs" path="res://scene/ui/joustik/SmallHandleFilledGrey.png" id="2_t61gq"]
+[ext_resource type="Script" path="res://scene/ui/joystick/knob_attack.gd" id="4_tgmk5"]
+
+[node name="JoystickAttack" type="Node2D"]
+modulate = Color(1, 1, 1, 0.219608)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_t0x4i")
+
+[node name="Ring" type="Sprite2D" parent="."]
+texture = ExtResource("1_04uu1")
+
+[node name="Knob_attack" type="Sprite2D" parent="."]
+texture = ExtResource("2_t61gq")
+script = ExtResource("4_tgmk5")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -150.0
+offset_top = -149.0
+offset_right = 150.0
+offset_bottom = 150.0
+
+[connection signal="button_down" from="Button" to="Knob_attack" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="Knob_attack" method="_on_button_button_up"]

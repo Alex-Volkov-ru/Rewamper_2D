@@ -17,3 +17,10 @@ res://pause_right_menu.gd
 res://scene/abilities/bullet_ability/bullet_ability_controller.gd
 res://scene/game_objects/player/player.gd
 res://scene/abilities/Gun/gun.tscn
+res://scene/ui/end_screen.gd
+res://scene/manager/arena_time_manager.tscn
+res://scene/ui/dash/dash_player.tscn
+res://scene/ui/dash/dash_player.gd
+res://scene/ui/joystick/joystick_attack.tscn
+res://scene/ui/joystick/joystick_attack.gd
+res://scene/ui/joystick/knob_attack.gd

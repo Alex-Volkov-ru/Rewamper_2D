@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtogsrvfpibfe"]
+
+[ext_resource type="Texture2D" uid="uid://dw4ojn1v8sm4a" path="res://scene/game_objects/player/dash skill.png" id="1_b2e2v"]
+[ext_resource type="Script" path="res://scene/ui/dash/dash_player.gd" id="1_fwwy6"]
+
+[node name="DashPlayer" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_fwwy6")
+
+[node name="dashskill" type="Sprite2D" parent="."]
+texture = ExtResource("1_b2e2v")
+
+[node name="DashButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -68.0
+offset_top = -72.0
+offset_right = 66.0
+offset_bottom = 65.0
+
+[connection signal="pressed" from="DashButton" to="." method="_on_dash_button_pressed"]

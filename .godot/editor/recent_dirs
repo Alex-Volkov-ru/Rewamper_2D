@@ -1,4 +1,6 @@
 D:/Dev/TestGit
+res://scene/ui/joystick
+res://scene/ui/dash
 res://scene/ui
 res://scene/ui/joustik
 res://fonts
@@ -18,5 +20,3 @@ res://scene/game_objects/ork_masked
 res://scene/game_objects/lizard
 res://scene/game_objects/Chort
 res://scene/game_objects/ogr
-res://scene/ui/dash
-D:/Dev/XCODE

@@ -1,13 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0ump57ta6uh8"]
+[gd_scene load_steps=24 format=3 uid="uid://b0ump57ta6uh8"]
 
 [ext_resource type="Script" path="res://scene/game_objects/player/player.gd" id="1_8oolj"]
 [ext_resource type="Texture2D" uid="uid://c1tcfei7yvse7" path="res://scene/game_objects/player/knight_f_hit_anim_f0.png" id="1_i2o30"]
 [ext_resource type="Texture2D" uid="uid://b12n41mfc3dlb" path="res://scene/game_objects/player/knight_f_idle_anim_f0.png" id="2_6qacu"]
+[ext_resource type="Texture2D" uid="uid://dw4ojn1v8sm4a" path="res://scene/game_objects/player/dash skill.png" id="2_jcfir"]
 [ext_resource type="PackedScene" uid="uid://d02yl8nx3spsb" path="res://scene/abilities/attack_ability/attack_controller.tscn" id="2_prcev"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="3_5ccbm"]
 [ext_resource type="Texture2D" uid="uid://d0i6e1pmrvsdy" path="res://scene/game_objects/player/knight_f_idle_anim_f1.png" id="3_kmhla"]
 [ext_resource type="PackedScene" uid="uid://boxn1ya3i2gcs" path="res://scene/abilities/bullet_ability/bullet_ability_controller.tscn" id="3_lwtka"]
+[ext_resource type="PackedScene" uid="uid://bbvhw374wnphl" path="res://scene/ui/joustik/joystick.tscn" id="3_vp73i"]
 [ext_resource type="Texture2D" uid="uid://di8bh7fwjpwla" path="res://scene/game_objects/player/knight_f_idle_anim_f2.png" id="4_6n3le"]
+[ext_resource type="PackedScene" uid="uid://bu3o01yxe7dh3" path="res://scene/ui/joystick/joystick_attack.tscn" id="4_oi24k"]
 [ext_resource type="Texture2D" uid="uid://c7ehbgi4m6nx1" path="res://scene/game_objects/player/knight_f_idle_anim_f3.png" id="5_5r35s"]
 [ext_resource type="Texture2D" uid="uid://clu4onj7mwifa" path="res://scene/game_objects/player/knight_f_run_anim_f0.png" id="6_kiy7l"]
 [ext_resource type="Texture2D" uid="uid://bdm4mspvpgybf" path="res://scene/game_objects/player/knight_f_run_anim_f1.png" id="7_vgjvu"]
@@ -85,6 +88,42 @@ height = 16.0
 collision_layer = 0
 script = ExtResource("1_8oolj")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AttackButton" type="TextureButton" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0.278431)
+offset_left = 1009.0
+offset_top = 317.0
+offset_right = 1145.0
+offset_bottom = 461.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_jcfir")
+
+[node name="DashButton" type="TextureButton" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.278431)
+offset_left = 918.0
+offset_top = 377.0
+offset_right = 1054.0
+offset_bottom = 521.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_jcfir")
+
+[node name="DashButton3" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = 865.0
+offset_top = 475.0
+offset_right = 1001.0
+offset_bottom = 619.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_jcfir")
+
+[node name="joystick" parent="CanvasLayer" instance=ExtResource("3_vp73i")]
+position = Vector2(164, 456)
+
+[node name="JoystickAttack" parent="CanvasLayer" instance=ExtResource("4_oi24k")]
+position = Vector2(1045, 496)
+
 [node name="AbilityManager" type="Node" parent="."]
 
 [node name="AttackController" parent="AbilityManager" instance=ExtResource("2_prcev")]
@@ -146,8 +185,14 @@ one_shot = true
 [node name="DashEffectTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DashButton" to="." method="_on_dash_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DashButton3" to="." method="_on_dash_button_pressed"]
 [connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
 [connection signal="area_exited" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_exited"]
 [connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
 [connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coor7vgt81cro"
-path="res://.godot/imported/icons8-прыжок-100.png-0987ba720ca2e93ee6974d613fa0f512.ctex"
+uid="uid://dw4ojn1v8sm4a"
+path="res://.godot/imported/dash skill.png-b3942e0601a4c6d73e5a58ec901a74d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/ui/dash/icons8-прыжок-100.png"
-dest_files=["res://.godot/imported/icons8-прыжок-100.png-0987ba720ca2e93ee6974d613fa0f512.ctex"]
+source_file="res://scene/game_objects/player/dash skill.png"
+dest_files=["res://.godot/imported/dash skill.png-b3942e0601a4c6d73e5a58ec901a74d5.ctex"]
 
 [params]
 
