@@ -16,3 +16,4 @@ res://scene/ui/pause_right_menu.tscn
 res://pause_right_menu.gd
 res://scene/abilities/bullet_ability/bullet_ability_controller.gd
 res://scene/game_objects/player/player.gd
+res://scene/abilities/Gun/gun.tscn

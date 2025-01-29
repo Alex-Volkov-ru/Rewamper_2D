@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4r8ajshunqtn"]
 
 [ext_resource type="Script" path="res://scene/abilities/bullet_ability/bullet_ability.gd" id="1_bswau"]
-[ext_resource type="Texture2D" uid="uid://dbknbnwei71r" path="res://scene/abilities/bullet_ability/boolet_gun.png" id="2_m5mmh"]
+[ext_resource type="Texture2D" uid="uid://m80fghxysucm" path="res://scene/abilities/bullet_ability/bullet_blue.png" id="2_geuwd"]
 [ext_resource type="PackedScene" uid="uid://b2xe2q0ii2gk4" path="res://scene/components/hit_box_component.tscn" id="3_r7ryn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
@@ -16,7 +16,7 @@ script = ExtResource("1_bswau")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -5.96046e-08)
 scale = Vector2(0.0322581, 0.0360663)
-texture = ExtResource("2_m5mmh")
+texture = ExtResource("2_geuwd")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_r7ryn")]
 
