@@ -1,33 +1,36 @@
 extends Node
 
-# Экспортируемые переменные (настраиваемые в инспекторе)
-@export var bullet_ability_scene: PackedScene  # Сцена пули
-@export var damage: int = 2  # Базовый урон пули
+# --- Экспортируемые переменные (настраиваемые в инспекторе) ---
+
+@export var bullet_ability_scene: PackedScene  # Сцена пули, используемая для стрельбы
+@export var damage: int = 2  # Базовый урон одной пули
 @export var max_bullets: int = 15  # Максимальное количество патронов в магазине
 
-# Локальные переменные
-var current_bullets: int = max_bullets  # Текущее количество патронов
-var is_reloading: bool = false  # Флаг процесса перезарядки
+# --- Локальные переменные ---
 
-# Ссылки на узлы
-@onready var reload_timer = $ReloadTimer  # Таймер перезарядки
+var current_bullets: int = max_bullets  # Текущее количество патронов в магазине
+var is_reloading: bool = false  # Флаг процесса перезарядки (true, если идет перезарядка)
+
+# --- Ссылки на узлы ---
+
+@onready var reload_timer = $ReloadTimer  # Таймер, отвечающий за время перезарядки
 
 func _ready():
-	# Подписка на глобальный сигнал улучшений
+	# Подписка на глобальный сигнал улучшений (при получении улучшения вызывается обработчик)
 	Global.ability_upgrade_added.connect(on_upgrade_added)
 
 # --- Функции стрельбы и перезарядки ---
 
 # Создаёт и выпускает пулю из оружия
 func spawn_bullet(gun: Node2D):
-	# Проверяем, не идет ли процесс перезарядки
+	# Проверяем, идет ли процесс перезарядки
 	if is_reloading:
 		print("Перезарядка, подождите...")
 		return
 
-	# Проверяем наличие пуль
+	# Проверяем, есть ли патроны в магазине
 	if current_bullets > 0:
-		# Проверяем, задана ли сцена пули
+		# Проверяем, задана ли сцена пули (иначе выдаем ошибку)
 		if bullet_ability_scene == null:
 			print("Ошибка: bullet_ability_scene не задан!")
 			return
@@ -42,10 +45,10 @@ func spawn_bullet(gun: Node2D):
 		var bullet_instance = bullet_ability_scene.instantiate() as BulletAbility
 		front_layer.add_child(bullet_instance)
 
-		# Устанавливаем начальную позицию пули
+		# Устанавливаем начальную позицию пули (там, где находится оружие)
 		bullet_instance.global_position = gun.global_position
 
-		# Рассчитываем направление стрельбы (в сторону мыши)
+		# Определяем направление стрельбы (в сторону курсора)
 		var direction = (gun.get_global_mouse_position() - gun.global_position).normalized()
 		bullet_instance.direction = direction
 
@@ -55,7 +58,7 @@ func spawn_bullet(gun: Node2D):
 		# Уменьшаем количество пуль в магазине
 		current_bullets -= 1  
 
-		# Если патроны закончились, инициируем перезарядку
+		# Если магазин пуст, начинаем перезарядку
 		if current_bullets == 0:
 			start_reload()
 	else:
@@ -65,34 +68,38 @@ func spawn_bullet(gun: Node2D):
 # Запуск процесса перезарядки
 func start_reload():
 	if not is_reloading:
-		is_reloading = true
+		is_reloading = true  # Устанавливаем флаг "перезарядка началась"
 		print("Перезарядка началась...")
-		reload_timer.start()  # Запуск таймера перезарядки
+		reload_timer.start()  # Запускаем таймер перезарядки
 
-
-# Обработчик завершения перезарядки
+# Обработчик завершения перезарядки (срабатывает, когда таймер перезарядки заканчивается)
 func _on_reload_timer_timeout():
-	# Восстанавливаем количество патронов
+	# Полностью восстанавливаем магазин
 	current_bullets = max_bullets
-	is_reloading = false
+	is_reloading = false  # Сбрасываем флаг перезарядки
 	print("Перезарядка завершена, пули восстановлены.")
 
 # --- Функция обработки улучшений ---
 
+# Обрабатывает улучшения, полученные игроком
 func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	# Улучшение урона оружия
 	if upgrade.id == "gun_attack":
 		var upgrade_amount = current_upgrades["gun_attack"]["quantity"]
-		damage += 5  # Увеличиваем урон пули
+		
+		# Каждый апгрейд увеличивает урон пули на 5
+		damage += upgrade_amount * 5  
 
 	# Улучшение скорости перезарядки
 	if upgrade.id == "cooldown":
 		var upgrade_amount = current_upgrades["cooldown"]["quantity"]
 		
-		# Уменьшаем время ожидания перезарядки, но не меньше 0.3 сек
+		# Уменьшаем время ожидания перезарядки на 10% за каждое улучшение
+		# Но время перезарядки не может быть меньше 0.3 секунды
 		reload_timer.wait_time = max(0.3, reload_timer.wait_time * 0.9)
-	
+
 	# Улучшение размера магазина
 	if upgrade.id == "magazine_clip":
-		var upgrade_amount = current_upgrades["magazine_clip"]["quantity"]
-		max_bullets += 5  # Увеличиваем вместимость магазина
+		# Увеличиваем максимальный размер магазина на 5 пуль за каждое улучшение
+		# Но не более 50 пуль в магазине
+		max_bullets = min(50, max_bullets + 5)

@@ -9,3 +9,7 @@ res://scene/abilities/bullet_ability/bullet_ability_controller.gd
 res://scene/ui/pause_menu.gd
 res://scene/game_objects/player/player.gd
 res://scene/abilities/bullet_ability/bullet_ability_controller.tscn
+res://scene/abilities/axe_ability/axe_ability_controller.tscn
+res://scene/abilities/axe_ability/axe_ability.tscn
+res://resources/upgrades/gun_attack.tres
+res://resources/upgrades/sword_rate.tres
