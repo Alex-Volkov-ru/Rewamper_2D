@@ -40,6 +40,7 @@ ork_shaman_scene = ExtResource("10_b6l3l")
 necromancer_scene = ExtResource("13_1gr8j")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
