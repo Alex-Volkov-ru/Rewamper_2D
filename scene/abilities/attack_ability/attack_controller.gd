@@ -22,8 +22,8 @@ func _on_timer_timeout():
 		
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	
-	enemies = enemies.filter(func(enemy:Node2D):
-		return enemy.global_position.distance_squared_to(player_pos) < pow(attack_range, 2)
+	enemies = enemies.filter(func(enemy: Node) -> bool:
+		return enemy is Node2D and enemy.global_position.distance_squared_to(player_pos) < pow(attack_range, 2)
 	)
 	
 	if enemies.size() == 0:

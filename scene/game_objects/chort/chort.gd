@@ -42,7 +42,6 @@ func shoot_bullet():
 	# Находим игрока
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
-		print("Ошибка: Игрок не найден!")
 		return
 
 	# Спавним пулю, направленную в сторону игрока

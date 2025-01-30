@@ -1,5 +1,6 @@
-Timer
 CanvasLayer
+Node2D
+Timer
 TextureRect
 Control
 Sprite2D
@@ -11,4 +12,3 @@ Button
 ColorRect
 PanelContainer
 AnimationPlayer
-Node

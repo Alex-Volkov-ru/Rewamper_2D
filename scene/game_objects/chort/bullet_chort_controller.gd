@@ -13,13 +13,11 @@ func spawn_bullet(start_position: Vector2, target_position: Vector2):
 	# Находим front_layer для размещения пули
 	var front_layer = get_tree().get_first_node_in_group("front_layer") as Node2D
 	if front_layer == null:
-		print("Ошибка: Front Layer не найден!")
 		return
 
 	# Создаём экземпляр пули
 	var bullet_instance = bullet_ability_scene.instantiate() as Node2D  # Убедитесь, что это Node2D
 	if bullet_instance == null:
-		print("Ошибка: не удалось инстанцировать пулю!")
 		return
 
 	front_layer.add_child(bullet_instance)
