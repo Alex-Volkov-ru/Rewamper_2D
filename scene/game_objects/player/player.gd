@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# Компоненты, подключаемые через @onready
+# Компоненты
 @onready var health_component = $HealthComponent
 @onready var grace_period = $GracePeriod
 @onready var progress_bar = $ProgressBar
@@ -13,125 +13,101 @@ extends CharacterBody2D
 @onready var attack_timer = $AttackTimer
 @onready var joystick = $JoysticMoveCanvasLayer/joystick
 @onready var joystick_attack = $JoystickAttackCanvasLayer/JoystickAttack
-@onready var reload_timer = $ReloadTimer  # Таймер для перезарядки
 
 @onready var dash_touch_button = $SkillsPlayer/DashScreenButton
 
-# Экспортируемые переменные
-@export var max_speed = 60  # Максимальная скорость персонажа
-@export var dash_speed_multiplier = 2  # Множитель скорости для рывка
-@export var max_bullets = 25  # Максимальное количество пуль
+# Параметры
+@export var max_speed: float = 60
+@export var dash_speed_multiplier: float = 2
 
 # Локальные переменные
-var acceleration = 0.15  # Ускорение
-var enemies_colliding = 0  # Количество столкновений с врагами
-var can_shoot = true  # Флаг, разрешающий стрельбу
-var doDash = false  # Флаг для рывка
-var dashDirection = Vector2.ZERO  # Направление рывка
-var current_bullets = max_bullets  # Количество оставшихся пуль
-var is_reloading = false  # Флаг перезарядки
-
-
-
+var acceleration: float = 0.15
+var enemies_colliding: int = 0
+var can_shoot: bool = true
+var doDash: bool = false
+var dashDirection: Vector2 = Vector2.ZERO
 
 func _on_dash_screen_button_pressed() -> void:
 	perform_dash()
 
-
-# Вычисление вектора движения
-# Эта функция определяет направление движения персонажа
-func movement_vector():
+# Определяем направление движения
+func movement_vector() -> Vector2:
 	var movement_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var movement_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	var keyboard_direction = Vector2(movement_x, movement_y)
-	
-	# Если джойстик активен, используем его ввод
+
 	var joystick_direction = joystick.posVector if joystick else Vector2.ZERO
 	if joystick_direction != Vector2.ZERO:
-		return joystick_direction.normalized()  # Нормализуем вектор для корректной скорости
-	return keyboard_direction.normalized()  # Вектор с клавишами
+		return joystick_direction.normalized()
+	return keyboard_direction.normalized()
 
-
-# Основной процесс обновления
+# Физический процесс
 func _physics_process(delta):
 	var direction = movement_vector().normalized()
 
-	# Если рывок активирован, обновляем скорость с учетом множителя
 	if doDash:
-		velocity = dashDirection * max_speed * dash_speed_multiplier  # Ускорение при рывке
+		velocity = dashDirection * max_speed * dash_speed_multiplier
 	else:
-		# Линейная интерполяция для плавного движения
 		if direction != Vector2.ZERO:
 			velocity = velocity.lerp(direction * max_speed, acceleration)
 		else:
-			velocity = velocity.lerp(Vector2.ZERO, acceleration)  # Если персонаж стоит, скорость уменьшается плавно
-	
-	move_and_slide()  # Движение и обработка коллизий
+			velocity = velocity.lerp(Vector2.ZERO, acceleration)
 
-	# Воспроизведение анимации в зависимости от направления движения
+	move_and_slide()
+
+	# Управление анимацией
 	if direction != Vector2.ZERO:
-		animated_sprite_2d.play("run")  # Игровая анимация движения
+		animated_sprite_2d.play("run")
 	else:
-		animated_sprite_2d.play("idle")  # Если персонаж не двигается - анимация покоя
+		animated_sprite_2d.play("idle")
 
-	# Поворот спрайта по направлению движения
 	if direction.x != 0:
 		animated_sprite_2d.flip_h = direction.x < 0
 
 	# Поворот пистолета в сторону мыши
 	gun.look_at(get_global_mouse_position())
 
-	# Если нажата клавиша для рывка
-	if Input.is_action_just_pressed('dash'):
-		# Обновляем направление рывка
-		if direction != Vector2.ZERO:
-			dashDirection = direction  # Если персонаж двигается, рывок в сторону движения
-		else:
-			# Если персонаж стоит, рывок должен идти в сторону, куда он смотрит
-			dashDirection = Vector2(-1 if animated_sprite_2d.flip_h else 1, 0)
-			
-		# Убедимся, что direction не равен (0, 0) перед активацией рывка
-		if direction != Vector2.ZERO:
-			doDash = true  # Только если персонаж двигается
-			dashDurationTimer.start()  # Запуск таймера для рывка
-			dashEffectTimer.start()    # Запуск эффекта рывка
+	# Если нажата клавиша стрельбы
+	if Input.is_action_just_pressed("shoot"):
+		shoot_bullet()
+
+	# Проверка второго джойстика для стрельбы
+	if joystick_attack.posVector.length() > 0.1 and can_shoot:
+		gun.look_at(global_position + joystick_attack.posVector * 100)
+		shoot_bullet()
+		can_shoot = false
+		attack_timer.start()
 
 # Завершение рывка
 func _on_dash_duration_timer_timeout():
-	doDash = false  # Завершаем рывок
-	dashEffectTimer.stop()  # Останавливаем эффект
-
-	# Восстанавливаем движение через джойстик или клавиши после рывка
-	var direction = movement_vector().normalized()
-	velocity = velocity.lerp(direction * max_speed, acceleration)
+	doDash = false
+	dashEffectTimer.stop()
 
 # Создание эффекта рывка
 func create_dash_effect():
 	var playerCopyNode = animated_sprite_2d.duplicate()
-	get_parent().add_child(playerCopyNode)  # Копируем игрока для эффекта
+	get_parent().add_child(playerCopyNode)
 	playerCopyNode.global_position = global_position
 
-	# Прогресс анимации эффекта рывка
 	var animationTime = dashDurationTimer.wait_time / 3
 	await get_tree().create_timer(animationTime).timeout
 	playerCopyNode.modulate.a = 0.4
 	await get_tree().create_timer(animationTime).timeout
 	playerCopyNode.modulate.a = 0.2
 	await get_tree().create_timer(animationTime).timeout
-	playerCopyNode.queue_free()  # Удаляем эффект после завершения
+	playerCopyNode.queue_free()
 
 # Создание эффекта рывка по таймеру
 func _on_dash_effect_timer_timeout():
-	create_dash_effect()  # Создаем эффект рывка
+	create_dash_effect()
 
 # Выполнение рывка
 func perform_dash():
 	if movement_vector().length() > 0:
-		dashDirection = movement_vector().normalized()  # Направление рывка при движении
+		dashDirection = movement_vector().normalized()
 	else:
-		dashDirection = Vector2(-1 if animated_sprite_2d.flip_h else 1, 0)  # Направление рывка при стоянии
-	
-	# Активируем рывок
+		dashDirection = Vector2(-1 if animated_sprite_2d.flip_h else 1, 0)
+
 	doDash = true
 	dashDurationTimer.start()
 	dashEffectTimer.start()
@@ -142,36 +118,22 @@ func _ready():
 	health_component.health_changed.connect(on_health_changed)
 	Global.ability_upgrade_added.connect(on_ability_upgrade_added)
 	health_update()
-	reload_timer.stop()  # Таймер еще не запущен
 
-
-# Обработка основного цикла
+# Основной процесс
 func _process(delta):
-	# Обработка движения персонажа
 	var direction = movement_vector().normalized()
 	var target_velocity = max_speed * direction
 	velocity = velocity.lerp(target_velocity, acceleration)
 	move_and_slide()
 
-	# Воспроизведение анимации в зависимости от движения
 	if direction.x != 0 || direction.y != 0:
 		animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("idle")
 
-	# Направление персонажа
 	var face_sign = sign(direction.x)
 	if face_sign != 0:
 		animated_sprite_2d.scale.x = face_sign
-	if Input.is_action_just_pressed("shoot"):
-		shoot_bullet()
-
-	# Проверка второго джойстика для атаки
-	if joystick_attack.posVector.length() > 0.1 and can_shoot:
-		gun.look_at(global_position + joystick_attack.posVector * 100)
-		shoot_bullet()
-		can_shoot = false  # Запрещаем стрельбу
-		attack_timer.start()  # Запускаем таймер
 
 # Обработка повреждений
 func check_if_damaged():
@@ -192,7 +154,7 @@ func _on_player_hurt_box_area_entered(area):
 func _on_player_hurt_box_area_exited(area):
 	enemies_colliding -= 1
 
-# Функция, вызываемая при смерти игрока
+# Обработка смерти игрока
 func on_died():
 	queue_free()
 
@@ -200,59 +162,22 @@ func on_died():
 func on_health_changed():
 	health_update()
 
-# Таймаут после получения урона
+# Таймер для неуязвимости
 func _on_grace_period_timeout():
 	check_if_damaged()
 
-# Обработчик обновлений способностей
+# Обработчик улучшений
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if not upgrade is NewAbility:
 		return
-		
 	var new_ability = upgrade as NewAbility
 	ability_manager.add_child(new_ability.new_ability_scene.instantiate())
 
-# Стрельба пули
+# Стрельба
 func shoot_bullet():
-	# Проверяем, есть ли пули
-	if is_reloading:
-		print("Перезарядка, подождите...")
-		return  # Если перезаряжаемся, ничего не делаем
-
-	if current_bullets > 0:
-		# Проверяем BulletAbilityController
-		if bullet_ability_controller == null:
-			print("Ошибка: BulletAbilityController не найден!")
-			return
-
-		# Стреляем
+	if bullet_ability_controller:
 		bullet_ability_controller.spawn_bullet(gun)
 
-		# Уменьшаем количество оставшихся пуль
-		current_bullets -= 1
-
-		# Если пули закончились, запускаем перезарядку
-		if current_bullets == 0:
-			start_reload()
-
-	else:
-		print("Пули закончились! Перезарядка...")
-		start_reload()
-
-# Начало перезарядки
-func start_reload():
-	if !is_reloading:
-		is_reloading = true
-		print("Перезарядка началась...")
-		reload_timer.start()  # Запускаем таймер перезарядки
-
-# Обработчик завершения перезарядки
-func _on_reload_timer_timeout():
-	# Восстанавливаем количество пуль
-	current_bullets = max_bullets
-	is_reloading = false
-	print("Перезарядка завершена, пули восстановлены.")
-
-# Таймер для разрешения стрельбы после перезарядки
-func _on_attack_timer_timeout() -> void:
+# Таймер атаки
+func _on_attack_timer_timeout():
 	can_shoot = true

@@ -10,7 +10,6 @@ func _ready():
 	
 	# Подключаем кнопки к методам
 	resume_button.pressed.connect(_on_resume_pressed)
-	quit_button.pressed.connect(_on_quit_pressed)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("quit"):
