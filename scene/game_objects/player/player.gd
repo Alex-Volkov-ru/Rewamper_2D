@@ -70,6 +70,8 @@ func _physics_process(delta):
 	# Если нажата клавиша стрельбы
 	if Input.is_action_just_pressed("shoot"):
 		shoot_bullet()
+	if Input.is_action_just_pressed("dash"):
+		perform_dash()
 
 	# Проверка второго джойстика для стрельбы
 	if joystick_attack.posVector.length() > 0.1 and can_shoot:
