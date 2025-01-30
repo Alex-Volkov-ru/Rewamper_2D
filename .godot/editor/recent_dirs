@@ -1,4 +1,5 @@
 D:/Dev/TestGit
+res://addons
 res://scene/ui/joystick
 res://scene/ui/dash
 res://scene/ui
@@ -19,4 +20,3 @@ res://scene/game_objects/ork_shaman
 res://scene/game_objects/ork_masked
 res://scene/game_objects/lizard
 res://scene/game_objects/Chort
-res://scene/game_objects/ogr

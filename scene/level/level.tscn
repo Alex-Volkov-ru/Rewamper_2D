@@ -64,14 +64,6 @@ script = ExtResource("11_eqtrg")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_lhvbx")]
 
-[node name="Menu" type="Button" parent="CanvasLayer"]
-process_mode = 3
-visible = false
-offset_left = 1029.0
-offset_right = 1149.0
-offset_bottom = 47.0
-text = "Меню"
-
 [node name="MenuRight" type="TextureButton" parent="CanvasLayer"]
 process_mode = 3
 anchors_preset = 1
@@ -101,5 +93,4 @@ text = "Пауза"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/Menu" to="CanvasLayer/PauseMenu" method="_on_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuRight" to="CanvasLayer/PauseMenu" method="_on_menu_pressed"]
