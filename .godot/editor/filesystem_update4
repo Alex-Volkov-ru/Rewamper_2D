@@ -12,4 +12,15 @@ res://scene/ui/end_screen.tscn
 res://scene/components/drop_manager.tscn
 res://scene/manager/spawner/enemy_spawner.tscn
 res://scene/game_objects/mushroom/mushroom.tscn
-res://singeltons/Damage_numbers.gd
+res://scene/game_objects/zombie/zombie.tscn
+res://scene/game_objects/zombie/zombie.gd
+res://scene/manager/spawner/enemy_spawner.gd
+res://scene/game_objects/ice_zombie/ice_zombie.tscn
+res://scene/game_objects/ice_zombie/ice_zombie.gd
+res://scene/game_objects/tiny_zombie/tiny_zombie.tscn
+res://scene/game_objects/chort/chort.gd
+res://scene/game_objects/demon/demon.tscn
+res://scene/game_objects/necromancer/necromancer.gd
+res://scene/game_objects/ork_shaman/ork_shaman.gd
+res://scene/game_objects/pumpkin/pumpkin.gd
+res://scene/game_objects/wogol/wogol.gd

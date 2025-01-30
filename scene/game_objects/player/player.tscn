@@ -89,11 +89,13 @@ collision_layer = 0
 script = ExtResource("1_8oolj")
 
 [node name="JoystickAttackCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="JoystickAttack" parent="JoystickAttackCanvasLayer" instance=ExtResource("4_oi24k")]
 position = Vector2(1045, 496)
 
 [node name="JoysticMoveCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="joystick" parent="JoysticMoveCanvasLayer" instance=ExtResource("3_vp73i")]
 position = Vector2(138, 471)

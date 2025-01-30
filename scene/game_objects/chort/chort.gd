@@ -3,7 +3,8 @@ extends CharacterBody2D
 @onready var health_component = $HealthComponent
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var movement_component = $MovementComponent
-@onready var bullet_controller = $BulletChortController
+@onready var bullet_controller = $BulletController
+@onready var damage_numbers = get_tree().get_first_node_in_group("damage_layer")  # Узел для отображения урона
 
 @export var death_scecene: PackedScene
 @export var sprite: CompressedTexture2D
@@ -13,6 +14,7 @@ var time_since_last_shot: float = 0  # Счётчик времени
 
 func _ready():
 	health_component.died.connect(on_died)
+	health_component.damage_received.connect(on_damage_received)  # Подключаем обработку урона
 
 func _process(delta):
 	# Движение моба
@@ -42,6 +44,7 @@ func shoot_bullet():
 	# Находим игрока
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
+		print("Ошибка: Игрок не найден!")
 		return
 
 	# Спавним пулю, направленную в сторону игрока
@@ -55,3 +58,9 @@ func on_died():
 	death_instance.sprite_offset.position.x = animated_sprite_2d.offset.y
 	death_instance.global_position = global_position
 	queue_free()
+
+# Обрабатываем отображение урона
+func on_damage_received(damage: int, is_critical: bool):
+	if damage_numbers:
+		# Отображаем урон немного выше зомби
+		damage_numbers.display_number(damage, global_position + Vector2(0, -30), is_critical)
