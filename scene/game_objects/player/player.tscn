@@ -88,39 +88,19 @@ height = 16.0
 collision_layer = 0
 script = ExtResource("1_8oolj")
 
-[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+[node name="JoystickAttackCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="JoystickAttack" parent="CanvasLayer3" instance=ExtResource("4_oi24k")]
+[node name="JoystickAttack" parent="JoystickAttackCanvasLayer" instance=ExtResource("4_oi24k")]
 position = Vector2(1045, 496)
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="JoysticMoveCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="joystick" parent="CanvasLayer2" instance=ExtResource("3_vp73i")]
+[node name="joystick" parent="JoysticMoveCanvasLayer" instance=ExtResource("3_vp73i")]
 position = Vector2(138, 471)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="SkillsPlayer" type="CanvasLayer" parent="."]
 
-[node name="AttackButton" type="TextureButton" parent="CanvasLayer"]
-visible = false
-modulate = Color(1, 1, 1, 0.278431)
-offset_left = 1009.0
-offset_top = 317.0
-offset_right = 1145.0
-offset_bottom = 461.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("2_jcfir")
-
-[node name="DashButton" type="TextureButton" parent="CanvasLayer"]
-visible = false
-modulate = Color(1, 1, 1, 0.278431)
-offset_left = 918.0
-offset_top = 377.0
-offset_right = 1054.0
-offset_bottom = 521.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("2_jcfir")
-
-[node name="DashScreenButton" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="DashScreenButton" type="TouchScreenButton" parent="SkillsPlayer"]
 modulate = Color(1, 1, 1, 0.278431)
 position = Vector2(914, 377)
 scale = Vector2(0.529412, 0.529412)
@@ -193,9 +173,7 @@ wait_time = 0.1
 wait_time = 3.0
 one_shot = true
 
-[connection signal="pressed" from="CanvasLayer/AttackButton" to="." method="_on_attack_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/DashButton" to="." method="_on_dash_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/DashScreenButton" to="." method="_on_dash_screen_button_pressed"]
+[connection signal="pressed" from="SkillsPlayer/DashScreenButton" to="." method="_on_dash_screen_button_pressed"]
 [connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
 [connection signal="area_exited" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_exited"]

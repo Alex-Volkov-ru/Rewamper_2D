@@ -11,12 +11,11 @@ extends CharacterBody2D
 @onready var dashDurationTimer = $DashDurationTimer
 @onready var dashEffectTimer = $DashEffectTimer
 @onready var attack_timer = $AttackTimer
-@onready var joystick = $CanvasLayer2/joystick
-@onready var joystick_attack = $CanvasLayer3/JoystickAttack
-@onready var dash_button = $CanvasLayer/DashButton
+@onready var joystick = $JoysticMoveCanvasLayer/joystick
+@onready var joystick_attack = $JoystickAttackCanvasLayer/JoystickAttack
 @onready var reload_timer = $ReloadTimer  # Таймер для перезарядки
 
-@onready var dash_touch_button = $CanvasLayer/DashScreenButton
+@onready var dash_touch_button = $SkillsPlayer/DashScreenButton
 
 # Экспортируемые переменные
 @export var max_speed = 60  # Максимальная скорость персонажа
@@ -38,12 +37,6 @@ var is_reloading = false  # Флаг перезарядки
 func _on_dash_screen_button_pressed() -> void:
 	perform_dash()
 
-# События при нажатии кнопок
-func _on_attack_button_pressed() -> void:
-	shoot_bullet()
-
-func _on_dash_button_pressed() -> void:
-	perform_dash()
 
 # Вычисление вектора движения
 # Эта функция определяет направление движения персонажа
