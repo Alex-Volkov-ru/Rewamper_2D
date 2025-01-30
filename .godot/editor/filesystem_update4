@@ -13,3 +13,8 @@ res://scene/abilities/axe_ability/axe_ability_controller.tscn
 res://scene/abilities/axe_ability/axe_ability.tscn
 res://resources/upgrades/gun_attack.tres
 res://resources/upgrades/sword_rate.tres
+res://scene/ui/end_screen.tscn
+res://scene/components/drop_manager.tscn
+res://scene/components/drop_manager.gd
+res://scene/game_objects/hp_bottle/hp_bottle.gd
+res://resources/upgrades/cooldown.tres
