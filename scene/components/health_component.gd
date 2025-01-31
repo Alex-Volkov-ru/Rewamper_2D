@@ -8,13 +8,21 @@ signal damage_received(damage: int, is_critical: bool)  # Сигнал для о
 @export var max_health: float = 10
 var current_health: float
 
+# Настройки критического удара
+@export var critical_chance: float = 0.2  # 20% шанс крита
+@export var critical_multiplier: float = 1.5  # Урон увеличивается в 1.5 раза
+
 func _ready():
 	current_health = max_health
 
 func take_damage(damage: int):
-	var is_critical = false  # Здесь можно добавить механику критического урона
+	var is_critical = randf() < critical_chance  # Проверяем шанс крита
+	if is_critical:
+		damage = int(damage * critical_multiplier)  # Умножаем урон
+
 	current_health = max(current_health - damage, 0)
 
+	print("Получен урон:", damage, "Критический:", is_critical)  
 	damage_received.emit(damage, is_critical)  # Отправляем сигнал о получении урона
 
 	health_changed.emit()  # Уведомляем о смене здоровья

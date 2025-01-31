@@ -29,8 +29,9 @@ func _process(delta):
 # Обрабатываем отображение урона
 func on_damage_received(damage: int, is_critical: bool):
 	if damage_numbers:
-		# Попробуй передать в display_number позицию относительно моба, а не его глобальную позицию
-		damage_numbers.display_number(damage, global_position + Vector2(0, -30), is_critical)  # Смещаем числа немного вверх от моба
+		# Если урон критический, передаем true
+		damage_numbers.display_number(damage, global_position + Vector2(0, -30), is_critical)
+
 
 # Обработка смерти моба
 func on_died():

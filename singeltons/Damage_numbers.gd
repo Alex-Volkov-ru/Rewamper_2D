@@ -7,32 +7,30 @@ func display_number(value: int, position: Vector2, is_critical: bool = false):
 	var number = Label.new()
 	number.global_position = position
 	number.text = str(value)
-	number.z_index = 100  # Проверим, что число будет поверх всех объектов
+	number.z_index = 100
 	number.label_settings = LabelSettings.new()
 
-	# Настройка цвета для критического урона
-	var color = '#FFF'
+	# Загрузка пользовательского шрифта
+	var font = load("res://fonts/GreenHillSans-Italic v1.01.ttf")  # Укажи путь к своему шрифту
+	number.label_settings.font = font
+
+	# Меняем цвет, если урон критический
+	var color = "#FFFFFF"
 	if is_critical:
-		color = '#B22'  # Красный для критического
-	if value == 0:
-		color = '#FFF8'  # Бледный для нулевого урона
+		color = "#FF0000"
 
 	number.label_settings.font_color = color
-	number.label_settings.font_size = 18
-	number.label_settings.outline_color = '#000'
-	number.label_settings.outline_size = 1
-	
-	call_deferred('add_child', number)  # Добавляем метку с числом урона в сцену
+	number.label_settings.font_size = 15  # Можно увеличить размер
+	number.label_settings.outline_color = "#000000"
+	number.label_settings.outline_size = 2  # Увеличиваем толщину обводки
 
-	await number.resized  # Ждём, пока размер метки изменится
-	number.pivot_offset = Vector2(number.size / 2)  # Центрируем метку
+	call_deferred('add_child', number)
 
-	# Создаём анимацию
+	# Анимация появления и исчезновения
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(number, 'position:y', number.position.y - 50, 0.5).set_ease(Tween.EASE_OUT)  # Увеличиваем время подъёма
-	tween.tween_property(number, 'position:y', number.position.y, 1.0).set_ease(Tween.EASE_IN).set_delay(0.25)  # Делаем анимацию медленной
-	tween.tween_property(number, 'scale', Vector2.ZERO, 0.5).set_ease(Tween.EASE_OUT).set_delay(0.25)  # Увеличиваем время исчезновения
+	tween.tween_property(number, "position:y", number.position.y - 50, 0.5).set_ease(Tween.EASE_OUT)
+	tween.tween_property(number, "modulate:a", 0, 0.5).set_ease(Tween.EASE_IN).set_delay(0.25)
 
-	await tween.finished  # Ждём окончания анимации
-	number.queue_free()  # Удаляем метку после анимации
+	await tween.finished
+	number.queue_free()
