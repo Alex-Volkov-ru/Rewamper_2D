@@ -1,12 +1,12 @@
 extends Area2D
 class_name HitBoxComponent
 
-signal hit(damage: int)  # Сигнал для отслеживания попаданий
+signal hit(damage: float)  # Теперь сигнал передаёт float
 
-var damage: int = 0  # Урон, который будет нанесён
+var damage: float = 0.0  # Урон теперь float
 
 # Установить урон для этой области
-func set_damage(amount: int):
+func set_damage(amount: float):
 	damage = amount
 
 func _ready():

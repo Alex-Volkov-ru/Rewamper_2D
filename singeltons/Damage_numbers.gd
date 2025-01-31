@@ -11,16 +11,16 @@ func display_number(value: int, position: Vector2, is_critical: bool = false):
 	number.label_settings = LabelSettings.new()
 
 	# Загрузка пользовательского шрифта
-	var font = load("res://fonts/GreenHillSans-Italic v1.01.ttf")  # Укажи путь к своему шрифту
+	var font = load("res://fonts/GreenHillSans-Regular v1.01.ttf")  # Укажи путь к своему шрифту
 	number.label_settings.font = font
 
 	# Меняем цвет, если урон критический
-	var color = "#FFFFFF"
+	var color = "#DDDDDD"
 	if is_critical:
-		color = "#FF0000"
+		color = "#B00000"
 
 	number.label_settings.font_color = color
-	number.label_settings.font_size = 15  # Можно увеличить размер
+	number.label_settings.font_size = 13  # Можно увеличить размер
 	number.label_settings.outline_color = "#000000"
 	number.label_settings.outline_size = 2  # Увеличиваем толщину обводки
 

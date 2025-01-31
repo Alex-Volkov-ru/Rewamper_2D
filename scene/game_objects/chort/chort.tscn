@@ -71,13 +71,13 @@ script = ExtResource("1_m1rn4")
 death_scecene = ExtResource("2_p0t6t")
 sprite = ExtResource("3_ap2iy")
 
+[node name="BulletChortController" parent="." instance=ExtResource("14_bsfie")]
+
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("17_jg20u")]
 health_component = NodePath("../HealthComponent")
 
 [node name="HpBottleDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_pvy1y")]
 drop_component = NodePath("../DropManager")
-
-[node name="BulletChortController" parent="." instance=ExtResource("14_bsfie")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_ctrjx")]
 

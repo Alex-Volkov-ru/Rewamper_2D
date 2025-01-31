@@ -1,7 +1,7 @@
 extends Node2D
 class_name BulletAbility
 
-@export var speed: float = 400
+@export var speed: float = 250
 @onready var hit_box_component: HitBoxComponent = $HitBoxComponent
 @onready var area2d = $Area2D
 
@@ -17,6 +17,7 @@ func _ready():
 	area2d.connect("area_entered", Callable(self, "_on_area_entered"))
 
 func _process(delta: float) -> void:
+	
 	if direction != Vector2.ZERO and !is_destroyed:  # Двигаем пулю только если она не уничтожена
 		# Двигаем пулю
 		global_position += direction * speed * delta

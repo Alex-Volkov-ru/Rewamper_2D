@@ -8,6 +8,9 @@ var attack_range = 100
 var sword_damage = 5
 var default_attack_speed
 
+# Настройки критического удара
+@export var critical_chance: float = 0.2 # 20% шанс крита
+@export var critical_multiplier: float = 1.5  # Урон увеличивается в 1.5 раза
 
 func _ready():
 	Global.ability_upgrade_added.connect(on_upgrade_added)
@@ -37,15 +40,22 @@ func _on_timer_timeout():
 	
 	var enemy_pos = enemies[0].global_position
 	
+	# Определяем критический урон
+	var is_critical = randf() < critical_chance
+	var final_damage = sword_damage * (critical_multiplier if is_critical else 1.0)
+	
 	var attack_instance = attack_ability.instantiate() as AttackAbility
 	var front_layer = get_tree().get_first_node_in_group("front_layer")
 	front_layer.add_child(attack_instance)
-	attack_instance.hit_box_component.damage = sword_damage
 	
-	
+	attack_instance.hit_box_component.damage = final_damage  # Передаем урон с учетом крита
 	attack_instance.global_position = (enemy_pos + player_pos) / 2
 	
 	attack_instance.look_at(enemy_pos)
+	
+	# Можно добавить визуальный эффект или звук для критического удара
+	if is_critical:
+		print("Критический удар! Урон:", final_damage)
 
 func on_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
 	if upgrade.id != "sword_rate":

@@ -7,4 +7,4 @@ script = ExtResource("1_3jlma")
 id = "magazine_clip"
 max_quantity = 7
 name = "Увеличение обоймы оружия"
-description = "Увеличение обоймы оружия на 5 шт"
+description = "Увеличение обоймы оружия на 3 шт"

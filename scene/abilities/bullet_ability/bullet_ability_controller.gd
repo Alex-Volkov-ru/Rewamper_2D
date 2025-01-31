@@ -3,8 +3,8 @@ extends Node
 # --- Экспортируемые переменные (настраиваемые в инспекторе) ---
 
 @export var bullet_ability_scene: PackedScene  # Сцена пули, используемая для стрельбы
-@export var damage: int = 2  # Базовый урон одной пули
-@export var max_bullets: int = 15  # Максимальное количество патронов в магазине
+@export var damage: float = 10  # Базовый урон одной пули
+@export var max_bullets: int = 10  # Максимальное количество патронов в магазине
 
 # --- Локальные переменные ---
 
@@ -25,14 +25,12 @@ func _ready():
 func spawn_bullet(gun: Node2D):
 	# Проверяем, идет ли процесс перезарядки
 	if is_reloading:
-		print("Перезарядка, подождите...")
 		return
 
 	# Проверяем, есть ли патроны в магазине
 	if current_bullets > 0:
 		# Проверяем, задана ли сцена пули (иначе выдаем ошибку)
 		if bullet_ability_scene == null:
-			print("Ошибка: bullet_ability_scene не задан!")
 			return
 
 		# Получаем ссылку на передний слой, куда будем добавлять пулю
@@ -62,14 +60,12 @@ func spawn_bullet(gun: Node2D):
 		if current_bullets == 0:
 			start_reload()
 	else:
-		print("Пули закончились! Перезарядка...")
 		start_reload()
 
 # Запуск процесса перезарядки
 func start_reload():
 	if not is_reloading:
 		is_reloading = true  # Устанавливаем флаг "перезарядка началась"
-		print("Перезарядка началась...")
 		reload_timer.start()  # Запускаем таймер перезарядки
 
 # Обработчик завершения перезарядки (срабатывает, когда таймер перезарядки заканчивается)
@@ -77,7 +73,8 @@ func _on_reload_timer_timeout():
 	# Полностью восстанавливаем магазин
 	current_bullets = max_bullets
 	is_reloading = false  # Сбрасываем флаг перезарядки
-	print("Перезарядка завершена, пули восстановлены.")
+
+
 
 # --- Функция обработки улучшений ---
 
@@ -88,7 +85,7 @@ func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 		var upgrade_amount = current_upgrades["gun_attack"]["quantity"]
 		
 		# Каждый апгрейд увеличивает урон пули на 5
-		damage += upgrade_amount * 5  
+		damage += 5  
 
 	# Улучшение скорости перезарядки
 	if upgrade.id == "cooldown":
@@ -102,4 +99,4 @@ func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "magazine_clip":
 		# Увеличиваем максимальный размер магазина на 5 пуль за каждое улучшение
 		# Но не более 50 пуль в магазине
-		max_bullets = min(50, max_bullets + 5)
+		max_bullets = min(50, max_bullets + 3)

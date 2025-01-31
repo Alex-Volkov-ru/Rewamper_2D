@@ -3,16 +3,21 @@ extends CharacterBody2D
 @onready var health_component = $HealthComponent
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var movement_component = $MovementComponent
-@onready var bullet_controller = $BulletController
+@onready var bullet_controller = $BulletChortController
 @onready var damage_numbers = get_tree().get_first_node_in_group("damage_layer")  # Узел для отображения урона
 
 @export var death_scecene: PackedScene
 @export var sprite: CompressedTexture2D
-
+@export var health_value: float = 15  # Начальное значение здоровья
 @export var shooting_interval: float = 3  # Интервал между выстрелами
 var time_since_last_shot: float = 0  # Счётчик времени
 
 func _ready():
+	# Устанавливаем максимальное и текущее здоровье моба
+	health_component.max_health = health_value
+	health_component.current_health = health_value
+	
+	
 	health_component.died.connect(on_died)
 	health_component.damage_received.connect(on_damage_received)  # Подключаем обработку урона
 
@@ -60,7 +65,7 @@ func on_died():
 	queue_free()
 
 # Обрабатываем отображение урона
-func on_damage_received(damage: int, is_critical: bool):
+func on_damage_received(damage: int):
 	if damage_numbers:
 		# Отображаем урон немного выше зомби
-		damage_numbers.display_number(damage, global_position + Vector2(0, -30), is_critical)
+		damage_numbers.display_number(damage, global_position + Vector2(0, -30))

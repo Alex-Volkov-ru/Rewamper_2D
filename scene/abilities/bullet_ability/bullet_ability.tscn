@@ -10,7 +10,7 @@ radius = 1.13636
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
 radius = 2.0
 
-[node name="BulletAbility" type="Node2D"]
+[node name="BulletAbility" type="Node2D" groups=["player"]]
 script = ExtResource("1_bswau")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

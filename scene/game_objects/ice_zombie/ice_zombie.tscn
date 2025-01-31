@@ -70,10 +70,10 @@ sprite = ExtResource("3_yvfhk")
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_dexmh")]
 health_component = NodePath("../HealthComponent")
 
+[node name="BulletIceZombieController" parent="." instance=ExtResource("2_expcw")]
+
 [node name="HpBottleDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("2_qnw5w")]
 drop_component = NodePath("../DropManager")
-
-[node name="BulletChortController" parent="." instance=ExtResource("2_expcw")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_dt7iv")]
 

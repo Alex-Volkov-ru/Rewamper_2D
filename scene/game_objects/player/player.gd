@@ -26,6 +26,7 @@ var enemies_colliding: int = 0
 var can_shoot: bool = true
 var doDash: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
+@export var health_value: float = 25  # Начальное значение здоровья player
 
 func _on_dash_screen_button_pressed() -> void:
 	perform_dash()
@@ -116,13 +117,18 @@ func perform_dash():
 
 # Готовность сцены
 func _ready():
+		# Устанавливаем максимальное и текущее здоровье
+	health_component.max_health = health_value
+	health_component.current_health = health_value
+
+
 	health_component.died.connect(on_died)
 	health_component.health_changed.connect(on_health_changed)
 	Global.ability_upgrade_added.connect(on_ability_upgrade_added)
 	health_update()
 
 # Основной процесс
-func _process(delta):
+func _process(delta):	
 	var direction = movement_vector().normalized()
 	var target_velocity = max_speed * direction
 	velocity = velocity.lerp(target_velocity, acceleration)
