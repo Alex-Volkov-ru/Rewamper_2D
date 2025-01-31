@@ -1,3 +1,5 @@
+AudioStreamPlayer
+AudioStreamPlayer2D
 Label
 Node
 CanvasLayer
@@ -10,6 +12,3 @@ TouchScreenButton
 SpinBox
 CanvasGroup
 TextureButton
-Button
-ColorRect
-PanelContainer

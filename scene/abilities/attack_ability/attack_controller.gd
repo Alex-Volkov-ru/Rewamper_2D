@@ -55,7 +55,7 @@ func _on_timer_timeout():
 	
 	# Можно добавить визуальный эффект или звук для критического удара
 	if is_critical:
-		print("Критический удар! Урон:", final_damage)
+		print("Критический удар от меча! Урон:", final_damage)
 
 func on_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
 	if upgrade.id != "sword_rate":
