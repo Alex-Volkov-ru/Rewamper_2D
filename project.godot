@@ -32,7 +32,6 @@ window/size/viewport_height=600
 window/size/window_width_override=1150
 window/size/window_height_override=600
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://fonts/result (12) (3) (1) (1).png"
 
 [editor_plugins]
 

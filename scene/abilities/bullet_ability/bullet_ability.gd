@@ -13,7 +13,7 @@ var max_distance: float = 200  # Фиксированное расстояние
 func _ready():
 	direction = Vector2.ZERO
 	# Подключаем сигналы через Callable
-	area2d.connect("body_entered", Callable(self, "_on_body_entered"))
+	#area2d.connect("body_entered", Callable(self, "_on_body_entered"))
 	area2d.connect("area_entered", Callable(self, "_on_area_entered"))
 
 func _process(delta: float) -> void:
