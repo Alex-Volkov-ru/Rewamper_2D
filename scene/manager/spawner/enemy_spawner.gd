@@ -9,22 +9,21 @@ extends Node
 @export var ork_masked_scene: PackedScene
 @export var ork_warrior_scene: PackedScene
 @export var goblin_scene: PackedScene
-@export var chort_scene: PackedScene
 @export var skelet_scene: PackedScene
-@export var wogol_scene: PackedScene
 @export var swampy_scene: PackedScene
 @export var tiny_zombie_scene: PackedScene
-@export var ice_zombie_scene: PackedScene
-
-
-@export var pumpkin_scene: PackedScene
 @export var lizard_scene: PackedScene
 @export var ogr_scene: PackedScene
+
+
+
+@export var chort_scene: PackedScene
+@export var ice_zombie_scene: PackedScene
+@export var pumpkin_scene: PackedScene
 @export var demon_scene: PackedScene
 @export var zombie_scene: PackedScene
 @export var ork_shaman_scene: PackedScene
-
-
+@export var wogol_scene: PackedScene
 @export var necromancer_scene: PackedScene
 
 
@@ -78,7 +77,7 @@ func on_difficulty_increased(difficulty_level: int):
 	timer.wait_time = new_spawn_time
 	print('начальный уровень сложности(difficulty_level) с 0 минуты = ', difficulty_level)
 	# Появление на 1-й минуте
-	if difficulty_level == 12:
+	if difficulty_level == 1:
 		enemy_pool.add_mod(tiny_zombie_scene, 20)
 	
 	# Появление на 2-й минуте

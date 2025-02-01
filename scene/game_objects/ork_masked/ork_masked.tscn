@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://ca8j46ovfqv5f"]
 
-[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_x8mqo"]
+[ext_resource type="Script" path="res://scene/game_objects/ork_masked/ork_masked.gd" id="1_xgjtm"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_61pv2"]
 [ext_resource type="Texture2D" uid="uid://dlwewdlfnwce8" path="res://scene/game_objects/ork_masked/masked_orc_idle_anim_f0.png" id="3_wm8gs"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_28vbp"]
@@ -66,7 +66,7 @@ radius = 6.0
 [node name="Ork_masked" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_x8mqo")
+script = ExtResource("1_xgjtm")
 death_scecene = ExtResource("2_61pv2")
 sprite = ExtResource("3_wm8gs")
 

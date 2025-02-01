@@ -25,22 +25,22 @@ mushroom_scene = ExtResource("2_8jh24")
 ork_masked_scene = ExtResource("9_h6dn8")
 ork_warrior_scene = ExtResource("4_tbj84")
 goblin_scene = ExtResource("3_1qoxc")
-chort_scene = ExtResource("7_6chn0")
 skelet_scene = ExtResource("7_ymeyp")
-wogol_scene = ExtResource("8_ftw0b")
 swampy_scene = ExtResource("9_0p1pl")
 tiny_zombie_scene = ExtResource("10_r8vay")
-ice_zombie_scene = ExtResource("11_1jeg8")
-pumpkin_scene = ExtResource("12_veo23")
 lizard_scene = ExtResource("8_bdncq")
 ogr_scene = ExtResource("5_ir6cr")
+chort_scene = ExtResource("7_6chn0")
+ice_zombie_scene = ExtResource("11_1jeg8")
+pumpkin_scene = ExtResource("12_veo23")
 demon_scene = ExtResource("4_nyj5h")
 zombie_scene = ExtResource("6_uw7q4")
 ork_shaman_scene = ExtResource("10_b6l3l")
+wogol_scene = ExtResource("8_ftw0b")
 necromancer_scene = ExtResource("13_1gr8j")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

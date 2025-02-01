@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
 
-@export var bottle_hp = 0.1
+@export var bottle_hp = 0.3
 
 func tween_hp_bottle(percent: float, start_position: Vector2):
 	var player = get_tree().get_first_node_in_group('player') as Node2D

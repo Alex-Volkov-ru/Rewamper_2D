@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://xa44xy7lfqb1"]
 
-[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_bh4yh"]
+[ext_resource type="Script" path="res://scene/game_objects/skelet/skelet.gd" id="1_hkoyv"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_8dmqo"]
 [ext_resource type="Texture2D" uid="uid://clwo70jrhn8n1" path="res://scene/game_objects/skelet/skelet_idle_anim_f0.png" id="3_4y5bo"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_jjsmk"]
@@ -66,7 +66,7 @@ radius = 5.0
 [node name="Skelet" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_bh4yh")
+script = ExtResource("1_hkoyv")
 death_scecene = ExtResource("2_8dmqo")
 sprite = ExtResource("3_4y5bo")
 

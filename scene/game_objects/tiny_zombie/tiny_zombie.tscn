@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://b0lg7ayonppa6"]
 
-[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_4vr5t"]
+[ext_resource type="Script" path="res://scene/game_objects/tiny_zombie/tiny_zombie.gd" id="1_5n0fp"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_vjaeq"]
 [ext_resource type="Texture2D" uid="uid://cf3acjg2yorew" path="res://scene/game_objects/tiny_zombie/tiny_zombie_idle_anim_f1.png" id="3_uyvrd"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_4tkud"]
@@ -62,7 +62,7 @@ radius = 3.0
 [node name="Tiny_zombie" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_4vr5t")
+script = ExtResource("1_5n0fp")
 death_scecene = ExtResource("2_vjaeq")
 sprite = ExtResource("3_uyvrd")
 

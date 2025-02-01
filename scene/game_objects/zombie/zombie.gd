@@ -10,7 +10,7 @@ extends CharacterBody2D  # Наследуем от CharacterBody2D для раб
 # Экспортируем параметры, чтобы их можно было настроить в редакторе
 @export var death_scecene: PackedScene  # Сцена для эффекта смерти
 @export var sprite: CompressedTexture2D  # Спрайт для эффекта смерти
-@export var health_value: float = 15  # Начальное значение здоровья
+@export var health_value: float = 16  # Начальное значение здоровья
 @export var shooting_interval: float = 3  # Интервал между выстрелами
 
 var time_since_last_shot: float = 0  # Счётчик времени для отслеживания интервала между выстрелами

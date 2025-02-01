@@ -1,7 +1,7 @@
 extends Node
 
 @export var bullet_ability_scene: PackedScene
-@export var damage: int = 2  # Урон от пули
+@export var damage: int = 5  # Урон от пули
 
 # Функция для спавна пули
 func spawn_bullet(start_position: Vector2, target_position: Vector2):

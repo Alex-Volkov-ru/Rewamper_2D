@@ -56,7 +56,7 @@ func spawn_bullet(gun: Node2D):
 		var final_damage = damage
 		if randf() < critical_chance:  # Генерируем случайное число, если оно меньше критического шанса
 			final_damage *= critical_multiplier  # Увеличиваем урон на множитель критического удара
-			print("Критический удар! Урон: ", final_damage)  # Принт для отладки
+			print("Критический удар пистолета! Урон: ", final_damage)  # Принт для отладки
 		else:
 			print("Обычный удар. Урон: ", final_damage)  # Принт для отладки
 

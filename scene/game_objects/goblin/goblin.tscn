@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://egealcsf1fs1"]
 
-[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_dmp6i"]
+[ext_resource type="Script" path="res://scene/game_objects/goblin/goblin.gd" id="1_j3oj7"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_7gsnx"]
 [ext_resource type="Texture2D" uid="uid://lomq6q6noqv5" path="res://scene/game_objects/goblin/goblin_idle_anim_f0.png" id="3_ehbvj"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_4q37p"]
@@ -65,7 +65,7 @@ radius = 5.09902
 [node name="Goblin" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_dmp6i")
+script = ExtResource("1_j3oj7")
 death_scecene = ExtResource("2_7gsnx")
 sprite = ExtResource("3_ehbvj")
 

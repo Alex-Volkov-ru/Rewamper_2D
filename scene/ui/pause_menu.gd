@@ -12,10 +12,15 @@ func _ready():
 	# Прячем меню при старте
 	visible = false
 	
-	# Подключаем кнопки к методам
-	resume_button.pressed.connect(_on_resume_pressed)
-	quit_button.pressed.connect(_on_quit_pressed)
-	menu_button.pressed.connect(_on_menu_pressed)  # Подключаем кнопку Menu к методу
+	# Подключаем кнопки к методам, если они ещё не подключены
+	if not resume_button.pressed.is_connected(_on_resume_pressed):
+		resume_button.pressed.connect(_on_resume_pressed)
+
+	if not quit_button.pressed.is_connected(_on_quit_pressed):
+		quit_button.pressed.connect(_on_quit_pressed)
+
+	if not menu_button.pressed.is_connected(_on_menu_pressed):
+		menu_button.pressed.connect(_on_menu_pressed)
 
 	# Запоминаем текущее состояние музыки
 	is_music_playing = background_music.playing
