@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4r8ajshunqtn"]
+[gd_scene load_steps=5 format=3 uid="uid://c4r8ajshunqtn"]
 
 [ext_resource type="Script" path="res://scene/abilities/bullet_ability/bullet_ability.gd" id="1_bswau"]
 [ext_resource type="Texture2D" uid="uid://m80fghxysucm" path="res://scene/abilities/bullet_ability/bullet_blue.png" id="2_geuwd"]
@@ -7,10 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
 radius = 1.13636
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
-radius = 2.0
-
-[node name="BulletAbility" type="Node2D" groups=["player"]]
+[node name="BulletAbility" type="Node2D" groups=["attack", "player"]]
 script = ExtResource("1_bswau")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,10 +20,3 @@ texture = ExtResource("2_geuwd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 scale = Vector2(1.76, 1.76)
 shape = SubResource("CircleShape2D_o2b4j")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_kqse0")

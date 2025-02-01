@@ -4,7 +4,7 @@ extends Node
 
 @export var bullet_ability_scene: PackedScene  # Сцена пули, используемая для стрельбы
 @export var damage: float = 10  # Базовый урон одной пули
-@export var max_bullets: int = 10  # Максимальное количество патронов в магазине
+@export var max_bullets: int = 20  # Максимальное количество патронов в магазине
 # Настройки критического удара
 @export var critical_chance: float = 0.2 # 20% шанс крита
 @export var critical_multiplier: float = 1.5  # Урон увеличивается в 1.5 раза
@@ -110,4 +110,4 @@ func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "magazine_clip":
 		# Увеличиваем максимальный размер магазина на 5 пуль за каждое улучшение
 		# Но не более 50 пуль в магазине
-		max_bullets = min(50, max_bullets + 3)
+		max_bullets = min(50, max_bullets + 5)

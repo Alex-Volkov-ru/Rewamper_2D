@@ -1,9 +1,7 @@
 extends Area2D
 class_name HurtBoxComponent
 
-
 @export var health_component: HealthComponent
-
 
 func _on_area_entered(area: Area2D):
 	if not area is HitBoxComponent:
@@ -14,3 +12,6 @@ func _on_area_entered(area: Area2D):
 		
 	var hit_box_component = area as HitBoxComponent
 	health_component.take_damage(hit_box_component.damage)
+
+	# Вызовем сигнал удара, чтобы уничтожить пулю!
+	hit_box_component.hit.emit(hit_box_component.damage)
