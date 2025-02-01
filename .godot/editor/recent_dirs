@@ -1,6 +1,7 @@
+D:/Dev/musictestgit
+res://fonts
 D:/Dev/TestGit
 res://song
-res://fonts
 res://singeltons
 res://addons
 res://scene/ui/joystick
@@ -19,4 +20,3 @@ res://scene/game_objects/necromancer
 res://scene/game_objects/skelet
 res://scene/game_objects/ork_warrior
 res://scene/game_objects/ork_shaman
-res://scene/game_objects/ork_masked

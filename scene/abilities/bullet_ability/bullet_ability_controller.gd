@@ -5,7 +5,9 @@ extends Node
 @export var bullet_ability_scene: PackedScene  # Сцена пули, используемая для стрельбы
 @export var damage: float = 10  # Базовый урон одной пули
 @export var max_bullets: int = 10  # Максимальное количество патронов в магазине
-
+# Настройки критического удара
+@export var critical_chance: float = 0.2 # 20% шанс крита
+@export var critical_multiplier: float = 1.5  # Урон увеличивается в 1.5 раза
 # --- Локальные переменные ---
 
 var current_bullets: int = max_bullets  # Текущее количество патронов в магазине
@@ -50,8 +52,16 @@ func spawn_bullet(gun: Node2D):
 		var direction = (gun.get_global_mouse_position() - gun.global_position).normalized()
 		bullet_instance.direction = direction
 
-		# Передаём урон пули
-		bullet_instance.hit_box_component.damage = damage
+		# Проверяем, произошел ли критический удар
+		var final_damage = damage
+		if randf() < critical_chance:  # Генерируем случайное число, если оно меньше критического шанса
+			final_damage *= critical_multiplier  # Увеличиваем урон на множитель критического удара
+			print("Критический удар! Урон: ", final_damage)  # Принт для отладки
+		else:
+			print("Обычный удар. Урон: ", final_damage)  # Принт для отладки
+
+		# Передаем итоговый урон пуле
+		bullet_instance.hit_box_component.damage = final_damage
 
 		# Уменьшаем количество пуль в магазине
 		current_bullets -= 1  
@@ -77,6 +87,7 @@ func _on_reload_timer_timeout():
 
 
 # --- Функция обработки улучшений ---
+
 
 # Обрабатывает улучшения, полученные игроком
 func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):

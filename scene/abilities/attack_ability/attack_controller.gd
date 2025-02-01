@@ -9,7 +9,7 @@ var sword_damage = 5
 var default_attack_speed
 
 # Настройки критического удара
-@export var critical_chance: float = 0.2 # 20% шанс крита
+@export var critical_chance: float = 0.1 # 10% шанс крита
 @export var critical_multiplier: float = 1.5  # Урон увеличивается в 1.5 раза
 
 func _ready():
