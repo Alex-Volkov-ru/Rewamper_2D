@@ -57,13 +57,17 @@ func _on_timer_timeout():
 	if is_critical:
 		print("Критический удар от меча! Урон:", final_damage)
 
-func on_upgrade_added(upgrade:AbilityUpgrade,current_upgrades:Dictionary):
-	if upgrade.id != "sword_rate":
-		return
-		
-	var upgrade_percent = current_upgrades["sword_rate"]["quantity"] * .1
-	timer.wait_time = max(0.1, default_attack_speed * (1 - upgrade_percent))
-	timer.start()
+func on_upgrade_added(upgrade:AbilityUpgrade, current_upgrades:Dictionary):
+	if upgrade.id == "sword_rate":
+		var upgrade_percent = current_upgrades["sword_rate"]["quantity"] * .1
+		timer.wait_time = max(0.1, default_attack_speed * (1 - upgrade_percent))
+		timer.start()
+	
+	elif upgrade.id == "sword_attack":
+		# Проверяем, сколько раз уже был применен апгрейд
+		var upgrade_count = current_upgrades["sword_attack"]["quantity"]
+		# Увеличиваем урон меча
+		sword_damage += 10
 	
 		
 	

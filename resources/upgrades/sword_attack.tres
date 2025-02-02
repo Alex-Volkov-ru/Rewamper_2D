@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://cl7t1igj726r3"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_nktqj"]
+
+[resource]
+script = ExtResource("1_nktqj")
+id = "sword_attack"
+max_quantity = 7
+name = "Увеличение урона от"
+description = "Увеличенеие урона от меча на 10 "

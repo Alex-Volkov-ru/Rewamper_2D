@@ -14,11 +14,11 @@ extends CharacterBody2D
 @onready var joystick = $JoysticMoveCanvasLayer/joystick
 @onready var joystick_attack = $JoystickAttackCanvasLayer/JoystickAttack
 @onready var dash_touch_button = $SkillsPlayer/DashScreenButton
-
+@onready var dashCooldownTimer = $DashCooldownTimer
 # Параметры
 @export var max_speed: float = 60
 @export var dash_speed_multiplier: float = 2
-@export var shooting_interval: float = 1.5  # Интервал между выстрелами
+@export var shooting_interval: float = 0.5  # Интервал между выстрелами
 
 # Локальные переменные
 var acceleration: float = 0.15
@@ -28,7 +28,7 @@ var doDash: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
 @export var health_value: float = 25  # Начальное значение здоровья player
 var time_since_last_shot: float = 0  # Счётчик времени для автоматической стрельбы
-
+var canDash: bool = true
 # Обработчик нажатия кнопки для рывка
 func _on_dash_screen_button_pressed() -> void:
 	perform_dash()
@@ -119,14 +119,23 @@ func _on_dash_effect_timer_timeout():
 
 # Выполнение рывка
 func perform_dash():
+	if not canDash:  # Проверяем, можно ли использовать рывок
+		return
+
 	if movement_vector().length() > 0:
 		dashDirection = movement_vector().normalized()
 	else:
 		dashDirection = Vector2(-1 if animated_sprite_2d.flip_h else 1, 0)
 
 	doDash = true
+	canDash = false  # Отключаем возможность рывка
 	dashDurationTimer.start()
 	dashEffectTimer.start()
+	dashCooldownTimer.start()  # Запускаем кулдаун
+
+# Завершение кулдауна рывка
+func _on_dash_cooldown_timer_timeout():
+	canDash = true  # Возвращаем возможность делать рывок
 
 # Готовность сцены
 func _ready():
@@ -214,7 +223,7 @@ func get_closest_enemy() -> Node2D:
 	var min_distance = INF  # Используем бесконечность для первого сравнения
 
 	# Перебираем все узлы в группе "enemies"
-	for enemy in get_tree().get_nodes_in_group("enemies"):
+	for enemy in get_tree().get_nodes_in_group("enemy"):
 		if enemy is Node2D:
 			# Вычисляем расстояние от игрока до врага
 			var distance = global_position.distance_to(enemy.global_position)

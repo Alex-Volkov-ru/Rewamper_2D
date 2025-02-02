@@ -13,6 +13,9 @@ var is_reloading: bool = false  # Флаг, указывающий на проц
 
 # --- Ссылки на узлы ---
 @onready var reload_timer = $ReloadTimer  # Таймер, используемый для отслеживания времени перезарядки
+@onready var attack_timer = $AttackTimer
+@export var shooting_interval: float = 0.5  # Интервал между выстрелами
+var time_since_last_shot: float = 0  # Счётчик времени для автоматической стрельбы
 
 # Эта функция вызывается, когда узел готов
 func _ready():
@@ -69,10 +72,9 @@ func get_final_damage() -> float:
 		# Увеличиваем урон на множитель критического удара
 		final_damage *= critical_multiplier
 		# Выводим информацию о критическом ударе в консоль
-		print("Критический удар! Урон: ", final_damage)
 	else:
 		# Если критического удара не было, выводим обычный урон
-		print("Обычный удар. Урон: ", final_damage)
+		final_damage
 	return final_damage
 
 # Функция для начала процесса перезарядки
@@ -108,3 +110,7 @@ func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 		# Увеличиваем размер магазина на 5 патронов за каждое улучшение
 		# Но не более 50 патронов
 		max_bullets = min(50, max_bullets + 5)
+
+
+func _on_attack_timer_timeout() -> void:
+	pass # Replace with function body.

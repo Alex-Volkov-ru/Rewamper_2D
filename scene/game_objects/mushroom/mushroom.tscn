@@ -82,7 +82,7 @@ drop_component = NodePath("../DropManager")
 
 [node name="MovementComponent" parent="." instance=ExtResource("6_exrva")]
 
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["enemies", "enemy"] instance=ExtResource("4_kek0l")]
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("4_kek0l")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
@@ -100,7 +100,7 @@ frame_progress = 0.317957
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_u0udm")
 
-[node name="EnemyHitBox" type="Area2D" parent="." groups=["enemies", "enemy"]]
+[node name="EnemyHitBox" type="Area2D" parent="." groups=["enemy"]]
 collision_layer = 16
 collision_mask = 0
 

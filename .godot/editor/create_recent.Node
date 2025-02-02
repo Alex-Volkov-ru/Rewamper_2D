@@ -1,11 +1,11 @@
+Timer
+AudioStreamPlayer
+Node
 CollisionShape2D
 Area2D
-Timer
 Node2D
-AudioStreamPlayer
 AudioStreamPlayer2D
 Label
-Node
 CanvasLayer
 TextureRect
 Control

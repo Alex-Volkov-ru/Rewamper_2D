@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfai825fjkrl6"
+path="res://.godot/imported/Dance With the dance Robeast.mp3-7cfa8ac9be8659be578fc9bb5a5b7dca.mp3str"
+
+[deps]
+
+source_file="res://song/Dance With the dance Robeast.mp3"
+dest_files=["res://.godot/imported/Dance With the dance Robeast.mp3-7cfa8ac9be8659be578fc9bb5a5b7dca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://clpxy6vam2c7f"]
+
+[ext_resource type="Script" path="res://song/music_manager.gd" id="1_2wrdl"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_2wrdl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true

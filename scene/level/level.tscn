@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://drsntb1xm1dnw" path="res://scene/ui/pause_menu.tscn" id="13_lhvbx"]
 [ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="15_5sdio"]
 [ext_resource type="Texture2D" uid="uid://8sbjrvn2rgmp" path="res://scene/ui/test (8) (1).png" id="15_jj4km"]
-[ext_resource type="AudioStream" uid="uid://bk7nw1yab530m" path="res://song/levelscen.mp3" id="16_ck1bf"]
+[ext_resource type="PackedScene" uid="uid://clpxy6vam2c7f" path="res://song/music_manager.tscn" id="16_g3bn8"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_qiyqh")
@@ -94,8 +94,6 @@ text = "Пауза"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_ck1bf")
-autoplay = true
+[node name="MusicManager" parent="." instance=ExtResource("16_g3bn8")]
 
 [connection signal="pressed" from="CanvasLayer/MenuRight" to="CanvasLayer/PauseMenu" method="_on_menu_pressed"]
