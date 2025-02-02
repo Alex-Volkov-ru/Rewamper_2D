@@ -13,12 +13,12 @@ extends CharacterBody2D
 @onready var attack_timer = $AttackTimer
 @onready var joystick = $JoysticMoveCanvasLayer/joystick
 @onready var joystick_attack = $JoystickAttackCanvasLayer/JoystickAttack
-
 @onready var dash_touch_button = $SkillsPlayer/DashScreenButton
 
 # Параметры
 @export var max_speed: float = 60
 @export var dash_speed_multiplier: float = 2
+@export var shooting_interval: float = 1.5  # Интервал между выстрелами
 
 # Локальные переменные
 var acceleration: float = 0.15
@@ -27,11 +27,13 @@ var can_shoot: bool = true
 var doDash: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
 @export var health_value: float = 25  # Начальное значение здоровья player
+var time_since_last_shot: float = 0  # Счётчик времени для автоматической стрельбы
 
+# Обработчик нажатия кнопки для рывка
 func _on_dash_screen_button_pressed() -> void:
 	perform_dash()
 
-# Определяем направление движения
+# Определяем направление движения игрока
 func movement_vector() -> Vector2:
 	var movement_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var movement_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -42,10 +44,11 @@ func movement_vector() -> Vector2:
 		return joystick_direction.normalized()
 	return keyboard_direction.normalized()
 
-# Физический процесс
+# Физический процесс (обновление физики)
 func _physics_process(delta):
 	var direction = movement_vector().normalized()
 
+	# Логика рывка
 	if doDash:
 		velocity = dashDirection * max_speed * dash_speed_multiplier
 	else:
@@ -68,18 +71,28 @@ func _physics_process(delta):
 	# Поворот пистолета в сторону мыши
 	gun.look_at(get_global_mouse_position())
 
-	# Если нажата клавиша стрельбы
+	# Стрельба при нажатии кнопки
 	if Input.is_action_just_pressed("shoot"):
 		shoot_bullet()
+		can_shoot = false
+		attack_timer.start()
+	
+	# Логика рывка по нажатию кнопки
 	if Input.is_action_just_pressed("dash"):
 		perform_dash()
-
-	# Проверка второго джойстика для стрельбы
+	
+	# Стрельба с использованием второго джойстика
 	if joystick_attack.posVector.length() > 0.1 and can_shoot:
 		gun.look_at(global_position + joystick_attack.posVector * 100)
 		shoot_bullet()
 		can_shoot = false
 		attack_timer.start()
+
+	# Логика автоматической стрельбы
+	time_since_last_shot += delta  # Увеличиваем счётчик времени
+	if time_since_last_shot >= shooting_interval:
+		shoot_bullet()  # Стреляем
+		time_since_last_shot = 0  # Сброс счётчика времени после выстрела
 
 # Завершение рывка
 func _on_dash_duration_timer_timeout():
@@ -117,10 +130,9 @@ func perform_dash():
 
 # Готовность сцены
 func _ready():
-		# Устанавливаем максимальное и текущее здоровье
+	# Устанавливаем максимальное и текущее здоровье
 	health_component.max_health = health_value
 	health_component.current_health = health_value
-
 
 	health_component.died.connect(on_died)
 	health_component.health_changed.connect(on_health_changed)
@@ -128,7 +140,11 @@ func _ready():
 	health_update()
 
 # Основной процесс
-func _process(delta):	
+func _process(delta):
+	var closest_enemy = get_closest_enemy()
+	if closest_enemy:
+		gun.look_at(closest_enemy.global_position)
+
 	var direction = movement_vector().normalized()
 	var target_velocity = max_speed * direction
 	velocity = velocity.lerp(target_velocity, acceleration)
@@ -183,9 +199,30 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 
 # Стрельба
 func shoot_bullet():
-	if bullet_ability_controller:
-		bullet_ability_controller.spawn_bullet(gun)
+	var closest_enemy = get_closest_enemy()
+	if closest_enemy:
+		var direction = (closest_enemy.global_position - gun.global_position).normalized()
+		bullet_ability_controller.spawn_bullet(gun, direction)  # Передаем два аргумента
 
 # Таймер атаки
 func _on_attack_timer_timeout():
 	can_shoot = true
+
+# Получение ближайшего врага
+func get_closest_enemy() -> Node2D:
+	var closest_enemy: Node2D = null
+	var min_distance = INF  # Используем бесконечность для первого сравнения
+
+	# Перебираем все узлы в группе "enemies"
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if enemy is Node2D:
+			# Вычисляем расстояние от игрока до врага
+			var distance = global_position.distance_to(enemy.global_position)
+
+			# Если этот враг ближе, обновляем ближайшего врага
+			if distance < min_distance:
+				closest_enemy = enemy
+				min_distance = distance
+
+	# Возвращаем ближайшего врага или null, если врагов не найдено
+	return closest_enemy

@@ -1,113 +1,110 @@
 extends Node
 
 # --- Экспортируемые переменные (настраиваемые в инспекторе) ---
-
-@export var bullet_ability_scene: PackedScene  # Сцена пули, используемая для стрельбы
+@export var bullet_ability_scene: PackedScene  # Сцена пули, используется для создания пули
 @export var damage: float = 10  # Базовый урон одной пули
 @export var max_bullets: int = 20  # Максимальное количество патронов в магазине
-# Настройки критического удара
-@export var critical_chance: float = 0.2 # 20% шанс крита
-@export var critical_multiplier: float = 1.5  # Урон увеличивается в 1.5 раза
-# --- Локальные переменные ---
+@export var critical_chance: float = 0.2 # Шанс критического удара (20%)
+@export var critical_multiplier: float = 1.5  # Множитель урона при критическом ударе
 
-var current_bullets: int = max_bullets  # Текущее количество патронов в магазине
-var is_reloading: bool = false  # Флаг процесса перезарядки (true, если идет перезарядка)
+# --- Локальные переменные ---
+var current_bullets: int = max_bullets  # Текущее количество патронов
+var is_reloading: bool = false  # Флаг, указывающий на процесс перезарядки
 
 # --- Ссылки на узлы ---
+@onready var reload_timer = $ReloadTimer  # Таймер, используемый для отслеживания времени перезарядки
 
-@onready var reload_timer = $ReloadTimer  # Таймер, отвечающий за время перезарядки
-
+# Эта функция вызывается, когда узел готов
 func _ready():
-	# Подписка на глобальный сигнал улучшений (при получении улучшения вызывается обработчик)
+	# Подписываемся на сигнал улучшений, чтобы обрабатывать полученные улучшения
 	Global.ability_upgrade_added.connect(on_upgrade_added)
 
 # --- Функции стрельбы и перезарядки ---
 
-# Создаёт и выпускает пулю из оружия
-func spawn_bullet(gun: Node2D):
-	# Проверяем, идет ли процесс перезарядки
-	if is_reloading:
+# Функция для создания и выпуска пули
+func spawn_bullet(gun: Node2D, direction: Vector2):
+	# Если идет перезарядка или патроны закончились, начинаем процесс перезарядки
+	if is_reloading or current_bullets <= 0:
+		start_reload()
+		return
+	
+	# Проверяем, что сцена пули задана
+	assert(bullet_ability_scene != null, "Сцена пули не задана!")
+
+	# Получаем ссылку на слой, куда будем добавлять пули (например, передний слой экрана)
+	var front_layer = get_tree().get_first_node_in_group('front_layer') as Node2D
+	if not front_layer:
+		# Если слой не найден, выводим ошибку
+		print("Ошибка: Front Layer не найден!")
 		return
 
-	# Проверяем, есть ли патроны в магазине
-	if current_bullets > 0:
-		# Проверяем, задана ли сцена пули (иначе выдаем ошибку)
-		if bullet_ability_scene == null:
-			return
+	# Создаем экземпляр пули из сцены
+	var bullet_instance = bullet_ability_scene.instantiate() as BulletAbility
+	front_layer.add_child(bullet_instance)  # Добавляем пулю в игровой мир
 
-		# Получаем ссылку на передний слой, куда будем добавлять пулю
-		var front_layer = get_tree().get_first_node_in_group('front_layer') as Node2D
-		if front_layer == null:
-			print("Ошибка: Front Layer не найден!")
-			return
+	# Устанавливаем начальную позицию пули, где находится оружие
+	bullet_instance.global_position = gun.global_position
+	# Устанавливаем направление полета пули
+	bullet_instance.direction = direction
 
-		# Создаём экземпляр пули
-		var bullet_instance = bullet_ability_scene.instantiate() as BulletAbility
-		front_layer.add_child(bullet_instance)
+	# Вычисляем итоговый урон с учетом возможности критического удара
+	var final_damage = get_final_damage()
 
-		# Устанавливаем начальную позицию пули (там, где находится оружие)
-		bullet_instance.global_position = gun.global_position
+	# Передаем рассчитанный урон пуле
+	bullet_instance.hit_box_component.damage = final_damage
 
-		# Определяем направление стрельбы (в сторону курсора)
-		var direction = (gun.get_global_mouse_position() - gun.global_position).normalized()
-		bullet_instance.direction = direction
+	# Уменьшаем количество патронов в магазине
+	current_bullets -= 1
 
-		# Проверяем, произошел ли критический удар
-		var final_damage = damage
-		if randf() < critical_chance:  # Генерируем случайное число, если оно меньше критического шанса
-			final_damage *= critical_multiplier  # Увеличиваем урон на множитель критического удара
-			print("Критический удар пистолета! Урон: ", final_damage)  # Принт для отладки
-		else:
-			print("Обычный удар. Урон: ", final_damage)  # Принт для отладки
-
-		# Передаем итоговый урон пуле
-		bullet_instance.hit_box_component.damage = final_damage
-
-		# Уменьшаем количество пуль в магазине
-		current_bullets -= 1  
-
-		# Если магазин пуст, начинаем перезарядку
-		if current_bullets == 0:
-			start_reload()
-	else:
+	# Если патроны закончились, начинаем процесс перезарядки
+	if current_bullets == 0:
 		start_reload()
 
-# Запуск процесса перезарядки
+# Функция для вычисления итогового урона (с учетом критического удара)
+func get_final_damage() -> float:
+	# Начальный урон равен базовому урону
+	var final_damage = damage
+	# Если выпал критический удар (случайное число меньше шанса)
+	if randf() < critical_chance:
+		# Увеличиваем урон на множитель критического удара
+		final_damage *= critical_multiplier
+		# Выводим информацию о критическом ударе в консоль
+		print("Критический удар! Урон: ", final_damage)
+	else:
+		# Если критического удара не было, выводим обычный урон
+		print("Обычный удар. Урон: ", final_damage)
+	return final_damage
+
+# Функция для начала процесса перезарядки
 func start_reload():
+	# Если перезарядка еще не началась, запускаем её
 	if not is_reloading:
-		is_reloading = true  # Устанавливаем флаг "перезарядка началась"
+		is_reloading = true  # Устанавливаем флаг начала перезарядки
 		reload_timer.start()  # Запускаем таймер перезарядки
 
-# Обработчик завершения перезарядки (срабатывает, когда таймер перезарядки заканчивается)
+# Функция, которая вызывается, когда таймер перезарядки завершен
 func _on_reload_timer_timeout():
-	# Полностью восстанавливаем магазин
+	# Восстанавливаем магазин до максимального размера
 	current_bullets = max_bullets
-	is_reloading = false  # Сбрасываем флаг перезарядки
-
-
+	# Сбрасываем флаг перезарядки
+	is_reloading = false
 
 # --- Функция обработки улучшений ---
-
-
-# Обрабатывает улучшения, полученные игроком
+# Эта функция обрабатывает улучшения, полученные игроком
 func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	# Улучшение урона оружия
+	# Улучшение урона
 	if upgrade.id == "gun_attack":
-		var upgrade_amount = current_upgrades["gun_attack"]["quantity"]
-		
-		# Каждый апгрейд увеличивает урон пули на 5
-		damage += 5  
+		# Каждый апгрейд увеличивает урон на 5
+		damage += 5
 
 	# Улучшение скорости перезарядки
 	if upgrade.id == "cooldown":
-		var upgrade_amount = current_upgrades["cooldown"]["quantity"]
-		
-		# Уменьшаем время ожидания перезарядки на 10% за каждое улучшение
-		# Но время перезарядки не может быть меньше 0.3 секунды
+		# Уменьшаем время перезарядки на 10% за каждое улучшение
+		# Но не меньше 0.3 секунд
 		reload_timer.wait_time = max(0.3, reload_timer.wait_time * 0.9)
 
 	# Улучшение размера магазина
 	if upgrade.id == "magazine_clip":
-		# Увеличиваем максимальный размер магазина на 5 пуль за каждое улучшение
-		# Но не более 50 пуль в магазине
+		# Увеличиваем размер магазина на 5 патронов за каждое улучшение
+		# Но не более 50 патронов
 		max_bullets = min(50, max_bullets + 5)

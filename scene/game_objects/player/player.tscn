@@ -173,6 +173,8 @@ wait_time = 0.1
 wait_time = 3.0
 one_shot = true
 
+[node name="AutoShootTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="SkillsPlayer/DashScreenButton" to="." method="_on_dash_screen_button_pressed"]
 [connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
