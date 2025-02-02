@@ -10,7 +10,6 @@ extends CharacterBody2D
 @onready var gun = $Gun
 @onready var dashDurationTimer = $DashDurationTimer
 @onready var dashEffectTimer = $DashEffectTimer
-@onready var attack_timer = $AttackTimer
 @onready var joystick = $JoysticMoveCanvasLayer/joystick
 @onready var joystick_attack = $JoystickAttackCanvasLayer/JoystickAttack
 @onready var dash_touch_button = $SkillsPlayer/DashScreenButton
@@ -18,7 +17,6 @@ extends CharacterBody2D
 # Параметры
 @export var max_speed: float = 60
 @export var dash_speed_multiplier: float = 2
-@export var shooting_interval: float = 0.5  # Интервал между выстрелами
 
 # Локальные переменные
 var acceleration: float = 0.15
@@ -27,7 +25,6 @@ var can_shoot: bool = true
 var doDash: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
 @export var health_value: float = 25  # Начальное значение здоровья player
-var time_since_last_shot: float = 0  # Счётчик времени для автоматической стрельбы
 var canDash: bool = true
 # Обработчик нажатия кнопки для рывка
 func _on_dash_screen_button_pressed() -> void:
@@ -75,8 +72,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot_bullet()
 		can_shoot = false
-		attack_timer.start()
-	
 	# Логика рывка по нажатию кнопки
 	if Input.is_action_just_pressed("dash"):
 		perform_dash()
@@ -86,13 +81,11 @@ func _physics_process(delta):
 		gun.look_at(global_position + joystick_attack.posVector * 100)
 		shoot_bullet()
 		can_shoot = false
-		attack_timer.start()
 
 	# Логика автоматической стрельбы
-	time_since_last_shot += delta  # Увеличиваем счётчик времени
-	if time_since_last_shot >= shooting_interval:
-		shoot_bullet()  # Стреляем
-		time_since_last_shot = 0  # Сброс счётчика времени после выстрела
+
+	shoot_bullet()  # Стреляем
+
 
 # Завершение рывка
 func _on_dash_duration_timer_timeout():
@@ -213,9 +206,7 @@ func shoot_bullet():
 		var direction = (closest_enemy.global_position - gun.global_position).normalized()
 		bullet_ability_controller.spawn_bullet(gun, direction)  # Передаем два аргумента
 
-# Таймер атаки
-func _on_attack_timer_timeout():
-	can_shoot = true
+
 
 # Получение ближайшего врага
 func get_closest_enemy() -> Node2D:

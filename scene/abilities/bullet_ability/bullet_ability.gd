@@ -7,7 +7,7 @@ class_name BulletAbility
 var direction: Vector2
 var is_destroyed = false  # Флаг, чтобы отслеживать, уничтожена ли пуля
 var distance_travelled: float = 0  # Расстояние, которое прошла пуля
-var max_distance: float = 200  # Фиксированное расстояние полета пули (200 пикселей)
+var max_distance: float = 300  # Фиксированное расстояние полета пули
 
 func _ready():
 	direction = Vector2.ZERO
@@ -22,9 +22,9 @@ func _process(delta: float) -> void:
 		# Увеличиваем пройденное расстояние
 		distance_travelled += speed * delta
 		
-		# Проверяем, преодолела ли пуля максимальное расстояние (200 пикселей)
+		# Проверяем, преодолела ли пуля максимальное расстояние 
 		if distance_travelled >= max_distance:
-			destroy_bullet()  # Уничтожаем пулю, если она прошла 200 пикселей
+			destroy_bullet()  # Уничтожаем пулю, если она прошла
 
 # Обработчик сигнала удара от HitBoxComponent
 func _on_hit(damage: float) -> void:
