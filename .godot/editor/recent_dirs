@@ -1,3 +1,5 @@
+res://scene/components
+res://scene/manager
 D:/Dev/musictestgit
 res://song
 res://fonts
@@ -8,7 +10,6 @@ res://scene/ui/joystick
 res://scene/ui/dash
 res://scene/ui
 res://scene/ui/joustik
-res://scene/components
 D:/Dev/html_export
 res://scene/game_objects/zombie
 res://scene/game_objects/pumpkin
@@ -19,4 +20,3 @@ res://scene/game_objects/wogol
 res://scene/game_objects/necromancer
 res://scene/game_objects/skelet
 res://scene/game_objects/ork_warrior
-res://scene/game_objects/ork_shaman

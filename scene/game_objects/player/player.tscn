@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b0ump57ta6uh8"]
+[gd_scene load_steps=25 format=3 uid="uid://b0ump57ta6uh8"]
 
 [ext_resource type="Script" path="res://scene/game_objects/player/player.gd" id="1_8oolj"]
 [ext_resource type="Texture2D" uid="uid://c1tcfei7yvse7" path="res://scene/game_objects/player/knight_f_hit_anim_f0.png" id="1_i2o30"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://bsmedwf2v1q1b" path="res://scene/game_objects/player/knight_f_run_anim_f2.png" id="8_s6gq3"]
 [ext_resource type="Texture2D" uid="uid://bvpb2eqisbpu1" path="res://scene/game_objects/player/knight_f_run_anim_f3.png" id="9_8p638"]
 [ext_resource type="PackedScene" uid="uid://c4vvtug3mq13w" path="res://scene/abilities/Gun/gun.tscn" id="15_sg3fv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_abxju"]
+radius = 197.091
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2hhs"]
 bg_color = Color(0.133333, 0.133333, 0.133333, 1)
@@ -88,6 +91,13 @@ height = 16.0
 collision_layer = 0
 script = ExtResource("1_8oolj")
 
+[node name="ShootingArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingArea"]
+shape = SubResource("CircleShape2D_abxju")
+
 [node name="JoystickAttackCanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
@@ -97,7 +107,7 @@ position = Vector2(1045, 496)
 [node name="JoysticMoveCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="joystick" parent="JoysticMoveCanvasLayer" instance=ExtResource("3_vp73i")]
-position = Vector2(138, 471)
+position = Vector2(578, 471)
 
 [node name="SkillsPlayer" type="CanvasLayer" parent="."]
 

@@ -45,7 +45,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 7.0
+"speed": 8.0
 }]
 
 [node name="Coin" type="Node2D"]
@@ -62,6 +62,6 @@ shape = SubResource("CircleShape2D_4p0ve")
 sprite_frames = SubResource("SpriteFrames_1fabf")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.697572
+frame_progress = 0.815485
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

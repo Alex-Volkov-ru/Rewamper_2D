@@ -15,9 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://drsntb1xm1dnw" path="res://scene/ui/pause_menu.tscn" id="13_lhvbx"]
 [ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="15_5sdio"]
 [ext_resource type="Texture2D" uid="uid://8sbjrvn2rgmp" path="res://scene/ui/test (8) (1).png" id="15_jj4km"]
+[ext_resource type="PackedScene" uid="uid://clpxy6vam2c7f" path="res://song/music_manager.tscn" id="16_g3bn8"]
 [ext_resource type="Script" path="res://scene/level/label.gd" id="17_vmelh"]
-[ext_resource type="Script" path="res://scene/level/lvl_player.gd" id="18_e4oi7"]
-[ext_resource type="PackedScene" uid="uid://cg04ve6o0vqrq" path="res://scene/manager/coin_manager.tscn" id="19_dffof"]
+[ext_resource type="Script" path="res://scene/level/gold.gd" id="18_hd8em"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_qiyqh")
@@ -96,6 +96,8 @@ text = "Пауза"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MusicManager" parent="." instance=ExtResource("16_g3bn8")]
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer2"]
@@ -114,9 +116,7 @@ offset_right = 57.0
 offset_bottom = 85.0
 theme_override_fonts/font = ExtResource("15_5sdio")
 theme_override_font_sizes/font_size = 29
-text = "LVL:"
-script = ExtResource("18_e4oi7")
-
-[node name="CoinManager" parent="." instance=ExtResource("19_dffof")]
+text = "GOLD:"
+script = ExtResource("18_hd8em")
 
 [connection signal="pressed" from="CanvasLayer/MenuRight" to="CanvasLayer/PauseMenu" method="_on_menu_pressed"]

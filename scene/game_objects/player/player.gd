@@ -14,11 +14,14 @@ extends CharacterBody2D
 @onready var joystick_attack = $JoystickAttackCanvasLayer/JoystickAttack
 @onready var dash_touch_button = $SkillsPlayer/DashScreenButton
 @onready var dashCooldownTimer = $DashCooldownTimer
+@onready var shooting_area = $ShootingArea
+
 # Параметры
 @export var max_speed: float = 60
 @export var dash_speed_multiplier: float = 2
 
 # Локальные переменные
+
 var acceleration: float = 0.15
 var enemies_colliding: int = 0
 var can_shoot: bool = true
@@ -201,10 +204,12 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 
 # Стрельба
 func shoot_bullet():
-	var closest_enemy = get_closest_enemy()
-	if closest_enemy:
-		var direction = (closest_enemy.global_position - gun.global_position).normalized()
-		bullet_ability_controller.spawn_bullet(gun, direction)  # Передаем два аргумента
+	var bodies_in_area = shooting_area.get_overlapping_bodies()
+	
+	for body in bodies_in_area:
+		if body.is_in_group("enemy"):
+			var direction = (body.global_position - gun.global_position).normalized()
+			bullet_ability_controller.spawn_bullet(gun, direction)
 
 
 

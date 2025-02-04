@@ -4,11 +4,12 @@ class_name DropManager
 
 signal exp_dropped
 signal hp_dropped
-
+signal coin_dropped
 
 
 @export var exp_drop_percent = 0.5
 @export var hp_drop_percent = 0.1
+@export var coin_drop_percent = 0.05
 
 @export var health_component: Node
 
@@ -29,5 +30,11 @@ func on_died ():
 	drop_value = randf()
 	if drop_value <= exp_drop_percent:
 		exp_dropped.emit()
+		return
+	
+	drop_value = randf()
+	if drop_value <= coin_drop_percent:
+		coin_dropped.emit()
+		print('Монета Выпала')
 		return
 	

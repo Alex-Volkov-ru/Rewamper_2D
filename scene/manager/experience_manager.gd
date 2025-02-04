@@ -24,3 +24,4 @@ func on_experience_bottle_collected (experience):
 		target_experience += target_after_lvlup
 		experience_update.emit(current_experience, target_experience)
 		level_up.emit(current_level)
+		print('current_level ', current_level)

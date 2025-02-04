@@ -10,7 +10,6 @@ func _ready():
 	(drop_component as DropManager).exp_dropped.connect(on_drop)
 
 func on_drop ():
-
 	if exp_bottle_scene == null:
 		return
 		
