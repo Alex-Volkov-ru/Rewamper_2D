@@ -2,39 +2,35 @@ extends Node
 
 class_name DropManager
 
+# Сигналы, сообщающие о выпадении награды
 signal exp_dropped
 signal hp_dropped
 signal coin_dropped
 
+# Вероятности выпадения различных наград
+@export var exp_drop_percent: float = 0.5
+@export var hp_drop_percent: float = 0.1
+@export var coin_drop_percent: float = 0.05
 
-@export var exp_drop_percent = 0.5
-@export var hp_drop_percent = 0.1
-@export var coin_drop_percent = 0.05
-
-@export var health_component: Node
-
-var drop_value = 0
+@export var health_component: Node  # Компонент здоровья
 
 func _ready():
+	# Подключаем обработчик смерти к сигналу компонента здоровья
 	(health_component as HealthComponent).died.connect(on_died)
 
-
-func on_died ():
-	
-	drop_value = randf()
-	if drop_value <= hp_drop_percent:
+# Вызывается при смерти объекта
+func on_died():
+	# Проверяем шанс выпадения HP
+	if randf() <= hp_drop_percent:
 		hp_dropped.emit()
-
 		return
 
-	drop_value = randf()
-	if drop_value <= exp_drop_percent:
+	# Проверяем шанс выпадения EXP
+	if randf() <= exp_drop_percent:
 		exp_dropped.emit()
 		return
 	
-	drop_value = randf()
-	if drop_value <= coin_drop_percent:
+	# Проверяем шанс выпадения монеты
+	if randf() <= coin_drop_percent:
 		coin_dropped.emit()
-		print('Монета Выпала')
 		return
-	

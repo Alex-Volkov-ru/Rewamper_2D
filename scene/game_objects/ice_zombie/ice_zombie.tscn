@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgc6ckc7a2e3f"]
+[gd_scene load_steps=19 format=3 uid="uid://cgc6ckc7a2e3f"]
 
 [ext_resource type="Script" path="res://scene/game_objects/ice_zombie/ice_zombie.gd" id="1_r3k6m"]
 [ext_resource type="PackedScene" uid="uid://cv1yiogfb21jb" path="res://scene/game_objects/ice_zombie/bullet_ice_zombie_controller.tscn" id="2_expcw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cnr80u6ha6rxo" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f0.png" id="3_yvfhk"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_dt7iv"]
 [ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_antmd"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="5_l15hp"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_71vqo"]
 [ext_resource type="Texture2D" uid="uid://dhgtai1rhwgdm" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f1.png" id="7_7ptvn"]
 [ext_resource type="Texture2D" uid="uid://c0kud4mrbgyv" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f2.png" id="8_kis4t"]
@@ -69,6 +70,9 @@ sprite = ExtResource("3_yvfhk")
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_dexmh")]
 health_component = NodePath("../HealthComponent")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("5_l15hp")]
+drop_component = NodePath("../DropManager")
 
 [node name="BulletIceZombieController" parent="." instance=ExtResource("2_expcw")]
 

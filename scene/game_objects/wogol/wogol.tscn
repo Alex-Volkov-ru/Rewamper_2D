@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://b6ogrw1vbpqhf"]
+[gd_scene load_steps=23 format=3 uid="uid://b6ogrw1vbpqhf"]
 
 [ext_resource type="Script" path="res://scene/game_objects/wogol/wogol.gd" id="1_bn1aq"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_ji3ke"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="3_l15kw"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_1pfrq"]
 [ext_resource type="PackedScene" uid="uid://cqc2k3jx7mm2t" path="res://scene/game_objects/wogol/bullet_wogol_controller.tscn" id="4_4tq3n"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="4_hw7pr"]
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_mjyu8"]
 [ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="4_uohj7"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="5_s20p8"]
@@ -70,6 +71,9 @@ collision_mask = 5
 script = ExtResource("1_bn1aq")
 death_scecene = ExtResource("2_ji3ke")
 sprite = ExtResource("6_a5wwp")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_hw7pr")]
+drop_component = NodePath("../DropManager")
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_1pfrq")]
 health_component = NodePath("../HealthComponent")

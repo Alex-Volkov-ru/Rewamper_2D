@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0lg7ayonppa6"]
+[gd_scene load_steps=21 format=3 uid="uid://b0lg7ayonppa6"]
 
 [ext_resource type="Script" path="res://scene/game_objects/tiny_zombie/tiny_zombie.gd" id="1_5n0fp"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_vjaeq"]
 [ext_resource type="Texture2D" uid="uid://cf3acjg2yorew" path="res://scene/game_objects/tiny_zombie/tiny_zombie_idle_anim_f1.png" id="3_uyvrd"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="4_1logo"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_4tkud"]
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_b7pd4"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_i0d0f"]
@@ -65,6 +66,9 @@ collision_mask = 5
 script = ExtResource("1_5n0fp")
 death_scecene = ExtResource("2_vjaeq")
 sprite = ExtResource("3_uyvrd")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_1logo")]
+drop_component = NodePath("../DropManager")
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_i0d0f")]
 health_component = NodePath("../HealthComponent")

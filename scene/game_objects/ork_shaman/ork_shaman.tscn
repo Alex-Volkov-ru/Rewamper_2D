@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvock8q7xdt2p"]
+[gd_scene load_steps=23 format=3 uid="uid://dvock8q7xdt2p"]
 
 [ext_resource type="Script" path="res://scene/game_objects/ork_shaman/ork_shaman.gd" id="1_ecss3"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_dqkps"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_5ibgj"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_a7spp"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_rfyq2"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="4_tampk"]
 [ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_l57ud"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_0aqmf"]
 [ext_resource type="Texture2D" uid="uid://tp878tiigqma" path="res://scene/game_objects/ork_shaman/orc_shaman_idle_anim_f1.png" id="7_jsonx"]
@@ -70,6 +71,9 @@ collision_mask = 5
 script = ExtResource("1_ecss3")
 death_scecene = ExtResource("2_dqkps")
 sprite = ExtResource("3_xo58y")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_tampk")]
+drop_component = NodePath("../DropManager")
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_a7spp")]
 health_component = NodePath("../HealthComponent")

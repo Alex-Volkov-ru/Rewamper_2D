@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c4vvtug3mq13w" path="res://scene/abilities/Gun/gun.tscn" id="15_sg3fv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abxju"]
-radius = 197.091
+radius = 154.003
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2hhs"]
 bg_color = Color(0.133333, 0.133333, 0.133333, 1)
@@ -107,7 +107,7 @@ position = Vector2(1045, 496)
 [node name="JoysticMoveCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="joystick" parent="JoysticMoveCanvasLayer" instance=ExtResource("3_vp73i")]
-position = Vector2(578, 471)
+position = Vector2(186, 471)
 
 [node name="SkillsPlayer" type="CanvasLayer" parent="."]
 

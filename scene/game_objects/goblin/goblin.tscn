@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://egealcsf1fs1"]
+[gd_scene load_steps=22 format=3 uid="uid://egealcsf1fs1"]
 
 [ext_resource type="Script" path="res://scene/game_objects/goblin/goblin.gd" id="1_j3oj7"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_7gsnx"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cubfyiryf0x6j" path="res://scene/game_objects/goblin/goblin_run_anim_f2.png" id="12_0115u"]
 [ext_resource type="Texture2D" uid="uid://d0q8lx2f0mad5" path="res://scene/game_objects/goblin/goblin_run_anim_f3.png" id="13_xrrec"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_mal02"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="17_0howw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xd82y"]
 
@@ -107,3 +108,6 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_jsrsn")
 
 [node name="MovementComponent" parent="." instance=ExtResource("14_mal02")]
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("17_0howw")]
+drop_component = NodePath("../DropManager")

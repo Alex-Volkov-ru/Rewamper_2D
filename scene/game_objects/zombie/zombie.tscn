@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0sc0e3ci3l1o"]
+[gd_scene load_steps=23 format=3 uid="uid://b0sc0e3ci3l1o"]
 
 [ext_resource type="Script" path="res://scene/game_objects/zombie/zombie.gd" id="1_nkkp1"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_l80dc"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dsuo6powys73h" path="res://scene/game_objects/zombie/big_zombie_run_anim_f3.png" id="13_h1m0p"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_h0j1w"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="17_1b6f2"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="18_x1ivd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e5tjj"]
 animations = [{
@@ -69,6 +70,9 @@ collision_mask = 5
 script = ExtResource("1_nkkp1")
 death_scecene = ExtResource("2_l80dc")
 sprite = ExtResource("3_al1lk")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("18_x1ivd")]
+drop_component = NodePath("../DropManager")
 
 [node name="HpBottleDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_lx61j")]
 drop_component = NodePath("../DropManager")

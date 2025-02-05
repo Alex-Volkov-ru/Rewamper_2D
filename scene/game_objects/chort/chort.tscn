@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dbgrpaudxni57"]
+[gd_scene load_steps=23 format=3 uid="uid://dbgrpaudxni57"]
 
 [ext_resource type="Script" path="res://scene/game_objects/chort/chort.gd" id="1_m1rn4"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_p0t6t"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_bp3bt"]
 [ext_resource type="PackedScene" uid="uid://oqwv3etad4nw" path="res://scene/game_objects/chort/bullet_chort_controller.tscn" id="14_bsfie"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="17_jg20u"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="18_fwvgw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sylmn"]
 radius = 7.0
@@ -112,3 +113,6 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_my8qb")
 
 [node name="MovementComponent" parent="." instance=ExtResource("14_bp3bt")]
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("18_fwvgw")]
+drop_component = NodePath("../DropManager")

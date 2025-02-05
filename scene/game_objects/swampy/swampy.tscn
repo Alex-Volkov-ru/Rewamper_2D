@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cr2e77paxkq1g"]
+[gd_scene load_steps=18 format=3 uid="uid://cr2e77paxkq1g"]
 
 [ext_resource type="Script" path="res://scene/game_objects/swampy/swampy.gd" id="1_dddjp"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_0omkc"]
 [ext_resource type="Texture2D" uid="uid://ccpbpxnqmbv60" path="res://scene/game_objects/swampy/swampy_anim_f0.png" id="3_10s4t"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="4_h4q5s"]
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_qpobq"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_stjq1"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_ykfyq"]
@@ -65,6 +66,9 @@ collision_mask = 5
 script = ExtResource("1_dddjp")
 death_scecene = ExtResource("2_0omkc")
 sprite = ExtResource("3_10s4t")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_h4q5s")]
+drop_component = NodePath("../DropManager")
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_stjq1")]
 health_component = NodePath("../HealthComponent")

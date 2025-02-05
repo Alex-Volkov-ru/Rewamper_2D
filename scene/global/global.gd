@@ -8,7 +8,6 @@ signal ability_upgrade_added (upgrade: AbilityUpgrade, current_upgrades: Diction
 var coin_manager: CoinManager
 
 func emit_coin_collected(coin: int):
-	print("Отправка сигнала: coin_collected с кол-вом:", coin)
 	# Простой способ не проверять сразу. Позволяет избежать проблем с "не видимостью" объекта
 	coin_collected.emit(coin)
 
@@ -23,4 +22,3 @@ func _ready():
 func _create_coin_manager():
 	coin_manager = CoinManager.new()
 	get_tree().root.add_child(coin_manager)
-	print("CoinManager создан программно и добавлен в дерево!")

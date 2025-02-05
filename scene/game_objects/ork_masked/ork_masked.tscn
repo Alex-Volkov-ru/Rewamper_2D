@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ca8j46ovfqv5f"]
+[gd_scene load_steps=22 format=3 uid="uid://ca8j46ovfqv5f"]
 
 [ext_resource type="Script" path="res://scene/game_objects/ork_masked/ork_masked.gd" id="1_xgjtm"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_61pv2"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://rp42u1nj5xdd" path="res://scene/game_objects/ork_masked/masked_orc_run_anim_f2.png" id="12_yh236"]
 [ext_resource type="Texture2D" uid="uid://cs3hvm4rv13jr" path="res://scene/game_objects/ork_masked/masked_orc_run_anim_f3.png" id="13_wjqp1"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_4k7vp"]
+[ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="17_w7qau"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nlyn6"]
 radius = 8.0
@@ -69,6 +70,9 @@ collision_mask = 5
 script = ExtResource("1_xgjtm")
 death_scecene = ExtResource("2_61pv2")
 sprite = ExtResource("3_wm8gs")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("17_w7qau")]
+drop_component = NodePath("../DropManager")
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_flyuu")]
 health_component = NodePath("../HealthComponent")
