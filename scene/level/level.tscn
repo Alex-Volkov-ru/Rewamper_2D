@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dhjmob1me1bda"]
+[gd_scene load_steps=21 format=4 uid="uid://dhjmob1me1bda"]
 
 [ext_resource type="PackedScene" uid="uid://0v0noh4wlipi" path="res://scene/manager/spawner/enemy_spawner.tscn" id="1_2js51"]
 [ext_resource type="TileSet" uid="uid://e5gea1nudkw5" path="res://resources/world.tres" id="1_a55n7"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://scene/level/gold_precent.gd" id="18_e4oi7"]
 [ext_resource type="Script" path="res://scene/level/lvlcurrrentscene.gd" id="18_lead1"]
 [ext_resource type="PackedScene" uid="uid://clpxy6vam2c7f" path="res://song/music_manager.tscn" id="19_r6cjb"]
+[ext_resource type="PackedScene" uid="uid://bbr5clnv2s3hy" path="res://scene/abilities/chest/chest.tscn" id="20_d4rc3"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_qiyqh")
@@ -129,5 +130,8 @@ text = "LVL:"
 script = ExtResource("18_lead1")
 
 [node name="MusicManager" parent="." instance=ExtResource("19_r6cjb")]
+
+[node name="Chest2" parent="." instance=ExtResource("20_d4rc3")]
+position = Vector2(241, 33)
 
 [connection signal="pressed" from="CanvasLayer/MenuRight" to="CanvasLayer/PauseMenu" method="_on_menu_pressed"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbr5clnv2s3hy"]
+
+[ext_resource type="Script" path="res://scene/abilities/chest/chest_area2d.gd" id="1_07snb"]
+[ext_resource type="Texture2D" uid="uid://8wriyh33icei" path="res://scene/abilities/chest/chest_empty_open_anim_f0.png" id="1_rmpct"]
+[ext_resource type="PackedScene" uid="uid://c4vvtug3mq13w" path="res://scene/abilities/Gun/gun.tscn" id="2_3lu8p"]
+[ext_resource type="Texture2D" uid="uid://bxmdlfeccttrh" path="res://scene/abilities/chest/chest_full_open_anim_f0.png" id="3_p6kjl"]
+[ext_resource type="Texture2D" uid="uid://bc8aa1ym3oec6" path="res://scene/abilities/chest/chest_full_open_anim_f1.png" id="4_3e853"]
+[ext_resource type="Texture2D" uid="uid://dgsiusjy5qa4x" path="res://scene/abilities/chest/chest_full_open_anim_f2.png" id="5_ideaa"]
+[ext_resource type="Texture2D" uid="uid://q8fhph5gy2oe" path="res://scene/abilities/chest/chest_mimic_open_anim_f0.png" id="6_htook"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvi7i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fsei3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rmpct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p6kjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3e853")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ideaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_htook")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Chest" type="Node2D" groups=["player"]]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_07snb")
+weapon_scene = ExtResource("2_3lu8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jvi7i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fsei3")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.967113
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

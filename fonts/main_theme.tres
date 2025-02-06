@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://f68i0etv3lld"]
+
+[ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="1_het5q"]
+
+[resource]
+default_font = ExtResource("1_het5q")

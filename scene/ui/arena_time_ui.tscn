@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm1c3y5elhmwa"]
+[gd_scene load_steps=3 format=3 uid="uid://bm1c3y5elhmwa"]
 
 [ext_resource type="Script" path="res://scene/ui/arena_time_ui.gd" id="1_dk6v8"]
+[ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="2_jvm7e"]
 
 [node name="ArenaTimeUI" type="CanvasLayer"]
 script = ExtResource("1_dk6v8")
@@ -19,4 +20,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_jvm7e")
+theme_override_font_sizes/font_size = 0
 text = "Таймер"

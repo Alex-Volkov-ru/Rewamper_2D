@@ -1,7 +1,7 @@
 extends Node2D
 class_name BulletAbility
 
-@export var speed: float = 250
+@export var speed: float = 200
 @onready var hit_box_component: HitBoxComponent = $HitBoxComponent
 
 var direction: Vector2

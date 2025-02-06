@@ -1,12 +1,10 @@
 extends Node2D
 
-const BULLET = preload("res://scene/abilities/Gun/gun.tscn")
+@onready var bullet_ability_controller: Node = $BulletAbilityController  # Ссылка на BulletAbilityController
 
-func _process(delta: float) -> void:
-	look_at(get_global_mouse_position())
-	
-	rotation_degrees = wrap(rotation_degrees, 0, 360)
-	if rotation_degrees > 90 and rotation_degrees < 270:
-		scale.y = -1
+func spawn_bullet(direction: Vector2):
+	if bullet_ability_controller:
+		# Спавним пулю с помощью контроллера
+		bullet_ability_controller.spawn_bullet(self, direction)
 	else:
-		scale.y = 1
+		print("Ошибка: BulletAbilityController не найден!")

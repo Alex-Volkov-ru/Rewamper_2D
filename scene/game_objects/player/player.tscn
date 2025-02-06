@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b0ump57ta6uh8"]
+[gd_scene load_steps=23 format=3 uid="uid://b0ump57ta6uh8"]
 
 [ext_resource type="Script" path="res://scene/game_objects/player/player.gd" id="1_8oolj"]
 [ext_resource type="Texture2D" uid="uid://c1tcfei7yvse7" path="res://scene/game_objects/player/knight_f_hit_anim_f0.png" id="1_i2o30"]
@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d02yl8nx3spsb" path="res://scene/abilities/attack_ability/attack_controller.tscn" id="2_prcev"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="3_5ccbm"]
 [ext_resource type="Texture2D" uid="uid://d0i6e1pmrvsdy" path="res://scene/game_objects/player/knight_f_idle_anim_f1.png" id="3_kmhla"]
-[ext_resource type="PackedScene" uid="uid://boxn1ya3i2gcs" path="res://scene/abilities/bullet_ability/bullet_ability_controller.tscn" id="3_lwtka"]
 [ext_resource type="PackedScene" uid="uid://bbvhw374wnphl" path="res://scene/ui/joustik/joystick.tscn" id="3_vp73i"]
 [ext_resource type="Texture2D" uid="uid://di8bh7fwjpwla" path="res://scene/game_objects/player/knight_f_idle_anim_f2.png" id="4_6n3le"]
-[ext_resource type="PackedScene" uid="uid://bu3o01yxe7dh3" path="res://scene/ui/joystick/joystick_attack.tscn" id="4_oi24k"]
 [ext_resource type="Texture2D" uid="uid://c7ehbgi4m6nx1" path="res://scene/game_objects/player/knight_f_idle_anim_f3.png" id="5_5r35s"]
 [ext_resource type="Texture2D" uid="uid://clu4onj7mwifa" path="res://scene/game_objects/player/knight_f_run_anim_f0.png" id="6_kiy7l"]
 [ext_resource type="Texture2D" uid="uid://bdm4mspvpgybf" path="res://scene/game_objects/player/knight_f_run_anim_f1.png" id="7_vgjvu"]
@@ -19,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c4vvtug3mq13w" path="res://scene/abilities/Gun/gun.tscn" id="15_sg3fv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abxju"]
-radius = 154.003
+radius = 148.014
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2hhs"]
 bg_color = Color(0.133333, 0.133333, 0.133333, 1)
@@ -98,12 +96,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingArea"]
 shape = SubResource("CircleShape2D_abxju")
 
-[node name="JoystickAttackCanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="JoystickAttack" parent="JoystickAttackCanvasLayer" instance=ExtResource("4_oi24k")]
-position = Vector2(1045, 496)
-
 [node name="JoysticMoveCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="joystick" parent="JoysticMoveCanvasLayer" instance=ExtResource("3_vp73i")]
@@ -120,8 +112,6 @@ texture_normal = ExtResource("2_jcfir")
 [node name="AbilityManager" type="Node" parent="."]
 
 [node name="AttackController" parent="AbilityManager" instance=ExtResource("2_prcev")]
-
-[node name="BulletAbilityController" parent="AbilityManager" instance=ExtResource("3_lwtka")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_5ccbm")]
 
@@ -142,7 +132,7 @@ max_value = 1.0
 value = 0.5
 show_percentage = false
 
-[node name="PickUpArea" type="Area2D" parent="."]
+[node name="PickUpArea" type="Area2D" parent="." groups=["player"]]
 collision_layer = 8
 collision_mask = 0
 
@@ -168,9 +158,6 @@ collision_mask = 16
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_337ul")
 
-[node name="Gun" parent="." groups=["player"] instance=ExtResource("15_sg3fv")]
-position = Vector2(0, -3)
-
 [node name="DashDurationTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
@@ -186,6 +173,12 @@ one_shot = true
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="Gun" parent="." instance=ExtResource("15_sg3fv")]
+position = Vector2(11, -5)
+
+[node name="Marker2D" type="Marker2D" parent="Gun"]
+position = Vector2(6, 1)
 
 [connection signal="pressed" from="SkillsPlayer/DashScreenButton" to="." method="_on_dash_screen_button_pressed"]
 [connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]

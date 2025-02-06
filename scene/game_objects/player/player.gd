@@ -6,12 +6,10 @@ extends CharacterBody2D
 @onready var progress_bar = $ProgressBar
 @onready var ability_manager = $AbilityManager
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var bullet_ability_controller = $AbilityManager/BulletAbilityController
 @onready var gun = $Gun
 @onready var dashDurationTimer = $DashDurationTimer
 @onready var dashEffectTimer = $DashEffectTimer
 @onready var joystick = $JoysticMoveCanvasLayer/joystick
-@onready var joystick_attack = $JoystickAttackCanvasLayer/JoystickAttack
 @onready var dash_touch_button = $SkillsPlayer/DashScreenButton
 @onready var dashCooldownTimer = $DashCooldownTimer
 @onready var shooting_area = $ShootingArea
@@ -19,16 +17,36 @@ extends CharacterBody2D
 # Параметры
 @export var max_speed: float = 60
 @export var dash_speed_multiplier: float = 2
+@export var health_value: float = 25  # Начальное значение здоровья игрока
 
 # Локальные переменные
-
 var acceleration: float = 0.15
 var enemies_colliding: int = 0
 var can_shoot: bool = true
 var doDash: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
-@export var health_value: float = 25  # Начальное значение здоровья player
 var canDash: bool = true
+
+# Новый список оружия
+var weapons = []
+
+# Добавление оружия в инвентарь игрока
+func add_weapon(weapon_scene: PackedScene):
+	var weapon_instance = weapon_scene.instantiate()  # Создаем экземпляр оружия
+	weapons.append(weapon_instance)  # Добавляем оружие в инвентарь
+	add_child(weapon_instance)  # Добавляем оружие как дочерний элемент игрока
+	weapon_instance.position += Vector2(0, 30)  # Смещаем оружие вправо для теста
+
+# Стрельба всеми оружиями
+func shoot_all_weapons():
+	for weapon in weapons:
+		if weapon.has_method("spawn_bullet"):
+			# Получаем ближайшего врага для каждого оружия
+			var closest_enemy = get_closest_enemy()
+			if closest_enemy:
+				var direction = (closest_enemy.global_position - weapon.global_position).normalized()  # Направление к врагу
+				weapon.spawn_bullet(direction)  # Спауним пулю в этом направлении
+
 # Обработчик нажатия кнопки для рывка
 func _on_dash_screen_button_pressed() -> void:
 	perform_dash()
@@ -52,10 +70,7 @@ func _physics_process(delta):
 	if doDash:
 		velocity = dashDirection * max_speed * dash_speed_multiplier
 	else:
-		if direction != Vector2.ZERO:
-			velocity = velocity.lerp(direction * max_speed, acceleration)
-		else:
-			velocity = velocity.lerp(Vector2.ZERO, acceleration)
+		velocity = velocity.lerp(direction * max_speed, acceleration) if direction != Vector2.ZERO else velocity.lerp(Vector2.ZERO, acceleration)
 
 	move_and_slide()
 
@@ -67,28 +82,20 @@ func _physics_process(delta):
 
 	if direction.x != 0:
 		animated_sprite_2d.flip_h = direction.x < 0
-
-	# Поворот пистолета в сторону мыши
-	gun.look_at(get_global_mouse_position())
-
-	# Стрельба при нажатии кнопки
-	if Input.is_action_just_pressed("shoot"):
-		shoot_bullet()
-		can_shoot = false
+	
 	# Логика рывка по нажатию кнопки
 	if Input.is_action_just_pressed("dash"):
 		perform_dash()
-	
-	# Стрельба с использованием второго джойстика
-	if joystick_attack.posVector.length() > 0.1 and can_shoot:
-		gun.look_at(global_position + joystick_attack.posVector * 100)
-		shoot_bullet()
-		can_shoot = false
 
 	# Логика автоматической стрельбы
+	shoot_all_weapons()
+	shoot_bullet()
 
-	shoot_bullet()  # Стреляем
-
+	# Поворот оружия в сторону ближайшего врага
+	var closest_enemy = get_closest_enemy()
+	if closest_enemy:
+		for weapon in weapons:
+			weapon.look_at(closest_enemy.global_position)  # Поворот оружия в сторону врага
 
 # Завершение рывка
 func _on_dash_duration_timer_timeout():
@@ -118,6 +125,7 @@ func perform_dash():
 	if not canDash:  # Проверяем, можно ли использовать рывок
 		return
 
+	# Определяем направление рывка
 	if movement_vector().length() > 0:
 		dashDirection = movement_vector().normalized()
 	else:
@@ -155,7 +163,8 @@ func _process(delta):
 	velocity = velocity.lerp(target_velocity, acceleration)
 	move_and_slide()
 
-	if direction.x != 0 || direction.y != 0:
+	# Управление анимацией
+	if direction.x != 0 or direction.y != 0:
 		animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("idle")
@@ -204,14 +213,21 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 
 # Стрельба
 func shoot_bullet():
-	var bodies_in_area = shooting_area.get_overlapping_bodies()
-	
+	var bodies_in_area = shooting_area.get_overlapping_bodies()  # Получаем все объекты в области
+	var enemy_in_area = false  # Переменная для отслеживания, есть ли враг в области
+
+	# Проверяем, есть ли враг среди объектов в области
 	for body in bodies_in_area:
-		if body.is_in_group("enemy"):
-			var direction = (body.global_position - gun.global_position).normalized()
-			bullet_ability_controller.spawn_bullet(gun, direction)
+		if body.is_in_group("enemy"):  # Проверяем, является ли объект врагом
+			enemy_in_area = true
+			break  # Прерываем цикл, если нашли врага
 
-
+	# Если в области есть враг, начинаем стрелять
+	if enemy_in_area:
+		var closest_enemy = get_closest_enemy()  # Получаем ближайшего врага
+		if closest_enemy:
+			var direction = (closest_enemy.global_position - gun.global_position).normalized()  # Направление к врагу
+			gun.spawn_bullet(direction)  # Спауним пулю
 
 # Получение ближайшего врага
 func get_closest_enemy() -> Node2D:

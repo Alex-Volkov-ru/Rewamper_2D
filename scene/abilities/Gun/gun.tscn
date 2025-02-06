@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4vvtug3mq13w"]
+[gd_scene load_steps=4 format=3 uid="uid://c4vvtug3mq13w"]
 
 [ext_resource type="Script" path="res://scene/abilities/Gun/gun.gd" id="1_ldhko"]
 [ext_resource type="Texture2D" uid="uid://cvr4uw6y8yk0j" path="res://scene/game_objects/player/result (4).png" id="2_e7ikq"]
+[ext_resource type="PackedScene" uid="uid://boxn1ya3i2gcs" path="res://scene/abilities/bullet_ability/bullet_ability_controller.tscn" id="3_b6l5h"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_ldhko")
 
+[node name="BulletAbilityController" parent="." instance=ExtResource("3_b6l5h")]
+
 [node name="Gun2D" type="Sprite2D" parent="."]
-position = Vector2(5, 0.69)
+position = Vector2(-1, 1)
 rotation = -0.675442
 scale = Vector2(0.0259617, 0.0259617)
 texture = ExtResource("2_e7ikq")

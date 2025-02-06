@@ -1,8 +1,10 @@
+res://scene/abilities/chest
 D:/Dev/musictestgit
+res://fonts
+res://api
 res://scene/components
 res://scene/manager
 res://song
-res://fonts
 D:/Dev/TestGit
 res://singeltons
 res://addons
@@ -18,5 +20,3 @@ res://scene/game_objects/tiny_zombie
 res://scene/game_objects/swampy
 res://scene/game_objects/wogol
 res://scene/game_objects/necromancer
-res://scene/game_objects/skelet
-res://scene/game_objects/ork_warrior
