@@ -19,7 +19,7 @@
 [ext_resource type="Script" path="res://scene/level/gold_precent.gd" id="18_e4oi7"]
 [ext_resource type="Script" path="res://scene/level/lvlcurrrentscene.gd" id="18_lead1"]
 [ext_resource type="PackedScene" uid="uid://clpxy6vam2c7f" path="res://song/music_manager.tscn" id="19_r6cjb"]
-[ext_resource type="PackedScene" uid="uid://bbr5clnv2s3hy" path="res://scene/abilities/chest/chest.tscn" id="20_d4rc3"]
+[ext_resource type="PackedScene" uid="uid://b05xcr40veowg" path="res://scene/manager/spawner/chest_spawner.tscn" id="20_talu1"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_qiyqh")
@@ -36,6 +36,9 @@ experience_manager = NodePath("../ExperienceManager")
 [node name="HpManager" parent="." instance=ExtResource("6_i437k")]
 
 [node name="ExperienceManager" parent="." instance=ExtResource("3_j7nn6")]
+
+[node name="ChestSpawner" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("20_talu1")]
+arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_2js51")]
 arena_time_manager = NodePath("../ArenaTimeManager")
@@ -130,8 +133,5 @@ text = "LVL:"
 script = ExtResource("18_lead1")
 
 [node name="MusicManager" parent="." instance=ExtResource("19_r6cjb")]
-
-[node name="Chest2" parent="." instance=ExtResource("20_d4rc3")]
-position = Vector2(241, 33)
 
 [connection signal="pressed" from="CanvasLayer/MenuRight" to="CanvasLayer/PauseMenu" method="_on_menu_pressed"]

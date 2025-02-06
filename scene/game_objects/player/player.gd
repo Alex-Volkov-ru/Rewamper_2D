@@ -32,10 +32,19 @@ var weapons = []
 
 # Добавление оружия в инвентарь игрока
 func add_weapon(weapon_scene: PackedScene):
-	var weapon_instance = weapon_scene.instantiate()  # Создаем экземпляр оружия
-	weapons.append(weapon_instance)  # Добавляем оружие в инвентарь
-	add_child(weapon_instance)  # Добавляем оружие как дочерний элемент игрока
-	weapon_instance.position += Vector2(0, 30)  # Смещаем оружие вправо для теста
+	# Создаем экземпляр оружия
+	var weapon_instance = weapon_scene.instantiate()
+	
+	# Добавляем оружие в инвентарь
+	weapons.append(weapon_instance)
+	add_child(weapon_instance)
+
+	# Рассчитываем угол для нового оружия, увеличиваем его на 45 градусов за каждый предмет
+	var angle = weapons.size() * (PI / 4)  # 45 градусов = PI / 4 радиан
+
+	# Позиционируем оружие по часовой стрелке относительно игрока
+	weapon_instance.position = Vector2(cos(angle), sin(angle)) * 30  # 30 - радиус расположения оружия вокруг игрока
+
 
 # Стрельба всеми оружиями
 func shoot_all_weapons():
