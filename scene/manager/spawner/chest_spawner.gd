@@ -18,12 +18,12 @@ func _ready():
 # Функция для отслеживания изменения сложности
 func on_difficulty_increased(difficulty_level: int):
 	# Проверка, если сложность достигла 20, и сундук еще не был спавнен
-	if difficulty_level >= 20 and not spawned_at_20:
+	if difficulty_level >= 30 and not spawned_at_20:
 		spawn_chest()  # Спавним сундук
 		spawned_at_20 = true  # Устанавливаем флаг, чтобы не спавнить сундук снова на уровне 20
 
 	# Проверка, если сложность достигла 40, и сундук еще не был спавнен
-	if difficulty_level >= 40 and not spawned_at_40:
+	if difficulty_level >= 55 and not spawned_at_40:
 		spawn_chest()  # Спавним сундук
 		spawned_at_40 = true  # Устанавливаем флаг, чтобы не спавнить сундук снова на уровне 40
 
@@ -34,8 +34,6 @@ func spawn_chest():
 		# Получаем игрока и спавним сундук рядом с ним
 		var player = get_tree().get_first_node_in_group("player") as Node2D
 		if player:
-			chest.position = player.global_position + Vector2(100, 0)  # Сундук появляется рядом с игроком
+			chest.position = player.global_position + Vector2(500, 0)  # Сундук появляется рядом с игроком
 			get_parent().add_child(chest)  # Добавляем сундук в сцену
 			print("Сундук спавнен рядом с игроком на позиции: ", chest.position)
-		else:
-			print("Игрок не найден! Сундук не может быть спавнен.")

@@ -28,7 +28,19 @@ func disable_collision():
 
 # Обработчик входа в зону Area2D
 func _on_area_2d_area_entered(area):
-	Callable(disable_collision).call_deferred()  # Отключаем коллизию с задержкой
+	Callable(disable_collision).call_deferred()
+	var rng = randi_range(20, 40)
+	var player = get_tree().get_first_node_in_group('player') as Node2D
+	if player == null:
+		return
+	var away_point = global_position + (global_position - player.global_position)\
+	.normalized() * rng
+	var tween_out = create_tween()
+	tween_out.tween_property(self, "global_position", away_point, 0.4)\
+	.set_ease(Tween.EASE_OUT)\
+	.set_trans(Tween.TRANS_CUBIC)
+	
+	await tween_out.finished
 	
 	# Создаём анимацию движения монеты к игроку
 	var tween = create_tween()

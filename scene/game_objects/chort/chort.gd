@@ -19,7 +19,6 @@ func _ready():
 	
 	
 	health_component.died.connect(on_died)
-	health_component.damage_received.connect(on_damage_received)  # Подключаем обработку урона
 
 func _process(delta):
 	# Движение моба
@@ -63,9 +62,3 @@ func on_died():
 	death_instance.sprite_offset.position.x = animated_sprite_2d.offset.y
 	death_instance.global_position = global_position
 	queue_free()
-
-# Обрабатываем отображение урона
-func on_damage_received(damage: int):
-	if damage_numbers:
-		# Отображаем урон немного выше зомби
-		damage_numbers.display_number(damage, global_position + Vector2(0, -30))

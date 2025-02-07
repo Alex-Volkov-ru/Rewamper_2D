@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtl83pkevikkd"
+path="res://.godot/imported/Zombie Hyperdrive Argon Prime.mp3-01bbeb55decfcee26b66996a7f27d293.mp3str"
+
+[deps]
+
+source_file="res://song/Zombie Hyperdrive Argon Prime.mp3"
+dest_files=["res://.godot/imported/Zombie Hyperdrive Argon Prime.mp3-01bbeb55decfcee26b66996a7f27d293.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

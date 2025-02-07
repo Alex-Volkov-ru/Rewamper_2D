@@ -19,7 +19,6 @@ func _ready():
 	
 	# Подключаем сигналы для смерти и получения урона
 	health_component.died.connect(on_died)
-	health_component.damage_received.connect(on_damage_received)  # Подключаем обработку урона
 
 # Основной процесс обновления игры
 func _process(delta):

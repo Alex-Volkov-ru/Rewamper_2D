@@ -1,3 +1,5 @@
+AnimationPlayer
+Label
 Timer
 Node
 Sprite2D
@@ -7,7 +9,6 @@ AnimatedSprite2D
 CollisionShape2D
 Area2D
 CanvasLayer
-Label
 Button
 AudioStreamPlayer
 Node2D

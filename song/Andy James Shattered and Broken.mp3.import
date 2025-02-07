@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsf5m6q7d7655"
+path="res://.godot/imported/Andy James Shattered and Broken.mp3-6910766274eca6ad469547da8e701ec9.mp3str"
+
+[deps]
+
+source_file="res://song/Andy James Shattered and Broken.mp3"
+dest_files=["res://.godot/imported/Andy James Shattered and Broken.mp3-6910766274eca6ad469547da8e701ec9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

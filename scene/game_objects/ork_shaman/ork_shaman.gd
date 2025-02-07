@@ -23,8 +23,6 @@ func _ready():
 	
 	# Подключаем сигналы для смерти и получения урона
 	health_component.died.connect(on_died)
-	health_component.damage_received.connect(on_damage_received)  # Подключаем обработку урона
-
 # Основной процесс обновления игры
 func _process(delta):
 	# Двигаем моба в сторону игрока
@@ -80,9 +78,3 @@ func on_died():
 	
 	# Удаляем моба из сцены
 	queue_free()
-
-# Обрабатываем отображение урона
-func on_damage_received(damage: int):
-	if damage_numbers:
-		# Отображаем урон немного выше моба
-		damage_numbers.display_number(damage, global_position + Vector2(0, -30))

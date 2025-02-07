@@ -19,7 +19,6 @@ func _ready():
 	
 	# Подключаем сигналы для смерти и получения урона
 	health_component.died.connect(on_died)
-	health_component.damage_received.connect(on_damage_received)  # Подключаем обработку урона
 
 # Основной процесс обновления игры
 func _process(delta):
@@ -39,12 +38,6 @@ func _process(delta):
 	var face_sign = sign(direction.x)
 	if face_sign != 0:
 		animated_sprite_2d.scale.x = face_sign  # Меняем направление взгляда
-
-# Обрабатываем отображение урона
-func on_damage_received(damage: float):
-	if damage_numbers:
-		# Если урон критический, передаем true
-		damage_numbers.display_number(damage, global_position + Vector2(0, -30))  # Отображаем урон на экране
 
 # Обработка смерти моба
 func on_died():

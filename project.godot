@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scene/global/global.tscn"
-DamageNumbers="*res://singeltons/Damage_numbers.gd"
 
 [debug]
 
