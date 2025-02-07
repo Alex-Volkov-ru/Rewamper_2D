@@ -39,3 +39,16 @@ res://scene/game_objects/zombie/zombie.gd
 res://scene/abilities/bullet_ability/bullet_ability_controller.gd
 res://scene/abilities/attack_ability/attack_controller.gd
 res://song/music_manager.gd
+res://scene/components/critical_damage_text_component.tscn
+res://scene/components/critical_damage_text_component.gd
+res://scene/components/hurt_box_component.gd
+res://scene/components/hit_box_component.gd
+res://scene/ui/new_test/control.tscn
+res://scene/ui/new_test/control.gd
+res://scene/ui/menu.gd
+res://scene/ui/menu.tscn
+res://scene/ui/talents_menu.tscn
+res://scene/ui/tallants/talents_menu.tscn
+res://scene/ui/tallants/skill_button.gd
+res://scene/ui/tallants/skill_button.tscn
+res://scene/ui/tallants/talents_menu.gd

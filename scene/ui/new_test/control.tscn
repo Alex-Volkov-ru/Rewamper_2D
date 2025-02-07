@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtcmohm5bhdlp"]
+
+[ext_resource type="Script" path="res://scene/ui/new_test/control.gd" id="1_d2d32"]
+[ext_resource type="Texture2D" uid="uid://qg5t68wxiiy1" path="res://scene/ui/joustik/big_coll.png" id="1_hf8bm"]
+[ext_resource type="Texture2D" uid="uid://y235q657eqcs" path="res://scene/ui/joustik/SmallHandleFilledGrey.png" id="2_rqgwb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8cvy2"]
+radius = 154.81
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_d2d32")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = -194.0
+offset_right = 138.0
+offset_bottom = -154.0
+grow_vertical = 0
+
+[node name="bg" type="TouchScreenButton" parent="Control"]
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_hf8bm")
+texture_pressed = ExtResource("1_hf8bm")
+shape = SubResource("CircleShape2D_8cvy2")
+action = "joystick_action"
+
+[node name="iner" type="Sprite2D" parent="Control/bg"]
+position = Vector2(150, 150)
+texture = ExtResource("2_rqgwb")

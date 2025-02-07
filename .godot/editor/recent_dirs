@@ -1,3 +1,6 @@
+res://scene/ui/tallants
+res://scene/ui
+res://scene/ui/new_test
 D:/Dev/musictestgit
 res://scene/components
 res://scene/abilities/chest
@@ -9,8 +12,6 @@ D:/Dev/TestGit
 res://singeltons
 res://addons
 res://scene/ui/joystick
-res://scene/ui/dash
-res://scene/ui
 res://scene/ui/joustik
 D:/Dev/html_export
 res://scene/game_objects/zombie
@@ -19,4 +20,3 @@ res://scene/game_objects/ice_zombie
 res://scene/game_objects/tiny_zombie
 res://scene/game_objects/swampy
 res://scene/game_objects/wogol
-res://scene/game_objects/necromancer
