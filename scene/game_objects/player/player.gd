@@ -33,7 +33,7 @@ var canDash: bool = true
 # Уровень таланта "Выносливость"
 var stamina_talent_level: int = 0
 # Таблица бонусов к здоровью (0 - без таланта, 5 - максимальный уровень)
-var stamina_health_bonus := [0, 20, 50, 80, 120, 150]
+var stamina_health_bonus := [0.0, 0.03, 0.06, 0.09, 0.12, 0.15]
 
 # Новый список оружия
 var weapons = []
@@ -46,12 +46,10 @@ func _on_skill_upgraded(skill_name: String, level: int):
 
 func apply_stamina_talent():
 	var bonus = stamina_health_bonus[stamina_talent_level]
-	health_value = 25 + bonus  # Учитываем базовое здоровье
+	var bonus_percent = health_value * bonus  # Учитываем базовое здоровье
+	health_value += bonus_percent
 	health_component.max_health = health_value
 	health_component.current_health = health_value
-
-	print("Новый уровень выносливости:", stamina_talent_level)
-	print("Максимальное здоровье:", health_component.max_health)
 
 # Добавление оружия в инвентарь игрока
 func add_weapon(weapon_scene: PackedScene):

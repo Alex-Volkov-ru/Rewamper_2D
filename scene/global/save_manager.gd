@@ -2,15 +2,10 @@ extends Node
 class_name SaveManager
 
 var save_file_path := "user://save_data.json"
-var server_url := "https://yourserver.com/api/save_data"
-
 var save_data := {
 	"coins": 0,
 	"talents": {}
 }
-
-var is_online := false  # Флаг: работаем локально или с сервером
-var http_request: HTTPRequest
 
 # === ПРОВЕРКА ПЛАТФОРМЫ ===
 func _is_web() -> bool:
@@ -23,13 +18,13 @@ func save():
 	else:
 		_save_to_file()
 
-# === СОХРАНЕНИЕ НА ВЕБ (localStorage) ===
+# === СОХРАНЕНИЕ В localStorage (ДЛЯ ВЕБ) ===
 func _save_to_local_storage():
 	var json_data = JSON.stringify(save_data)
-	JavaScriptBridge.eval("localStorage.setItem('save_data', " + JSON.stringify(json_data) + ");")
+	JavaScriptBridge.eval("localStorage.setItem('save_data', '" + json_data + "');")
 	print("Данные сохранены в localStorage.")
 
-# === СОХРАНЕНИЕ В ЛОКАЛЬНЫЙ ФАЙЛ ===
+# === СОХРАНЕНИЕ В ЛОКАЛЬНЫЙ ФАЙЛ (ДЛЯ ПК И МОБИЛЬНЫХ) ===
 func _save_to_file():
 	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
 	if file:
@@ -51,7 +46,7 @@ func _load_data():
 				save_data = json.data
 				print("Данные загружены локально.")
 
-# === ЗАГРУЗКА ДАННЫХ ИЗ localStorage (для Web) ===
+# === ЗАГРУЗКА ДАННЫХ ИЗ localStorage (ДЛЯ ВЕБ) ===
 func _load_from_local_storage():
 	var json_data = JavaScriptBridge.eval("localStorage.getItem('save_data');")
 	if json_data and json_data != "null":
@@ -61,19 +56,11 @@ func _load_from_local_storage():
 			save_data = json.data
 			print("Данные загружены из localStorage.")
 
-# === СОХРАНЕНИЕ ОТДЕЛЬНЫХ ДАННЫХ ===
-func save_data_key(key: String, value):
-	save_data[key] = value
-	save()
-
 # === СОХРАНЕНИЕ ТАЛАНТОВ ===
 func save_talents(talents: Dictionary):
 	save_data["talents"] = talents
-	save()
+	save()  # ✅ Теперь вызываем save() после обновления талантов
 
-# === ЗАГРУЗКА ОТДЕЛЬНЫХ ДАННЫХ ===
-func load_data_key(key: String, default_value = null):
-	return save_data.get(key, default_value)
-
+# === ЗАГРУЗКА ТАЛАНТОВ ===
 func load_talents() -> Dictionary:
 	return save_data.get("talents", {})

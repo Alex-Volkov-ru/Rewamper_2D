@@ -60,9 +60,6 @@ y_sort_enabled = true
 [node name="Player" parent="BackLayer" instance=ExtResource("2_ts23m")]
 unique_name_in_owner = true
 position = Vector2(82, 83)
-max_speed = null
-dash_speed_multiplier = null
-health_value = null
 
 [node name="FrontLayer" type="Node2D" parent="." groups=["front_layer"]]
 

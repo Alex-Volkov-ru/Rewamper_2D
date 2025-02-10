@@ -20,7 +20,7 @@ func get_talent(talent_name: String, default_value: int = 0) -> int:
 
 func set_talent(talent_name: String, value: int):
 	talents[talent_name] = value
-	Save_Manager_Progress.save_talents(talents)  # ✅ Теперь таланты сохраняются
+	Save_Manager_Progress.save_talents(talents)
 
 func emit_coin_collected(coin: int):
 	coin_collected.emit(coin)
