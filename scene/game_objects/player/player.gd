@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+
+signal skill_upgraded(skill_name: String, level: int)
+
 # Компоненты
 @onready var health_component = $HealthComponent
 @onready var grace_period = $GracePeriod
@@ -27,8 +30,28 @@ var doDash: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
 var canDash: bool = true
 
+# Уровень таланта "Выносливость"
+var stamina_talent_level: int = 0
+# Таблица бонусов к здоровью (0 - без таланта, 5 - максимальный уровень)
+var stamina_health_bonus := [0, 20, 50, 80, 120, 150]
+
 # Новый список оружия
 var weapons = []
+
+# Обработчик сигнала улучшения таланта
+func _on_skill_upgraded(skill_name: String, level: int):
+	if skill_name == "stamina":
+		stamina_talent_level = level
+		apply_stamina_talent()
+
+func apply_stamina_talent():
+	var bonus = stamina_health_bonus[stamina_talent_level]
+	health_value = 25 + bonus  # Учитываем базовое здоровье
+	health_component.max_health = health_value
+	health_component.current_health = health_value
+
+	print("Новый уровень выносливости:", stamina_talent_level)
+	print("Максимальное здоровье:", health_component.max_health)
 
 # Добавление оружия в инвентарь игрока
 func add_weapon(weapon_scene: PackedScene):
@@ -152,6 +175,13 @@ func _on_dash_cooldown_timer_timeout():
 
 # Готовность сцены
 func _ready():
+	stamina_talent_level = Global.get_talent("stamina", 0)  # Загружаем сохраненный уровень
+	apply_stamina_talent()
+	# Подписываемся на сигнал улучшения таланта
+	for skill_node in get_tree().get_nodes_in_group("skills"):
+		if skill_node is SkillNode:
+			skill_node.skill_upgraded.connect(_on_skill_upgraded)
+	
 	# Устанавливаем максимальное и текущее здоровье
 	health_component.max_health = health_value
 	health_component.current_health = health_value
@@ -160,6 +190,7 @@ func _ready():
 	health_component.health_changed.connect(on_health_changed)
 	Global.ability_upgrade_added.connect(on_ability_upgrade_added)
 	health_update()
+	
 
 # Основной процесс
 func _process(delta):

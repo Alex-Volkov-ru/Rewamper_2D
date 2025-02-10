@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cpnlu28l5osgq"]
+
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="1_airp2"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_airp2")
+shader_parameter/percent = 0.0

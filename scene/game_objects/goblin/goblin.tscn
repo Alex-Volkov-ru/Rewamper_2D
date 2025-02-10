@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://egealcsf1fs1"]
+[gd_scene load_steps=25 format=3 uid="uid://egealcsf1fs1"]
 
 [ext_resource type="Script" path="res://scene/game_objects/goblin/goblin.gd" id="1_j3oj7"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_7gsnx"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_4q37p"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_8g1tw"]
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_t8pi4"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="5_bj7gd"]
 [ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_u1qbf"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="6_m8b2u"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_qya5w"]
 [ext_resource type="Texture2D" uid="uid://dq1liw3mptddu" path="res://scene/game_objects/goblin/goblin_idle_anim_f1.png" id="7_2s7rc"]
 [ext_resource type="Texture2D" uid="uid://beoynffg7wek2" path="res://scene/game_objects/goblin/goblin_idle_anim_f2.png" id="8_immqu"]
@@ -17,6 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://d0q8lx2f0mad5" path="res://scene/game_objects/goblin/goblin_run_anim_f3.png" id="13_xrrec"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_mal02"]
 [ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="17_0howw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urqop"]
+resource_local_to_scene = true
+shader = ExtResource("6_m8b2u")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xd82y"]
 
@@ -70,6 +77,14 @@ script = ExtResource("1_j3oj7")
 death_scecene = ExtResource("2_7gsnx")
 sprite = ExtResource("3_ehbvj")
 
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("17_0howw")]
+drop_component = NodePath("../DropManager")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_bj7gd")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_urqop")
+
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_8g1tw")]
 health_component = NodePath("../HealthComponent")
 
@@ -108,6 +123,3 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_jsrsn")
 
 [node name="MovementComponent" parent="." instance=ExtResource("14_mal02")]
-
-[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("17_0howw")]
-drop_component = NodePath("../DropManager")

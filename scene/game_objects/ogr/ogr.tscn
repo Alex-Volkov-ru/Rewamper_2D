@@ -1,12 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://cb5t8abntu8xq"]
+[gd_scene load_steps=25 format=3 uid="uid://cb5t8abntu8xq"]
 
 [ext_resource type="Script" path="res://scene/game_objects/ogr/ogr.gd" id="1_abso5"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_au7pr"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="4_1mpe8"]
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_3nmvk"]
 [ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="4_gaxx6"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_kgael"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_xtw80"]
 [ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_slla2"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="5_wae5n"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_5x2p2"]
 [ext_resource type="Texture2D" uid="uid://cvm4p5v55us1u" path="res://scene/game_objects/ogr/ogre_idle_anim_f0.png" id="7_tvh4j"]
 [ext_resource type="Texture2D" uid="uid://bmvm7tidr7xki" path="res://scene/game_objects/ogr/ogre_idle_anim_f1.png" id="8_gx0ln"]
@@ -17,6 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://dlg6qrhggm03b" path="res://scene/game_objects/ogr/ogre_run_anim_f1.png" id="12_ug03j"]
 [ext_resource type="Texture2D" uid="uid://mfqjcalswhgd" path="res://scene/game_objects/ogr/ogre_run_anim_f2.png" id="13_pdw8g"]
 [ext_resource type="Texture2D" uid="uid://c76sckjulfyru" path="res://scene/game_objects/ogr/ogre_run_anim_f3.png" id="14_xj5qu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_elvf4"]
+resource_local_to_scene = true
+shader = ExtResource("5_wae5n")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr27b"]
 
@@ -68,6 +75,11 @@ collision_mask = 5
 script = ExtResource("1_abso5")
 death_scecene = ExtResource("2_au7pr")
 sprite = ExtResource("7_tvh4j")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_1mpe8")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_elvf4")
 
 [node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_gaxx6")]
 drop_component = NodePath("../DropManager")

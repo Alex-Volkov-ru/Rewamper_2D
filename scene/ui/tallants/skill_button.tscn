@@ -13,11 +13,13 @@ stretch_mode = 0
 script = ExtResource("2_gs5pv")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 

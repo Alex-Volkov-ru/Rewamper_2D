@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dbgrpaudxni57"]
+[gd_scene load_steps=26 format=3 uid="uid://dbgrpaudxni57"]
 
 [ext_resource type="Script" path="res://scene/game_objects/chort/chort.gd" id="1_m1rn4"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_p0t6t"]
@@ -18,6 +18,13 @@
 [ext_resource type="PackedScene" uid="uid://oqwv3etad4nw" path="res://scene/game_objects/chort/bullet_chort_controller.tscn" id="14_bsfie"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="17_jg20u"]
 [ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="18_fwvgw"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="19_rsr0o"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="20_wnx6e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lixd"]
+resource_local_to_scene = true
+shader = ExtResource("20_wnx6e")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sylmn"]
 radius = 7.0
@@ -74,6 +81,14 @@ sprite = ExtResource("3_ap2iy")
 
 [node name="BulletChortController" parent="." groups=["enemy"] instance=ExtResource("14_bsfie")]
 
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("18_fwvgw")]
+drop_component = NodePath("../DropManager")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("19_rsr0o")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_8lixd")
+
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("17_jg20u")]
 health_component = NodePath("../HealthComponent")
 
@@ -113,6 +128,3 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_my8qb")
 
 [node name="MovementComponent" parent="." instance=ExtResource("14_bp3bt")]
-
-[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("18_fwvgw")]
-drop_component = NodePath("../DropManager")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cr2e77paxkq1g"]
+[gd_scene load_steps=21 format=3 uid="uid://cr2e77paxkq1g"]
 
 [ext_resource type="Script" path="res://scene/game_objects/swampy/swampy.gd" id="1_dddjp"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_0omkc"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dd7h0j8klrbgo" path="res://scene/game_objects/swampy/swampy_anim_f1.png" id="11_uj473"]
 [ext_resource type="Texture2D" uid="uid://cxkbkdmcwe3y7" path="res://scene/game_objects/swampy/swampy_anim_f2.png" id="12_r6k5d"]
 [ext_resource type="Texture2D" uid="uid://dghj7wnl12ult" path="res://scene/game_objects/swampy/swampy_anim_f3.png" id="13_f4p7f"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="14_qi5q3"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="15_1xt6p"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="15_mqgrr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ree3"]
 radius = 6.0
@@ -59,6 +61,11 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcmrn"]
 radius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34r34"]
+resource_local_to_scene = true
+shader = ExtResource("15_mqgrr")
+shader_parameter/percent = 0.0
 
 [node name="Swampy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
@@ -109,3 +116,8 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_gcmrn")
 
 [node name="MovementComponent" parent="." instance=ExtResource("15_1xt6p")]
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("14_qi5q3")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_34r34")

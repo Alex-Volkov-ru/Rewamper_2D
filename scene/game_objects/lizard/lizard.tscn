@@ -1,14 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxgkm3dl44efe"]
+[gd_scene load_steps=26 format=3 uid="uid://bxgkm3dl44efe"]
 
 [ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_omgma"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_sixmq"]
 [ext_resource type="Texture2D" uid="uid://bmnydmqse3540" path="res://scene/game_objects/lizard/lizard_m_hit_anim_f0.png" id="3_gc3ow"]
 [ext_resource type="Texture2D" uid="uid://cqw18vg6m1rpo" path="res://scene/game_objects/lizard/lizard_m_idle_anim_f0.png" id="3_yenxq"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_3hnp2"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="4_hdy7y"]
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_kg0bb"]
 [ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="4_wviwi"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_wy38d"]
 [ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_2377r"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="5_mm5ei"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_2mu2r"]
 [ext_resource type="Texture2D" uid="uid://dnlxg2qy0rkq1" path="res://scene/game_objects/lizard/lizard_m_idle_anim_f1.png" id="7_nc0uk"]
 [ext_resource type="Texture2D" uid="uid://cc311ogxo04bk" path="res://scene/game_objects/lizard/lizard_m_idle_anim_f2.png" id="8_lgxfa"]
@@ -18,6 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://cbabwe2rmfvg1" path="res://scene/game_objects/lizard/lizard_m_run_anim_f2.png" id="13_wx2gl"]
 [ext_resource type="Texture2D" uid="uid://2kdgc6iom0tp" path="res://scene/game_objects/lizard/lizard_m_run_anim_f3.png" id="14_p8vxp"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="15_ixawf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmm38"]
+resource_local_to_scene = true
+shader = ExtResource("5_mm5ei")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8pon7"]
 radius = 8.0
@@ -71,6 +78,11 @@ collision_mask = 5
 script = ExtResource("1_omgma")
 death_scecene = ExtResource("2_sixmq")
 sprite = ExtResource("3_gc3ow")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_hdy7y")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_jmm38")
 
 [node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_wviwi")]
 drop_component = NodePath("../DropManager")

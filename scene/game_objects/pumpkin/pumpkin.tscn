@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bcjnhm4ngjkd0"]
+[gd_scene load_steps=26 format=3 uid="uid://bcjnhm4ngjkd0"]
 
 [ext_resource type="Script" path="res://scene/game_objects/pumpkin/pumpkin.gd" id="1_qwslq"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_5ktn1"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://cbo3apx653b8k" path="res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f2.png" id="13_usnct"]
 [ext_resource type="Texture2D" uid="uid://t3l4swt4dfxt" path="res://scene/game_objects/pumpkin/pumpkin_dude_run_anim_f3.png" id="14_b7bsq"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="15_qoonh"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="19_hn2gm"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="20_k0j5r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8lwch"]
 radius = 6.0
@@ -65,12 +67,19 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_c37a3"]
 radius = 5.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljter"]
+resource_local_to_scene = true
+shader = ExtResource("20_k0j5r")
+shader_parameter/percent = 0.0
+
 [node name="Pumpkin" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_qwslq")
 death_scecene = ExtResource("2_5ktn1")
 sprite = ExtResource("3_thgbg")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_f22r3")]
 
 [node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_vt0pb")]
 drop_component = NodePath("../DropManager")
@@ -82,8 +91,6 @@ health_component = NodePath("../HealthComponent")
 drop_component = NodePath("../DropManager")
 
 [node name="BulletPumpkinController" parent="." instance=ExtResource("2_boq21")]
-
-[node name="HealthComponent" parent="." instance=ExtResource("4_f22r3")]
 
 [node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("5_x5cvy")]
 drop_component = NodePath("../DropManager")
@@ -116,3 +123,8 @@ position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_c37a3")
 
 [node name="MovementComponent" parent="." instance=ExtResource("15_qoonh")]
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("19_hn2gm")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_ljter")

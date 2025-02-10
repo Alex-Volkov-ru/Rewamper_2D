@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://gkjsjqkbm64f"]
+[gd_scene load_steps=23 format=3 uid="uid://gkjsjqkbm64f"]
 
 [ext_resource type="Texture2D" uid="uid://dvy4yr6lfwleo" path="res://scene/game_objects/mushroom/SmallMushroom_Idle_1.png" id="1_5lq86"]
 [ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_ayies"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_1k126"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_4ybp3"]
 [ext_resource type="Texture2D" uid="uid://bgkdn76pjjgyd" path="res://scene/game_objects/mushroom/SmallMushroom_Idle_4.png" id="4_17wgj"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="4_d2n1j"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="4_kek0l"]
 [ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="4_v1clb"]
 [ext_resource type="Texture2D" uid="uid://bwnqp300i1ygt" path="res://scene/game_objects/mushroom/SmallMushroom_Walk_1.png" id="5_1t75o"]
@@ -111,3 +112,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_2r5pv")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_d2n1j")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")

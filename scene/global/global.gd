@@ -1,22 +1,29 @@
 extends Node
 
-signal coin_collected(coin)  # Сигнал, который будет эмитироваться при сборе монеты
+signal coin_collected(coin)
 signal experience_bottle_collected(experience)
 signal hp_bottle_collected(hp)
 signal ability_upgrade_added (upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 
 var coin_manager: CoinManager
-
-func emit_coin_collected(coin: int):
-	# Простой способ не проверять сразу. Позволяет избежать проблем с "не видимостью" объекта
-	coin_collected.emit(coin)
+var talents = {}
 
 func _ready():
+	# Загружаем таланты при старте игры
+	talents = Save_Manager_Progress.load_talents()
+
 	if get_tree().get_nodes_in_group("CoinManager").is_empty():
-		# Используем call_deferred для того, чтобы добавить CoinManager позже
 		call_deferred("_create_coin_manager")
-	else:
-		print("CoinManager уже существует в дереве!")
+
+func get_talent(talent_name: String, default_value: int = 0) -> int:
+	return talents.get(talent_name, default_value)
+
+func set_talent(talent_name: String, value: int):
+	talents[talent_name] = value
+	Save_Manager_Progress.save_talents(talents)  # ✅ Теперь таланты сохраняются
+
+func emit_coin_collected(coin: int):
+	coin_collected.emit(coin)
 
 # Отложенная функция для создания и добавления CoinManager
 func _create_coin_manager():

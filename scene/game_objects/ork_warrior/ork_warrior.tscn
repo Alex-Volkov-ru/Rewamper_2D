@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://darv0h0rx2ij5"]
+[gd_scene load_steps=25 format=3 uid="uid://darv0h0rx2ij5"]
 
 [ext_resource type="Script" path="res://scene/game_objects/ork_warrior/ork_warrior.gd" id="1_x4oen"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_br364"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bvftmpssrmbns" path="res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f2.png" id="12_aqykd"]
 [ext_resource type="Texture2D" uid="uid://bgd5x4h6yulr1" path="res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f3.png" id="13_cpoa3"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_ktfut"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="18_qv2l0"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="19_35ufi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t228s"]
 radius = 6.0
@@ -63,6 +65,11 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecv7n"]
 radius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_um252"]
+resource_local_to_scene = true
+shader = ExtResource("19_35ufi")
+shader_parameter/percent = 0.0
 
 [node name="Ork_warrior" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
@@ -113,3 +120,8 @@ position = Vector2(1, -5)
 shape = SubResource("CircleShape2D_ecv7n")
 
 [node name="MovementComponent" parent="." instance=ExtResource("14_ktfut")]
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("18_qv2l0")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_um252")

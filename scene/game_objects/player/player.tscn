@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://b0ump57ta6uh8"]
+[gd_scene load_steps=26 format=3 uid="uid://b0ump57ta6uh8"]
 
 [ext_resource type="Script" path="res://scene/game_objects/player/player.gd" id="1_8oolj"]
 [ext_resource type="Texture2D" uid="uid://c1tcfei7yvse7" path="res://scene/game_objects/player/knight_f_hit_anim_f0.png" id="1_i2o30"]
 [ext_resource type="Texture2D" uid="uid://b12n41mfc3dlb" path="res://scene/game_objects/player/knight_f_idle_anim_f0.png" id="2_6qacu"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="2_6rd8w"]
 [ext_resource type="Texture2D" uid="uid://dw4ojn1v8sm4a" path="res://scene/game_objects/player/dash skill.png" id="2_jcfir"]
 [ext_resource type="PackedScene" uid="uid://d02yl8nx3spsb" path="res://scene/abilities/attack_ability/attack_controller.tscn" id="2_prcev"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="3_5ccbm"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="3_b4hg2"]
 [ext_resource type="Texture2D" uid="uid://d0i6e1pmrvsdy" path="res://scene/game_objects/player/knight_f_idle_anim_f1.png" id="3_kmhla"]
 [ext_resource type="PackedScene" uid="uid://bbvhw374wnphl" path="res://scene/ui/joustik/joystick.tscn" id="3_vp73i"]
 [ext_resource type="Texture2D" uid="uid://di8bh7fwjpwla" path="res://scene/game_objects/player/knight_f_idle_anim_f2.png" id="4_6n3le"]
@@ -15,6 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://bsmedwf2v1q1b" path="res://scene/game_objects/player/knight_f_run_anim_f2.png" id="8_s6gq3"]
 [ext_resource type="Texture2D" uid="uid://bvpb2eqisbpu1" path="res://scene/game_objects/player/knight_f_run_anim_f3.png" id="9_8p638"]
 [ext_resource type="PackedScene" uid="uid://c4vvtug3mq13w" path="res://scene/abilities/Gun/gun.tscn" id="15_sg3fv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkerp"]
+resource_local_to_scene = true
+shader = ExtResource("3_b4hg2")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abxju"]
 radius = 148.014
@@ -88,6 +95,11 @@ height = 16.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
 script = ExtResource("1_8oolj")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_6rd8w")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_qkerp")
 
 [node name="ShootingArea" type="Area2D" parent="."]
 collision_layer = 0

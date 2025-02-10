@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgc6ckc7a2e3f"]
+[gd_scene load_steps=22 format=3 uid="uid://cgc6ckc7a2e3f"]
 
 [ext_resource type="Script" path="res://scene/game_objects/ice_zombie/ice_zombie.gd" id="1_r3k6m"]
 [ext_resource type="PackedScene" uid="uid://cv1yiogfb21jb" path="res://scene/game_objects/ice_zombie/bullet_ice_zombie_controller.tscn" id="2_expcw"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_thq3i"]
 [ext_resource type="Texture2D" uid="uid://cnr80u6ha6rxo" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f0.png" id="3_yvfhk"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_dt7iv"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="4_wejc2"]
 [ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_antmd"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="5_iokrq"]
 [ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="5_l15hp"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_71vqo"]
 [ext_resource type="Texture2D" uid="uid://dhgtai1rhwgdm" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f1.png" id="7_7ptvn"]
@@ -14,6 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://bi2wf2btr1to8" path="res://scene/game_objects/ice_zombie/ice_zombie_anim_f3.png" id="9_6gycx"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="10_loqj3"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="13_dexmh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxqkw"]
+resource_local_to_scene = true
+shader = ExtResource("5_iokrq")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_20d4t"]
 radius = 6.0
@@ -67,6 +74,11 @@ collision_mask = 5
 script = ExtResource("1_r3k6m")
 death_scecene = ExtResource("2_thq3i")
 sprite = ExtResource("3_yvfhk")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_wejc2")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_kxqkw")
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_dexmh")]
 health_component = NodePath("../HealthComponent")

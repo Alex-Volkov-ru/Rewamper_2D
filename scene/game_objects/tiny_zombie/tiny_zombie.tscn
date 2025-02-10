@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0lg7ayonppa6"]
+[gd_scene load_steps=24 format=3 uid="uid://b0lg7ayonppa6"]
 
 [ext_resource type="Script" path="res://scene/game_objects/tiny_zombie/tiny_zombie.gd" id="1_5n0fp"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_vjaeq"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_4tkud"]
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_b7pd4"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="4_i0d0f"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="4_jt44f"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="5_2kq7t"]
 [ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_xs4lu"]
 [ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="6_gpwxt"]
 [ext_resource type="Texture2D" uid="uid://dq67f1ydpnei2" path="res://scene/game_objects/tiny_zombie/tiny_zombie_idle_anim_f2.png" id="7_de0td"]
@@ -16,6 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://gvwlpjvkesvm" path="res://scene/game_objects/tiny_zombie/tiny_zombie_run_anim_f2.png" id="11_3o4p1"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="11_qvcc7"]
 [ext_resource type="Texture2D" uid="uid://bgnmxgt8n0ayy" path="res://scene/game_objects/tiny_zombie/tiny_zombie_run_anim_f3.png" id="12_3egq0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yumuv"]
+resource_local_to_scene = true
+shader = ExtResource("5_2kq7t")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7sxd"]
 radius = 4.0
@@ -66,6 +73,11 @@ collision_mask = 5
 script = ExtResource("1_5n0fp")
 death_scecene = ExtResource("2_vjaeq")
 sprite = ExtResource("3_uyvrd")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_jt44f")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_yumuv")
 
 [node name="CoinDropComponent" parent="." node_paths=PackedStringArray("drop_component") instance=ExtResource("4_1logo")]
 drop_component = NodePath("../DropManager")

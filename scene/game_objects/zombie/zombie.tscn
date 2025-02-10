@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b0sc0e3ci3l1o"]
+[gd_scene load_steps=26 format=3 uid="uid://b0sc0e3ci3l1o"]
 
 [ext_resource type="Script" path="res://scene/game_objects/zombie/zombie.gd" id="1_nkkp1"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_l80dc"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_h0j1w"]
 [ext_resource type="PackedScene" uid="uid://de4hrk03bgl66" path="res://scene/components/drop_manager.tscn" id="17_1b6f2"]
 [ext_resource type="PackedScene" uid="uid://c0qloyyk4m6f7" path="res://scene/components/coin_drop_component.tscn" id="18_x1ivd"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="19_x1ewf"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="20_lmyfo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e5tjj"]
 animations = [{
@@ -63,6 +65,11 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7joen"]
 radius = 9.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8up4k"]
+resource_local_to_scene = true
+shader = ExtResource("20_lmyfo")
+shader_parameter/percent = 0.0
 
 [node name="Zombie" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
@@ -115,3 +122,8 @@ shape = SubResource("CircleShape2D_7joen")
 
 [node name="DropManager" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("17_1b6f2")]
 health_component = NodePath("../HealthComponent")
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("19_x1ewf")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_8up4k")

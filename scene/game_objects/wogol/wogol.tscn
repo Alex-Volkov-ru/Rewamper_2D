@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6ogrw1vbpqhf"]
+[gd_scene load_steps=26 format=3 uid="uid://b6ogrw1vbpqhf"]
 
 [ext_resource type="Script" path="res://scene/game_objects/wogol/wogol.gd" id="1_bn1aq"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_ji3ke"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://c557v186aee4f" path="res://scene/game_objects/wogol/wogol_run_anim_f2.png" id="12_rj6by"]
 [ext_resource type="Texture2D" uid="uid://rllxcik1ncbl" path="res://scene/game_objects/wogol/wogol_run_anim_f3.png" id="13_8qdx8"]
 [ext_resource type="PackedScene" uid="uid://bpx6lhoea5hr5" path="res://scene/components/movement_component.tscn" id="14_ewrd0"]
+[ext_resource type="PackedScene" uid="uid://cgwr2mpgne7pj" path="res://scene/components/flash_component.tscn" id="19_7qopf"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="20_xem8g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctnrl"]
 radius = 6.0
@@ -64,6 +66,11 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0v6ko"]
 radius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4fbw"]
+resource_local_to_scene = true
+shader = ExtResource("20_xem8g")
+shader_parameter/percent = 0.0
 
 [node name="Wogol" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
@@ -116,3 +123,8 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_0v6ko")
 
 [node name="MovementComponent" parent="." instance=ExtResource("14_ewrd0")]
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("19_7qopf")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_d4fbw")
