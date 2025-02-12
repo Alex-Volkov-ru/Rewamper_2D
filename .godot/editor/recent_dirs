@@ -1,4 +1,5 @@
 D:/Dev/musictestgit
+res://scene/ui/description
 res://scene/ui/tallants
 res://scene/global
 res://scene/components
@@ -19,4 +20,3 @@ res://scene/game_objects/zombie
 res://scene/game_objects/pumpkin
 res://scene/game_objects/ice_zombie
 res://scene/game_objects/tiny_zombie
-res://scene/game_objects/swampy

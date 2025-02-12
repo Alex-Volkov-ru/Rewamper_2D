@@ -19,6 +19,7 @@ signal skill_upgraded(skill_name: String, level: int)
 
 # Параметры
 @export var max_speed: float = 60
+var base_max_speed: float  # Базовая скорость передвижения
 @export var dash_speed_multiplier: float = 2
 @export var health_value: float = 25  # Начальное значение здоровья игрока
 
@@ -33,7 +34,12 @@ var canDash: bool = true
 # Уровень таланта "Выносливость"
 var stamina_talent_level: int = 0
 # Таблица бонусов к здоровью (0 - без таланта, 5 - максимальный уровень)
-var stamina_health_bonus := [0.0, 0.03, 0.06, 0.09, 0.12, 0.15]
+var stamina_health_bonus := [0.0, 0.05, 0.10, 0.20, 0.30, 0.40]
+
+# Уровень таланта "Скорость передвижения"
+var movement_talent_level: int = 0
+# Таблица бонусов к скорости передвижения (0 - без таланта, 5 - максимальный уровень)
+var movement_bonus := [0.0, 0.02, 0.05, 0.10, 0.15, 0.20]
 
 # Новый список оружия
 var weapons = []
@@ -43,6 +49,14 @@ func _on_skill_upgraded(skill_name: String, level: int):
 	if skill_name == "stamina":
 		stamina_talent_level = level
 		apply_stamina_talent()
+	elif skill_name == "movement":
+		movement_talent_level = level
+		apply_movement_talent()  # Применяем бонус к скорости
+
+func apply_movement_talent():
+	var bonus = movement_bonus[movement_talent_level]
+	var bonus_speed = base_max_speed * bonus  # Бонус к скорости от базовой скорости
+	max_speed = base_max_speed + bonus_speed  # Устанавливаем новую скорость
 
 func apply_stamina_talent():
 	var bonus = stamina_health_bonus[stamina_talent_level]
@@ -173,11 +187,14 @@ func _on_dash_cooldown_timer_timeout():
 
 # Готовность сцены
 func _ready():
+	base_max_speed = max_speed  # Сохраняем базовую скорость
 	stamina_talent_level = Global.get_talent("stamina", 0)  # Загружаем сохраненный уровень
+	movement_talent_level = Global.get_talent("movement", 0)
 	apply_stamina_talent()
+	apply_movement_talent()
 	# Подписываемся на сигнал улучшения таланта
 	for skill_node in get_tree().get_nodes_in_group("skills"):
-		if skill_node is SkillNode:
+		if skill_node is SkillNode or skill_node is SpeedSkillNode:  # Добавляем проверку
 			skill_node.skill_upgraded.connect(_on_skill_upgraded)
 	
 	# Устанавливаем максимальное и текущее здоровье

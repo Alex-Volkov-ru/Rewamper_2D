@@ -80,7 +80,7 @@ anchor_right = 1.0
 offset_left = -156.0
 offset_top = 1.0
 offset_right = -2.0
-offset_bottom = 43.0
+offset_bottom = 51.0
 grow_horizontal = 0
 texture_normal = ExtResource("15_jj4km")
 
@@ -133,5 +133,3 @@ text = "LVL:"
 script = ExtResource("18_lead1")
 
 [node name="MusicManager" parent="." instance=ExtResource("19_r6cjb")]
-
-[connection signal="pressed" from="CanvasLayer/MenuRight" to="CanvasLayer/PauseMenu" method="_on_menu_pressed"]

@@ -2,13 +2,16 @@ extends Control
 
 @onready var resume_button = $PanelContainer/VBoxContainer/Resume
 @onready var quit_button = $PanelContainer/VBoxContainer/Quit
-@onready var menu_button = $"../MenuRight"  # Эта кнопка открывает меню паузы
+@onready var menu_button = $"../MenuRight" # Эта кнопка открывает меню паузы
 @onready var background_music: AudioStreamPlayer = $AudioStreamPlayer
 
 var is_music_playing = false
 var was_music_playing_before_pause = false  # Для отслеживания состояния музыки до паузы
 
 func _ready():
+	# Кнопка меню всегда видна, так что не меняем её видимость
+	menu_button.visible = true
+	
 	# Прячем меню при старте
 	visible = false
 	
@@ -31,11 +34,11 @@ func _process(_delta):
 		toggle_pause()
 
 func toggle_pause():
+	# Переключаем состояние видимости меню паузы
 	visible = !visible
 	get_tree().paused = visible  # Ставим/снимаем паузу
-	menu_button.visible = !menu_button.visible  # Включаем/выключаем кнопку Menu
 	
-	# Остановка/включение фоновой музыки при паузе
+	# Музыка будет играть только при открытии меню паузы
 	if visible:  # Когда показываем меню паузы
 		if not background_music.playing:
 			background_music.play()  # Включаем музыку, если она не играет
@@ -56,9 +59,4 @@ func _on_quit_pressed():
 
 func _on_menu_pressed() -> void:
 	# Эта кнопка открывает меню паузы
-	visible = !visible
-	get_tree().paused = visible
-	
-	# Включаем музыку при нажатии кнопки Menu
-	if not background_music.playing:
-		background_music.play()
+	toggle_pause()  # Показать/скрыть меню паузы и поставить/снять паузу
