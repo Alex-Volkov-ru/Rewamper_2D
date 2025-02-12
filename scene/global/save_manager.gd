@@ -7,30 +7,34 @@ var save_data := {
 	"talents": {}
 }
 
-# === ПРОВЕРКА ПЛАТФОРМЫ ===
+# === ПРОВЕРКА ПЛАТФОРМЫ (браузер или нет) ===
 func _is_web() -> bool:
 	return OS.get_name() == "Web"
 
 # === СОХРАНЕНИЕ ДАННЫХ ===
 func save():
+	print("Сохранение данных...", save_data)
 	if _is_web():
 		_save_to_local_storage()
 	else:
 		_save_to_file()
 
-# === СОХРАНЕНИЕ В localStorage (ДЛЯ ВЕБ) ===
+# === СОХРАНЕНИЕ В localStorage (для браузера) ===
 func _save_to_local_storage():
 	var json_data = JSON.stringify(save_data)
 	JavaScriptBridge.eval("localStorage.setItem('save_data', '" + json_data + "');")
 	print("Данные сохранены в localStorage.")
 
-# === СОХРАНЕНИЕ В ЛОКАЛЬНЫЙ ФАЙЛ (ДЛЯ ПК И МОБИЛЬНЫХ) ===
+# === СОХРАНЕНИЕ В ЛОКАЛЬНЫЙ ФАЙЛ (для ПК и мобильных) ===
 func _save_to_file():
 	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify(save_data))
+		var json_string = JSON.stringify(save_data, "\t")  # Форматирование для удобства
+		file.store_string(json_string)
 		file.close()
-		print("Данные сохранены локально.")
+		print("Данные сохранены локально:", json_string)
+	else:
+		print("Ошибка: Не удалось открыть файл для записи!")
 
 # === ЗАГРУЗКА ДАННЫХ ===
 func _load_data():
@@ -44,9 +48,11 @@ func _load_data():
 			var result = json.parse(content)
 			if result == OK:
 				save_data = json.data
-				print("Данные загружены локально.")
+				print("Данные успешно загружены:", save_data)
+			else:
+				print("Ошибка: Не удалось разобрать JSON-файл!")
 
-# === ЗАГРУЗКА ДАННЫХ ИЗ localStorage (ДЛЯ ВЕБ) ===
+# === ЗАГРУЗКА ДАННЫХ ИЗ localStorage (для браузера) ===
 func _load_from_local_storage():
 	var json_data = JavaScriptBridge.eval("localStorage.getItem('save_data');")
 	if json_data and json_data != "null":
@@ -54,13 +60,19 @@ func _load_from_local_storage():
 		var result = json.parse(json_data)
 		if result == OK:
 			save_data = json.data
-			print("Данные загружены из localStorage.")
+			print("Данные загружены из localStorage:", save_data)
 
 # === СОХРАНЕНИЕ ТАЛАНТОВ ===
 func save_talents(talents: Dictionary):
 	save_data["talents"] = talents
-	save()  # ✅ Теперь вызываем save() после обновления талантов
+	save()  # Сохраняем таланты
 
 # === ЗАГРУЗКА ТАЛАНТОВ ===
 func load_talents() -> Dictionary:
 	return save_data.get("talents", {})
+
+# === СОХРАНЕНИЕ ПРИ ВЫХОДЕ ИЗ ИГРЫ ===
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		print("Игра закрывается, сохраняем данные...")
+		save()

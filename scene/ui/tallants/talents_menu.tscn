@@ -98,4 +98,9 @@ text = "Назад
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CountLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 28.0
+
 [connection signal="pressed" from="TextureQuit" to="." method="_on_texture_quit_pressed"]
