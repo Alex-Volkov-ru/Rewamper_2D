@@ -34,7 +34,7 @@ var canDash: bool = true
 # Уровень таланта "Выносливость"
 var stamina_talent_level: int = 0
 # Таблица бонусов к здоровью (0 - без таланта, 5 - максимальный уровень)
-var stamina_health_bonus := [0.0, 0.05, 0.10, 0.20, 0.30, 0.40]
+var stamina_health_bonus := [0.0, 0.10, 0.20, 0.30, 0.40, 0.50]
 
 # Уровень таланта "Скорость передвижения"
 var movement_talent_level: int = 0

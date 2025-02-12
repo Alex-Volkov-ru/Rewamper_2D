@@ -7,6 +7,7 @@
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
+tooltip_text = "Повышение хп на 10%"
 texture_normal = ExtResource("1_y26fq")
 ignore_texture_size = true
 stretch_mode = 0
