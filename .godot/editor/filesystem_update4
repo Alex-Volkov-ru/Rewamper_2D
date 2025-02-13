@@ -1,7 +1,10 @@
-res://scene/components/coin_drop_component.tscn
+res://scene/level/level.tscn
 res://scene/components/flash_component.gdshader
 res://scene/components/flash_material.tres
 res://resources/world.tres
-res://scene/level/level.tscn
+res://scene/level/level.gd
 res://scene/ui/menu.tscn
 res://scene/abilities/chest/chest.tscn
+res://scene/components/coin_drop_component.tscn
+res://scene/components/drop_manager.gd
+res://scene/manager/coin_manager.gd

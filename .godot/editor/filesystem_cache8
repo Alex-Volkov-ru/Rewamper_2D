@@ -1,21 +1,21 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1739431839
+::res://::1739432551
 default_bus_layout.tres::AudioBusLayout::1575260631499637584::1738359468::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1739396839::0::1::::<><>::
 icon.svg::CompressedTexture2D::3259165506607749043::1735809286::1735809600::1::::<><>::
 white.png::CompressedTexture2D::4484564725345526726::1737761223::1737761225::1::::<><>::
-::res://addons/::1739366500
-::res://addons/WebBusPlugin/::1739366539
-export_plugin.gd::GDScript::-1::1739366500::0::1::::HTMLExportPlugin<>EditorExportPlugin<>::
-MainScreenScene.tscn::PackedScene::7165543947574979082::1739366500::0::1::::<><>::res://addons/WebBusPlugin/main_screen_scene.gd
-main_screen_scene.gd::GDScript::-1::1739366500::0::1::::<>Control<>::
-plugin.cfg::TextFile::-1::1739366500::0::1::::<><>::
-settings.cfg::TextFile::-1::1739366539::0::1::::<><>::
-WebBus.gd::GDScript::-1::1739366500::0::1::::<>Node<>::
-WedBusPlugin.gd::GDScript::-1::1739366500::0::1::::<>EditorPlugin<>::
-::res://addons/WebBusPlugin/Demo/::1739366500
-Demo.gd::GDScript::-1::1739366500::0::1::::<>Control<>::
-Demo.tscn::PackedScene::3468519829830958937::1739366500::0::1::::<><>::res://addons/WebBusPlugin/Demo/Demo.gd
+::res://addons/::1739432459
+::res://addons/WebBusPlugin/::1739432459
+export_plugin.gd::GDScript::-1::1739432459::0::1::::HTMLExportPlugin<>EditorExportPlugin<>::
+MainScreenScene.tscn::PackedScene::7165543947574979082::1739432459::0::1::::<><>::res://addons/WebBusPlugin/main_screen_scene.gd
+main_screen_scene.gd::GDScript::-1::1739432459::0::1::::<>Control<>::
+plugin.cfg::TextFile::-1::1739432459::0::1::::<><>::
+settings.cfg::TextFile::-1::1739432459::0::1::::<><>::
+WebBus.gd::GDScript::-1::1739432459::0::1::::<>Node<>::
+WedBusPlugin.gd::GDScript::-1::1739432459::0::1::::<>EditorPlugin<>::
+::res://addons/WebBusPlugin/Demo/::1739432459
+Demo.gd::GDScript::-1::1739432459::0::1::::<>Control<>::
+Demo.tscn::PackedScene::3468519829830958937::1739432459::0::1::::<><>::res://addons/WebBusPlugin/Demo/Demo.gd
 ::res://api/::1739298722
 ::res://assets/::1735809600
 dungeontileset-extended.png::CompressedTexture2D::2561842812612182711::1735809280::1735809600::1::::<><>::
@@ -25,8 +25,8 @@ COPYRIGHT.txt::TextFile::-1::1737989454::0::1::::<><>::
 GreenHillSans-Italic v1.01.ttf::FontFile::640389075302822250::1737989451::1737989457::1::::<><>::
 GreenHillSans-Regular v1.01.ttf::FontFile::8920611444345581430::1737989451::1738768088::1::::<><>::
 main_theme.tres::Theme::416959195833968437::1738768081::0::1::::<><>::uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf
-::res://resources/::1739394894
-world.tres::TileSet::343058193088573482::1739394894::0::1::::<><>::uid://bcq8gaojm3r24::::res://assets/dungeontileset-extended.png
+::res://resources/::1739432328
+world.tres::TileSet::343058193088573482::1739432328::0::1::::<><>::uid://bcq8gaojm3r24::::res://assets/dungeontileset-extended.png
 ::res://resources/upgrades/::1738519722
 ability_upgrade.gd::GDScript::-1::1735809280::0::1::::AbilityUpgrade<>Resource<>::
 cooldown.tres::Resource/AbilityUpgrade::6326972981065079302::1738519722::0::1::::<><>::res://resources/upgrades/ability_upgrade.gd
@@ -57,8 +57,8 @@ bullet_ability.tscn::PackedScene::6845416416331386331::1738880191::0::1::::<><>:
 bullet_ability_controller.gd::GDScript::-1::1738955868::0::1::::<>Node<>::
 bullet_ability_controller.tscn::PackedScene::3417382196360774854::1738882607::0::1::::<><>::res://scene/abilities/bullet_ability/bullet_ability_controller.gd<>uid://c4r8ajshunqtn::::res://scene/abilities/bullet_ability/bullet_ability.tscn
 bullet_blue.png::CompressedTexture2D::911917770360596560::1738163794::1738163795::1::::<><>::
-::res://scene/abilities/chest/::1739401222
-chest.tscn::PackedScene::2493529629351227414::1739401222::0::1::::<><>::res://scene/abilities/chest/chest_area2d.gd<>uid://8wriyh33icei::::res://scene/abilities/chest/chest_empty_open_anim_f0.png<>uid://c4vvtug3mq13w::::res://scene/abilities/Gun/gun.tscn<>uid://bxmdlfeccttrh::::res://scene/abilities/chest/chest_full_open_anim_f0.png<>uid://bc8aa1ym3oec6::::res://scene/abilities/chest/chest_full_open_anim_f1.png<>uid://dgsiusjy5qa4x::::res://scene/abilities/chest/chest_full_open_anim_f2.png<>uid://q8fhph5gy2oe::::res://scene/abilities/chest/chest_mimic_open_anim_f0.png
+::res://scene/abilities/chest/::1739432459
+chest.tscn::PackedScene::2493529629351227414::1739432459::0::1::::<><>::res://scene/abilities/chest/chest_area2d.gd<>uid://8wriyh33icei::::res://scene/abilities/chest/chest_empty_open_anim_f0.png<>uid://c4vvtug3mq13w::::res://scene/abilities/Gun/gun.tscn<>uid://bxmdlfeccttrh::::res://scene/abilities/chest/chest_full_open_anim_f0.png<>uid://bc8aa1ym3oec6::::res://scene/abilities/chest/chest_full_open_anim_f1.png<>uid://dgsiusjy5qa4x::::res://scene/abilities/chest/chest_full_open_anim_f2.png<>uid://q8fhph5gy2oe::::res://scene/abilities/chest/chest_mimic_open_anim_f0.png
 chest_area2d.gd::GDScript::-1::1738883855::0::1::::<>Area2D<>::
 chest_empty_open_anim_f0.png::CompressedTexture2D::2362695898556613336::1738863724::1738863724::1::::<><>::
 chest_empty_open_anim_f1.png::CompressedTexture2D::5409445065740255660::1738863724::1738863724::1::::<><>::
@@ -73,9 +73,9 @@ chest_mimic_open_anim_f2.png::CompressedTexture2D::5270458697229107373::17388637
 gun.gd::GDScript::-1::1738877583::0::1::::<>Node2D<>::
 Gun.png::CompressedTexture2D::9152535707336944446::1735809280::1735809600::1::::<><>::
 gun.tscn::PackedScene::6852979813681402486::1738880191::0::1::::<><>::res://scene/abilities/Gun/gun.gd<>uid://cvr4uw6y8yk0j::::res://scene/game_objects/player/result (4).png<>uid://boxn1ya3i2gcs::::res://scene/abilities/bullet_ability/bullet_ability_controller.tscn
-::res://scene/components/::1739401255
+::res://scene/components/::1739432349
 coin_drop_component.gd::GDScript::-1::1738708531::0::1::::<>Node<>::
-coin_drop_component.tscn::PackedScene::6561286688566392886::1739401250::0::1::::<><>::res://scene/components/coin_drop_component.gd<>uid://bqve7ssm2j1qd::::res://scene/game_objects/coin/coin.tscn
+coin_drop_component.tscn::PackedScene::6561286688566392886::1739432328::0::1::::<><>::res://scene/components/coin_drop_component.gd<>uid://bqve7ssm2j1qd::::res://scene/game_objects/coin/coin.tscn
 damage_text_component.gd::GDScript::-1::1738955850::0::1::::<>Node2D<>::
 damage_text_component.tscn::PackedScene::7193186916996684272::1738959446::0::1::::<><>::res://scene/components/damage_text_component.gd
 death_component.gd::GDScript::-1::1736971667::0::1::::DeathComp<>Node2D<>::
@@ -85,9 +85,9 @@ drop_manager.tscn::PackedScene::7500340323072304361::1738757059::0::1::::<><>::r
 exp_bottle_drop_component.gd::GDScript::-1::1738703918::0::1::::<>Node<>::
 exp_bottle_drop_component.tscn::PackedScene::6981417977399930940::1738059408::0::1::::<><>::res://scene/components/exp_bottle_drop_component.gd<>uid://8127grb7ljmn::::res://scene/game_objects/exp_bottle/exp_bottle.tscn
 flash_component.gd::GDScript::-1::1739194920::0::1::::<>Node<>::
-flash_component.gdshader::Shader::-1::1739401255::0::1::::<><>::
+flash_component.gdshader::Shader::-1::1739432349::0::1::::<><>::
 flash_component.tscn::PackedScene::5240471798858621175::1739195254::0::1::::<><>::res://scene/components/flash_component.gd<>uid://cpnlu28l5osgq::::res://scene/components/flash_material.tres
-flash_material.tres::ShaderMaterial::5853216005207444628::1739394894::0::1::::<><>::res://scene/components/flash_component.gdshader
+flash_material.tres::ShaderMaterial::5853216005207444628::1739432328::0::1::::<><>::res://scene/components/flash_component.gdshader
 health_component.gd::GDScript::-1::1738956140::0::1::::HealthComponent<>Node<>::
 health_component.tscn::PackedScene::3116602259065268675::1739195254::0::1::::<><>::res://scene/components/health_component.gd<>uid://daqo0cwbveqey::::res://scene/components/damage_text_component.tscn
 hit_box_component.gd::GDScript::-1::1738955869::0::1::::HitBoxComponent<>Area2D<>::
@@ -244,7 +244,7 @@ orc_warrior_run_anim_f2.png::CompressedTexture2D::3871884157749261824::173791138
 orc_warrior_run_anim_f3.png::CompressedTexture2D::2815610997258435912::1737911383::1737911383::1::::<><>::
 ork_warrior.gd::GDScript::-1::1738928162::0::1::::<>CharacterBody2D<>::
 ork_warrior.tscn::PackedScene::7195676581681807640::1739195561::0::1::::<><>::res://scene/game_objects/ork_warrior/ork_warrior.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://75y6jpmlgyh5::::res://scene/game_objects/ork_warrior/orc_warrior_idle_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://de4hrk03bgl66::::res://scene/components/drop_manager.tscn<>uid://b6dk57yhh7fv1::::res://scene/components/hp_bottle_drop_component.tscn<>uid://c0qloyyk4m6f7::::res://scene/components/coin_drop_component.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://yqrasp02dbsn::::res://scene/game_objects/ork_warrior/orc_warrior_idle_anim_f1.png<>uid://dn6dwi7m1xvvk::::res://scene/game_objects/ork_warrior/orc_warrior_idle_anim_f2.png<>uid://d2wv0knqgue8x::::res://scene/game_objects/ork_warrior/orc_warrior_idle_anim_f3.png<>uid://cdcb17ffb3rka::::res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f0.png<>uid://buyecdhd55x8e::::res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f1.png<>uid://bvftmpssrmbns::::res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f2.png<>uid://bgd5x4h6yulr1::::res://scene/game_objects/ork_warrior/orc_warrior_run_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn<>uid://cgwr2mpgne7pj::::res://scene/components/flash_component.tscn<>res://scene/components/flash_component.gdshader
-::res://scene/game_objects/player/::1739395870
+::res://scene/game_objects/player/::1739432459
 arballet.png::CompressedTexture2D::8434197079802525017::1738161947::1738161947::1::::<><>::
 dash skill.png::CompressedTexture2D::8764150399995055690::1738166865::1738166865::1::::<><>::
 knight_f_hit_anim_f0.png::CompressedTexture2D::6637105066195925144::1735809283::1735809600::1::::<><>::
@@ -256,7 +256,7 @@ knight_f_run_anim_f0.png::CompressedTexture2D::5587992694568285178::1735809284::
 knight_f_run_anim_f1.png::CompressedTexture2D::2623542939539823111::1735809284::1735809600::1::::<><>::
 knight_f_run_anim_f2.png::CompressedTexture2D::3674841792072767861::1735809284::1735809600::1::::<><>::
 knight_f_run_anim_f3.png::CompressedTexture2D::3891461235028742438::1735809284::1735809600::1::::<><>::
-player.gd::GDScript::-1::1739395869::0::1::::<>CharacterBody2D<>::
+player.gd::GDScript::-1::1739432459::0::1::::<>CharacterBody2D<>::
 player.tscn::PackedScene::4183186346545637687::1739393960::0::1::::<><>::res://scene/game_objects/player/player.gd<>uid://c1tcfei7yvse7::::res://scene/game_objects/player/knight_f_hit_anim_f0.png<>uid://b12n41mfc3dlb::::res://scene/game_objects/player/knight_f_idle_anim_f0.png<>uid://cgwr2mpgne7pj::::res://scene/components/flash_component.tscn<>uid://dw4ojn1v8sm4a::::res://scene/game_objects/player/dash skill.png<>uid://d02yl8nx3spsb::::res://scene/abilities/attack_ability/attack_controller.tscn<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>res://scene/components/flash_component.gdshader<>uid://d0i6e1pmrvsdy::::res://scene/game_objects/player/knight_f_idle_anim_f1.png<>uid://bbvhw374wnphl::::res://scene/ui/joustik/joystick.tscn<>uid://di8bh7fwjpwla::::res://scene/game_objects/player/knight_f_idle_anim_f2.png<>uid://c7ehbgi4m6nx1::::res://scene/game_objects/player/knight_f_idle_anim_f3.png<>uid://clu4onj7mwifa::::res://scene/game_objects/player/knight_f_run_anim_f0.png<>uid://bdm4mspvpgybf::::res://scene/game_objects/player/knight_f_run_anim_f1.png<>uid://bsmedwf2v1q1b::::res://scene/game_objects/player/knight_f_run_anim_f2.png<>uid://bvpb2eqisbpu1::::res://scene/game_objects/player/knight_f_run_anim_f3.png<>uid://c4vvtug3mq13w::::res://scene/abilities/Gun/gun.tscn
 result (4).png::CompressedTexture2D::6283699218810368787::1738162374::1738162374::1::::<><>::
 ::res://scene/game_objects/pumpkin/::1739195581
@@ -335,24 +335,24 @@ bullet_controller.tscn::PackedScene::6136218033057813653::1738882607::0::1::::<>
 stone.png::CompressedTexture2D::2456812732414944747::1737995395::1737995397::1::::<><>::
 zombie.gd::GDScript::-1::1738928231::0::1::::<>CharacterBody2D<>::
 zombie.tscn::PackedScene::4178466906500741838::1739212937::0::1::::<><>::res://scene/game_objects/zombie/zombie.gd<>uid://ddlw6fq16u4mb::::res://scene/components/death_component.tscn<>uid://do0ipxktyy2v8::::res://scene/game_objects/zombie/big_zombie_idle_anim_f0.png<>uid://bknx8pl355mwx::::res://scene/components/health_component.tscn<>uid://ctoou5l8q6ia4::::res://scene/game_objects/zombie/bullet_controller.tscn<>uid://b6dk57yhh7fv1::::res://scene/components/hp_bottle_drop_component.tscn<>uid://c6p3602p5fvng::::res://scene/components/exp_bottle_drop_component.tscn<>uid://bbjei16oy5wtp::::res://scene/components/hurt_box_component.tscn<>uid://c0qblvpmsc3m1::::res://scene/game_objects/zombie/big_zombie_idle_anim_f1.png<>uid://dljdns07albpm::::res://scene/game_objects/zombie/big_zombie_idle_anim_f2.png<>uid://c88wupkmpkavu::::res://scene/game_objects/zombie/big_zombie_idle_anim_f3.png<>uid://cfmvxn0tq8fq3::::res://scene/game_objects/zombie/big_zombie_run_anim_f0.png<>uid://b1i18ilsi632m::::res://scene/game_objects/zombie/big_zombie_run_anim_f1.png<>uid://b2yc8cyg75im0::::res://scene/game_objects/zombie/big_zombie_run_anim_f2.png<>uid://dsuo6powys73h::::res://scene/game_objects/zombie/big_zombie_run_anim_f3.png<>uid://bpx6lhoea5hr5::::res://scene/components/movement_component.tscn<>uid://de4hrk03bgl66::::res://scene/components/drop_manager.tscn<>uid://c0qloyyk4m6f7::::res://scene/components/coin_drop_component.tscn<>uid://cgwr2mpgne7pj::::res://scene/components/flash_component.tscn<>res://scene/components/flash_component.gdshader
-::res://scene/global/::1739400804
-global.gd::GDScript::-1::1739399921::0::1::::<>Node<>::
+::res://scene/global/::1739432459
+global.gd::GDScript::-1::1739432459::0::1::::<>Node<>::
 global.tscn::PackedScene::6772178873733849150::1739217150::0::1::::<><>::res://scene/global/global.gd
 save_manager.gd::GDScript::-1::1739400804::0::1::::SaveManager<>Node<>::
 save_manager.tscn::PackedScene::2264734900977617395::1739217386::0::1::::<><>::res://scene/global/save_manager.gd
-::res://scene/level/::1739401250
+::res://scene/level/::1739432459
 camera_2d.gd::GDScript::-1::1735809285::0::1::::<>Camera2D<>::
 gold.gd::GDScript::-1::1738682363::0::1::::<>Label<>::
 gold_precent.gd::GDScript::-1::1739397329::0::1::::<>Label<>::
 HP_precent.gd::GDScript::-1::1738679608::0::1::::<>Label<>::
 level.gd::GDScript::-1::1739401250::0::1::::<>Node<>::
-level.tscn::PackedScene::7669917054599792506::1739401222::0::1::::<><>::uid://0v0noh4wlipi::::res://scene/manager/spawner/enemy_spawner.tscn<>uid://e5gea1nudkw5::::res://resources/world.tres<>uid://bm1c3y5elhmwa::::res://scene/ui/arena_time_ui.tscn<>res://scene/level/level.gd<>uid://c87jgklepc1ni::::res://scene/ui/experience_bar.tscn<>uid://4euuhnshhm2a::::res://scene/manager/arena_time_manager.tscn<>uid://bjvqssei4afw6::::res://scene/ui/end_screen.tscn<>uid://b0ump57ta6uh8::::res://scene/game_objects/player/player.tscn<>uid://c5rm0xnqayqhd::::res://scene/manager/experience_manager.tscn<>uid://df42im2t74r5::::res://scene/manager/hp_manager.tscn<>uid://c8re7lujgbs2q::::res://scene/manager/upgrade_manager.tscn<>res://scene/level/camera_2d.gd<>uid://drsntb1xm1dnw::::res://scene/ui/pause_menu.tscn<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf<>uid://8sbjrvn2rgmp::::res://scene/ui/test (8) (1).png<>res://scene/level/HP_precent.gd<>res://scene/level/gold_precent.gd<>res://scene/level/lvlcurrrentscene.gd<>uid://clpxy6vam2c7f::::res://song/music_manager.tscn<>uid://b05xcr40veowg::::res://scene/manager/spawner/chest_spawner.tscn
+level.tscn::PackedScene::7669917054599792506::1739432459::0::1::::<><>::uid://0v0noh4wlipi::::res://scene/manager/spawner/enemy_spawner.tscn<>uid://e5gea1nudkw5::::res://resources/world.tres<>uid://bm1c3y5elhmwa::::res://scene/ui/arena_time_ui.tscn<>res://scene/level/level.gd<>uid://c87jgklepc1ni::::res://scene/ui/experience_bar.tscn<>uid://4euuhnshhm2a::::res://scene/manager/arena_time_manager.tscn<>uid://bjvqssei4afw6::::res://scene/ui/end_screen.tscn<>uid://b0ump57ta6uh8::::res://scene/game_objects/player/player.tscn<>uid://c5rm0xnqayqhd::::res://scene/manager/experience_manager.tscn<>uid://df42im2t74r5::::res://scene/manager/hp_manager.tscn<>uid://c8re7lujgbs2q::::res://scene/manager/upgrade_manager.tscn<>res://scene/level/camera_2d.gd<>uid://drsntb1xm1dnw::::res://scene/ui/pause_menu.tscn<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf<>uid://8sbjrvn2rgmp::::res://scene/ui/test (8) (1).png<>res://scene/level/HP_precent.gd<>res://scene/level/gold_precent.gd<>res://scene/level/lvlcurrrentscene.gd<>uid://clpxy6vam2c7f::::res://song/music_manager.tscn<>uid://b05xcr40veowg::::res://scene/manager/spawner/chest_spawner.tscn
 lvlcurrrentscene.gd::GDScript::-1::1738708389::0::1::::<>Label<>::
 manager.gd::GDScript::-1::1738147656::0::1::::<>Node<>::
-::res://scene/manager/::1739400450
+::res://scene/manager/::1739432459
 arena_time_manager.gd::GDScript::-1::1735809285::0::1::::ArenaTimeManager<>Node<>::
 arena_time_manager.tscn::PackedScene::2044984420825995758::1739394904::0::1::::<><>::res://scene/manager/arena_time_manager.gd<>uid://bjvqssei4afw6::::res://scene/ui/end_screen.tscn
-coin_manager.gd::GDScript::-1::1739400450::0::1::::CoinManager<>Node<>::
+coin_manager.gd::GDScript::-1::1739432459::0::1::::CoinManager<>Node<>::
 coin_manager.tscn::PackedScene::5247382426180807370::1738757059::0::1::::<><>::res://scene/manager/coin_manager.gd
 experience_manager.gd::GDScript::-1::1738972678::0::1::::ExperienceManager<>Node<>::
 experience_manager.tscn::PackedScene::6914375575954449329::1738757059::0::1::::<><>::res://scene/manager/experience_manager.gd
@@ -365,7 +365,7 @@ chest_spawner.gd::GDScript::-1::1738920446::0::1::::<>Node<>::
 chest_spawner.tscn::PackedScene::4204474108547545722::1738882895::0::1::::<><>::res://scene/manager/spawner/chest_spawner.gd<>uid://bbr5clnv2s3hy::::res://scene/abilities/chest/chest.tscn
 enemy_spawner.gd::GDScript::-1::1738509243::0::1::::<>Node<>::
 enemy_spawner.tscn::PackedScene::1799614911413991870::1739185096::0::1::::<><>::res://scene/manager/spawner/enemy_spawner.gd<>uid://gkjsjqkbm64f::::res://scene/game_objects/mushroom/mushroom.tscn<>uid://egealcsf1fs1::::res://scene/game_objects/goblin/goblin.tscn<>uid://eyq6ay3d7agl::::res://scene/game_objects/demon/demon.tscn<>uid://darv0h0rx2ij5::::res://scene/game_objects/ork_warrior/ork_warrior.tscn<>uid://cb5t8abntu8xq::::res://scene/game_objects/ogr/ogr.tscn<>uid://b0sc0e3ci3l1o::::res://scene/game_objects/zombie/zombie.tscn<>uid://dbgrpaudxni57::::res://scene/game_objects/chort/chort.tscn<>uid://xa44xy7lfqb1::::res://scene/game_objects/skelet/skelet.tscn<>uid://bxgkm3dl44efe::::res://scene/game_objects/lizard/lizard.tscn<>uid://b6ogrw1vbpqhf::::res://scene/game_objects/wogol/wogol.tscn<>uid://cr2e77paxkq1g::::res://scene/game_objects/swampy/swampy.tscn<>uid://ca8j46ovfqv5f::::res://scene/game_objects/ork_masked/ork_masked.tscn<>uid://dvock8q7xdt2p::::res://scene/game_objects/ork_shaman/ork_shaman.tscn<>uid://b0lg7ayonppa6::::res://scene/game_objects/tiny_zombie/tiny_zombie.tscn<>uid://cgc6ckc7a2e3f::::res://scene/game_objects/ice_zombie/ice_zombie.tscn<>uid://bcjnhm4ngjkd0::::res://scene/game_objects/pumpkin/pumpkin.tscn<>uid://xgsdmqw1rk5c::::res://scene/game_objects/necromancer/necromancer.tscn
-::res://scene/ui/::1739401222
+::res://scene/ui/::1739432459
 ability_upgrade_card.gd::GDScript::-1::1735809285::0::1::::AbilityUpgradeCard<>PanelContainer<>::
 ability_upgrade_card.tscn::PackedScene::6168093312055409969::1739394904::0::1::::<><>::res://scene/ui/ability_upgrade_card.gd
 arena_time_ui.gd::GDScript::-1::1735809285::0::1::::<>CanvasLayer<>::
@@ -377,10 +377,10 @@ end_screen.gd::GDScript::-1::1738192603::0::1::::EndScreen<>CanvasLayer<>::
 end_screen.tscn::PackedScene::3062476777446963311::1739393105::0::1::::<><>::res://scene/ui/end_screen.gd<>uid://cufgf83ua3wlt::::res://scene/ui/over.webp
 experience_bar.gd::GDScript::-1::1735809286::0::1::::<>CanvasLayer<>::
 experience_bar.tscn::PackedScene::7155691005697757034::1738066152::0::1::::<><>::res://scene/ui/experience_bar.gd
-menu.gd::GDScript::-1::1739399614::0::1::::<>Node2D<>::
-menu.tscn::PackedScene::2391373454749630617::1739401222::0::1::::<><>::res://scene/ui/menu.gd<>uid://ctpnjulp0eusj::::res://scene/ui/e36c410bdcae11ef8b4d6ecd5a48429b.webp<>uid://hotlbrq8cppn::::res://scene/ui/button_menu.png<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf<>uid://cudbdh4huywsg::::res://song/menu.mp3
+menu.gd::GDScript::-1::1739432459::0::1::::<>Node2D<>::
+menu.tscn::PackedScene::2391373454749630617::1739432459::0::1::::<><>::res://scene/ui/menu.gd<>uid://ctpnjulp0eusj::::res://scene/ui/e36c410bdcae11ef8b4d6ecd5a48429b.webp<>uid://hotlbrq8cppn::::res://scene/ui/button_menu.png<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf<>uid://cudbdh4huywsg::::res://song/menu.mp3
 over.webp::CompressedTexture2D::6187315137278185153::1738192896::1738192900::1::::<><>::
-pause_menu.gd::GDScript::-1::1739394769::0::1::::<>Control<>::
+pause_menu.gd::GDScript::-1::1739432459::0::1::::<>Control<>::
 pause_menu.tscn::PackedScene::8390454537239428300::1739394904::0::1::::<><>::res://scene/ui/pause_menu.gd<>uid://c2am5s3own4wg::::res://scene/ui/button_pause.png<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf<>uid://dxyvu1nslab65::::res://song/pause.mp3
 pause_right_menu.gd::GDScript::-1::1738358935::0::1::::<>Control<>::
 pause_right_menu.tscn::PackedScene::2061217809458492365::1738189464::0::1::::<><>::res://scene/ui/pause_right_menu.gd<>uid://c2am5s3own4wg::::res://scene/ui/button_pause.png<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf
@@ -408,26 +408,26 @@ SmallHandleFilled.png::CompressedTexture2D::2674926405432941596::1737753810::173
 ::res://scene/ui/new_test/::1738960215
 control.gd::GDScript::-1::1738960215::0::1::::<>CanvasLayer<>::
 control.tscn::PackedScene::8497732828303686169::1738960215::0::1::::<><>::res://scene/ui/new_test/control.gd<>uid://qg5t68wxiiy1::::res://scene/ui/joustik/big_coll.png<>uid://y235q657eqcs::::res://scene/ui/joustik/SmallHandleFilledGrey.png
-::res://scene/ui/tallants/::1739397595
+::res://scene/ui/tallants/::1739432459
 branch tallant.png::CompressedTexture2D::1623162496093622760::1738226455::1738226642::1::::<><>::
 crit_skill_button.gd::GDScript::-1::1739220912::0::1::::CritSkillNode<>TextureButton<>::
-crit_skill_button.tscn::PackedScene::2823482987331544433::1739397595::0::1::::<><>::uid://e44ettf0ntd7::::res://scene/ui/tallants/skill_icons44.png<>res://scene/ui/tallants/crit_skill_button.gd
+crit_skill_button.tscn::PackedScene::2823482987331544433::1739432459::0::1::::<><>::uid://e44ettf0ntd7::::res://scene/ui/tallants/skill_icons44.png<>res://scene/ui/tallants/crit_skill_button.gd
 deffents_skill_button.gd::GDScript::-1::1739220963::0::1::::DeffensSkillNode<>TextureButton<>::
-deffents_skill_button.tscn::PackedScene::6232298870989273428::1739397595::0::1::::<><>::uid://hhux7b17cn68::::res://scene/ui/tallants/skill_icons22.png<>res://scene/ui/tallants/deffents_skill_button.gd
-regenerate_skill_button.tscn::PackedScene::5808845087589570305::1739397595::0::1::::<><>::uid://cphe3x20ymdlf::::res://scene/ui/tallants/skill_icons15.png<>res://scene/ui/tallants/regenerat_skill_button.gd
+deffents_skill_button.tscn::PackedScene::6232298870989273428::1739432459::0::1::::<><>::uid://hhux7b17cn68::::res://scene/ui/tallants/skill_icons22.png<>res://scene/ui/tallants/deffents_skill_button.gd
+regenerate_skill_button.tscn::PackedScene::5808845087589570305::1739432459::0::1::::<><>::uid://cphe3x20ymdlf::::res://scene/ui/tallants/skill_icons15.png<>res://scene/ui/tallants/regenerat_skill_button.gd
 regenerat_skill_button.gd::GDScript::-1::1739220934::0::1::::RegeneratSkillNode<>TextureButton<>::
-skill_button.gd::GDScript::-1::1739389036::0::1::::SkillNode<>TextureButton<>::
-skill_button.tscn::PackedScene::5169757723369348649::1739397595::0::1::::<><>::uid://dvisx1t3wykhn::::res://scene/ui/tallants/skill_icons16.png<>res://scene/ui/tallants/skill_button.gd
+skill_button.gd::GDScript::-1::1739432459::0::1::::SkillNode<>TextureButton<>::
+skill_button.tscn::PackedScene::5169757723369348649::1739432459::0::1::::<><>::uid://dvisx1t3wykhn::::res://scene/ui/tallants/skill_icons16.png<>res://scene/ui/tallants/skill_button.gd
 skill_icons15.png::CompressedTexture2D::5840418787350714951::1738971420::1738971420::1::::<><>::
 skill_icons16.png::CompressedTexture2D::8650878164901004419::1738968996::1738968996::1::::<><>::
 skill_icons22.png::CompressedTexture2D::507029646375974531::1738971354::1738971354::1::::<><>::
 skill_icons30.png::CompressedTexture2D::7874495763059748015::1738971334::1738971334::1::::<><>::
 skill_icons44.png::CompressedTexture2D::342391292941765290::1738971459::1738971459::1::::<><>::
-speed_skill_button.gd::GDScript::-1::1739386171::0::1::::SpeedSkillNode<>TextureButton<>::
-speed_skill_button.tscn::PackedScene::5061420071532533442::1739397595::0::1::::<><>::uid://dkgp2ayo3al88::::res://scene/ui/tallants/skill_icons30.png<>res://scene/ui/tallants/speed_skill_button.gd
+speed_skill_button.gd::GDScript::-1::1739432459::0::1::::SpeedSkillNode<>TextureButton<>::
+speed_skill_button.tscn::PackedScene::5061420071532533442::1739432459::0::1::::<><>::uid://dkgp2ayo3al88::::res://scene/ui/tallants/skill_icons30.png<>res://scene/ui/tallants/speed_skill_button.gd
 talants_menu.webp::CompressedTexture2D::7708282758642696549::1738968818::1738968818::1::::<><>::
 talents_menu.gd::GDScript::-1::1739349450::0::1::::<>Control<>::
-talents_menu.tscn::PackedScene::1508601947302978383::1739393960::0::1::::<><>::res://scene/ui/tallants/talents_menu.gd<>uid://dh27j5hg2115b::::res://scene/ui/tallants/talants_menu.webp<>uid://cfwjfiqiyaq8h::::res://scene/ui/tallants/skill_button.tscn<>uid://ced134s31e02i::::res://scene/ui/tallants/speed_skill_button.tscn<>uid://bghyl8ihtbmbh::::res://scene/ui/tallants/crit_skill_button.tscn<>uid://hotlbrq8cppn::::res://scene/ui/button_menu.png<>uid://co033hm1hvpg8::::res://scene/ui/tallants/regenerate_skill_button.tscn<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf<>uid://cu18b07du4db5::::res://scene/ui/tallants/deffents_skill_button.tscn
+talents_menu.tscn::PackedScene::1508601947302978383::1739432265::0::1::::<><>::res://scene/ui/tallants/talents_menu.gd<>uid://dh27j5hg2115b::::res://scene/ui/tallants/talants_menu.webp<>uid://cfwjfiqiyaq8h::::res://scene/ui/tallants/skill_button.tscn<>uid://ced134s31e02i::::res://scene/ui/tallants/speed_skill_button.tscn<>uid://bghyl8ihtbmbh::::res://scene/ui/tallants/crit_skill_button.tscn<>uid://hotlbrq8cppn::::res://scene/ui/button_menu.png<>uid://co033hm1hvpg8::::res://scene/ui/tallants/regenerate_skill_button.tscn<>uid://d0dhfxiqi65lq::::res://fonts/GreenHillSans-Regular v1.01.ttf<>uid://cu18b07du4db5::::res://scene/ui/tallants/deffents_skill_button.tscn
 ::res://scripts/::1737924559
 enemy_pool.gd::GDScript::-1::1737924559::0::1::::EnemyPool<>RefCounted<>::
 ::res://singeltons/::1738928017
