@@ -1,15 +1,7 @@
-res://scene/level/level.tscn
+res://scene/components/coin_drop_component.tscn
 res://scene/components/flash_component.gdshader
 res://scene/components/flash_material.tres
 res://resources/world.tres
+res://scene/level/level.tscn
 res://scene/ui/menu.tscn
 res://scene/abilities/chest/chest.tscn
-res://scene/ui/pause_menu.tscn
-res://scene/manager/arena_time_manager.tscn
-res://scene/ui/ability_upgrade_card.tscn
-res://scene/ui/tallants/skill_button.tscn
-res://scene/game_objects/player/player.gd
-res://scene/ui/tallants/crit_skill_button.tscn
-res://scene/ui/tallants/deffents_skill_button.tscn
-res://scene/ui/tallants/regenerate_skill_button.tscn
-res://scene/ui/tallants/speed_skill_button.tscn

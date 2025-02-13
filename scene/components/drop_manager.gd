@@ -10,7 +10,7 @@ signal coin_dropped
 # Вероятности выпадения различных наград
 @export var exp_drop_percent: float = 0.5
 @export var hp_drop_percent: float = 0.1
-@export var coin_drop_percent: float = 0.05
+@export var coin_drop_percent: float = 1
 
 @export var health_component: Node  # Компонент здоровья
 

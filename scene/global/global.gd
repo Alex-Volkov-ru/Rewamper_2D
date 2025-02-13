@@ -43,3 +43,4 @@ func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		print("Игра закрывается, сохраняем данные...")
 		Save_Manager_Progress.save()
+		
