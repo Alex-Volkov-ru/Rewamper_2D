@@ -14,4 +14,4 @@ func _on_coins_updated(current_coins: int):
 
 # Обновляем текст в Label с количеством монет
 func _update_gold_label():
-	text = "GOLD: " + str(coin_manager.current_coins)
+	text = "Золото: " + str(coin_manager.current_coins)

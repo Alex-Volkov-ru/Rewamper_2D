@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb1bqr6xpt8gr"]
+
+[ext_resource type="Script" path="res://scene/abilities/mili_damage/mili_damage_controller.gd" id="1_on4v8"]
+[ext_resource type="PackedScene" uid="uid://6ps7n6sg0s3h" path="res://scene/abilities/mili_damage/mili_damage.tscn" id="2_q37id"]
+
+[node name="MiliDamageController" type="Node"]
+script = ExtResource("1_on4v8")
+attack_ability = ExtResource("2_q37id")

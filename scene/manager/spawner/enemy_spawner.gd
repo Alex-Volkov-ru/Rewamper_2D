@@ -77,8 +77,8 @@ func on_difficulty_increased(difficulty_level: int):
 	timer.wait_time = new_spawn_time
 	print('начальный уровень сложности(difficulty_level) с 0 минуты = ', difficulty_level)
 	# Появление на 1-й минуте
-	if difficulty_level == 12:
-		enemy_pool.add_mod(tiny_zombie_scene, 20)
+	if difficulty_level == 1:
+		enemy_pool.add_mod(zombie_scene, 50)
 	
 	# Появление на 2-й минуте
 	if difficulty_level == 24:

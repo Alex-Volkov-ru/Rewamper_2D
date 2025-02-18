@@ -3,11 +3,13 @@ extends Node
 @onready var audio_player = $AudioStreamPlayer
 
 var music_tracks = [
-	preload("res://song/Dance With the dance Robeast.mp3"),
-	preload("res://song/Dance With the dance.mp3"),
 	preload("res://song/Andy James Shattered and Broken.mp3"),
-	preload("res://song/Zombie Hyperdrive Argon Prime.mp3"),
-	preload("res://song/Dance With the Dead A new Fear.mp3"),
+	preload('res://song/song_level_1.mp3'),
+	preload('res://song/song_level_2.mp3'),
+	preload('res://song/song_level_3.mp3'),
+	preload('res://song/song_level_4.mp3'),
+	preload('res://song/song_level_5.mp3'),
+	preload('res://song/song_level_6.mp3'),
 ]
 
 var played_tracks = []  # Список уже сыгранных треков

@@ -9,6 +9,8 @@ var coin_manager: CoinManager
 var talents = {}
 
 func _ready():
+	Bridge.platform.send_message("game_ready")
+	Bridge.advertisement.show_interstitial()
 	# Загружаем сохранённые данные
 	Save_Manager_Progress._load_data()  # Добавлено!
 	

@@ -9,4 +9,4 @@ func _ready():
 
 # Обновляем Label, когда уровень меняется
 func _update_level_label(current_level):
-	text = "LVL: " + str(current_level)
+	text = "Уровень: " + str(current_level)
