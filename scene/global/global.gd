@@ -1,6 +1,6 @@
 extends Node
 
-signal coin_collected(coin)
+signal coin_collected(coin)  # Сигнал для изменения монет
 signal experience_bottle_collected(experience)
 signal hp_bottle_collected(hp)
 signal ability_upgrade_added (upgrade: AbilityUpgrade, current_upgrades: Dictionary)
@@ -30,7 +30,7 @@ func set_talent(talent_name: String, value: int):
 	Save_Manager_Progress.save_talents(talents)
 
 func emit_coin_collected(coin: int):
-	coin_collected.emit(coin)
+	coin_collected.emit(coin)  # Испускаем сигнал
 	# Сохраняем монеты при сборе
 	Save_Manager_Progress.save_data["coins"] += coin
 	Save_Manager_Progress.save()
@@ -45,7 +45,7 @@ func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		print("Игра закрывается, сохраняем данные...")
 		Save_Manager_Progress.save()
-		
+
 func get_coins() -> int:
 	return Save_Manager_Progress.save_data.get("coins", 0)
 
@@ -54,5 +54,6 @@ func spend_coins(amount: int) -> bool:
 	if current_coins >= amount:
 		Save_Manager_Progress.save_data["coins"] -= amount
 		Save_Manager_Progress.save()
+		coin_collected.emit(-amount)  # Испускаем сигнал при потере монет
 		return true  # Покупка успешна
 	return false  # Недостаточно монет

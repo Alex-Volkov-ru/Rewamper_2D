@@ -29,3 +29,4 @@ res://scene/ui/tallants/confirm_popup.tscn
 res://scene/ui/tallants/confirm_popup.gd
 res://scene/global/global.gd
 res://scene/ui/tallants/skill_button.gd
+res://scene/ui/tallants/talents_menu.gd
