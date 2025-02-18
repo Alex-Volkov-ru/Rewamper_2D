@@ -6,4 +6,5 @@
 script = ExtResource("1_2wrdl")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.002
 autoplay = true

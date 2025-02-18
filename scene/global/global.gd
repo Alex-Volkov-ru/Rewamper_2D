@@ -46,3 +46,13 @@ func _notification(what):
 		print("Игра закрывается, сохраняем данные...")
 		Save_Manager_Progress.save()
 		
+func get_coins() -> int:
+	return Save_Manager_Progress.save_data.get("coins", 0)
+
+func spend_coins(amount: int) -> bool:
+	var current_coins = get_coins()
+	if current_coins >= amount:
+		Save_Manager_Progress.save_data["coins"] -= amount
+		Save_Manager_Progress.save()
+		return true  # Покупка успешна
+	return false  # Недостаточно монет

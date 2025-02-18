@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cjqoqsek8h3tk"]
+
+[node name="UpLvlButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Улучшить талант?"

@@ -41,6 +41,10 @@ var movement_talent_level: int = 0
 # Таблица бонусов к скорости передвижения (0 - без таланта, 5 - максимальный уровень)
 var movement_bonus := [0.0, 0.02, 0.05, 0.10, 0.15, 0.20]
 
+
+var defense_talent_level: int = 0
+var defense_bonus := [0.0, 0.02, 0.05, 0.10, 0.15, 0.20]
+
 # Новый список оружия
 var weapons = []
 
@@ -52,6 +56,13 @@ func _on_skill_upgraded(skill_name: String, level: int):
 	elif skill_name == "movement":
 		movement_talent_level = level
 		apply_movement_talent()  # Применяем бонус к скорости
+	elif skill_name == 'defense':
+		defense_talent_level = level
+		apply_defense_talent()  # Применяем бонус к скорости
+
+func apply_defense_talent():
+	pass
+
 
 func apply_movement_talent():
 	var bonus = movement_bonus[movement_talent_level]
@@ -190,11 +201,15 @@ func _ready():
 	base_max_speed = max_speed  # Сохраняем базовую скорость
 	stamina_talent_level = Global.get_talent("stamina", 0)  # Загружаем сохраненный уровень
 	movement_talent_level = Global.get_talent("movement", 0)
+	defense_talent_level = Global.get_talent("defense", 0)
+	
 	apply_stamina_talent()
 	apply_movement_talent()
+	apply_defense_talent()
+
 	# Подписываемся на сигнал улучшения таланта
 	for skill_node in get_tree().get_nodes_in_group("skills"):
-		if skill_node is SkillNode or skill_node is SpeedSkillNode:  # Добавляем проверку
+		if skill_node is SkillNode or skill_node is SpeedSkillNode or skill_node is DeffensSkillNode:
 			skill_node.skill_upgraded.connect(_on_skill_upgraded)
 	
 	# Устанавливаем максимальное и текущее здоровье

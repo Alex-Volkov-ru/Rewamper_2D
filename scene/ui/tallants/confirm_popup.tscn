@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://lpvyw4q0n61s"]
+
+[ext_resource type="Script" path="res://scene/ui/tallants/confirm_popup.gd" id="1_c5i42"]
+
+[node name="ConfirmPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_c5i42")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -54.0
+offset_right = 215.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ButtonYes" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Да"
+
+[node name="ButtonNo" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Нет"

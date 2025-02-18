@@ -31,9 +31,13 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Resume" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1_6xv47")
 
 [node name="Resume" type="Label" parent="PanelContainer/VBoxContainer/Resume"]
@@ -53,50 +57,10 @@ text = "Продолжить игру"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Save" type="TextureButton" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_6xv47")
-
-[node name="Save" type="Label" parent="PanelContainer/VBoxContainer/Save"]
-layout_mode = 0
-offset_left = 65.0
-offset_top = 14.0
-offset_right = 299.0
-offset_bottom = 107.0
-scale = Vector2(0.715, 0.715)
-theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_constants/shadow_outline_size = 8
-theme_override_fonts/font = ExtResource("2_mj1wp")
-theme_override_font_sizes/font_size = 20
-text = "Сохраниться"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Load" type="TextureButton" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_6xv47")
-
-[node name="Load" type="Label" parent="PanelContainer/VBoxContainer/Load"]
-layout_mode = 0
-offset_left = 65.0
-offset_top = 14.0
-offset_right = 299.0
-offset_bottom = 107.0
-scale = Vector2(0.715, 0.715)
-theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_constants/shadow_outline_size = 8
-theme_override_fonts/font = ExtResource("2_mj1wp")
-theme_override_font_sizes/font_size = 20
-text = "Загрузить"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Quit" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1_6xv47")
 
 [node name="Quit" type="Label" parent="PanelContainer/VBoxContainer/Quit"]

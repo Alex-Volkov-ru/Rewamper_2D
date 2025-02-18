@@ -27,46 +27,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TalantsMenu" type="Sprite2D" parent="Panel2"]
+position = Vector2(574, 321)
+scale = Vector2(0.945312, 0.945312)
+texture = ExtResource("2_p6c13")
+
+[node name="CritSkillButton" parent="." instance=ExtResource("6_aw2lf")]
+visible = false
+layout_mode = 0
+offset_left = 639.0
+offset_top = 417.999
+offset_right = 679.0
+offset_bottom = 457.999
+
+[node name="SpeedSkillButton2" parent="." instance=ExtResource("3_8yulb")]
+layout_mode = 0
+offset_left = 777.0
+offset_top = 281.0
+offset_right = 817.0
+offset_bottom = 321.0
+
+[node name="RegenerateSkillButton" parent="." instance=ExtResource("7_ydlt8")]
+visible = false
+layout_mode = 0
+offset_left = 383.0
+offset_top = 405.0
+offset_right = 423.0
+offset_bottom = 445.0
+
+[node name="DeffentsSkillButton" parent="." instance=ExtResource("9_icvdg")]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 280.0
+offset_right = 353.0
+offset_bottom = 320.0
+
 [node name="StaminaSkillButton" parent="." instance=ExtResource("3_2qhwc")]
 top_level = true
 layout_mode = 0
 offset_left = 544.0
-offset_top = 221.0
+offset_top = 151.0
 offset_right = 584.0
-offset_bottom = 261.0
-
-[node name="CritSkillButton" parent="StaminaSkillButton" instance=ExtResource("6_aw2lf")]
-layout_mode = 0
-offset_left = 63.3333
-offset_top = 131.333
-offset_right = 103.333
-offset_bottom = 171.333
-
-[node name="SpeedSkillButton2" parent="StaminaSkillButton" instance=ExtResource("3_8yulb")]
-layout_mode = 0
-offset_left = 60.6667
-offset_top = 40.0
-offset_right = 100.667
-offset_bottom = 80.0
-
-[node name="RegenerateSkillButton" parent="StaminaSkillButton" instance=ExtResource("7_ydlt8")]
-layout_mode = 0
-offset_left = -107.333
-offset_top = 122.667
-offset_right = -67.3333
-offset_bottom = 162.667
-
-[node name="DeffentsSkillButton" parent="StaminaSkillButton" instance=ExtResource("9_icvdg")]
-layout_mode = 0
-offset_left = -108.0
-offset_top = 39.3333
-offset_right = -68.0
-offset_bottom = 79.3333
-
-[node name="TalantsMenu" type="Sprite2D" parent="."]
-position = Vector2(574, 321)
-scale = Vector2(0.945312, 0.945312)
-texture = ExtResource("2_p6c13")
+offset_bottom = 191.0
 
 [node name="TextureQuit" type="TextureButton" parent="."]
 layout_mode = 0
