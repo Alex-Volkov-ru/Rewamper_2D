@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bacntos6mit02"]
+[gd_scene load_steps=6 format=3 uid="uid://bacntos6mit02"]
 
 [ext_resource type="Script" path="res://scene/ui/menu.gd" id="1_1m2yu"]
 [ext_resource type="Texture2D" uid="uid://ctpnjulp0eusj" path="res://scene/ui/e36c410bdcae11ef8b4d6ecd5a48429b.webp" id="2_urq13"]
 [ext_resource type="Texture2D" uid="uid://hotlbrq8cppn" path="res://scene/ui/button_menu.png" id="3_kex4x"]
 [ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="4_og1ju"]
+[ext_resource type="AudioStream" uid="uid://cudbdh4huywsg" path="res://song/menu.mp3" id="5_8gu57"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_1m2yu")
@@ -98,6 +99,10 @@ theme_override_font_sizes/font_size = 78
 text = "Запуск игры"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8gu57")
+autoplay = true
 
 [connection signal="pressed" from="TextureTalents" to="." method="_on_texture_talents_pressed"]
 [connection signal="pressed" from="TextureQuit" to="." method="_on_texture_button_pressed"]

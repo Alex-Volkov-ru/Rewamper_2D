@@ -11,6 +11,7 @@ var talents = {}
 func _ready():
 	Bridge.platform.send_message("game_ready")
 	Bridge.advertisement.show_interstitial()
+	Bridge.game.connect("visibility_state_changed", Callable(self, "_on_visibility_state_changed"))
 	# Загружаем сохранённые данные
 	Save_Manager_Progress._load_data()  # Добавлено!
 	
@@ -21,6 +22,12 @@ func _ready():
 	# Проверяем, есть ли CoinManager
 	if get_tree().get_nodes_in_group("CoinManager").is_empty():
 		call_deferred("_create_coin_manager")
+
+func _on_visibility_state_changed(state):
+	if state == "hidden":  # Если состояние "hidden", выключаем музыку
+		AudioServer.set_bus_mute(0, true)
+	else:  # Если любое другое состояние, включаем
+		AudioServer.set_bus_mute(0, false)
 
 func get_talent(talent_name: String, default_value: int = 0) -> int:
 	return talents.get(talent_name, default_value)

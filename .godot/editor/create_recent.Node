@@ -1,3 +1,4 @@
+AudioStreamPlayer
 PanelContainer
 Label
 Button
@@ -12,4 +13,3 @@ CanvasLayer
 Node
 Sprite2D
 Line2D
-TextEdit
