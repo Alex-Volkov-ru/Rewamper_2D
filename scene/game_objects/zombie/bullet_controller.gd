@@ -2,8 +2,8 @@ extends Node
 
 # --- Экспортируемые переменные (настраиваемые в инспекторе) ---
 @export var bullet_ability_scene: PackedScene  # Сцена пули, используется для создания пули
-@export var damage: int = 10  # Базовый урон одной пули
-@export var critical_chance: float = 0.1  # Шанс критического удара
+@export var damage: int = 3  # Базовый урон одной пули
+@export var critical_chance: float = 0.01  # Шанс критического удара
 @export var critical_multiplier: float = 1.5  # Множитель урона при критическом ударе
 @export var shooting_interval: float = 0.3  # Интервал между выстрелами
 

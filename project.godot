@@ -52,6 +52,7 @@ enabled=PackedStringArray("res://addons/playgama_bridge/plugin.cfg")
 [global_group]
 
 player=""
+bullet=""
 
 [gui]
 

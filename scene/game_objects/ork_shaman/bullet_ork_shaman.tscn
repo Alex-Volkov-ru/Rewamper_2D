@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj26ocmgbrh1y"]
+[gd_scene load_steps=5 format=3 uid="uid://cj26ocmgbrh1y"]
 
 [ext_resource type="Texture2D" uid="uid://3op4wm0cnb" path="res://scene/game_objects/ork_shaman/green_ork_shaman.png" id="1_ofbub"]
 [ext_resource type="Script" path="res://scene/game_objects/ork_shaman/bullet_ork_shaman.gd" id="1_wnd4f"]
@@ -7,10 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
 radius = 1.70455
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
-radius = 3.0
-
-[node name="BulletOrkShaman" type="Node2D"]
+[node name="BulletOrkShaman" type="Node2D" groups=["bullet"]]
 light_mask = 2
 visibility_layer = 2
 script = ExtResource("1_wnd4f")
@@ -20,16 +17,9 @@ position = Vector2(0.025, 0.58)
 scale = Vector2(0.034875, 0.0313875)
 texture = ExtResource("1_ofbub")
 
-[node name="HitBoxComponent" parent="." instance=ExtResource("3_y0g22")]
-collision_layer = 2
+[node name="HitBoxComponent" parent="." groups=["bullet"] instance=ExtResource("3_y0g22")]
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 scale = Vector2(1.76, 1.76)
 shape = SubResource("CircleShape2D_o2b4j")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_kqse0")

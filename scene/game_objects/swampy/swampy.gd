@@ -9,7 +9,7 @@ extends CharacterBody2D  # Наследуемся от CharacterBody2D для р
 # Экспортируем параметры, чтобы их можно было настроить в редакторе
 @export var death_scecene: PackedScene  # Сцена для отображения эффекта смерти
 @export var sprite: CompressedTexture2D  # Спрайт для эффекта смерти
-@export var health_value: float = 40  # Начальное значение здоровья моба
+@export var health_value: float = 30  # Начальное значение здоровья моба
 
 # Функция, которая вызывается при старте сцены
 func _ready():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://gkjsjqkbm64f"]
+[gd_scene load_steps=25 format=3 uid="uid://gkjsjqkbm64f"]
 
 [ext_resource type="Texture2D" uid="uid://dvy4yr6lfwleo" path="res://scene/game_objects/mushroom/SmallMushroom_Idle_1.png" id="1_5lq86"]
 [ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_ayies"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c288uygwd0m72" path="res://scene/game_objects/mushroom/SmallMushroom_Walk_2.png" id="6_nc8hu"]
 [ext_resource type="Texture2D" uid="uid://dum84uimfu630" path="res://scene/game_objects/mushroom/SmallMushroom_Walk_3.png" id="7_1qef5"]
 [ext_resource type="Texture2D" uid="uid://c805oiy85akah" path="res://scene/game_objects/mushroom/SmallMushroom_Walk_4.png" id="8_6bg6h"]
+[ext_resource type="Shader" path="res://scene/components/flash_component.gdshader" id="19_4plpy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dmwc"]
 
@@ -63,6 +64,11 @@ radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2r5pv"]
 radius = 5.09902
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_020aq"]
+resource_local_to_scene = true
+shader = ExtResource("19_4plpy")
+shader_parameter/percent = 0.0
 
 [node name="Mushroom" type="CharacterBody2D" groups=["enemy", "player"]]
 collision_layer = 4
@@ -116,3 +122,4 @@ shape = SubResource("CircleShape2D_2r5pv")
 [node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_d2n1j")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_020aq")

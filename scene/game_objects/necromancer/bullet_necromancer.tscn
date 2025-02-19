@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqqitiw3jy2ed"]
+[gd_scene load_steps=5 format=3 uid="uid://cqqitiw3jy2ed"]
 
 [ext_resource type="Texture2D" uid="uid://cp0v1wj2efwag" path="res://scene/game_objects/necromancer/necromancer.png" id="1_6dy2y"]
 [ext_resource type="Script" path="res://scene/game_objects/necromancer/bullet_necromancer.gd" id="1_kpa2l"]
@@ -7,10 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
 radius = 1.70455
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
-radius = 3.0
-
-[node name="BulletNecromancer" type="Node2D"]
+[node name="BulletNecromancer" type="Node2D" groups=["bullet"]]
 light_mask = 2
 visibility_layer = 2
 script = ExtResource("1_kpa2l")
@@ -21,15 +18,8 @@ scale = Vector2(0.039, 0.0351)
 texture = ExtResource("1_6dy2y")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_y5umd")]
-collision_layer = 2
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 scale = Vector2(1.76, 1.76)
 shape = SubResource("CircleShape2D_o2b4j")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_kqse0")

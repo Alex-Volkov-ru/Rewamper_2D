@@ -10,7 +10,7 @@ radius = 1.70455
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
 radius = 3.0
 
-[node name="BulletWogol" type="Node2D"]
+[node name="BulletWogol" type="Node2D" groups=["bullet"]]
 light_mask = 2
 visibility_layer = 2
 script = ExtResource("1_0mv43")

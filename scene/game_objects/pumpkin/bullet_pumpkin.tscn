@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://0ywjn74fg4fm"]
+[gd_scene load_steps=5 format=3 uid="uid://0ywjn74fg4fm"]
 
 [ext_resource type="Texture2D" uid="uid://cmdebs1btb2od" path="res://scene/game_objects/pumpkin/pumpkin.png" id="1_ngi7i"]
 [ext_resource type="Script" path="res://scene/game_objects/pumpkin/bullet_pumpkin.gd" id="1_sv88x"]
@@ -7,10 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2b4j"]
 radius = 1.70455
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kqse0"]
-radius = 3.0
-
-[node name="BulletPumpkin" type="Node2D"]
+[node name="BulletPumpkin" type="Node2D" groups=["bullet"]]
 light_mask = 2
 visibility_layer = 2
 script = ExtResource("1_sv88x")
@@ -21,15 +18,8 @@ scale = Vector2(0.0588979, 0.0530081)
 texture = ExtResource("1_ngi7i")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_duwoe")]
-collision_layer = 2
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 scale = Vector2(1.76, 1.76)
 shape = SubResource("CircleShape2D_o2b4j")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_kqse0")

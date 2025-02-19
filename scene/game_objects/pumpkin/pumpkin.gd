@@ -4,16 +4,14 @@ extends CharacterBody2D  # Наследуем от CharacterBody2D для раб
 @onready var health_component = $HealthComponent  # Компонент здоровья
 @onready var animated_sprite_2d = $AnimatedSprite2D  # Спрайт анимации
 @onready var movement_component = $MovementComponent  # Компонент движения
-@onready var bullet_controller = $BulletPumpkinController  # Контроллер для управления пулями
+@onready var bullet_pumpkin_controller: Node = $BulletPumpkinController
 @onready var damage_numbers = get_tree().get_first_node_in_group("damage_layer")  # Узел для отображения урона
 
 # Экспортируем параметры, чтобы их можно было настроить в редакторе
 @export var death_scecene: PackedScene  # Сцена для эффекта смерти
 @export var sprite: CompressedTexture2D  # Спрайт для эффекта смерти
-@export var health_value: float = 18  # Начальное значение здоровья
-@export var shooting_interval: float = 3  # Интервал между выстрелами
+@export var health_value: float = 70  # Начальное значение здоровья
 
-var time_since_last_shot: float = 0  # Счётчик времени для отслеживания интервала между выстрелами
 
 # Функция, вызываемая при старте сцены
 func _ready():
@@ -40,17 +38,13 @@ func _process(delta):
 	var face_sign = sign(direction.x)
 	if face_sign != 0:
 		animated_sprite_2d.scale.x = face_sign  # Меняем направление взгляда
+	shoot_bullet()  # Стреляем
 
-	# Логика стрельбы
-	time_since_last_shot += delta  # Увеличиваем счётчик времени
-	if time_since_last_shot >= shooting_interval:
-		shoot_bullet()  # Стреляем
-		time_since_last_shot = 0  # Сброс счётчика времени после выстрела
 
 # Функция для стрельбы пулями
 func shoot_bullet():
 	# Проверяем наличие контроллера пуль
-	if bullet_controller == null:
+	if bullet_pumpkin_controller == null:
 		print("Ошибка: BulletController не найден!")
 		return
 
@@ -61,7 +55,7 @@ func shoot_bullet():
 		return
 
 	# Спавним пулю, направленную в сторону игрока
-	bullet_controller.spawn_bullet(global_position, player.global_position)
+	bullet_pumpkin_controller.spawn_bullet(global_position, player.global_position)
 
 # Обработка смерти моба
 func on_died():

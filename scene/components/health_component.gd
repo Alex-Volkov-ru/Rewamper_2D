@@ -9,6 +9,7 @@ signal health_changed
 var current_health: float
 
 func _ready():
+	
 	current_health = max_health
 
 func take_damage(damage: int):

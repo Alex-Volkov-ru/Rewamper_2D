@@ -21,7 +21,7 @@ signal skill_upgraded(skill_name: String, level: int)
 @export var max_speed: float = 60
 var base_max_speed: float  # Базовая скорость передвижения
 @export var dash_speed_multiplier: float = 2
-@export var health_value: float = 25  # Начальное значение здоровья игрока
+@export var health_value: float = 100  # Начальное значение здоровья игрока
 
 # Локальные переменные
 var acceleration: float = 0.15
@@ -244,10 +244,11 @@ func _process(delta):
 		animated_sprite_2d.scale.x = face_sign
 
 # Обработка повреждений
-func check_if_damaged():
+
+func check_if_damaged(damage):
 	if enemies_colliding == 0 or not grace_period.is_stopped():
 		return
-	health_component.take_damage(1)
+	health_component.take_damage(damage)
 	grace_period.start()
 
 # Обновление здоровья
@@ -256,8 +257,11 @@ func health_update():
 
 # Обработка столкновений с врагами
 func _on_player_hurt_box_area_entered(area):
+	var damage = 10
+	if area.get_parent().is_in_group("bullet"):
+		damage = area.get_parent().hit_box_component.damage
 	enemies_colliding += 1
-	check_if_damaged()
+	check_if_damaged(damage)
 
 func _on_player_hurt_box_area_exited(area):
 	enemies_colliding -= 1
@@ -272,7 +276,7 @@ func on_health_changed():
 
 # Таймер для неуязвимости
 func _on_grace_period_timeout():
-	check_if_damaged()
+	check_if_damaged(1)
 
 # Обработчик улучшений
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):

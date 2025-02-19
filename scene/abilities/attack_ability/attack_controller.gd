@@ -5,7 +5,7 @@ extends Node
 @onready var timer = $Timer
 
 var attack_range = 100
-var sword_damage = 5
+var sword_damage = 10
 var default_attack_speed
 
 # Настройки критического удара
