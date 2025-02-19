@@ -4,11 +4,20 @@ var talent_name = ""
 var talent_level = 0
 var upgrade_cost = 0
 
+
+var talent_names_rus = {
+	"defense": "Защиту",
+	"movement": "Скорость передвижения",
+	"stamina": "Выносливость"
+}
+var translated_name = talent_names_rus.get(name, name)
+
 func setup(name, level, cost):
 	talent_name = name
 	talent_level = level
 	upgrade_cost = cost
-	$Panel/VBoxContainer/Label.text = "Вы уверены, что хотите улучшить " + name + " за " + str(cost) + " монет?"
+	$Panel/VBoxContainer/Label.text = "Вы уверены, что хотите улучшить " + translated_name + " за " + str(cost) + " монет?"
+
 
 func _on_yes_pressed():
 	if Global.get_talent("coins") >= upgrade_cost:

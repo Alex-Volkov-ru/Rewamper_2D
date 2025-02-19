@@ -13,6 +13,13 @@ var talent_node  # Узел, который вызвал окно
 const COST_PER_LEVEL = 100  # Цена улучшения
 const MAX_LEVEL = 5  # Максимальный уровень таланта
 
+
+# Словарь с переводами талантов
+var talent_names_rus = {
+	"defense": "Защиту",
+	"movement": "Скорость передвижения",
+	"stamina": "Выносливость"
+}
 # Функция принимает 3 аргумента
 func set_talent_info(name: String, level: int, node):
 	talent_name = name
@@ -28,7 +35,7 @@ func set_talent_info(name: String, level: int, node):
 		button_yes.visible = false
 	else:
 		# Если уровень не максимальный, показываем стоимость улучшения
-		description.text = "Вы хотите улучшить " + talent_name + "?"
+		description.text = "Вы хотите улучшить " + talent_names_rus.get(talent_name, talent_name) + "?"
 		cost_label.text = "Стоимость: " + str(COST_PER_LEVEL * (current_level + 1)) + " монет"
 
 func _ready():

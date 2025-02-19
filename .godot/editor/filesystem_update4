@@ -80,3 +80,4 @@ res://scene/game_objects/ogr/ogr.gd
 res://scene/game_objects/demon/demon.tscn
 res://scene/game_objects/ogr/ogr.tscn
 res://scene/game_objects/hp_bottle/hp_bottle.gd
+res://scene/ui/tallants/confirm_popup.gd
