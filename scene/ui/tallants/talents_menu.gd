@@ -2,6 +2,8 @@ extends Control
 
 @onready var gold_label: Label = $CountLabel  # Получаем ссылку на Label, который показывает монеты
 @onready var reset_talents: TextureButton = $ResetTalents
+var reset_talents_popup = preload('res://scene/ui/tallants/ResetTallantsPopup.tscn')  # Загружаем сцену, а не скрипт
+@onready var blocking_panel: Panel = $BlockingPanel
 
 # Функция для обновления монет в интерфейсе
 func update_coin_display():
@@ -26,7 +28,8 @@ func _on_texture_quit_pressed() -> void:
 func _exit_tree():
 	Global.coin_collected.disconnect(_on_coin_collected)
 
-
 func _on_reset_talents_pressed() -> void:
-	Global.reset_talents()  # Сбрасываем таланты
-	update_coin_display()  # Просто обновляем интерфейс (монеты не изменятся)
+	# Создаём экземпляр окна подтверждения
+	var popup_instance = reset_talents_popup.instantiate()  # Используем instantiate вместо instance
+	add_child(popup_instance)  # Добавляем в текущую сцену
+	popup_instance.show_popup()  # Показываем окно

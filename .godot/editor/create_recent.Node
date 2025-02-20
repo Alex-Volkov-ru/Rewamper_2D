@@ -1,5 +1,5 @@
-AudioStreamPlayer
 PanelContainer
+AudioStreamPlayer
 Label
 Button
 VBoxContainer
@@ -12,4 +12,3 @@ PopupPanel
 CanvasLayer
 Node
 Sprite2D
-Line2D

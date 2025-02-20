@@ -1,5 +1,5 @@
 extends TextureButton
-class_name Skill
+class_name SkillNode
 
 signal skill_upgraded(skill_name: String, level: int)
 

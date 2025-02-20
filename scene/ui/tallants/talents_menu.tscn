@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vq1poo0vsrw6"]
+[gd_scene load_steps=18 format=3 uid="uid://vq1poo0vsrw6"]
 
 [ext_resource type="Script" path="res://scene/ui/tallants/talents_menu.gd" id="1_t01k4"]
 [ext_resource type="Texture2D" uid="uid://dh27j5hg2115b" path="res://scene/ui/tallants/talants_menu.webp" id="2_p6c13"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="8_7knw2"]
 [ext_resource type="PackedScene" uid="uid://cu18b07du4db5" path="res://scene/ui/tallants/deffents_skill_button.tscn" id="9_icvdg"]
 [ext_resource type="Texture2D" uid="uid://58ucid1opn2h" path="res://scene/game_objects/coin/MonedaD.png" id="10_faslm"]
+[ext_resource type="PackedScene" uid="uid://bm14msskkdpmq" path="res://scene/ui/tallants/stamina_skill_button.tscn" id="11_qvtys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ii4bg"]
 atlas = ExtResource("10_faslm")
@@ -65,7 +66,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t01k4")
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="BlockingPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,10 +74,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TalantsMenu" type="Sprite2D" parent="Panel2"]
+[node name="TalantsMenu" type="Sprite2D" parent="."]
 position = Vector2(574, 321)
 scale = Vector2(0.945312, 0.945312)
 texture = ExtResource("2_p6c13")
+
+[node name="ResetTalents" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 983.0
+offset_top = 96.0
+offset_right = 1783.0
+offset_bottom = 396.0
+scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_tcgi8")
+
+[node name="ResetTalents" type="Label" parent="ResetTalents"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.082
+offset_top = -100.0
+offset_right = 378.918
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.715, 0.715)
+theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("8_7knw2")
+theme_override_font_sizes/font_size = 78
+text = "Сброс 
+талантов
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CritSkillButton" parent="." instance=ExtResource("6_aw2lf")]
 visible = false
@@ -108,7 +147,8 @@ offset_top = 280.0
 offset_right = 353.0
 offset_bottom = 320.0
 
-[node name="StaminaSkillButton" parent="." instance=ExtResource("3_2qhwc")]
+[node name="StaminaSkillBut2ton" parent="." instance=ExtResource("3_2qhwc")]
+visible = false
 top_level = true
 layout_mode = 0
 offset_left = 544.0
@@ -146,37 +186,6 @@ text = "Назад
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResetTalents" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 983.0
-offset_top = 72.0
-offset_right = 1783.0
-offset_bottom = 372.0
-scale = Vector2(0.2, 0.2)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("7_tcgi8")
-
-[node name="ResetTalents" type="Label" parent="ResetTalents"]
-layout_mode = 0
-offset_left = 195.918
-offset_top = 50.0
-offset_right = 778.918
-offset_bottom = 321.0
-scale = Vector2(0.715, 0.715)
-theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("8_7knw2")
-theme_override_font_sizes/font_size = 78
-text = "Сброс 
-талантов
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CountLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 32.0
@@ -191,5 +200,12 @@ sprite_frames = SubResource("SpriteFrames_le3k2")
 animation = &"idle"
 autoplay = "idle"
 
-[connection signal="pressed" from="TextureQuit" to="." method="_on_texture_quit_pressed"]
+[node name="StaminaSkilButton" parent="." instance=ExtResource("11_qvtys")]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 175.0
+offset_right = 581.0
+offset_bottom = 215.0
+
 [connection signal="pressed" from="ResetTalents" to="." method="_on_reset_talents_pressed"]
+[connection signal="pressed" from="TextureQuit" to="." method="_on_texture_quit_pressed"]

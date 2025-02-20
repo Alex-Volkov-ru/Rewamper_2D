@@ -28,3 +28,10 @@ res://scene/ui/tallants/speed_skill_button.gd
 res://scene/global/global.tscn
 res://scene/ui/tallants/deffents_skill_button.gd
 res://scene/ui/tallants/skill_button.gd
+res://scene/ui/tallants/ResetTallantsPopup.tscn
+res://scene/ui/tallants/reset_tallants_popup.gd
+res://scene/ui/tallants/crit_skill_button.tscn
+res://scene/ui/tallants/deffents_skill_button.tscn
+res://scene/ui/tallants/skill_button.tscn
+res://scene/ui/tallants/stamina_skill_button.tscn
+res://scene/ui/tallants/stamina_skill_button.gd
