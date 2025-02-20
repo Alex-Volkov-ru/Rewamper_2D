@@ -105,31 +105,31 @@ vertical_alignment = 1
 
 [node name="HP" type="Label" parent="Features display"]
 offset_left = 7.0
-offset_right = 57.0
-offset_bottom = 50.0
+offset_right = 127.0
+offset_bottom = 35.0
 theme_override_fonts/font = ExtResource("15_5sdio")
-theme_override_font_sizes/font_size = 29
-text = "HP:"
+theme_override_font_sizes/font_size = 20
+text = "Здоровье"
 script = ExtResource("17_vmelh")
 
 [node name="GOLD" type="Label" parent="Features display"]
 offset_left = 7.0
-offset_top = 37.0
-offset_right = 96.0
-offset_bottom = 87.0
+offset_top = 25.0
+offset_right = 97.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("15_5sdio")
-theme_override_font_sizes/font_size = 29
-text = "GOLD:"
+theme_override_font_sizes/font_size = 20
+text = "Золото"
 script = ExtResource("18_e4oi7")
 
 [node name="LVLCURRRENT" type="Label" parent="Features display"]
 offset_left = 8.0
-offset_top = 75.0
-offset_right = 73.0
-offset_bottom = 125.0
+offset_top = 48.0
+offset_right = 107.0
+offset_bottom = 83.0
 theme_override_fonts/font = ExtResource("15_5sdio")
-theme_override_font_sizes/font_size = 29
-text = "LVL:"
+theme_override_font_sizes/font_size = 20
+text = "Уровень"
 script = ExtResource("18_lead1")
 
 [node name="MusicManager" parent="." instance=ExtResource("19_r6cjb")]

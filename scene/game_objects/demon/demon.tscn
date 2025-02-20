@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://eyq6ay3d7agl"]
 
-[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_tchye"]
+[ext_resource type="Script" path="res://scene/game_objects/demon/demon.gd" id="1_g8vjf"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_e0lqd"]
 [ext_resource type="PackedScene" uid="uid://b6dk57yhh7fv1" path="res://scene/components/hp_bottle_drop_component.tscn" id="4_kjmvi"]
 [ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_p287x"]
@@ -73,7 +73,7 @@ radius = 11.0454
 [node name="Demon" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_tchye")
+script = ExtResource("1_g8vjf")
 death_scecene = ExtResource("2_e0lqd")
 sprite = ExtResource("7_crcmu")
 

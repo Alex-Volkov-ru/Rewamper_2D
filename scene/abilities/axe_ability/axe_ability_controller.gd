@@ -2,7 +2,7 @@ extends Node
 
 @export var axe_ability_scene: PackedScene
 
-var damage = 10
+var damage = 15
 
 func _on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D

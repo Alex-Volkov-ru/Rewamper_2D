@@ -276,7 +276,7 @@ func on_health_changed():
 
 # Таймер для неуязвимости
 func _on_grace_period_timeout():
-	check_if_damaged(1)
+	check_if_damaged(5)
 
 # Обработчик улучшений
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):

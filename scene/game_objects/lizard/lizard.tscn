@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://bxgkm3dl44efe"]
 
-[ext_resource type="Script" path="res://scene/game_objects/mushroom/mushroom.gd" id="1_omgma"]
+[ext_resource type="Script" path="res://scene/game_objects/lizard/lizard.gd" id="1_lw5da"]
 [ext_resource type="PackedScene" uid="uid://ddlw6fq16u4mb" path="res://scene/components/death_component.tscn" id="2_sixmq"]
 [ext_resource type="Texture2D" uid="uid://bmnydmqse3540" path="res://scene/game_objects/lizard/lizard_m_hit_anim_f0.png" id="3_gc3ow"]
 [ext_resource type="Texture2D" uid="uid://cqw18vg6m1rpo" path="res://scene/game_objects/lizard/lizard_m_idle_anim_f0.png" id="3_yenxq"]
@@ -75,7 +75,7 @@ radius = 8.0
 [node name="Lizard" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_omgma")
+script = ExtResource("1_lw5da")
 death_scecene = ExtResource("2_sixmq")
 sprite = ExtResource("3_gc3ow")
 
