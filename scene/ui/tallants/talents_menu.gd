@@ -1,6 +1,7 @@
 extends Control
 
 @onready var gold_label: Label = $CountLabel  # Получаем ссылку на Label, который показывает монеты
+@onready var reset_talents: TextureButton = $ResetTalents
 
 # Функция для обновления монет в интерфейсе
 func update_coin_display():
@@ -24,3 +25,8 @@ func _on_texture_quit_pressed() -> void:
 # Отписка от сигнала при выходе из сцены
 func _exit_tree():
 	Global.coin_collected.disconnect(_on_coin_collected)
+
+
+func _on_reset_talents_pressed() -> void:
+	Global.reset_talents()  # Сбрасываем таланты
+	update_coin_display()  # Просто обновляем интерфейс (монеты не изменятся)

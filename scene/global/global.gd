@@ -62,3 +62,18 @@ func spend_coins(amount: int) -> bool:
 		coin_collected.emit(-amount)  # Испускаем сигнал при потере монет
 		return true  # Покупка успешна
 	return false  # Недостаточно монет
+
+func update_all_talents():
+	var talent_nodes = get_tree().get_nodes_in_group("TalentNode")  # Получаем все узлы талантов
+	for talent_node in talent_nodes:
+		talent_node.update_talent_ui()  # Вызываем у них обновление UI
+		
+func reset_talents() -> void:
+	for talent_name in talents.keys():
+		talents[talent_name] = 0  
+
+	Save_Manager_Progress.save_talents(talents)
+
+	for node in get_tree().get_nodes_in_group("TalentNode"):
+		if node.has_method("update_talent_ui"):
+			node.update_talent_ui()

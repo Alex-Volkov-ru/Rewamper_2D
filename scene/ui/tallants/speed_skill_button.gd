@@ -15,7 +15,8 @@ var level: int = 0:
 		label.text = str(level) + "/5"
 
 func _ready():
-	level = Global.get_talent("movement", 0)  # Загружаем уровень таланта
+	add_to_group("TalentNode")  # Добавляем узел в группу
+	update_talent_ui()  # Загружаем уровень из глобальных данных
 
 func _on_pressed() -> void:
 	# Создаём новое окно перед добавлением
@@ -29,16 +30,22 @@ func _on_pressed() -> void:
 
 # Функция для обновления уровня после покупки
 func upgrade_talent():
+	level = Global.get_talent("movement", 0)
 	if level < 5:
 		level += 1
 		Global.set_talent("movement", level)  # Обновляем уровень таланта
-		panel.show_behind_parent = true
+	update_talent_ui()  # Обновляем UI после покупки
 
-		# Разблокировка зависимых умений (если есть)
-		var skills = get_children()
-		for skill in skills:
-			if skill is SpeedSkillNode and level == 1:
-				skill.disabled = false
+	# Разблокировка зависимых умений (если есть)
+	for skill in get_children():
+		if skill is SpeedSkillNode and level == 1:
+			skill.disabled = false
 
-		# Отправляем сигнал в Player.gd
-		skill_upgraded.emit("movement", level)
+	# Отправляем сигнал в Player.gd
+	skill_upgraded.emit("movement", level)
+
+# 🔄 Функция обновления UI (вызывается при сбросе талантов)
+func update_talent_ui():
+	level = Global.get_talent("movement", 0)  # Загружаем уровень после сброса
+	label.text = str(level) + "/5"
+	panel.show_behind_parent = (level > 0)  # Показываем панель, если талант не 0

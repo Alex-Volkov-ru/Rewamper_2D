@@ -14,7 +14,6 @@ func _ready():
 func on_coin_collected(coin: int):
 	current_coins += coin  # Увеличиваем количество монет
 	coins_updated.emit(current_coins)  # Отправляем обновленное количество монет
-	print('Количество монет за сессию ', current_coins)
 
 # Метод для очистки монет (сброс текущего количества монет)
 func clear_current_coins():

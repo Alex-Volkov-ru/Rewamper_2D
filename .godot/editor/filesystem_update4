@@ -18,3 +18,13 @@ res://scene/manager/experience_manager.tscn
 res://scene/ui/pause_menu.tscn
 res://scene/manager/coin_manager.gd
 res://scene/ui/end_screen.gd
+res://scene/ui/tallants/talents_menu.tscn
+res://scene/ui/tallants/talent_popup.gd
+res://scene/ui/menu.tscn
+res://scene/ui/tallants/TalentPopup.tscn
+res://scene/ui/tallants/talents_menu.gd
+res://scene/global/global.gd
+res://scene/ui/tallants/speed_skill_button.gd
+res://scene/global/global.tscn
+res://scene/ui/tallants/deffents_skill_button.gd
+res://scene/ui/tallants/skill_button.gd

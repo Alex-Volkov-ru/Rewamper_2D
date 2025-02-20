@@ -105,5 +105,5 @@ autoplay = true
 
 [connection signal="pressed" from="TextureTalents" to="." method="_on_texture_talents_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="TexturePlay" to="." method="_on_texture_play_pressed"]
 [connection signal="pressed" from="TexturePlay" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TexturePlay" to="." method="_on_texture_play_pressed"]

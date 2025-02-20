@@ -7,7 +7,7 @@ signal skill_upgraded(skill_name: String, level: int)
 @onready var label = $MarginContainer/Label
 
 # Подгружаем сцену окна покупки
-@onready var talent_popup = preload("res://scene/ui/tallants/TalentPopup.tscn").instantiate()
+var talent_popup_scene = preload("res://scene/ui/tallants/TalentPopup.tscn")
 
 var level: int = 0:
 	set(value):
@@ -15,12 +15,13 @@ var level: int = 0:
 		label.text = str(level) + "/5"
 
 func _ready():
-	level = Global.get_talent("defense", 0)
+	add_to_group("TalentNode")  # Добавляем узел в группу
+	update_talent_ui()  # Загружаем уровень из глобальных данных
 
 func _on_pressed() -> void:
 	# Создаём новое окно перед добавлением
-	var talent_popup = preload("res://scene/ui/tallants/TalentPopup.tscn").instantiate()
-	
+	var talent_popup = talent_popup_scene.instantiate()
+
 	# Добавляем в текущую сцену
 	get_tree().current_scene.add_child(talent_popup)
 	
@@ -29,16 +30,22 @@ func _on_pressed() -> void:
 
 # Функция для обновления уровня после покупки
 func upgrade_talent():
+	level = Global.get_talent("defense", 0)
 	if level < 5:
 		level += 1
-		Global.set_talent("defense", level)
-		panel.show_behind_parent = true
+		Global.set_talent("defense", level)  # Обновляем уровень таланта
+	update_talent_ui()  # Обновляем UI после покупки
 
-		# Разблокировка зависимых умений (если есть)
-		var skills = get_children()
-		for skill in skills:
-			if skill is DeffensSkillNode and level == 1:
-				skill.disabled = false
+	# Разблокировка зависимых умений (если есть)
+	for skill in get_children():
+		if skill is DeffensSkillNode and level == 1:
+			skill.disabled = false
 
-		# Отправляем сигнал в Player.gd
-		skill_upgraded.emit("defense", level)
+	# Отправляем сигнал в Player.gd
+	skill_upgraded.emit("defense", level)
+
+# 🔄 Функция обновления UI (вызывается при сбросе талантов)
+func update_talent_ui():
+	level = Global.get_talent("defense", 0)  # Загружаем уровень после сброса
+	label.text = str(level) + "/5"
+	panel.show_behind_parent = (level > 0)  # Показываем панель, если талант не 0
