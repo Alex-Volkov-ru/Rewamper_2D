@@ -20,9 +20,9 @@ res://scene/game_objects/demon/demon.tscn::1e4dab33e9702a537b92cef2c78e3cf4::174
 res://scene/game_objects/exp_bottle/exp_bottle.tscn::48c487e18c2f58f6205aa1b7ebc88cd6::1738068671::res://.godot/exported/133200997/export-8e96d9793fc0911821e4a35a524c296c-exp_bottle.scn
 res://scene/game_objects/goblin/goblin.tscn::3914fed92bc3c7a4e03e9d13a17ba808::1739195403::res://.godot/exported/133200997/export-d16c0e5f8aaa2a91311f5190e8a23652-goblin.scn
 res://scene/game_objects/mushroom/mushroom.tscn::73e1acf467df4e3b4ba17f0f1599eb6b::1739997041::res://.godot/exported/133200997/export-563ef3f2e70be29a24f09696d0b82b27-mushroom.scn
-res://scene/game_objects/player/player.tscn::93bb5f53145b2195d0419f7367598b8a::1739997041::res://.godot/exported/133200997/export-cdfed020ecf32a05ab32bb8abd39c0ee-player.scn
+res://scene/game_objects/player/player.tscn::93bb5f53145b2195d0419f7367598b8a::1740050708::res://.godot/exported/133200997/export-cdfed020ecf32a05ab32bb8abd39c0ee-player.scn
 res://scene/global/global.tscn::25a2824d3141e2b3f5274c166dadc78f::1739217150::res://.godot/exported/133200997/export-7f03c25af88dec1419644c4d8d1f6911-global.scn
-res://scene/level/level.tscn::4c11f133e89c43d2b33363afd4215e57::1740048716::res://.godot/exported/133200997/export-04a5882f64eb6910cfc745d719acbd9a-level.scn
+res://scene/level/level.tscn::4c11f133e89c43d2b33363afd4215e57::1740050700::res://.godot/exported/133200997/export-04a5882f64eb6910cfc745d719acbd9a-level.scn
 res://scene/manager/spawner/enemy_spawner.tscn::467d854f6b1a694fb636d45fbae65fa3::1739997041::res://.godot/exported/133200997/export-bdc2e1838ee66f0b1f1d6d8cb943c735-enemy_spawner.scn
 res://scene/manager/arena_time_manager.tscn::2d8a6750b496329edf1c78bb65dc8148::1739394904::res://.godot/exported/133200997/export-93af88e2c90d725a217502fb77395029-arena_time_manager.scn
 res://scene/manager/experience_manager.tscn::7f8bc206e762d27404a831658eacdbc8::1738757059::res://.godot/exported/133200997/export-d81ba667d4efb955e0b9ed0d0e8a1392-experience_manager.scn
