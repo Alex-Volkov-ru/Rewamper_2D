@@ -42,18 +42,18 @@ text = "Таланты"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureQuit" type="TextureButton" parent="."]
+[node name="Settings" type="TextureButton" parent="."]
 visible = false
-offset_left = 437.0
-offset_top = 434.0
-offset_right = 1237.0
-offset_bottom = 734.0
+offset_left = 51.0
+offset_top = 384.0
+offset_right = 851.0
+offset_bottom = 684.0
 scale = Vector2(0.49, 0.49)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_kex4x")
 
-[node name="Quit" type="Label" parent="TextureQuit"]
+[node name="Settings" type="Label" parent="Settings"]
 layout_mode = 0
 offset_left = 195.918
 offset_top = 81.6327
@@ -67,8 +67,7 @@ theme_override_constants/shadow_offset_y = 10
 theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("4_og1ju")
 theme_override_font_sizes/font_size = 78
-text = "Выход
-"
+text = "Настройки"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -105,7 +104,6 @@ stream = ExtResource("5_8gu57")
 autoplay = true
 
 [connection signal="pressed" from="TextureTalents" to="." method="_on_texture_talents_pressed"]
-[connection signal="pressed" from="TextureQuit" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="TextureQuit" to="." method="_on_texture_quit_pressed"]
-[connection signal="pressed" from="TexturePlay" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="TexturePlay" to="." method="_on_texture_play_pressed"]
+[connection signal="pressed" from="TexturePlay" to="." method="_on_texture_button_pressed"]

@@ -17,7 +17,6 @@ func _ready():
 	
 	# Загружаем таланты
 	talents = Save_Manager_Progress.load_talents()
-	print("Таланты загружены:", talents)
 
 	# Проверяем, есть ли CoinManager
 	if get_tree().get_nodes_in_group("CoinManager").is_empty():
@@ -50,7 +49,6 @@ func _create_coin_manager():
 # Сохраняем при выходе
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print("Игра закрывается, сохраняем данные...")
 		Save_Manager_Progress.save()
 
 func get_coins() -> int:

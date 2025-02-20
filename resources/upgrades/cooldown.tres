@@ -6,5 +6,5 @@
 script = ExtResource("1_tjkuf")
 id = "cooldown"
 max_quantity = 15
-name = "Ускорение пули"
+name = "Пистолет"
 description = "Ускроение скорости пули между выстрелами на 10 %"

@@ -13,7 +13,6 @@ func _is_web() -> bool:
 
 # === СОХРАНЕНИЕ ДАННЫХ ===
 func save():
-	print("Сохранение данных...", save_data)
 	if _is_web():
 		_save_to_local_storage()
 	else:
@@ -32,7 +31,6 @@ func _save_to_file():
 		var json_string = JSON.stringify(save_data, "\t")  # Форматирование для удобства
 		file.store_string(json_string)
 		file.close()
-		print("Данные сохранены локально:", json_string)
 	else:
 		print("Ошибка: Не удалось открыть файл для записи!")
 
@@ -48,7 +46,6 @@ func _load_data():
 			var result = json.parse(content)
 			if result == OK:
 				save_data = json.data
-				print("Данные успешно загружены:", save_data)
 			else:
 				print("Ошибка: Не удалось разобрать JSON-файл!")
 
@@ -60,7 +57,6 @@ func _load_from_local_storage():
 		var result = json.parse(json_data)
 		if result == OK:
 			save_data = json.data
-			print("Данные загружены из localStorage:", save_data)
 
 # === СОХРАНЕНИЕ ТАЛАНТОВ ===
 func save_talents(talents: Dictionary):

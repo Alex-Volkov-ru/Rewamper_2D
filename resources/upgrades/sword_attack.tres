@@ -6,5 +6,5 @@
 script = ExtResource("1_nktqj")
 id = "sword_attack"
 max_quantity = 7
-name = "Увеличение урона от"
+name = "Меч"
 description = "Увеличенеие урона от меча на 10 "
