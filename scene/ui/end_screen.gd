@@ -6,8 +6,10 @@ var has_watched_ad: bool = false  # Флаг, следил ли игрок ре�
 
 func _ready():
 	get_tree().paused = true
-	# Подписываемся на изменение состояния рекламы
+	Save_Manager_Progress.check_new_record()
 	Bridge.advertisement.connect("rewarded_state_changed", Callable(self, "_on_rewarded_state_changed"))
+
+	
 
 func change_to_victory():
 	name_label.text = "Победа"

@@ -85,7 +85,7 @@ res://scene/ui/tallants/skill_button.tscn::9e24f149a7ec1688449603dccc747b9b::174
 res://scene/ui/tallants/talents_menu.tscn::cbd4e897fbd7807151fcd00fda44e5a5::1740090722::res://.godot/exported/133200997/export-a9d33edf82cff7a96169c667e8c80cdf-talents_menu.scn
 res://scene/components/flash_component.tscn::bf0a93e812abd45f8c88eeb1189248bd::1739195254::res://.godot/exported/133200997/export-01fcfdd5b7c4d9c2c3e08a708fbe7d2b-flash_component.scn
 res://scene/components/flash_material.tres::c7e08e4096f38c027a27b153f86fb392::1740090722::res://.godot/exported/133200997/export-4969bcd4f1c73d70c9f084824b08a137-flash_material.res
-res://scene/global/save_manager.tscn::36cd3c1323f7ecefc5f660fb3738628f::1740091778::res://.godot/exported/133200997/export-add9baab3b6518ab5bb2d07caeef50e1-save_manager.scn
+res://scene/global/save_manager.tscn::36cd3c1323f7ecefc5f660fb3738628f::1740092771::res://.godot/exported/133200997/export-add9baab3b6518ab5bb2d07caeef50e1-save_manager.scn
 res://scene/ui/tallants/crit_skill_button.tscn::a3a8d3e78143a9872d11d93e5c8b2555::1740082995::res://.godot/exported/133200997/export-f7c82f48caf214e1f6d74ba5be535f91-crit_skill_button.scn
 res://scene/ui/tallants/deffents_skill_button.tscn::f3878a1048a0feee66e1ca7a30ee455b::1740082995::res://.godot/exported/133200997/export-4b81cc9448afc55b5da3b5e124159dc3-deffents_skill_button.scn
 res://scene/ui/tallants/regenerate_skill_button.tscn::48425ab6c2718052a0d65b03c4db4afa::1739906786::res://.godot/exported/133200997/export-9716c5d8e02f702b091eab2de133faee-regenerate_skill_button.scn

@@ -8,3 +8,4 @@ res://scene/ui/tallants/TalentPopup.tscn
 res://scene/ui/tallants/ResetTallantsPopup.tscn
 res://scene/ui/tallants/talents_menu.tscn
 res://scene/global/save_manager.gd
+res://scene/ui/end_screen.gd
