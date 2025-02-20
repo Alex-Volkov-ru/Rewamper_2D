@@ -7,6 +7,8 @@ signal ability_upgrade_added (upgrade: AbilityUpgrade, current_upgrades: Diction
 
 var coin_manager: CoinManager
 var talents = {}
+const COSTS = [50, 200, 400, 600, 1000]  # Стоимость улучшения для каждого уровня
+const MAX_LEVEL = 5  # Максимальный уровень таланта
 
 func _ready():
 	Bridge.platform.send_message("game_ready")
@@ -69,11 +71,30 @@ func update_all_talents():
 		talent_node.update_talent_ui()  # Вызываем у них обновление UI
 		
 func reset_talents() -> void:
+	var total_refunded_coins = 0  # Сумма монет, которые будут возвращены
+
+	# Пройдем по всем талантам и вычислим потраченные монеты
+	for talent_name in talents.keys():
+		var talent_level = talents[talent_name]
+		if talent_level > 0:  # Если талант был улучшен
+			# Здесь мы правильно вычисляем стоимость на основе уровня таланта
+			for i in range(talent_level):  # Суммируем все улучшения до текущего уровня
+				total_refunded_coins += COSTS[i]  # Добавляем стоимость для каждого уровня
+
+	# Сбрасываем все таланты
 	for talent_name in talents.keys():
 		talents[talent_name] = 0  
 
 	Save_Manager_Progress.save_talents(talents)
 
+	# Возвращаем монеты игроку
+	Save_Manager_Progress.save_data["coins"] += total_refunded_coins
+	Save_Manager_Progress.save()  # Сохраняем изменения
+
+	# Обновляем UI для всех TalentNode
 	for node in get_tree().get_nodes_in_group("TalentNode"):
 		if node.has_method("update_talent_ui"):
 			node.update_talent_ui()
+
+	# Отправляем сигнал, если нужно
+	coin_collected.emit(total_refunded_coins)
