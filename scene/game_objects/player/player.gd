@@ -40,7 +40,7 @@ var stamina_health_bonus := [0.0, 0.10, 0.20, 0.30, 0.40, 0.50]
 var movement_talent_level: int = 0
 # Таблица бонусов к скорости передвижения (0 - без таланта, 5 - максимальный уровень)
 var movement_bonus := [0.0, 0.02, 0.05, 0.10, 0.15, 0.20]
-
+var defense_reduction: float = 0.0 
 
 var defense_talent_level: int = 0
 var defense_bonus := [0.0, 0.02, 0.05, 0.10, 0.15, 0.20]
@@ -61,7 +61,7 @@ func _on_skill_upgraded(skill_name: String, level: int):
 		apply_defense_talent()  # Применяем бонус к скорости
 
 func apply_defense_talent():
-	pass
+	defense_reduction = defense_bonus[defense_talent_level]
 
 
 func apply_movement_talent():
@@ -248,7 +248,9 @@ func _process(delta):
 func check_if_damaged(damage):
 	if enemies_colliding == 0 or not grace_period.is_stopped():
 		return
-	health_component.take_damage(damage)
+	# Применяем уменьшение урона
+	var reduced_damage = damage * (1.0 - defense_reduction)
+	health_component.take_damage(reduced_damage)
 	grace_period.start()
 
 # Обновление здоровья
@@ -257,7 +259,7 @@ func health_update():
 
 # Обработка столкновений с врагами
 func _on_player_hurt_box_area_entered(area):
-	var damage = 10
+	var damage = 5
 	if area.get_parent().is_in_group("bullet"):
 		damage = area.get_parent().hit_box_component.damage
 	enemies_colliding += 1
