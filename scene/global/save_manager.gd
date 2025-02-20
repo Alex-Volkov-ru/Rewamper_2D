@@ -2,10 +2,48 @@ extends Node
 class_name SaveManager
 
 var save_file_path := "user://save_data.json"
+var kill_mobs_count = 0
 var save_data := {
 	"coins": 0,
-	"talents": {}
+	"talents": {},
+	'max_kill_mobs_count': 0,
 }
+
+# === СОЗДАЕМ ФУНКЦИЮ ДЛЯ ПРОВЕРКИ РЕКОРДА ===
+func check_new_record():
+	# Проверяем, если текущий kill_mobs_count больше максимума
+	if kill_mobs_count > save_data["max_kill_mobs_count"]:
+		# Обновляем максимальный рекорд
+		save_data["max_kill_mobs_count"] = kill_mobs_count
+		
+		# Отправляем рекорд в лидерборд
+		send_to_leaderboard(kill_mobs_count)
+		
+	# Сохраняем изменения
+	# Сбрасываем текущий счетчик убийств
+	kill_mobs_count = 0
+	save()
+
+# Пример функции отправки рекорда в лидерборд (реализовать в зависимости от механизма игры)
+func send_to_leaderboard(record: int):
+	# Проверяем, поддерживает ли платформа лидерборд
+	if Bridge.leaderboard.is_supported:
+		var options = {
+			"leaderboardName": "YOUR_LEADERBOARD_NAME",  # Имя твоего лидерборда
+			"score": record  # Очки игрока
+		}
+		
+		# Отправляем рекорд в лидерборд
+		Bridge.leaderboard.set_score(options, Callable(self, "_on_set_score_completed"))
+	else:
+		print("Лидерборды не поддерживаются на этой платформе.")
+
+# Callback для обработки ответа от платформы
+func _on_set_score_completed(success):
+	if success:
+		print("Рекорд успешно отправлен в лидерборд!")
+	else:
+		print("Ошибка при отправке рекорда в лидерборд.")
 
 # === ПРОВЕРКА ПЛАТФОРМЫ (браузер или нет) ===
 func _is_web() -> bool:

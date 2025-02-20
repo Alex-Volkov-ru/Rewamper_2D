@@ -1,8 +1,11 @@
-res://scene/ui/tallants/TalentPopup.tscn
+res://scene/global/save_manager.tscn
 res://scene/components/flash_component.gdshader
 res://scene/components/flash_material.tres
 res://resources/world.tres
+res://scene/global/save_manager.gd
+res://scene/components/health_component.gd
 res://scene/level/level.tscn
 res://scene/ui/menu.tscn
+res://scene/ui/tallants/TalentPopup.tscn
 res://scene/ui/tallants/ResetTallantsPopup.tscn
 res://scene/ui/tallants/talents_menu.tscn
