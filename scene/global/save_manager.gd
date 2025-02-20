@@ -9,45 +9,35 @@ var save_data := {
 	'max_kill_mobs_count': 0,
 }
 
-# === СОЗДАЕМ ФУНКЦИЮ ДЛЯ ПРОВЕРКИ РЕКОРДА ===
+# === ПРОВЕРКА И ОБНОВЛЕНИЕ РЕКОРДА ===
 func check_new_record():
-	# Проверяем, если текущий kill_mobs_count больше максимума
 	if kill_mobs_count > save_data["max_kill_mobs_count"]:
-		# Обновляем максимальный рекорд
 		save_data["max_kill_mobs_count"] = kill_mobs_count
 		
-		# Отправляем рекорд в лидерборд
-		send_to_leaderboard(kill_mobs_count)
-		
-	# Сохраняем изменения
-	# Сбрасываем текущий счетчик убийств
+		# Отправляем в лидерборд лучший результат!
+		send_to_leaderboard(save_data["max_kill_mobs_count"])
+	
+	# Обнуляем текущий счетчик и сохраняем
 	kill_mobs_count = 0
 	save()
 
-# Пример функции отправки рекорда в лидерборд (реализовать в зависимости от механизма игры)
+# === ОТПРАВКА В ЛИДЕРБОРД ===
 func send_to_leaderboard(record: int):
-	# Проверяем, поддерживает ли платформа лидерборд
 	if Bridge.leaderboard.is_supported:
 		var options = {
-			"leaderboardName": "YOUR_LEADERBOARD_NAME",  # Имя твоего лидерборда
-			"score": record  # Очки игрока
+			"leaderboardName": "leader",  # Твой лидерборд
+			"score": record  # Лучший рекорд
 		}
-		
-		# Отправляем рекорд в лидерборд
 		Bridge.leaderboard.set_score(options, Callable(self, "_on_set_score_completed"))
 	else:
 		print("Лидерборды не поддерживаются на этой платформе.")
 
-# Callback для обработки ответа от платформы
+# === CALLBACK ОТВЕТА ОТ ЛИДЕРБОРДА ===
 func _on_set_score_completed(success):
 	if success:
 		print("Рекорд успешно отправлен в лидерборд!")
 	else:
 		print("Ошибка при отправке рекорда в лидерборд.")
-
-# === ПРОВЕРКА ПЛАТФОРМЫ (браузер или нет) ===
-func _is_web() -> bool:
-	return OS.get_name() == "Web"
 
 # === СОХРАНЕНИЕ ДАННЫХ ===
 func save():
@@ -56,17 +46,21 @@ func save():
 	else:
 		_save_to_file()
 
-# === СОХРАНЕНИЕ В localStorage (для браузера) ===
+# === ПРОВЕРКА ПЛАТФОРМЫ (БРАУЗЕР ИЛИ НЕТ) ===
+func _is_web() -> bool:
+	return OS.get_name() == "Web"
+
+# === СОХРАНЕНИЕ В localStorage (ДЛЯ БРАУЗЕРА) ===
 func _save_to_local_storage():
 	var json_data = JSON.stringify(save_data)
 	JavaScriptBridge.eval("localStorage.setItem('save_data', '" + json_data + "');")
 	print("Данные сохранены в localStorage.")
 
-# === СОХРАНЕНИЕ В ЛОКАЛЬНЫЙ ФАЙЛ (для ПК и мобильных) ===
+# === СОХРАНЕНИЕ В ФАЙЛ (ДЛЯ ПК И МОБИЛЬНЫХ) ===
 func _save_to_file():
 	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
 	if file:
-		var json_string = JSON.stringify(save_data, "\t")  # Форматирование для удобства
+		var json_string = JSON.stringify(save_data, "\t")
 		file.store_string(json_string)
 		file.close()
 	else:
@@ -87,7 +81,7 @@ func _load_data():
 			else:
 				print("Ошибка: Не удалось разобрать JSON-файл!")
 
-# === ЗАГРУЗКА ДАННЫХ ИЗ localStorage (для браузера) ===
+# === ЗАГРУЗКА ИЗ localStorage (ДЛЯ БРАУЗЕРА) ===
 func _load_from_local_storage():
 	var json_data = JavaScriptBridge.eval("localStorage.getItem('save_data');")
 	if json_data and json_data != "null":
@@ -99,13 +93,13 @@ func _load_from_local_storage():
 # === СОХРАНЕНИЕ ТАЛАНТОВ ===
 func save_talents(talents: Dictionary):
 	save_data["talents"] = talents
-	save()  # Сохраняем таланты
+	save()
 
 # === ЗАГРУЗКА ТАЛАНТОВ ===
 func load_talents() -> Dictionary:
 	return save_data.get("talents", {})
 
-# === СОХРАНЕНИЕ ПРИ ВЫХОДЕ ИЗ ИГРЫ ===
+# === СОХРАНЕНИЕ ПРИ ВЫХОДЕ ===
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		print("Игра закрывается, сохраняем данные...")
