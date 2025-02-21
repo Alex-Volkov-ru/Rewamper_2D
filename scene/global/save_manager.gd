@@ -12,16 +12,9 @@ var save_data := {
 
 # === ПРОВЕРКА И ОБНОВЛЕНИЕ РЕКОРДА ===
 func check_new_record():
-	print("kill_mobs_count:", kill_mobs_count)
-	print("max_kill_mobs_count:", save_data["max_kill_mobs_count"])
-	
 	if kill_mobs_count > save_data["max_kill_mobs_count"]:
 		save_data["max_kill_mobs_count"] = kill_mobs_count  # Обновляем максимальный рекорд
-		print("Новый рекорд! Значение kill_mobs_count:", kill_mobs_count)
-		print("Старый рекорд:", save_data["max_kill_mobs_count"])
-		
 		send_to_leaderboard(save_data["max_kill_mobs_count"])
-		print("Рекорд отправлен в лидерборд: ", save_data["max_kill_mobs_count"])
 
 	kill_mobs_count = 0  # Обнуляем текущие убийства
 	save()  # Сохраняем данные
