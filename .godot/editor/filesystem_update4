@@ -9,3 +9,5 @@ res://scene/ui/tallants/ResetTallantsPopup.tscn
 res://scene/ui/tallants/talents_menu.tscn
 res://scene/global/save_manager.gd
 res://scene/ui/end_screen.gd
+res://scene/components/health_component.gd
+res://scene/game_objects/player/player.gd

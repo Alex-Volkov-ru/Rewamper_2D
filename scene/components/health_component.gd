@@ -34,8 +34,5 @@ func check_death():
 	if current_health == 0:
 		died.emit()  # Сигнал о смерти
 		
-		# Проверяем, существует ли ключ "kill_mobs_count"
-		if not Save_Manager_Progress.save_data.has("max_kill_mobs_count"):
-			Save_Manager_Progress.save_data["max_kill_mobs_count"] = 0  # Если нет, создаем его и устанавливаем значение
-
-		Save_Manager_Progress.save_data["max_kill_mobs_count"] += 1  # Увеличиваем значение
+		# Проверяем, существует ли ключ "kill_mobs_count" в save_data
+		Save_Manager_Progress.kill_mobs_count +=1

@@ -9,17 +9,17 @@ var save_data := {
 	'max_kill_mobs_count': 0,
 }
 
+
 # === ПРОВЕРКА И ОБНОВЛЕНИЕ РЕКОРДА ===
 func check_new_record():
 	if kill_mobs_count > save_data["max_kill_mobs_count"]:
-		save_data["max_kill_mobs_count"] = kill_mobs_count
+		save_data["max_kill_mobs_count"] = kill_mobs_count  # Обновляем максимальный рекорд
 		
-		# Отправляем в лидерборд лучший результат!
 		send_to_leaderboard(save_data["max_kill_mobs_count"])
+
+	kill_mobs_count = 0  # Обнуляем текущие убийства
+	save()  # Сохраняем данные
 	
-	# Обнуляем текущий счетчик и сохраняем
-	kill_mobs_count = 0
-	save()
 
 # === ОТПРАВКА В ЛИДЕРБОРД ===
 func send_to_leaderboard(record: int):
@@ -54,7 +54,6 @@ func _is_web() -> bool:
 func _save_to_local_storage():
 	var json_data = JSON.stringify(save_data)
 	JavaScriptBridge.eval("localStorage.setItem('save_data', '" + json_data + "');")
-	print("Данные сохранены в localStorage.")
 
 # === СОХРАНЕНИЕ В ФАЙЛ (ДЛЯ ПК И МОБИЛЬНЫХ) ===
 func _save_to_file():
