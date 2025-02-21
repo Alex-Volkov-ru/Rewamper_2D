@@ -1,25 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct44uiuuof1nh"]
+[gd_scene load_steps=3 format=3 uid="uid://ct44uiuuof1nh"]
 
 [ext_resource type="Script" path="res://scene/ui/ability_upgrade_card.gd" id="1_iqe4j"]
+[ext_resource type="Texture2D" uid="uid://3y47de3dgftp" path="res://scene/ui/48cedca4f05811efb26b368c6fdc52c2.webp" id="2_o4lm4"]
 
 [node name="AbilityUpgradeCard" type="PanelContainer"]
-custom_minimum_size = Vector2(120, 170)
+custom_minimum_size = Vector2(200, 250)
 offset_left = -1.0
 offset_top = -1.0
-offset_right = 177.0
-offset_bottom = 251.0
+offset_right = 263.0
+offset_bottom = 373.0
 script = ExtResource("1_iqe4j")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_o4lm4")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Name"
 horizontal_alignment = 1
 
-[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2

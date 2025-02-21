@@ -99,34 +99,6 @@ text = "Запуск игры"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LeadBoard" type="TextureButton" parent="."]
-offset_left = 41.0
-offset_top = 22.0
-offset_right = 841.0
-offset_bottom = 322.0
-scale = Vector2(0.25, 0.25)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("3_kex4x")
-
-[node name="Play" type="Label" parent="LeadBoard"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 82.0
-offset_right = 946.0
-offset_bottom = 263.0
-scale = Vector2(0.715, 0.715)
-theme_override_colors/font_color = Color(0.933333, 0.513726, 0.462745, 0.737255)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("4_og1ju")
-theme_override_font_sizes/font_size = 78
-text = "Лидеры"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8gu57")
 autoplay = true
@@ -135,4 +107,3 @@ autoplay = true
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="TexturePlay" to="." method="_on_texture_play_pressed"]
 [connection signal="pressed" from="TexturePlay" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="LeadBoard" to="." method="_on_lead_board_pressed"]
