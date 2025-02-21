@@ -36,4 +36,3 @@ func check_death():
 		
 		# Проверяем, существует ли ключ "kill_mobs_count" в save_data
 		Save_Manager_Progress.kill_mobs_count +=1
-		print("Убито мобов: ", Save_Manager_Progress.kill_mobs_count)
