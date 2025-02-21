@@ -1,10 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://bacntos6mit02"]
 
 [ext_resource type="Script" path="res://scene/ui/menu.gd" id="1_1m2yu"]
-[ext_resource type="Texture2D" uid="uid://ctpnjulp0eusj" path="res://scene/ui/e36c410bdcae11ef8b4d6ecd5a48429b.webp" id="2_urq13"]
 [ext_resource type="Texture2D" uid="uid://hotlbrq8cppn" path="res://scene/ui/button_menu.png" id="3_kex4x"]
 [ext_resource type="FontFile" uid="uid://d0dhfxiqi65lq" path="res://fonts/GreenHillSans-Regular v1.01.ttf" id="4_og1ju"]
 [ext_resource type="AudioStream" uid="uid://cudbdh4huywsg" path="res://song/menu.mp3" id="5_8gu57"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_06rkh"]
+load_path = "res://.godot/imported/e36c410bdcae11ef8b4d6ecd5a48429b.webp-3ad9cb1a25b21346c2dc0ff889a10a5d.ctex"
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_1m2yu")
@@ -12,7 +14,7 @@ script = ExtResource("1_1m2yu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(623, 339)
 scale = Vector2(0.928586, 0.882812)
-texture = ExtResource("2_urq13")
+texture = SubResource("CompressedTexture2D_06rkh")
 
 [node name="TextureTalents" type="TextureButton" parent="."]
 offset_left = 437.0
