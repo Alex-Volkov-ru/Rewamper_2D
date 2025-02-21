@@ -6,11 +6,14 @@ signal card_selected
 
 @onready var name_label = %NameLabel
 @onready var description_label = %DescriptionLabel
+@onready var icon_texture_rect: TextureRect = %IconTextureRect
 
 
 func set_ability_upgrade (upgrade: AbilityUpgrade):
 	name_label.text = upgrade.name
 	description_label.text = upgrade.description
+	icon_texture_rect.texture = upgrade.icon
+	
 
 
 func _on_gui_input(event):

@@ -1,4 +1,7 @@
+HBoxContainer
 TextureRect
+Sprite2D
+ColorRect
 Label
 MarginContainer
 PanelContainer
@@ -10,5 +13,3 @@ Control
 TextureButton
 Timer
 PopupPanel
-CanvasLayer
-Node

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="NewAbility" load_steps=3 format=3 uid="uid://c8pgawwiqr4j0"]
+[gd_resource type="Resource" script_class="NewAbility" load_steps=4 format=3 uid="uid://c8pgawwiqr4j0"]
 
 [ext_resource type="PackedScene" uid="uid://bgrk4qfh4w8s" path="res://scene/abilities/axe_ability/axe_ability_controller.tscn" id="1_1pguw"]
+[ext_resource type="Texture2D" uid="uid://jjcu18to7yg8" path="res://resources/upgrades/weapon_throwing_axe.png" id="1_il0p6"]
 [ext_resource type="Script" path="res://resources/upgrades/new_ability.gd" id="2_3hrk6"]
 
 [resource]
@@ -10,3 +11,4 @@ id = "throw_axe"
 max_quantity = 1
 name = "Молот Тора"
 description = "На помощь приходит молот Тора"
+icon = ExtResource("1_il0p6")

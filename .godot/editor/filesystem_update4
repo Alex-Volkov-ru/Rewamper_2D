@@ -20,3 +20,11 @@ res://scene/ui/end_screen.tscn
 res://scene/manager/experience_manager.tscn
 res://scene/ui/experience_bar.tscn
 res://scene/ui/pause_menu.tscn
+res://resources/upgrades/throw_axe.tres
+res://scene/ui/ability_upgrade_card.gd
+res://resources/upgrades/ability_upgrade.gd
+res://resources/upgrades/cooldown.tres
+res://resources/upgrades/sword_attack.tres
+res://resources/upgrades/gun_attack.tres
+res://song/music_manager.tscn
+res://scene/ui/pause_menu.gd

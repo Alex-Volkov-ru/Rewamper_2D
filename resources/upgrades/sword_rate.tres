@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://d1pmtb0tkglne"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://d1pmtb0tkglne"]
 
 [ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_5y7ge"]
+[ext_resource type="Texture2D" uid="uid://cgx6qr3k0xk6r" path="res://resources/upgrades/weapon_anime_sword.png" id="1_v0e12"]
 
 [resource]
 script = ExtResource("1_5y7ge")
 id = "sword_rate"
 max_quantity = 10
 name = "Меч"
-description = "Увеличение скрости атаки  меча на 10 %"
+description = "Увеличение скрости атаки  меча на 10%"
+icon = ExtResource("1_v0e12")

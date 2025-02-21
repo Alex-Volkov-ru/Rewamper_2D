@@ -3,7 +3,7 @@ extends Control
 @onready var resume_button = $PanelContainer/VBoxContainer/Resume
 @onready var quit_button = $PanelContainer/VBoxContainer/Quit
 @onready var menu_button = $"../MenuRight" # Эта кнопка открывает меню паузы
-@onready var background_music: AudioStreamPlayer = $AudioStreamPlayer
+#@onready var background_music: AudioStreamPlayer = $AudioStreamPlayer
 
 var is_music_playing = false
 var was_music_playing_before_pause = false  # Для отслеживания состояния музыки до паузы
@@ -26,7 +26,7 @@ func _ready():
 		menu_button.pressed.connect(_on_menu_pressed)
 
 	# Запоминаем текущее состояние музыки
-	is_music_playing = background_music.playing
+	#is_music_playing = background_music.playing
 
 func _process(_delta):
 	# Открытие меню при нажатии Esc
@@ -34,20 +34,20 @@ func _process(_delta):
 		toggle_pause()
 
 func toggle_pause():
-	is_music_playing = background_music.playing  # Обновляем перед паузой
+	#is_music_playing = background_music.playing  # Обновляем перед паузой
 	visible = !visible
 	get_tree().paused = visible  # Ставим/снимаем паузу
 
-	if visible:  # Когда показываем меню паузы
-		if not background_music.playing:
-			background_music.play()  # Включаем музыку, если она не играет
-		was_music_playing_before_pause = is_music_playing  # Запоминаем текущее состояние музыки
-	else:  # Когда скрываем меню
-		if background_music.playing:
-			background_music.stop()  # Останавливаем музыку
-		# Восстановление музыки, если она играла до паузы
-		if was_music_playing_before_pause:
-			background_music.play()
+	#if visible:  # Когда показываем меню паузы
+		#if not background_music.playing:
+			#background_music.play()  # Включаем музыку, если она не играет
+		#was_music_playing_before_pause = is_music_playing  # Запоминаем текущее состояние музыки
+	#else:  # Когда скрываем меню
+		#if background_music.playing:
+			#background_music.stop()  # Останавливаем музыку
+		## Восстановление музыки, если она играла до паузы
+		#if was_music_playing_before_pause:
+			#background_music.play()
 
 func _on_resume_pressed():
 	toggle_pause()  # Просто закрываем меню и снимаем паузу
