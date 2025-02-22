@@ -17,7 +17,8 @@ const MAX_LEVEL = 5  # Максимальный уровень таланта
 var talent_names_rus = {
 	"defense": "Защиту",
 	"movement": "Скорость передвижения",
-	"stamina": "Выносливость"
+	"stamina": "Выносливость",
+	"regen": "Регенерация"
 }
 
 func set_talent_info(name: String, level: int, node):

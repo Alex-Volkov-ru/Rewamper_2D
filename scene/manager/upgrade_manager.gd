@@ -11,14 +11,16 @@ var upgrade_sword_attack = preload("res://resources/upgrades/sword_attack.tres")
 var upgrade_throw_axe = preload("res://resources/upgrades/throw_axe.tres")
 var upgrade_gun_attack = preload("res://resources/upgrades/gun_attack.tres")
 var upgrade_cooldown_gun = preload("res://resources/upgrades/cooldown.tres")
+var upgrade_test_boomerang = preload("res://resources/upgrades/test_boomerang.tres")
 
 
 func _ready():
-	upgrade_pool.add_upgrade(upgrade_sword_rate, 10)
-	upgrade_pool.add_upgrade(upgrade_sword_attack, 10)
-	upgrade_pool.add_upgrade(upgrade_throw_axe, 10)
-	upgrade_pool.add_upgrade(upgrade_gun_attack, 10)
-	upgrade_pool.add_upgrade(upgrade_cooldown_gun, 10)
+	upgrade_pool.add_upgrade(upgrade_sword_rate, 50)
+	upgrade_pool.add_upgrade(upgrade_sword_attack, 50)
+	upgrade_pool.add_upgrade(upgrade_throw_axe, 40)
+	upgrade_pool.add_upgrade(upgrade_gun_attack, 50)
+	upgrade_pool.add_upgrade(upgrade_cooldown_gun, 50)
+	upgrade_pool.add_upgrade(upgrade_test_boomerang, 10)
 	
 	experience_manager.level_up.connect(on_level_up)
 	

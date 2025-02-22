@@ -16,6 +16,7 @@ signal skill_upgraded(skill_name: String, level: int)
 @onready var dash_touch_button = $SkillsPlayer/DashScreenButton
 @onready var dashCooldownTimer = $DashCooldownTimer
 @onready var shooting_area = $ShootingArea
+@onready var regen_timer = $RegenTimer
 
 # Параметры
 @export var max_speed: float = 60
@@ -45,6 +46,11 @@ var defense_reduction: float = 0.0
 var defense_talent_level: int = 0
 var defense_bonus := [0.0, 0.02, 0.05, 0.10, 0.15, 0.20]
 
+# Уровень таланта "Регенерация"
+var regen_talent_level: int = 0
+# Таблица бонусов к восстановлению (0 - без таланта, 5 - максимальный уровень)
+var regen_bonus := [0.0, 0.005, 0.01, 0.015, 0.02, 0.025]  # 0.5% - 2.5% от макс. хп
+
 # Новый список оружия
 var weapons = []
 
@@ -59,6 +65,17 @@ func _on_skill_upgraded(skill_name: String, level: int):
 	elif skill_name == 'defense':
 		defense_talent_level = level
 		apply_defense_talent()  # Применяем бонус к скорости
+	elif skill_name == "regen":
+		regen_talent_level = level
+		apply_regen_talent()
+
+
+
+func apply_regen_talent():
+	if regen_talent_level > 0:
+		regen_timer.start()
+	else:
+		regen_timer.stop()
 
 func apply_defense_talent():
 	defense_reduction = defense_bonus[defense_talent_level]
@@ -198,18 +215,24 @@ func _on_dash_cooldown_timer_timeout():
 
 # Готовность сцены
 func _ready():
+	if not regen_timer.timeout.is_connected(_on_regen_timer_timeout):
+		regen_timer.timeout.connect(_on_regen_timer_timeout)
+
+	regen_talent_level = Global.get_talent("regen", 0)
 	base_max_speed = max_speed  # Сохраняем базовую скорость
 	stamina_talent_level = Global.get_talent("stamina", 0)  # Загружаем сохраненный уровень
 	movement_talent_level = Global.get_talent("movement", 0)
 	defense_talent_level = Global.get_talent("defense", 0)
+	stamina_talent_level = Global.get_talent("regen", 0)
 	
 	apply_stamina_talent()
 	apply_movement_talent()
 	apply_defense_talent()
-
+	apply_regen_talent()
+	
 	# Подписываемся на сигнал улучшения таланта
 	for skill_node in get_tree().get_nodes_in_group("skills"):
-		if skill_node is SkillNode or skill_node is SpeedSkillNode or skill_node is DeffensSkillNode:
+		if skill_node is SkillNode or skill_node is SpeedSkillNode or skill_node is DeffensSkillNode or skill_node is RegeneratSkillNode:
 			skill_node.skill_upgraded.connect(_on_skill_upgraded)
 	
 	# Устанавливаем максимальное и текущее здоровье
@@ -323,3 +346,9 @@ func get_closest_enemy() -> Node2D:
 
 	# Возвращаем ближайшего врага или null, если врагов не найдено
 	return closest_enemy
+
+
+func _on_regen_timer_timeout():
+	if regen_talent_level > 0:
+		var heal_amount = health_component.max_health * regen_bonus[regen_talent_level]
+		health_component.heal(heal_amount)

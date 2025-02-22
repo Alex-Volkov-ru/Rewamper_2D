@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://u2sy2yrcked8"]
+
+[ext_resource type="Texture2D" uid="uid://57q60bk5i7s2" path="res://scene/abilities/boomerang/suriken.png" id="1_l6mq6"]
+[ext_resource type="Script" path="res://scene/abilities/boomerang/boomerang_ability.gd" id="1_qgo36"]
+[ext_resource type="PackedScene" uid="uid://b2xe2q0ii2gk4" path="res://scene/components/hit_box_component.tscn" id="3_rqkpl"]
+
+[sub_resource type="Animation" id="Animation_ohfi4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3l28n"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_12mfs"]
+_data = {
+"RESET": SubResource("Animation_ohfi4"),
+"new_animation": SubResource("Animation_3l28n")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e43sl"]
+radius = 6.0
+
+[node name="BoomerangAbility" type="Node2D"]
+script = ExtResource("1_qgo36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_12mfs")
+}
+autoplay = "new_animation"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.070193, -0.1725)
+scale = Vector2(0.240122, 0.240122)
+texture = ExtResource("1_l6mq6")
+offset = Vector2(0.695, -1.38)
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("3_rqkpl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("CircleShape2D_e43sl")

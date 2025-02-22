@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbknbnwei71r"
-path="res://.godot/imported/boolet_gun.png-05dea902f4ae6905d53caff7d6f3cd99.ctex"
+uid="uid://57q60bk5i7s2"
+path="res://.godot/imported/suriken.png-e30e30e371ccd808d1ce86997be0c932.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/abilities/bullet_ability/boolet_gun.png"
-dest_files=["res://.godot/imported/boolet_gun.png-05dea902f4ae6905d53caff7d6f3cd99.ctex"]
+source_file="res://scene/abilities/boomerang/suriken.png"
+dest_files=["res://.godot/imported/suriken.png-e30e30e371ccd808d1ce86997be0c932.ctex"]
 
 [params]
 

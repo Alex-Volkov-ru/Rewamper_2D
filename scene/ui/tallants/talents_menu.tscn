@@ -133,11 +133,10 @@ offset_right = 817.0
 offset_bottom = 321.0
 
 [node name="RegenerateSkillButton" parent="." instance=ExtResource("7_ydlt8")]
-visible = false
 layout_mode = 0
-offset_left = 383.0
+offset_left = 543.0
 offset_top = 405.0
-offset_right = 423.0
+offset_right = 583.0
 offset_bottom = 445.0
 
 [node name="DeffentsSkillButton" parent="." instance=ExtResource("9_icvdg")]
