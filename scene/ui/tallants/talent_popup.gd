@@ -21,8 +21,8 @@ var talent_names_rus = {
 	"regen": "Регенерация"
 }
 
-func set_talent_info(name: String, level: int, node):
-	talent_name = name
+func set_talent_info(talent_name_param: String, level: int, node):
+	talent_name = talent_name_param  # Используем новое имя параметра
 	current_level = level
 	talent_node = node  # Сохраняем переданный узел
 

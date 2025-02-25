@@ -68,6 +68,3 @@ func on_upgrade_added(upgrade:AbilityUpgrade, current_upgrades:Dictionary):
 		var upgrade_count = current_upgrades["sword_attack"]["quantity"]
 		# Увеличиваем урон меча
 		sword_damage += 10
-	
-		
-	
